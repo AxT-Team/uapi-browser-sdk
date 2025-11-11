@@ -1,0 +1,38 @@
+
+# PostSearchAggregate500Response
+
+
+## Properties
+
+Name | Type
+------------ | -------------
+`code` | string
+`message` | string
+`timestamp` | Date
+
+## Example
+
+```typescript
+import type { PostSearchAggregate500Response } from 'uapi-browser-sdk-browser'
+
+// TODO: Update the object below with actual values
+const example = {
+  "code": INTERNAL_ERROR,
+  "message": 服务器内部错误,
+  "timestamp": 2024-01-15T10:30Z,
+} satisfies PostSearchAggregate500Response
+
+console.log(example)
+
+// Convert the instance to a JSON string
+const exampleJSON: string = JSON.stringify(example)
+console.log(exampleJSON)
+
+// Parse the JSON string back to an object
+const exampleParsed = JSON.parse(exampleJSON) as PostSearchAggregate500Response
+console.log(exampleParsed)
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
