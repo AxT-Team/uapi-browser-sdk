@@ -1,9 +1,10 @@
 # uapi-browser-sdk
 
-![Banner](./banner.png)
+![Banner](https://raw.githubusercontent.com/AxT-Team/uapi-browser-sdk/main/banner.png)
 
 [![Browser TS](https://img.shields.io/badge/TypeScript-ES2020-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Docs](https://img.shields.io/badge/Docs-uapis.cn-2EAE5D?style=flat-square)](https://uapis.cn/)
+[![npm](https://img.shields.io/npm/v/uapi-browser-sdk?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/uapi-browser-sdk)
 
 > [!NOTE]
 > 所有接口的 Browser (TypeScript) 示例都可以在 [UApi](https://uapis.cn/docs/introduction) 的接口文档页面，向下滚动至 **快速启动** 区块后直接复制。
@@ -63,3 +64,4 @@ SDK 采用原生 `fetch`，自动补上 `Authorization` 头且不依赖任何 No
 ## 文档
 
 访问 [UApi文档首页](https://uapis.cn/docs/introduction) 并选择任意接口，向下滚动到 **快速启动** 区块即可看到最新的 Browser (TypeScript) 示例代码。
+
