@@ -23,6 +23,39 @@ const result = await client.social.getSocialQqUserinfo({ qq: '10001' })
 console.log(result)
 ```
 
+## CDN 引入
+
+`uapi-browser-sdk` 已发布到 npm，因此任意支持 npm 包的 CDN 都可以直接加载，无需构建步骤。推荐做法是按照下面的示例引用，并在生产环境中固定版本号（`@latest` 适合快速试用）。
+
+### jsDelivr（官方推荐）
+
+```html
+<script type="module">
+  import { UapiClient } from 'https://cdn.jsdelivr.net/npm/uapi-browser-sdk@latest/dist/index.js';
+
+  const client = new UapiClient('https://uapis.cn/api/v1');
+  const data = await client.network.getNetworkMyip();
+  console.log(data);
+</script>
+```
+
+### UNPKG（原生 ESM）
+
+```html
+<script type="module">
+  import { UapiClient } from 'https://unpkg.com/uapi-browser-sdk@latest/dist/index.js?module';
+  // ...
+</script>
+```
+
+### ESM CDN（esm.run / esm.sh 等）
+
+```ts
+import { UapiClient } from 'https://esm.run/uapi-browser-sdk@latest';
+```
+
+以上三种方式都会返回同一份浏览器原生 ESM 模块，因此可以根据团队的缓存策略或地理覆盖选择最合适的 CDN。
+
 ## 特性
 
 现在你不再需要反反复复的查阅文档了。
