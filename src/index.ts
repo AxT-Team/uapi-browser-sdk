@@ -509,6 +509,11 @@ class TranslateApi {
     let path = '/ai/translate'
     return this.c._request('POST', path, params)
   }
+  async postTranslateStream(args: any = {}): Promise<any> {
+    const params:any = {}
+    let path = '/translate/stream'
+    return this.c._request('POST', path, params)
+  }
   async postTranslateText(args: any = {}): Promise<any> {
     const params:any = {}
     if (args["to_lang"] !== undefined) params["to_lang"] = args["to_lang"]

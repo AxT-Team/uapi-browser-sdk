@@ -25,16 +25,16 @@ console.log(result)
 
 ## CDN 引入
 
-`uapi-browser-sdk` 已发布到 npm，因此任意支持 npm 包的 CDN 都可以直接加载，无需构建步骤。推荐做法是按照下面的示例引用，并在生产环境中固定版本号（`@latest` 适合快速试用）。
+`uapi-browser-sdk` 发布在 npm，因而可以直接通过常见 CDN 以 ES Module 方式加载。建议在生产环境固定版本号（`@latest` 仅用于快速试用）。
 
-### jsDelivr（官方推荐）
+### jsDelivr（推荐）
 
 ```html
 <script type="module">
   import { UapiClient } from 'https://cdn.jsdelivr.net/npm/uapi-browser-sdk@latest/dist/index.js';
 
   const client = new UapiClient('https://uapis.cn/api/v1');
-  const data = await client.network.getNetworkMyip();
+  const data = await client.social.getSocialQqUserinfo({ qq: '10001' });
   console.log(data);
 </script>
 ```
@@ -48,13 +48,13 @@ console.log(result)
 </script>
 ```
 
-### ESM CDN（esm.run / esm.sh 等）
+### ESM CDN（esm.run / esm.sh）
 
 ```ts
 import { UapiClient } from 'https://esm.run/uapi-browser-sdk@latest';
 ```
 
-以上三种方式都会返回同一份浏览器原生 ESM 模块，因此可以根据团队的缓存策略或地理覆盖选择最合适的 CDN。
+三种 CDN 均会返回同一份浏览器模块，可按自己的缓存/区域策略选择。
 
 ## 特性
 

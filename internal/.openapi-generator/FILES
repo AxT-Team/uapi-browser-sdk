@@ -262,6 +262,9 @@ docs/PostTextMd5Request.md
 docs/PostTextMd5Verify200Response.md
 docs/PostTextMd5Verify400Response.md
 docs/PostTextMd5VerifyRequest.md
+docs/PostTranslateStream400Response.md
+docs/PostTranslateStream500Response.md
+docs/PostTranslateStreamRequest.md
 docs/PostTranslateText200Response.md
 docs/PostTranslateText400Response.md
 docs/PostTranslateText500Response.md
@@ -545,6 +548,9 @@ src/models/PostTextMd5Request.ts
 src/models/PostTextMd5Verify200Response.ts
 src/models/PostTextMd5Verify400Response.ts
 src/models/PostTextMd5VerifyRequest.ts
+src/models/PostTranslateStream400Response.ts
+src/models/PostTranslateStream500Response.ts
+src/models/PostTranslateStreamRequest.ts
 src/models/PostTranslateText200Response.ts
 src/models/PostTranslateText400Response.ts
 src/models/PostTranslateText500Response.ts

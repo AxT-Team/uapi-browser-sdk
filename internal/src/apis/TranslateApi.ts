@@ -22,6 +22,9 @@ import type {
   PostAiTranslate429Response,
   PostAiTranslate500Response,
   PostAiTranslateRequest,
+  PostTranslateStream400Response,
+  PostTranslateStream500Response,
+  PostTranslateStreamRequest,
   PostTranslateText200Response,
   PostTranslateText400Response,
   PostTranslateText500Response,
@@ -42,6 +45,12 @@ import {
     PostAiTranslate500ResponseToJSON,
     PostAiTranslateRequestFromJSON,
     PostAiTranslateRequestToJSON,
+    PostTranslateStream400ResponseFromJSON,
+    PostTranslateStream400ResponseToJSON,
+    PostTranslateStream500ResponseFromJSON,
+    PostTranslateStream500ResponseToJSON,
+    PostTranslateStreamRequestFromJSON,
+    PostTranslateStreamRequestToJSON,
     PostTranslateText200ResponseFromJSON,
     PostTranslateText200ResponseToJSON,
     PostTranslateText400ResponseFromJSON,
@@ -55,6 +64,10 @@ import {
 export interface PostAiTranslateOperationRequest {
     targetLang: PostAiTranslateOperationTargetLangEnum;
     postAiTranslateRequest: PostAiTranslateRequest;
+}
+
+export interface PostTranslateStreamOperationRequest {
+    postTranslateStreamRequest: PostTranslateStreamRequest;
 }
 
 export interface PostTranslateTextOperationRequest {
@@ -147,6 +160,51 @@ export class TranslateApi extends runtime.BaseAPI {
      */
     async postAiTranslate(requestParameters: PostAiTranslateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostAiTranslate200Response> {
         const response = await this.postAiTranslateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 `auto` 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - `中文`（简体/繁体） - `英文` - `auto`（自动检测）
+     * 流式翻译（中英互译）
+     */
+    async postTranslateStreamRaw(requestParameters: PostTranslateStreamOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters['postTranslateStreamRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postTranslateStreamRequest',
+                'Required parameter "postTranslateStreamRequest" was null or undefined when calling postTranslateStream().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+
+        let urlPath = `/translate/stream`;
+
+        const response = await this.request({
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostTranslateStreamRequestToJSON(requestParameters['postTranslateStreamRequest']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<string>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 `auto` 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - `中文`（简体/繁体） - `英文` - `auto`（自动检测）
+     * 流式翻译（中英互译）
+     */
+    async postTranslateStream(requestParameters: PostTranslateStreamOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.postTranslateStreamRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
