@@ -13,6 +13,42 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GetMiscWeather200ResponseMinutelyPrecip } from './GetMiscWeather200ResponseMinutelyPrecip';
+import {
+    GetMiscWeather200ResponseMinutelyPrecipFromJSON,
+    GetMiscWeather200ResponseMinutelyPrecipFromJSONTyped,
+    GetMiscWeather200ResponseMinutelyPrecipToJSON,
+    GetMiscWeather200ResponseMinutelyPrecipToJSONTyped,
+} from './GetMiscWeather200ResponseMinutelyPrecip';
+import type { GetMiscWeather200ResponseAirPollutants } from './GetMiscWeather200ResponseAirPollutants';
+import {
+    GetMiscWeather200ResponseAirPollutantsFromJSON,
+    GetMiscWeather200ResponseAirPollutantsFromJSONTyped,
+    GetMiscWeather200ResponseAirPollutantsToJSON,
+    GetMiscWeather200ResponseAirPollutantsToJSONTyped,
+} from './GetMiscWeather200ResponseAirPollutants';
+import type { GetMiscWeather200ResponseLifeIndices } from './GetMiscWeather200ResponseLifeIndices';
+import {
+    GetMiscWeather200ResponseLifeIndicesFromJSON,
+    GetMiscWeather200ResponseLifeIndicesFromJSONTyped,
+    GetMiscWeather200ResponseLifeIndicesToJSON,
+    GetMiscWeather200ResponseLifeIndicesToJSONTyped,
+} from './GetMiscWeather200ResponseLifeIndices';
+import type { GetMiscWeather200ResponseForecastInner } from './GetMiscWeather200ResponseForecastInner';
+import {
+    GetMiscWeather200ResponseForecastInnerFromJSON,
+    GetMiscWeather200ResponseForecastInnerFromJSONTyped,
+    GetMiscWeather200ResponseForecastInnerToJSON,
+    GetMiscWeather200ResponseForecastInnerToJSONTyped,
+} from './GetMiscWeather200ResponseForecastInner';
+import type { GetMiscWeather200ResponseHourlyForecastInner } from './GetMiscWeather200ResponseHourlyForecastInner';
+import {
+    GetMiscWeather200ResponseHourlyForecastInnerFromJSON,
+    GetMiscWeather200ResponseHourlyForecastInnerFromJSONTyped,
+    GetMiscWeather200ResponseHourlyForecastInnerToJSON,
+    GetMiscWeather200ResponseHourlyForecastInnerToJSONTyped,
+} from './GetMiscWeather200ResponseHourlyForecastInner';
+
 /**
  * 
  * @export
@@ -20,59 +56,161 @@ import { mapValues } from '../runtime';
  */
 export interface GetMiscWeather200Response {
     /**
-     * 
-     * @type {string}
-     * @memberof GetMiscWeather200Response
-     */
-    adcode?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetMiscWeather200Response
-     */
-    city?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetMiscWeather200Response
-     */
-    humidity?: number;
-    /**
-     * 
+     * 省份
      * @type {string}
      * @memberof GetMiscWeather200Response
      */
     province?: string;
     /**
-     * 
+     * 城市名
      * @type {string}
      * @memberof GetMiscWeather200Response
      */
-    reportTime?: string;
+    city?: string;
     /**
-     * 
-     * @type {number}
+     * 行政区划代码（部分数据源可能为空）
+     * @type {string}
      * @memberof GetMiscWeather200Response
      */
-    temperature?: number;
+    adcode?: string;
     /**
-     * 
+     * 天气状况描述。默认返回中文，传 `lang=en` 时返回英文。非固定枚举。
      * @type {string}
      * @memberof GetMiscWeather200Response
      */
     weather?: string;
     /**
-     * 
+     * 当前温度 °C
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    temperature?: number;
+    /**
+     * 风向
      * @type {string}
      * @memberof GetMiscWeather200Response
      */
     windDirection?: string;
     /**
-     * 
+     * 风力等级
      * @type {string}
      * @memberof GetMiscWeather200Response
      */
     windPower?: string;
+    /**
+     * 相对湿度 %
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    humidity?: number;
+    /**
+     * 数据更新时间
+     * @type {string}
+     * @memberof GetMiscWeather200Response
+     */
+    reportTime?: string;
+    /**
+     * 体感温度 °C（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    feelsLike?: number;
+    /**
+     * 能见度 km（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    visibility?: number;
+    /**
+     * 气压 hPa（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    pressure?: number;
+    /**
+     * 紫外线指数（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    uv?: number;
+    /**
+     * 当前降水量 mm（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    precipitation?: number;
+    /**
+     * 云量 %（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    cloud?: number;
+    /**
+     * 空气质量指数 0-500（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    aqi?: number;
+    /**
+     * AQI 等级 1-6（extended=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    aqiLevel?: number;
+    /**
+     * AQI 等级描述（优/良/轻度污染/中度污染/重度污染/严重污染）（extended=true 时返回）
+     * @type {string}
+     * @memberof GetMiscWeather200Response
+     */
+    aqiCategory?: string;
+    /**
+     * 主要污染物（如 PM2.5、PM10、O3 等）（extended=true 时返回）
+     * @type {string}
+     * @memberof GetMiscWeather200Response
+     */
+    aqiPrimary?: string;
+    /**
+     * 
+     * @type {GetMiscWeather200ResponseAirPollutants}
+     * @memberof GetMiscWeather200Response
+     */
+    airPollutants?: GetMiscWeather200ResponseAirPollutants;
+    /**
+     * 当天最高温 °C（forecast=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    tempMax?: number;
+    /**
+     * 当天最低温 °C（forecast=true 时返回）
+     * @type {number}
+     * @memberof GetMiscWeather200Response
+     */
+    tempMin?: number;
+    /**
+     * 多天天气预报，最多7天（forecast=true 时返回）
+     * @type {Array<GetMiscWeather200ResponseForecastInner>}
+     * @memberof GetMiscWeather200Response
+     */
+    forecast?: Array<GetMiscWeather200ResponseForecastInner>;
+    /**
+     * 逐小时预报，最多24小时（hourly=true 时返回）
+     * @type {Array<GetMiscWeather200ResponseHourlyForecastInner>}
+     * @memberof GetMiscWeather200Response
+     */
+    hourlyForecast?: Array<GetMiscWeather200ResponseHourlyForecastInner>;
+    /**
+     * 
+     * @type {GetMiscWeather200ResponseMinutelyPrecip}
+     * @memberof GetMiscWeather200Response
+     */
+    minutelyPrecip?: GetMiscWeather200ResponseMinutelyPrecip;
+    /**
+     * 
+     * @type {GetMiscWeather200ResponseLifeIndices}
+     * @memberof GetMiscWeather200Response
+     */
+    lifeIndices?: GetMiscWeather200ResponseLifeIndices;
 }
 
 /**
@@ -92,15 +230,32 @@ export function GetMiscWeather200ResponseFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'adcode': json['adcode'] == null ? undefined : json['adcode'],
-        'city': json['city'] == null ? undefined : json['city'],
-        'humidity': json['humidity'] == null ? undefined : json['humidity'],
         'province': json['province'] == null ? undefined : json['province'],
-        'reportTime': json['report_time'] == null ? undefined : json['report_time'],
-        'temperature': json['temperature'] == null ? undefined : json['temperature'],
+        'city': json['city'] == null ? undefined : json['city'],
+        'adcode': json['adcode'] == null ? undefined : json['adcode'],
         'weather': json['weather'] == null ? undefined : json['weather'],
+        'temperature': json['temperature'] == null ? undefined : json['temperature'],
         'windDirection': json['wind_direction'] == null ? undefined : json['wind_direction'],
         'windPower': json['wind_power'] == null ? undefined : json['wind_power'],
+        'humidity': json['humidity'] == null ? undefined : json['humidity'],
+        'reportTime': json['report_time'] == null ? undefined : json['report_time'],
+        'feelsLike': json['feels_like'] == null ? undefined : json['feels_like'],
+        'visibility': json['visibility'] == null ? undefined : json['visibility'],
+        'pressure': json['pressure'] == null ? undefined : json['pressure'],
+        'uv': json['uv'] == null ? undefined : json['uv'],
+        'precipitation': json['precipitation'] == null ? undefined : json['precipitation'],
+        'cloud': json['cloud'] == null ? undefined : json['cloud'],
+        'aqi': json['aqi'] == null ? undefined : json['aqi'],
+        'aqiLevel': json['aqi_level'] == null ? undefined : json['aqi_level'],
+        'aqiCategory': json['aqi_category'] == null ? undefined : json['aqi_category'],
+        'aqiPrimary': json['aqi_primary'] == null ? undefined : json['aqi_primary'],
+        'airPollutants': json['air_pollutants'] == null ? undefined : GetMiscWeather200ResponseAirPollutantsFromJSON(json['air_pollutants']),
+        'tempMax': json['temp_max'] == null ? undefined : json['temp_max'],
+        'tempMin': json['temp_min'] == null ? undefined : json['temp_min'],
+        'forecast': json['forecast'] == null ? undefined : ((json['forecast'] as Array<any>).map(GetMiscWeather200ResponseForecastInnerFromJSON)),
+        'hourlyForecast': json['hourly_forecast'] == null ? undefined : ((json['hourly_forecast'] as Array<any>).map(GetMiscWeather200ResponseHourlyForecastInnerFromJSON)),
+        'minutelyPrecip': json['minutely_precip'] == null ? undefined : GetMiscWeather200ResponseMinutelyPrecipFromJSON(json['minutely_precip']),
+        'lifeIndices': json['life_indices'] == null ? undefined : GetMiscWeather200ResponseLifeIndicesFromJSON(json['life_indices']),
     };
 }
 
@@ -115,15 +270,32 @@ export function GetMiscWeather200ResponseToJSONTyped(value?: GetMiscWeather200Re
 
     return {
         
-        'adcode': value['adcode'],
-        'city': value['city'],
-        'humidity': value['humidity'],
         'province': value['province'],
-        'report_time': value['reportTime'],
-        'temperature': value['temperature'],
+        'city': value['city'],
+        'adcode': value['adcode'],
         'weather': value['weather'],
+        'temperature': value['temperature'],
         'wind_direction': value['windDirection'],
         'wind_power': value['windPower'],
+        'humidity': value['humidity'],
+        'report_time': value['reportTime'],
+        'feels_like': value['feelsLike'],
+        'visibility': value['visibility'],
+        'pressure': value['pressure'],
+        'uv': value['uv'],
+        'precipitation': value['precipitation'],
+        'cloud': value['cloud'],
+        'aqi': value['aqi'],
+        'aqi_level': value['aqiLevel'],
+        'aqi_category': value['aqiCategory'],
+        'aqi_primary': value['aqiPrimary'],
+        'air_pollutants': GetMiscWeather200ResponseAirPollutantsToJSON(value['airPollutants']),
+        'temp_max': value['tempMax'],
+        'temp_min': value['tempMin'],
+        'forecast': value['forecast'] == null ? undefined : ((value['forecast'] as Array<any>).map(GetMiscWeather200ResponseForecastInnerToJSON)),
+        'hourly_forecast': value['hourlyForecast'] == null ? undefined : ((value['hourlyForecast'] as Array<any>).map(GetMiscWeather200ResponseHourlyForecastInnerToJSON)),
+        'minutely_precip': GetMiscWeather200ResponseMinutelyPrecipToJSON(value['minutelyPrecip']),
+        'life_indices': GetMiscWeather200ResponseLifeIndicesToJSON(value['lifeIndices']),
     };
 }
 

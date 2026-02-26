@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface GetGameMinecraftServerstatus200Response {
     /**
-     * 状态码，200代表成功。
-     * @type {number}
-     * @memberof GetGameMinecraftServerstatus200Response
-     */
-    code?: number;
-    /**
      * 服务器图标的 Base64 Data URI。你可以直接在 `<img>` 标签的 `src` 属性中使用它。
      * @type {string}
      * @memberof GetGameMinecraftServerstatus200Response
@@ -98,7 +92,6 @@ export function GetGameMinecraftServerstatus200ResponseFromJSONTyped(json: any, 
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'faviconUrl': json['favicon_url'] == null ? undefined : json['favicon_url'],
         'ip': json['ip'] == null ? undefined : json['ip'],
         'maxPlayers': json['max_players'] == null ? undefined : json['max_players'],
@@ -122,7 +115,6 @@ export function GetGameMinecraftServerstatus200ResponseToJSONTyped(value?: GetGa
 
     return {
         
-        'code': value['code'],
         'favicon_url': value['faviconUrl'],
         'ip': value['ip'],
         'max_players': value['maxPlayers'],

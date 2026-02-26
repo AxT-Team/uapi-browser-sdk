@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `code` | string
-`details` | object
 `message` | string
 
 ## Example
@@ -18,8 +17,7 @@ import type { GetStatusUsage404Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": NOT_FOUND,
-  "details": null,
-  "message": No usage statistics found for the specified path.,
+  "message": 未找到指定的端点统计数据,
 } satisfies GetStatusUsage404Response
 
 console.log(example)

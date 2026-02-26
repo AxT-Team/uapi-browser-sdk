@@ -13,34 +13,34 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EndpointsAggregateUnaggregated } from './EndpointsAggregateUnaggregated';
+import type { GetStatusUsage200ResponseAnyOf1 } from './GetStatusUsage200ResponseAnyOf1';
 import {
-    EndpointsAggregateUnaggregatedFromJSON,
-    EndpointsAggregateUnaggregatedFromJSONTyped,
-    EndpointsAggregateUnaggregatedToJSON,
-    EndpointsAggregateUnaggregatedToJSONTyped,
-} from './EndpointsAggregateUnaggregated';
-import type { SingleEndpoint } from './SingleEndpoint';
+    GetStatusUsage200ResponseAnyOf1FromJSON,
+    GetStatusUsage200ResponseAnyOf1FromJSONTyped,
+    GetStatusUsage200ResponseAnyOf1ToJSON,
+    GetStatusUsage200ResponseAnyOf1ToJSONTyped,
+} from './GetStatusUsage200ResponseAnyOf1';
+import type { GetStatusUsage200ResponseAnyOfEndpointsInner } from './GetStatusUsage200ResponseAnyOfEndpointsInner';
 import {
-    SingleEndpointFromJSON,
-    SingleEndpointFromJSONTyped,
-    SingleEndpointToJSON,
-    SingleEndpointToJSONTyped,
-} from './SingleEndpoint';
-import type { EndpointsAggregate } from './EndpointsAggregate';
+    GetStatusUsage200ResponseAnyOfEndpointsInnerFromJSON,
+    GetStatusUsage200ResponseAnyOfEndpointsInnerFromJSONTyped,
+    GetStatusUsage200ResponseAnyOfEndpointsInnerToJSON,
+    GetStatusUsage200ResponseAnyOfEndpointsInnerToJSONTyped,
+} from './GetStatusUsage200ResponseAnyOfEndpointsInner';
+import type { GetStatusUsage200ResponseAnyOf } from './GetStatusUsage200ResponseAnyOf';
 import {
-    EndpointsAggregateFromJSON,
-    EndpointsAggregateFromJSONTyped,
-    EndpointsAggregateToJSON,
-    EndpointsAggregateToJSONTyped,
-} from './EndpointsAggregate';
-import type { EndpointsAggregateEndpointsInner } from './EndpointsAggregateEndpointsInner';
+    GetStatusUsage200ResponseAnyOfFromJSON,
+    GetStatusUsage200ResponseAnyOfFromJSONTyped,
+    GetStatusUsage200ResponseAnyOfToJSON,
+    GetStatusUsage200ResponseAnyOfToJSONTyped,
+} from './GetStatusUsage200ResponseAnyOf';
+import type { GetStatusUsage200ResponseAnyOfUnaggregated } from './GetStatusUsage200ResponseAnyOfUnaggregated';
 import {
-    EndpointsAggregateEndpointsInnerFromJSON,
-    EndpointsAggregateEndpointsInnerFromJSONTyped,
-    EndpointsAggregateEndpointsInnerToJSON,
-    EndpointsAggregateEndpointsInnerToJSONTyped,
-} from './EndpointsAggregateEndpointsInner';
+    GetStatusUsage200ResponseAnyOfUnaggregatedFromJSON,
+    GetStatusUsage200ResponseAnyOfUnaggregatedFromJSONTyped,
+    GetStatusUsage200ResponseAnyOfUnaggregatedToJSON,
+    GetStatusUsage200ResponseAnyOfUnaggregatedToJSONTyped,
+} from './GetStatusUsage200ResponseAnyOfUnaggregated';
 
 /**
  * 
@@ -50,16 +50,16 @@ import {
 export interface GetStatusUsage200Response {
     /**
      * 
-     * @type {Array<EndpointsAggregateEndpointsInner>}
+     * @type {Array<GetStatusUsage200ResponseAnyOfEndpointsInner>}
      * @memberof GetStatusUsage200Response
      */
-    endpoints?: Array<EndpointsAggregateEndpointsInner>;
+    endpoints?: Array<GetStatusUsage200ResponseAnyOfEndpointsInner>;
     /**
      * 
-     * @type {EndpointsAggregateUnaggregated}
+     * @type {GetStatusUsage200ResponseAnyOfUnaggregated}
      * @memberof GetStatusUsage200Response
      */
-    unaggregated?: EndpointsAggregateUnaggregated;
+    unaggregated?: GetStatusUsage200ResponseAnyOfUnaggregated;
     /**
      * 
      * @type {string}
@@ -91,8 +91,8 @@ export function GetStatusUsage200ResponseFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'endpoints': json['endpoints'] == null ? undefined : ((json['endpoints'] as Array<any>).map(EndpointsAggregateEndpointsInnerFromJSON)),
-        'unaggregated': json['unaggregated'] == null ? undefined : EndpointsAggregateUnaggregatedFromJSON(json['unaggregated']),
+        'endpoints': json['endpoints'] == null ? undefined : ((json['endpoints'] as Array<any>).map(GetStatusUsage200ResponseAnyOfEndpointsInnerFromJSON)),
+        'unaggregated': json['unaggregated'] == null ? undefined : GetStatusUsage200ResponseAnyOfUnaggregatedFromJSON(json['unaggregated']),
         'path': json['path'] == null ? undefined : json['path'],
         'count': json['count'] == null ? undefined : json['count'],
     };
@@ -109,8 +109,8 @@ export function GetStatusUsage200ResponseToJSONTyped(value?: GetStatusUsage200Re
 
     return {
         
-        'endpoints': value['endpoints'] == null ? undefined : ((value['endpoints'] as Array<any>).map(EndpointsAggregateEndpointsInnerToJSON)),
-        'unaggregated': EndpointsAggregateUnaggregatedToJSON(value['unaggregated']),
+        'endpoints': value['endpoints'] == null ? undefined : ((value['endpoints'] as Array<any>).map(GetStatusUsage200ResponseAnyOfEndpointsInnerToJSON)),
+        'unaggregated': GetStatusUsage200ResponseAnyOfUnaggregatedToJSON(value['unaggregated']),
         'path': value['path'],
         'count': value['count'],
     };

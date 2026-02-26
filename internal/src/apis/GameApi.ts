@@ -28,6 +28,7 @@ import type {
   GetGameMinecraftUserinfo200Response,
   GetGameMinecraftUserinfo400Response,
   GetGameMinecraftUserinfo404Response,
+  GetGameMinecraftUserinfo502Response,
   GetGameSteamSummary200Response,
   GetGameSteamSummary400Response,
   GetGameSteamSummary401Response,
@@ -61,6 +62,8 @@ import {
     GetGameMinecraftUserinfo400ResponseToJSON,
     GetGameMinecraftUserinfo404ResponseFromJSON,
     GetGameMinecraftUserinfo404ResponseToJSON,
+    GetGameMinecraftUserinfo502ResponseFromJSON,
+    GetGameMinecraftUserinfo502ResponseToJSON,
     GetGameSteamSummary200ResponseFromJSON,
     GetGameSteamSummary200ResponseToJSON,
     GetGameSteamSummary400ResponseFromJSON,
@@ -74,7 +77,8 @@ import {
 } from '../models/index';
 
 export interface GetGameMinecraftHistoryidRequest {
-    uuid: string;
+    name?: string;
+    uuid?: string;
 }
 
 export interface GetGameMinecraftServerstatusRequest {
@@ -99,7 +103,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 白嫖党的福音来了！想第一时间知道Epic商店本周送了哪些游戏大作吗？  ## 功能概述 这个接口帮你实时追踪Epic Games商店的每周免费游戏活动。无需任何参数，调用后即可获得当前所有免费游戏的完整信息，包括游戏封面、原价、剩余时间等，再也不用担心错过心仪的免费游戏了！  ## 使用场景 - 开发游戏资讯应用或网站 - 制作Epic免费游戏推送机器人 - 为用户提供游戏收藏建议 - 构建个人游戏库管理工具  > [!TIP] > **关于时间格式** > 为了方便不同场景的使用，我们同时提供了可读的时间字符串（如 `2025/01/10 00:00:00`）和13位毫秒时间戳。前端显示用字符串，程序逻辑用时间戳
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      */
     async getGameEpicFreeRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGameEpicFree200Response>> {
         const queryParameters: any = {};
@@ -121,7 +125,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 白嫖党的福音来了！想第一时间知道Epic商店本周送了哪些游戏大作吗？  ## 功能概述 这个接口帮你实时追踪Epic Games商店的每周免费游戏活动。无需任何参数，调用后即可获得当前所有免费游戏的完整信息，包括游戏封面、原价、剩余时间等，再也不用担心错过心仪的免费游戏了！  ## 使用场景 - 开发游戏资讯应用或网站 - 制作Epic免费游戏推送机器人 - 为用户提供游戏收藏建议 - 构建个人游戏库管理工具  > [!TIP] > **关于时间格式** > 为了方便不同场景的使用，我们同时提供了可读的时间字符串（如 `2025/01/10 00:00:00`）和13位毫秒时间戳。前端显示用字符串，程序逻辑用时间戳
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      */
     async getGameEpicFree(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGameEpicFree200Response> {
         const response = await this.getGameEpicFreeRaw(initOverrides);
@@ -129,18 +133,15 @@ export class GameApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供一个玩家的 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 > [!NOTE] > **UUID 格式** > 查询时，请务必提供玩家的 **32位无破折号** Minecraft UUID，例如 `ee9b4ed1aac1491eb7611471be374b80`。
-     * 查询Minecraft玩家历史用户名
+     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供玩家的用户名或 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 > [!NOTE] > **参数说明** > - `name` 和 `uuid` 二选一 > - UUID 支持带连字符（如 `ee9b4ed1-aac1-491e-b761-1471be374b80`）或不带连字符格式  > [!IMPORTANT] > **响应结构差异** > - 使用 `uuid` 查询：返回单个用户的历史记录 > - 使用 `name` 查询：返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家），需判断响应中是否有 `results` 字段来区分两种模式
+     * 查询 MC 曾用名
      */
     async getGameMinecraftHistoryidRaw(requestParameters: GetGameMinecraftHistoryidRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGameMinecraftHistoryid200Response>> {
-        if (requestParameters['uuid'] == null) {
-            throw new runtime.RequiredError(
-                'uuid',
-                'Required parameter "uuid" was null or undefined when calling getGameMinecraftHistoryid().'
-            );
-        }
-
         const queryParameters: any = {};
+
+        if (requestParameters['name'] != null) {
+            queryParameters['name'] = requestParameters['name'];
+        }
 
         if (requestParameters['uuid'] != null) {
             queryParameters['uuid'] = requestParameters['uuid'];
@@ -162,17 +163,17 @@ export class GameApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供一个玩家的 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 > [!NOTE] > **UUID 格式** > 查询时，请务必提供玩家的 **32位无破折号** Minecraft UUID，例如 `ee9b4ed1aac1491eb7611471be374b80`。
-     * 查询Minecraft玩家历史用户名
+     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供玩家的用户名或 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 > [!NOTE] > **参数说明** > - `name` 和 `uuid` 二选一 > - UUID 支持带连字符（如 `ee9b4ed1-aac1-491e-b761-1471be374b80`）或不带连字符格式  > [!IMPORTANT] > **响应结构差异** > - 使用 `uuid` 查询：返回单个用户的历史记录 > - 使用 `name` 查询：返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家），需判断响应中是否有 `results` 字段来区分两种模式
+     * 查询 MC 曾用名
      */
-    async getGameMinecraftHistoryid(requestParameters: GetGameMinecraftHistoryidRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGameMinecraftHistoryid200Response> {
+    async getGameMinecraftHistoryid(requestParameters: GetGameMinecraftHistoryidRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGameMinecraftHistoryid200Response> {
         const response = await this.getGameMinecraftHistoryidRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * 想在加入服务器前看看有多少人在线？或者检查一下服务器开没开？用这个接口就对了！  ## 功能概述 你可以通过提供服务器地址（域名或IP），来获取一个 Minecraft Java 版服务器的实时状态。返回信息非常丰富，包括服务器是否在线、当前玩家数、最大玩家数、服务器版本、MOTD（每日消息）以及服务器图标等。
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      */
     async getGameMinecraftServerstatusRaw(requestParameters: GetGameMinecraftServerstatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGameMinecraftServerstatus200Response>> {
         if (requestParameters['server'] == null) {
@@ -205,7 +206,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 想在加入服务器前看看有多少人在线？或者检查一下服务器开没开？用这个接口就对了！  ## 功能概述 你可以通过提供服务器地址（域名或IP），来获取一个 Minecraft Java 版服务器的实时状态。返回信息非常丰富，包括服务器是否在线、当前玩家数、最大玩家数、服务器版本、MOTD（每日消息）以及服务器图标等。
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      */
     async getGameMinecraftServerstatus(requestParameters: GetGameMinecraftServerstatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGameMinecraftServerstatus200Response> {
         const response = await this.getGameMinecraftServerstatusRaw(requestParameters, initOverrides);
@@ -214,7 +215,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 只需要一个玩家的用户名，就能快速获取到他的正版皮肤和独一无二的UUID！  ## 功能概述 这是一个基础但非常实用的接口。通过玩家当前的游戏内名称（Username），你可以查询到他对应的UUID（唯一标识符）和当前皮肤的URL地址。这是构建许多其他玩家相关服务的第一步。
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      */
     async getGameMinecraftUserinfoRaw(requestParameters: GetGameMinecraftUserinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGameMinecraftUserinfo200Response>> {
         if (requestParameters['username'] == null) {
@@ -247,7 +248,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 只需要一个玩家的用户名，就能快速获取到他的正版皮肤和独一无二的UUID！  ## 功能概述 这是一个基础但非常实用的接口。通过玩家当前的游戏内名称（Username），你可以查询到他对应的UUID（唯一标识符）和当前皮肤的URL地址。这是构建许多其他玩家相关服务的第一步。
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      */
     async getGameMinecraftUserinfo(requestParameters: GetGameMinecraftUserinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGameMinecraftUserinfo200Response> {
         const response = await this.getGameMinecraftUserinfoRaw(requestParameters, initOverrides);
@@ -256,7 +257,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 想在你的网站或应用中展示用户的 Steam 个人资料？这个接口就是为你准备的。  ## 功能概述 通过一个用户的 Steam 标识（支持多种格式），你可以获取到他公开的个人资料摘要，包括昵称、头像、在线状态、真实姓名（如果公开）和个人资料主页URL等信息。  ## 支持的参数格式 接口现在支持以下几种标识符格式： - **`steamid`**: 64位SteamID（如 `76561197960287930`） - **`id`**: 自定义URL名称（如 `gabelogannewell`） - **`id3`**: Steam ID3格式（如 `STEAM_0:0:22202`） - 完整的个人资料链接 - 好友代码  ## 使用须知  > [!IMPORTANT] > **API Key 安全** > 此接口需要一个 Steam Web API Key。我们强烈建议由后端统一配置和调用，以避免在客户端泄露。当然，你也可以通过 `key` 查询参数临时提供一个Key来覆盖后端配置。  在处理响应时，请注意以下数字代码的含义： - **`personastate` (用户状态)**: 0-离线, 1-在线, 2-忙碌, 3-离开, 4-打盹, 5-想交易, 6-想玩。 - **`communityvisibilitystate` (社区可见性)**: 1-私密, 3-公开 (API通常只能查到这两种状态)。
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      */
     async getGameSteamSummaryRaw(requestParameters: GetGameSteamSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGameSteamSummary200Response>> {
         const queryParameters: any = {};
@@ -294,7 +295,7 @@ export class GameApi extends runtime.BaseAPI {
 
     /**
      * 想在你的网站或应用中展示用户的 Steam 个人资料？这个接口就是为你准备的。  ## 功能概述 通过一个用户的 Steam 标识（支持多种格式），你可以获取到他公开的个人资料摘要，包括昵称、头像、在线状态、真实姓名（如果公开）和个人资料主页URL等信息。  ## 支持的参数格式 接口现在支持以下几种标识符格式： - **`steamid`**: 64位SteamID（如 `76561197960287930`） - **`id`**: 自定义URL名称（如 `gabelogannewell`） - **`id3`**: Steam ID3格式（如 `STEAM_0:0:22202`） - 完整的个人资料链接 - 好友代码  ## 使用须知  > [!IMPORTANT] > **API Key 安全** > 此接口需要一个 Steam Web API Key。我们强烈建议由后端统一配置和调用，以避免在客户端泄露。当然，你也可以通过 `key` 查询参数临时提供一个Key来覆盖后端配置。  在处理响应时，请注意以下数字代码的含义： - **`personastate` (用户状态)**: 0-离线, 1-在线, 2-忙碌, 3-离开, 4-打盹, 5-想交易, 6-想玩。 - **`communityvisibilitystate` (社区可见性)**: 1-私密, 3-公开 (API通常只能查到这两种状态)。
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      */
     async getGameSteamSummary(requestParameters: GetGameSteamSummaryRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGameSteamSummary200Response> {
         const response = await this.getGameSteamSummaryRaw(requestParameters, initOverrides);

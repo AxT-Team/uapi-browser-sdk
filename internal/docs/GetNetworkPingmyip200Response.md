@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `avg` | number
-`code` | number
 `host` | string
 `ip` | string
 `location` | string
@@ -22,7 +21,6 @@ import type { GetNetworkPingmyip200Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "avg": 35.4,
-  "code": 200,
   "host": 123.123.123.123,
   "ip": 123.123.123.123,
   "location": 中国 北京,

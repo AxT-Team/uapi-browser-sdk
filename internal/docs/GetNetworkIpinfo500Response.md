@@ -19,7 +19,7 @@ import type { GetNetworkIpinfo500Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": INTERNAL_SERVER_ERROR,
   "details": null,
-  "message": An internal error occurred while querying the GeoIP database.,
+  "message": An internal error occurred while querying IP information.,
 } satisfies GetNetworkIpinfo500Response
 
 console.log(example)

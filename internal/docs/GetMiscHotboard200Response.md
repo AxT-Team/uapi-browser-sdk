@@ -9,6 +9,11 @@ Name | Type
 `list` | [Array&lt;GetMiscHotboard200ResponseListInner&gt;](GetMiscHotboard200ResponseListInner.md)
 `type` | string
 `updateTime` | string
+`snapshotTime` | number
+`keyword` | string
+`count` | number
+`results` | [Array&lt;GetMiscHotboard200ResponseResultsInner&gt;](GetMiscHotboard200ResponseResultsInner.md)
+`sources` | Array&lt;string&gt;
 
 ## Example
 
@@ -20,6 +25,11 @@ const example = {
   "list": null,
   "type": weibo,
   "updateTime": 2023-10-27 12:00:00,
+  "snapshotTime": 1700000000000,
+  "keyword": AI,
+  "count": 25,
+  "results": null,
+  "sources": null,
 } satisfies GetMiscHotboard200Response
 
 console.log(example)

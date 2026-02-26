@@ -29,12 +29,6 @@ import {
 export interface GetHistoryProgrammer200Response {
     /**
      * 
-     * @type {number}
-     * @memberof GetHistoryProgrammer200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetHistoryProgrammer200Response
      */
@@ -70,7 +64,6 @@ export function GetHistoryProgrammer200ResponseFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'message': json['message'] == null ? undefined : json['message'],
         'date': json['date'] == null ? undefined : json['date'],
         'events': json['events'] == null ? undefined : ((json['events'] as Array<any>).map(GetHistoryProgrammer200ResponseEventsInnerFromJSON)),
@@ -88,7 +81,6 @@ export function GetHistoryProgrammer200ResponseToJSONTyped(value?: GetHistoryPro
 
     return {
         
-        'code': value['code'],
         'message': value['message'],
         'date': value['date'],
         'events': value['events'] == null ? undefined : ((value['events'] as Array<any>).map(GetHistoryProgrammer200ResponseEventsInnerToJSON)),

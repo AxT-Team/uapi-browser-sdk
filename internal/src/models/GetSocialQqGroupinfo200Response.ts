@@ -61,6 +61,72 @@ export interface GetSocialQqGroupinfo200Response {
      * @memberof GetSocialQqGroupinfo200Response
      */
     lastUpdated?: string;
+    /**
+     * 当前成员数
+     * @type {number}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    memberCount?: number;
+    /**
+     * 最大成员数
+     * @type {number}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    maxMemberCount?: number;
+    /**
+     * 活跃成员数（可选，部分群有此数据）
+     * @type {number}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    activeMemberNum?: number;
+    /**
+     * 群主QQ号（可选）
+     * @type {string}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    ownerUin?: string;
+    /**
+     * 群主UID（可选）
+     * @type {string}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    ownerUid?: string;
+    /**
+     * 建群时间戳（Unix时间戳，可选）
+     * @type {number}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    createTime?: number;
+    /**
+     * 建群时间格式化字符串（可选）
+     * @type {string}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    createTimeStr?: string;
+    /**
+     * 群等级（可选）
+     * @type {number}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    groupGrade?: number;
+    /**
+     * 群公告/简介（可选）
+     * @type {string}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    groupMemo?: string;
+    /**
+     * 认证类型（0=未认证，可选）
+     * @type {number}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    certType?: number;
+    /**
+     * 认证说明文本（可选）
+     * @type {string}
+     * @memberof GetSocialQqGroupinfo200Response
+     */
+    certText?: string;
 }
 
 /**
@@ -87,6 +153,17 @@ export function GetSocialQqGroupinfo200ResponseFromJSONTyped(json: any, ignoreDi
         'tag': json['tag'] == null ? undefined : json['tag'],
         'joinUrl': json['join_url'] == null ? undefined : json['join_url'],
         'lastUpdated': json['last_updated'] == null ? undefined : json['last_updated'],
+        'memberCount': json['member_count'] == null ? undefined : json['member_count'],
+        'maxMemberCount': json['max_member_count'] == null ? undefined : json['max_member_count'],
+        'activeMemberNum': json['active_member_num'] == null ? undefined : json['active_member_num'],
+        'ownerUin': json['owner_uin'] == null ? undefined : json['owner_uin'],
+        'ownerUid': json['owner_uid'] == null ? undefined : json['owner_uid'],
+        'createTime': json['create_time'] == null ? undefined : json['create_time'],
+        'createTimeStr': json['create_time_str'] == null ? undefined : json['create_time_str'],
+        'groupGrade': json['group_grade'] == null ? undefined : json['group_grade'],
+        'groupMemo': json['group_memo'] == null ? undefined : json['group_memo'],
+        'certType': json['cert_type'] == null ? undefined : json['cert_type'],
+        'certText': json['cert_text'] == null ? undefined : json['cert_text'],
     };
 }
 
@@ -108,6 +185,17 @@ export function GetSocialQqGroupinfo200ResponseToJSONTyped(value?: GetSocialQqGr
         'tag': value['tag'],
         'join_url': value['joinUrl'],
         'last_updated': value['lastUpdated'],
+        'member_count': value['memberCount'],
+        'max_member_count': value['maxMemberCount'],
+        'active_member_num': value['activeMemberNum'],
+        'owner_uin': value['ownerUin'],
+        'owner_uid': value['ownerUid'],
+        'create_time': value['createTime'],
+        'create_time_str': value['createTimeStr'],
+        'group_grade': value['groupGrade'],
+        'group_memo': value['groupMemo'],
+        'cert_type': value['certType'],
+        'cert_text': value['certText'],
     };
 }
 

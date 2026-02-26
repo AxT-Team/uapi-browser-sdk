@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `imageUrl` | string
 `msg` | string
 
@@ -17,7 +16,6 @@ import type { PostImageFrombase64200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "imageUrl": https://uapis.cn/static/uploads/91e42db1c66c0b276abf6234dc50b2eb.png,
   "msg": success,
 } satisfies PostImageFrombase64200Response

@@ -28,12 +28,6 @@ import {
  */
 export interface GetGameEpicFree200Response {
     /**
-     * 状态码，200代表成功。
-     * @type {number}
-     * @memberof GetGameEpicFree200Response
-     */
-    code?: number;
-    /**
      * 免费游戏列表数组。
      * @type {Array<GetGameEpicFree200ResponseDataInner>}
      * @memberof GetGameEpicFree200Response
@@ -58,7 +52,6 @@ export function GetGameEpicFree200ResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'data': json['data'] == null ? undefined : ((json['data'] as Array<any>).map(GetGameEpicFree200ResponseDataInnerFromJSON)),
     };
 }
@@ -74,7 +67,6 @@ export function GetGameEpicFree200ResponseToJSONTyped(value?: GetGameEpicFree200
 
     return {
         
-        'code': value['code'],
         'data': value['data'] == null ? undefined : ((value['data'] as Array<any>).map(GetGameEpicFree200ResponseDataInnerToJSON)),
     };
 }

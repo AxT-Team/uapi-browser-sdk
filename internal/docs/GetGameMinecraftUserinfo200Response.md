@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `skinUrl` | string
 `username` | string
 `uuid` | string
@@ -18,7 +17,6 @@ import type { GetGameMinecraftUserinfo200Response } from 'uapi-browser-sdk-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "skinUrl": http://textures.minecraft.net/texture/292009a499420915b854a9913d9fa92750175814529452a55982791844863f53,
   "username": Notch,
   "uuid": ee9b4ed1aac1491eb7611471be374b80,

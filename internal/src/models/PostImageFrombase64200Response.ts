@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface PostImageFrombase64200Response {
     /**
-     * 状态码，200代表成功。
-     * @type {number}
-     * @memberof PostImageFrombase64200Response
-     */
-    code?: number;
-    /**
      * 图片保存后在服务器上的绝对访问URL。
      * @type {string}
      * @memberof PostImageFrombase64200Response
@@ -56,7 +50,6 @@ export function PostImageFrombase64200ResponseFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
         'msg': json['msg'] == null ? undefined : json['msg'],
     };
@@ -73,7 +66,6 @@ export function PostImageFrombase64200ResponseToJSONTyped(value?: PostImageFromb
 
     return {
         
-        'code': value['code'],
         'image_url': value['imageUrl'],
         'msg': value['msg'],
     };

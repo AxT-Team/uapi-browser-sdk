@@ -25,6 +25,7 @@ import type {
   GetNetworkIpinfo400Response,
   GetNetworkIpinfo404Response,
   GetNetworkIpinfo500Response,
+  GetNetworkMyip200Response,
   GetNetworkMyip400Response,
   GetNetworkMyip500Response,
   GetNetworkPing200Response,
@@ -63,6 +64,8 @@ import {
     GetNetworkIpinfo404ResponseToJSON,
     GetNetworkIpinfo500ResponseFromJSON,
     GetNetworkIpinfo500ResponseToJSON,
+    GetNetworkMyip200ResponseFromJSON,
+    GetNetworkMyip200ResponseToJSON,
     GetNetworkMyip400ResponseFromJSON,
     GetNetworkMyip400ResponseToJSON,
     GetNetworkMyip500ResponseFromJSON,
@@ -232,8 +235,8 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以选择使用默认的GeoIP数据库，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会利用GeoIP数据库查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
-     * 查询指定IP或域名的归属信息
+     * 想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+     * 查询 IP
      */
     async getNetworkIpinfoRaw(requestParameters: GetNetworkIpinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkIpinfo200Response>> {
         if (requestParameters['ip'] == null) {
@@ -269,8 +272,8 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以选择使用默认的GeoIP数据库，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会利用GeoIP数据库查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
-     * 查询指定IP或域名的归属信息
+     * 想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+     * 查询 IP
      */
     async getNetworkIpinfo(requestParameters: GetNetworkIpinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkIpinfo200Response> {
         const response = await this.getNetworkIpinfoRaw(requestParameters, initOverrides);
@@ -278,10 +281,10 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以选择使用默认的GeoIP数据库，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
-     * 获取你的公网IP及归属信息
+     * 想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+     * 查询我的 IP
      */
-    async getNetworkMyipRaw(requestParameters: GetNetworkMyipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkIpinfo200Response>> {
+    async getNetworkMyipRaw(requestParameters: GetNetworkMyipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkMyip200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['source'] != null) {
@@ -300,21 +303,21 @@ export class NetworkApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkIpinfo200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkMyip200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * 想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以选择使用默认的GeoIP数据库，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
-     * 获取你的公网IP及归属信息
+     * 想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+     * 查询我的 IP
      */
-    async getNetworkMyip(requestParameters: GetNetworkMyipRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkIpinfo200Response> {
+    async getNetworkMyip(requestParameters: GetNetworkMyipRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkMyip200Response> {
         const response = await this.getNetworkMyipRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * 想知道从我们的服务器到你的服务器网络延迟高不高？这个工具可以帮你测试网络连通性。  ## 功能概述 这个接口会从我们的服务器节点对你指定的主机（域名或IP地址）执行 ICMP Ping 操作。它会返回最小、最大、平均延迟以及丢包率等关键指标，是诊断网络问题的得力助手。
-     * 从服务器Ping指定主机
+     * Ping 主机
      */
     async getNetworkPingRaw(requestParameters: GetNetworkPingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPing200Response>> {
         if (requestParameters['host'] == null) {
@@ -347,7 +350,7 @@ export class NetworkApi extends runtime.BaseAPI {
 
     /**
      * 想知道从我们的服务器到你的服务器网络延迟高不高？这个工具可以帮你测试网络连通性。  ## 功能概述 这个接口会从我们的服务器节点对你指定的主机（域名或IP地址）执行 ICMP Ping 操作。它会返回最小、最大、平均延迟以及丢包率等关键指标，是诊断网络问题的得力助手。
-     * 从服务器Ping指定主机
+     * Ping 主机
      */
     async getNetworkPing(requestParameters: GetNetworkPingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkPing200Response> {
         const response = await this.getNetworkPingRaw(requestParameters, initOverrides);
@@ -356,7 +359,7 @@ export class NetworkApi extends runtime.BaseAPI {
 
     /**
      * 这是一个非常方便的快捷接口，想知道你的网络到我们服务器的回程延迟吗？点一下就行！  ## 功能概述 这个接口是 `/network/myip` 和 `/network/ping` 的结合体。它会自动获取你客户端的公网IP，然后从我们的服务器Ping这个IP，并返回延迟数据。这对于快速判断你本地网络到服务器的连接质量非常有用。
-     * 从服务器Ping你的客户端IP
+     * Ping 我的 IP
      */
     async getNetworkPingmyipRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPingmyip200Response>> {
         const queryParameters: any = {};
@@ -378,7 +381,7 @@ export class NetworkApi extends runtime.BaseAPI {
 
     /**
      * 这是一个非常方便的快捷接口，想知道你的网络到我们服务器的回程延迟吗？点一下就行！  ## 功能概述 这个接口是 `/network/myip` 和 `/network/ping` 的结合体。它会自动获取你客户端的公网IP，然后从我们的服务器Ping这个IP，并返回延迟数据。这对于快速判断你本地网络到服务器的连接质量非常有用。
-     * 从服务器Ping你的客户端IP
+     * Ping 我的 IP
      */
     async getNetworkPingmyip(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkPingmyip200Response> {
         const response = await this.getNetworkPingmyipRaw(initOverrides);
@@ -387,7 +390,7 @@ export class NetworkApi extends runtime.BaseAPI {
 
     /**
      * 想检查一下你的服务器上某个端口（比如SSH的22端口或者Web的80端口）是否对外开放？这个工具可以帮你快速确认。  ## 功能概述 你可以指定一个主机和端口号，我们的服务器会尝试连接该端口，并告诉你它是开放的（open）、关闭的（closed）还是超时了（timeout）。这对于网络服务配置检查和基本的安全扫描很有用。
-     * 扫描远程主机的指定端口
+     * 端口扫描
      */
     async getNetworkPortscanRaw(requestParameters: GetNetworkPortscanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPortscan200Response>> {
         if (requestParameters['host'] == null) {
@@ -435,7 +438,7 @@ export class NetworkApi extends runtime.BaseAPI {
 
     /**
      * 想检查一下你的服务器上某个端口（比如SSH的22端口或者Web的80端口）是否对外开放？这个工具可以帮你快速确认。  ## 功能概述 你可以指定一个主机和端口号，我们的服务器会尝试连接该端口，并告诉你它是开放的（open）、关闭的（closed）还是超时了（timeout）。这对于网络服务配置检查和基本的安全扫描很有用。
-     * 扫描远程主机的指定端口
+     * 端口扫描
      */
     async getNetworkPortscan(requestParameters: GetNetworkPortscanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkPortscan200Response> {
         const response = await this.getNetworkPortscanRaw(requestParameters, initOverrides);
@@ -443,7 +446,7 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。  > [!TIP] > **性能优化**：为了提高效率并减少对目标服务器的负载，我们实际发送的是 `HEAD` 请求，而不是 `GET` 请求。`HEAD` 请求只会获取响应头，而不会下载整个页面内容，因此速度更快。
+     * 你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。
      * 检查URL的可访问性状态
      */
     async getNetworkUrlstatusRaw(requestParameters: GetNetworkUrlstatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkUrlstatus200Response>> {
@@ -476,7 +479,7 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。  > [!TIP] > **性能优化**：为了提高效率并减少对目标服务器的负载，我们实际发送的是 `HEAD` 请求，而不是 `GET` 请求。`HEAD` 请求只会获取响应头，而不会下载整个页面内容，因此速度更快。
+     * 你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。
      * 检查URL的可访问性状态
      */
     async getNetworkUrlstatus(requestParameters: GetNetworkUrlstatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetNetworkUrlstatus200Response> {

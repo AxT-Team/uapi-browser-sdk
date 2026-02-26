@@ -32,7 +32,7 @@ export interface PostTextAesDecryptRequest {
      */
     text: string;
     /**
-     * 16�ֽڵ�IV/Nonce����Ϊ16���ַ�
+     * 16字节的IV/Nonce，必须为16个字符
      * @type {string}
      * @memberof PostTextAesDecryptRequest
      */

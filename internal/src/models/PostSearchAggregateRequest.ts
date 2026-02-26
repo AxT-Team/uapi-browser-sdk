@@ -49,7 +49,41 @@ export interface PostSearchAggregateRequest {
      * @memberof PostSearchAggregateRequest
      */
     timeoutMs?: number;
+    /**
+     * 排序方式
+     * @type {string}
+     * @memberof PostSearchAggregateRequest
+     */
+    sort?: PostSearchAggregateRequestSortEnum;
+    /**
+     * 时间范围过滤
+     * @type {string}
+     * @memberof PostSearchAggregateRequest
+     */
+    timeRange?: PostSearchAggregateRequestTimeRangeEnum;
 }
+
+
+/**
+ * @export
+ */
+export const PostSearchAggregateRequestSortEnum = {
+    Relevance: 'relevance',
+    Date: 'date'
+} as const;
+export type PostSearchAggregateRequestSortEnum = typeof PostSearchAggregateRequestSortEnum[keyof typeof PostSearchAggregateRequestSortEnum];
+
+/**
+ * @export
+ */
+export const PostSearchAggregateRequestTimeRangeEnum = {
+    Day: 'day',
+    Week: 'week',
+    Month: 'month',
+    Year: 'year'
+} as const;
+export type PostSearchAggregateRequestTimeRangeEnum = typeof PostSearchAggregateRequestTimeRangeEnum[keyof typeof PostSearchAggregateRequestTimeRangeEnum];
+
 
 /**
  * Check if a given object implements the PostSearchAggregateRequest interface.
@@ -74,6 +108,8 @@ export function PostSearchAggregateRequestFromJSONTyped(json: any, ignoreDiscrim
         'filetype': json['filetype'] == null ? undefined : json['filetype'],
         'fetchFull': json['fetch_full'] == null ? undefined : json['fetch_full'],
         'timeoutMs': json['timeout_ms'] == null ? undefined : json['timeout_ms'],
+        'sort': json['sort'] == null ? undefined : json['sort'],
+        'timeRange': json['time_range'] == null ? undefined : json['time_range'],
     };
 }
 
@@ -93,6 +129,8 @@ export function PostSearchAggregateRequestToJSONTyped(value?: PostSearchAggregat
         'filetype': value['filetype'],
         'fetch_full': value['fetchFull'],
         'timeout_ms': value['timeoutMs'],
+        'sort': value['sort'],
+        'time_range': value['timeRange'],
     };
 }
 

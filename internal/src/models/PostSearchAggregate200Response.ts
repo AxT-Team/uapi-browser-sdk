@@ -53,7 +53,7 @@ export interface PostSearchAggregate200Response {
      */
     results?: Array<PostSearchAggregate200ResponseResultsInner>;
     /**
-     * 各搜索引擎的结果数量统计
+     * 各搜索源的结果统计
      * @type {Array<PostSearchAggregate200ResponseSourcesInner>}
      * @memberof PostSearchAggregate200Response
      */

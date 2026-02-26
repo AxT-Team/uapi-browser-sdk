@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `message` | string
 `data` | [GetAiTranslateLanguages200ResponseData](GetAiTranslateLanguages200ResponseData.md)
 `performance` | [GetAiTranslateLanguages200ResponsePerformance](GetAiTranslateLanguages200ResponsePerformance.md)
@@ -18,7 +17,6 @@ import type { GetAiTranslateLanguages200Response } from 'uapi-browser-sdk-browse
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "message": Supported languages retrieved successfully,
   "data": null,
   "performance": null,

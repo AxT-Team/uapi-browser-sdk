@@ -38,12 +38,6 @@ export interface GetGameSteamSummary200Response {
      */
     avatarmedium?: string;
     /**
-     * 状态码，200代表成功。
-     * @type {number}
-     * @memberof GetGameSteamSummary200Response
-     */
-    code?: number;
-    /**
      * 社区资料的可见性状态: 1=私密, 3=公开。
      * @type {number}
      * @memberof GetGameSteamSummary200Response
@@ -131,7 +125,6 @@ export function GetGameSteamSummary200ResponseFromJSONTyped(json: any, ignoreDis
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
         'avatarfull': json['avatarfull'] == null ? undefined : json['avatarfull'],
         'avatarmedium': json['avatarmedium'] == null ? undefined : json['avatarmedium'],
-        'code': json['code'] == null ? undefined : json['code'],
         'communityvisibilitystate': json['communityvisibilitystate'] == null ? undefined : json['communityvisibilitystate'],
         'loccountrycode': json['loccountrycode'] == null ? undefined : json['loccountrycode'],
         'personaname': json['personaname'] == null ? undefined : json['personaname'],
@@ -160,7 +153,6 @@ export function GetGameSteamSummary200ResponseToJSONTyped(value?: GetGameSteamSu
         'avatar': value['avatar'],
         'avatarfull': value['avatarfull'],
         'avatarmedium': value['avatarmedium'],
-        'code': value['code'],
         'communityvisibilitystate': value['communityvisibilitystate'],
         'loccountrycode': value['loccountrycode'],
         'personaname': value['personaname'],

@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface GetConvertUnixtime200Response {
     /**
-     * 状态码，200代表操作成功。
-     * @type {number}
-     * @memberof GetConvertUnixtime200Response
-     */
-    code?: number;
-    /**
      * 标准格式（YYYY-MM-DD HH:mm:ss）的日期时间字符串。
      * @type {string}
      * @memberof GetConvertUnixtime200Response
@@ -56,7 +50,6 @@ export function GetConvertUnixtime200ResponseFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'datetime': json['datetime'] == null ? undefined : json['datetime'],
         'timestamp': json['timestamp'] == null ? undefined : json['timestamp'],
     };
@@ -73,7 +66,6 @@ export function GetConvertUnixtime200ResponseToJSONTyped(value?: GetConvertUnixt
 
     return {
         
-        'code': value['code'],
         'datetime': value['datetime'],
         'timestamp': value['timestamp'],
     };

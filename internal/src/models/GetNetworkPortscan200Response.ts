@@ -21,12 +21,6 @@ import { mapValues } from '../runtime';
 export interface GetNetworkPortscan200Response {
     /**
      * 
-     * @type {number}
-     * @memberof GetNetworkPortscan200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetNetworkPortscan200Response
      */
@@ -68,7 +62,6 @@ export function GetNetworkPortscan200ResponseFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'ip': json['ip'] == null ? undefined : json['ip'],
         'port': json['port'] == null ? undefined : json['port'],
         'portStatus': json['port_status'] == null ? undefined : json['port_status'],
@@ -87,7 +80,6 @@ export function GetNetworkPortscan200ResponseToJSONTyped(value?: GetNetworkPorts
 
     return {
         
-        'code': value['code'],
         'ip': value['ip'],
         'port': value['port'],
         'port_status': value['portStatus'],

@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `text` | string
 
 ## Example
@@ -16,7 +15,6 @@ import type { GetRandomString200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "text": aK3fP7bQ9zRjT1vN,
 } satisfies GetRandomString200Response
 

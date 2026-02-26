@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `code` | string
-`details` | object
 `message` | string
 
 ## Example
@@ -17,9 +16,8 @@ import type { GetMiscWeather400Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": INVALID_ARGUMENT,
-  "details": null,
-  "message": Either 'city' or 'adcode' parameter is required.,
+  "code": INVALID_PARAMETER,
+  "message": 参数无效,
 } satisfies GetMiscWeather400Response
 
 console.log(example)

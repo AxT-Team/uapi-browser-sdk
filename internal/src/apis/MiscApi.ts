@@ -19,10 +19,16 @@ import type {
   GetHistoryProgrammer400Response,
   GetHistoryProgrammerToday200Response,
   GetHistoryProgrammerToday500Response,
+  GetMiscDistrict200Response,
+  GetMiscDistrict400Response,
+  GetMiscHolidayCalendar200Response,
+  GetMiscHolidayCalendar400Response,
   GetMiscHotboard200Response,
   GetMiscHotboard400Response,
   GetMiscHotboard500Response,
   GetMiscHotboard502Response,
+  GetMiscLunartime200Response,
+  GetMiscLunartime400Response,
   GetMiscPhoneinfo200Response,
   GetMiscPhoneinfo400Response,
   GetMiscPhoneinfo500Response,
@@ -38,12 +44,15 @@ import type {
   GetMiscTrackingQuery404Response,
   GetMiscWeather200Response,
   GetMiscWeather400Response,
-  GetMiscWeather410Response,
+  GetMiscWeather404Response,
   GetMiscWeather500Response,
-  GetMiscWeather502Response,
+  GetMiscWeather503Response,
   GetMiscWorldtime200Response,
   GetMiscWorldtime400Response,
   GetMiscWorldtime404Response,
+  PostMiscDateDiff200Response,
+  PostMiscDateDiff400Response,
+  PostMiscDateDiffRequest,
 } from '../models/index';
 import {
     GetHistoryProgrammer200ResponseFromJSON,
@@ -54,6 +63,14 @@ import {
     GetHistoryProgrammerToday200ResponseToJSON,
     GetHistoryProgrammerToday500ResponseFromJSON,
     GetHistoryProgrammerToday500ResponseToJSON,
+    GetMiscDistrict200ResponseFromJSON,
+    GetMiscDistrict200ResponseToJSON,
+    GetMiscDistrict400ResponseFromJSON,
+    GetMiscDistrict400ResponseToJSON,
+    GetMiscHolidayCalendar200ResponseFromJSON,
+    GetMiscHolidayCalendar200ResponseToJSON,
+    GetMiscHolidayCalendar400ResponseFromJSON,
+    GetMiscHolidayCalendar400ResponseToJSON,
     GetMiscHotboard200ResponseFromJSON,
     GetMiscHotboard200ResponseToJSON,
     GetMiscHotboard400ResponseFromJSON,
@@ -62,6 +79,10 @@ import {
     GetMiscHotboard500ResponseToJSON,
     GetMiscHotboard502ResponseFromJSON,
     GetMiscHotboard502ResponseToJSON,
+    GetMiscLunartime200ResponseFromJSON,
+    GetMiscLunartime200ResponseToJSON,
+    GetMiscLunartime400ResponseFromJSON,
+    GetMiscLunartime400ResponseToJSON,
     GetMiscPhoneinfo200ResponseFromJSON,
     GetMiscPhoneinfo200ResponseToJSON,
     GetMiscPhoneinfo400ResponseFromJSON,
@@ -92,18 +113,24 @@ import {
     GetMiscWeather200ResponseToJSON,
     GetMiscWeather400ResponseFromJSON,
     GetMiscWeather400ResponseToJSON,
-    GetMiscWeather410ResponseFromJSON,
-    GetMiscWeather410ResponseToJSON,
+    GetMiscWeather404ResponseFromJSON,
+    GetMiscWeather404ResponseToJSON,
     GetMiscWeather500ResponseFromJSON,
     GetMiscWeather500ResponseToJSON,
-    GetMiscWeather502ResponseFromJSON,
-    GetMiscWeather502ResponseToJSON,
+    GetMiscWeather503ResponseFromJSON,
+    GetMiscWeather503ResponseToJSON,
     GetMiscWorldtime200ResponseFromJSON,
     GetMiscWorldtime200ResponseToJSON,
     GetMiscWorldtime400ResponseFromJSON,
     GetMiscWorldtime400ResponseToJSON,
     GetMiscWorldtime404ResponseFromJSON,
     GetMiscWorldtime404ResponseToJSON,
+    PostMiscDateDiff200ResponseFromJSON,
+    PostMiscDateDiff200ResponseToJSON,
+    PostMiscDateDiff400ResponseFromJSON,
+    PostMiscDateDiff400ResponseToJSON,
+    PostMiscDateDiffRequestFromJSON,
+    PostMiscDateDiffRequestToJSON,
 } from '../models/index';
 
 export interface GetHistoryProgrammerRequest {
@@ -111,8 +138,39 @@ export interface GetHistoryProgrammerRequest {
     day: number;
 }
 
+export interface GetMiscDistrictRequest {
+    keywords?: string;
+    adcode?: string;
+    lat?: number;
+    lng?: number;
+    level?: GetMiscDistrictLevelEnum;
+    country?: string;
+    limit?: number;
+}
+
+export interface GetMiscHolidayCalendarRequest {
+    date?: string;
+    month?: string;
+    year?: string;
+    timezone?: string;
+    holidayType?: GetMiscHolidayCalendarHolidayTypeEnum;
+    includeNearby?: boolean;
+    nearbyLimit?: number;
+}
+
 export interface GetMiscHotboardRequest {
     type: GetMiscHotboardTypeEnum;
+    time?: number;
+    keyword?: string;
+    timeStart?: number;
+    timeEnd?: number;
+    limit?: number;
+    sources?: boolean;
+}
+
+export interface GetMiscLunartimeRequest {
+    ts?: string;
+    timezone?: string;
 }
 
 export interface GetMiscPhoneinfoRequest {
@@ -139,15 +197,26 @@ export interface GetMiscTrackingDetectRequest {
 export interface GetMiscTrackingQueryRequest {
     trackingNumber: string;
     carrierCode?: string;
+    phone?: string;
 }
 
 export interface GetMiscWeatherRequest {
     city?: string;
     adcode?: string;
+    extended?: boolean;
+    forecast?: boolean;
+    hourly?: boolean;
+    minutely?: boolean;
+    indices?: boolean;
+    lang?: GetMiscWeatherLangEnum;
 }
 
 export interface GetMiscWorldtimeRequest {
     city: string;
+}
+
+export interface PostMiscDateDiffOperationRequest {
+    postMiscDateDiffRequest: PostMiscDateDiffRequest;
 }
 
 /**
@@ -157,7 +226,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 想查看程序员历史上某个特定日期发生的大事件？指定月份和日期，我们就能告诉你！  ## 功能概述 通过指定月份和日期，获取该日发生的程序员相关历史事件。同样使用AI智能筛选，确保事件的相关性和重要性。
-     * 获取指定日期的程序员历史事件
+     * 程序员历史事件
      */
     async getHistoryProgrammerRaw(requestParameters: GetHistoryProgrammerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHistoryProgrammer200Response>> {
         if (requestParameters['month'] == null) {
@@ -201,7 +270,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 想查看程序员历史上某个特定日期发生的大事件？指定月份和日期，我们就能告诉你！  ## 功能概述 通过指定月份和日期，获取该日发生的程序员相关历史事件。同样使用AI智能筛选，确保事件的相关性和重要性。
-     * 获取指定日期的程序员历史事件
+     * 程序员历史事件
      */
     async getHistoryProgrammer(requestParameters: GetHistoryProgrammerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetHistoryProgrammer200Response> {
         const response = await this.getHistoryProgrammerRaw(requestParameters, initOverrides);
@@ -210,7 +279,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 想知道程序员历史上的今天发生了什么大事吗？这个接口告诉你答案！  ## 功能概述 我们使用AI智能筛选从海量历史事件中挑选出与程序员、计算机科学相关的重要事件。每个事件都经过重要性评分和相关性评分，确保内容质量。
-     * 获取今天的程序员历史事件
+     * 程序员历史上的今天
      */
     async getHistoryProgrammerTodayRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHistoryProgrammerToday200Response>> {
         const queryParameters: any = {};
@@ -232,7 +301,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 想知道程序员历史上的今天发生了什么大事吗？这个接口告诉你答案！  ## 功能概述 我们使用AI智能筛选从海量历史事件中挑选出与程序员、计算机科学相关的重要事件。每个事件都经过重要性评分和相关性评分，确保内容质量。
-     * 获取今天的程序员历史事件
+     * 程序员历史上的今天
      */
     async getHistoryProgrammerToday(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetHistoryProgrammerToday200Response> {
         const response = await this.getHistoryProgrammerTodayRaw(initOverrides);
@@ -240,8 +309,126 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 可选值 `type` 参数接受多种不同的值，每种值对应一个不同的热榜来源。以下是目前支持的所有值：  | 分类       | 支持的 type 值 | |------------|-----------------------------------------------------------------------------------------------------------------------------------| | 视频/社区  | bilibili（哔哩哔哩弹幕网）, acfun（A站弹幕视频网站）, weibo（新浪微博热搜）, zhihu（知乎热榜）, zhihu-daily（知乎日报热榜）, douyin（抖音热榜）, kuaishou（快手热榜）, douban-movie（豆瓣电影榜单）, douban-group（豆瓣小组话题）, tieba（百度贴吧热帖）, hupu（虎扑热帖）, miyoushe（米游社话题榜）, ngabbs（NGA游戏论坛热帖）, v2ex（V2EX技术社区热帖）, 52pojie（吾爱破解热帖）, hostloc（全球主机交流论坛）, coolapk（酷安热榜） | | 新闻/资讯  | baidu（百度热搜）, thepaper（澎湃新闻热榜）, toutiao（今日头条热榜）, qq-news（腾讯新闻热榜）, sina（新浪热搜）, sina-news（新浪新闻热榜）, netease-news（网易新闻热榜）, huxiu（虎嗅网热榜）, ifanr（爱范儿热榜） | | 技术/IT    | sspai（少数派热榜）, ithome（IT之家热榜）, ithome-xijiayi（IT之家·喜加一栏目）, juejin（掘金社区热榜）, jianshu（简书热榜）, guokr（果壳热榜）, 36kr（36氪热榜）, 51cto（51CTO热榜）, csdn（CSDN博客热榜）, nodeseek（NodeSeek 技术社区）, hellogithub（HelloGitHub 项目推荐） | | 游戏       | lol（英雄联盟热帖）, genshin（原神热榜）, honkai（崩坏3热榜）, starrail（星穹铁道热榜） | | 其他       | weread（微信读书热门书籍）, weatheralarm（天气预警信息）, earthquake（地震速报）, history（历史上的今天） | 
-     * 获取多平台实时热榜
+     * 一个接口，覆盖全球 243 个国家、中国省/市/区/街道四级行政区划，支持关键词搜索、行政编码查询、坐标反查三种查询模式（必须至少传入一种查询参数）。  ## 功能概述 根据用户输入的搜索条件快速查找行政区域信息。例如：中国 > 山东省 > 济南市 > 历下区 > 舜华路街道。  无需注册、无需密钥，直接调用即可获取结构化的行政区域数据。支持三种查询方式： - 传 `adcode`，按行政编码精确查询，同时返回下级区划列表 - 传 `lat` + `lng`，坐标反查附近地点 - 传 `keywords`，按关键词搜索，支持中英文  ## 中国与国际数据差异 中国数据包含 `adcode`、`citycode` 等字段，支持省/市/区/街道四级逐级查询；国际城市数据不含这些字段，但额外提供 `population`（人口）和 `timezone`（时区）。  > [!NOTE] > 部分城市（如东莞、文昌）没有区县层级，市级下方直接显示街道。街道级别的 `adcode` 返回的是所属区县的 `adcode`。
+     * Adcode 国内外行政区域查询
+     */
+    async getMiscDistrictRaw(requestParameters: GetMiscDistrictRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscDistrict200Response>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['keywords'] != null) {
+            queryParameters['keywords'] = requestParameters['keywords'];
+        }
+
+        if (requestParameters['adcode'] != null) {
+            queryParameters['adcode'] = requestParameters['adcode'];
+        }
+
+        if (requestParameters['lat'] != null) {
+            queryParameters['lat'] = requestParameters['lat'];
+        }
+
+        if (requestParameters['lng'] != null) {
+            queryParameters['lng'] = requestParameters['lng'];
+        }
+
+        if (requestParameters['level'] != null) {
+            queryParameters['level'] = requestParameters['level'];
+        }
+
+        if (requestParameters['country'] != null) {
+            queryParameters['country'] = requestParameters['country'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/misc/district`;
+
+        const response = await this.request({
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscDistrict200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * 一个接口，覆盖全球 243 个国家、中国省/市/区/街道四级行政区划，支持关键词搜索、行政编码查询、坐标反查三种查询模式（必须至少传入一种查询参数）。  ## 功能概述 根据用户输入的搜索条件快速查找行政区域信息。例如：中国 > 山东省 > 济南市 > 历下区 > 舜华路街道。  无需注册、无需密钥，直接调用即可获取结构化的行政区域数据。支持三种查询方式： - 传 `adcode`，按行政编码精确查询，同时返回下级区划列表 - 传 `lat` + `lng`，坐标反查附近地点 - 传 `keywords`，按关键词搜索，支持中英文  ## 中国与国际数据差异 中国数据包含 `adcode`、`citycode` 等字段，支持省/市/区/街道四级逐级查询；国际城市数据不含这些字段，但额外提供 `population`（人口）和 `timezone`（时区）。  > [!NOTE] > 部分城市（如东莞、文昌）没有区县层级，市级下方直接显示街道。街道级别的 `adcode` 返回的是所属区县的 `adcode`。
+     * Adcode 国内外行政区域查询
+     */
+    async getMiscDistrict(requestParameters: GetMiscDistrictRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscDistrict200Response> {
+        const response = await this.getMiscDistrictRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 查询指定日期、月份或年份的万年历与节假日信息。  ## 功能概述 这个接口支持三种查询方式：按天（`date`）、按月（`month`）和按年（`year`）。调用时三者选一个传入即可。  如果你只关心某一类事件，可以通过 `holiday_type` 进行筛选，例如只看法定休假/调休、公历节日、农历节日或节气。  在 `date` 模式下，传 `include_nearby=true` 可以额外返回该日期前后最近的节日；返回数量由 `nearby_limit` 控制，默认 7，最大 30。
+     * 查询节假日与万年历
+     */
+    async getMiscHolidayCalendarRaw(requestParameters: GetMiscHolidayCalendarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscHolidayCalendar200Response>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['date'] != null) {
+            queryParameters['date'] = requestParameters['date'];
+        }
+
+        if (requestParameters['month'] != null) {
+            queryParameters['month'] = requestParameters['month'];
+        }
+
+        if (requestParameters['year'] != null) {
+            queryParameters['year'] = requestParameters['year'];
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        if (requestParameters['holidayType'] != null) {
+            queryParameters['holiday_type'] = requestParameters['holidayType'];
+        }
+
+        if (requestParameters['includeNearby'] != null) {
+            queryParameters['include_nearby'] = requestParameters['includeNearby'];
+        }
+
+        if (requestParameters['nearbyLimit'] != null) {
+            queryParameters['nearby_limit'] = requestParameters['nearbyLimit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/misc/holiday-calendar`;
+
+        const response = await this.request({
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscHolidayCalendar200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * 查询指定日期、月份或年份的万年历与节假日信息。  ## 功能概述 这个接口支持三种查询方式：按天（`date`）、按月（`month`）和按年（`year`）。调用时三者选一个传入即可。  如果你只关心某一类事件，可以通过 `holiday_type` 进行筛选，例如只看法定休假/调休、公历节日、农历节日或节气。  在 `date` 模式下，传 `include_nearby=true` 可以额外返回该日期前后最近的节日；返回数量由 `nearby_limit` 控制，默认 7，最大 30。
+     * 查询节假日与万年历
+     */
+    async getMiscHolidayCalendar(requestParameters: GetMiscHolidayCalendarRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscHolidayCalendar200Response> {
+        const response = await this.getMiscHolidayCalendarRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 `type` 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 `type` + `time` 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 `type` + `keyword` + `time_start` + `time_end` 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 `limit` 限制返回数量。  ### 数据源列表 传 `sources=true`，返回所有支持历史数据的平台列表。  ## 可选值 `type` 参数接受多种不同的值，每种值对应一个不同的热榜来源。以下是目前支持的所有值：  | 分类       | 支持的 type 值 | |------------|-----------------------------------------------------------------------------------------------------------------------------------| | 视频/社区  | bilibili（哔哩哔哩弹幕网）, acfun（A站弹幕视频网站）, weibo（新浪微博热搜）, zhihu（知乎热榜）, zhihu-daily（知乎日报热榜）, douyin（抖音热榜）, kuaishou（快手热榜）, douban-movie（豆瓣电影榜单）, douban-group（豆瓣小组话题）, tieba（百度贴吧热帖）, hupu（虎扑热帖）, ngabbs（NGA游戏论坛热帖）, v2ex（V2EX技术社区热帖）, 52pojie（吾爱破解热帖）, hostloc（全球主机交流论坛）, coolapk（酷安热榜） | | 新闻/资讯  | baidu（百度热搜）, thepaper（澎湃新闻热榜）, toutiao（今日头条热榜）, qq-news（腾讯新闻热榜）, sina（新浪热搜）, sina-news（新浪新闻热榜）, netease-news（网易新闻热榜）, huxiu（虎嗅网热榜）, ifanr（爱范儿热榜） | | 技术/IT    | sspai（少数派热榜）, ithome（IT之家热榜）, ithome-xijiayi（IT之家·喜加一栏目）, juejin（掘金社区热榜）, jianshu（简书热榜）, guokr（果壳热榜）, 36kr（36氪热榜）, 51cto（51CTO热榜）, csdn（CSDN博客热榜）, nodeseek（NodeSeek 技术社区）, hellogithub（HelloGitHub 项目推荐） | | 游戏       | lol（英雄联盟热帖）, genshin（原神热榜）, honkai（崩坏3热榜）, starrail（星穹铁道热榜） | | 音乐       | netease-music（网易云音乐热歌榜）, qq-music（QQ音乐热歌榜） | | 其他       | weread（微信读书热门书籍）, weatheralarm（天气预警信息）, earthquake（地震速报）, history（历史上的今天） | 
+     * 查询热榜
      */
     async getMiscHotboardRaw(requestParameters: GetMiscHotboardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscHotboard200Response>> {
         if (requestParameters['type'] == null) {
@@ -255,6 +442,30 @@ export class MiscApi extends runtime.BaseAPI {
 
         if (requestParameters['type'] != null) {
             queryParameters['type'] = requestParameters['type'];
+        }
+
+        if (requestParameters['time'] != null) {
+            queryParameters['time'] = requestParameters['time'];
+        }
+
+        if (requestParameters['keyword'] != null) {
+            queryParameters['keyword'] = requestParameters['keyword'];
+        }
+
+        if (requestParameters['timeStart'] != null) {
+            queryParameters['time_start'] = requestParameters['timeStart'];
+        }
+
+        if (requestParameters['timeEnd'] != null) {
+            queryParameters['time_end'] = requestParameters['timeEnd'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['sources'] != null) {
+            queryParameters['sources'] = requestParameters['sources'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -273,8 +484,8 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 可选值 `type` 参数接受多种不同的值，每种值对应一个不同的热榜来源。以下是目前支持的所有值：  | 分类       | 支持的 type 值 | |------------|-----------------------------------------------------------------------------------------------------------------------------------| | 视频/社区  | bilibili（哔哩哔哩弹幕网）, acfun（A站弹幕视频网站）, weibo（新浪微博热搜）, zhihu（知乎热榜）, zhihu-daily（知乎日报热榜）, douyin（抖音热榜）, kuaishou（快手热榜）, douban-movie（豆瓣电影榜单）, douban-group（豆瓣小组话题）, tieba（百度贴吧热帖）, hupu（虎扑热帖）, miyoushe（米游社话题榜）, ngabbs（NGA游戏论坛热帖）, v2ex（V2EX技术社区热帖）, 52pojie（吾爱破解热帖）, hostloc（全球主机交流论坛）, coolapk（酷安热榜） | | 新闻/资讯  | baidu（百度热搜）, thepaper（澎湃新闻热榜）, toutiao（今日头条热榜）, qq-news（腾讯新闻热榜）, sina（新浪热搜）, sina-news（新浪新闻热榜）, netease-news（网易新闻热榜）, huxiu（虎嗅网热榜）, ifanr（爱范儿热榜） | | 技术/IT    | sspai（少数派热榜）, ithome（IT之家热榜）, ithome-xijiayi（IT之家·喜加一栏目）, juejin（掘金社区热榜）, jianshu（简书热榜）, guokr（果壳热榜）, 36kr（36氪热榜）, 51cto（51CTO热榜）, csdn（CSDN博客热榜）, nodeseek（NodeSeek 技术社区）, hellogithub（HelloGitHub 项目推荐） | | 游戏       | lol（英雄联盟热帖）, genshin（原神热榜）, honkai（崩坏3热榜）, starrail（星穹铁道热榜） | | 其他       | weread（微信读书热门书籍）, weatheralarm（天气预警信息）, earthquake（地震速报）, history（历史上的今天） | 
-     * 获取多平台实时热榜
+     * 想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 `type` 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 `type` + `time` 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 `type` + `keyword` + `time_start` + `time_end` 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 `limit` 限制返回数量。  ### 数据源列表 传 `sources=true`，返回所有支持历史数据的平台列表。  ## 可选值 `type` 参数接受多种不同的值，每种值对应一个不同的热榜来源。以下是目前支持的所有值：  | 分类       | 支持的 type 值 | |------------|-----------------------------------------------------------------------------------------------------------------------------------| | 视频/社区  | bilibili（哔哩哔哩弹幕网）, acfun（A站弹幕视频网站）, weibo（新浪微博热搜）, zhihu（知乎热榜）, zhihu-daily（知乎日报热榜）, douyin（抖音热榜）, kuaishou（快手热榜）, douban-movie（豆瓣电影榜单）, douban-group（豆瓣小组话题）, tieba（百度贴吧热帖）, hupu（虎扑热帖）, ngabbs（NGA游戏论坛热帖）, v2ex（V2EX技术社区热帖）, 52pojie（吾爱破解热帖）, hostloc（全球主机交流论坛）, coolapk（酷安热榜） | | 新闻/资讯  | baidu（百度热搜）, thepaper（澎湃新闻热榜）, toutiao（今日头条热榜）, qq-news（腾讯新闻热榜）, sina（新浪热搜）, sina-news（新浪新闻热榜）, netease-news（网易新闻热榜）, huxiu（虎嗅网热榜）, ifanr（爱范儿热榜） | | 技术/IT    | sspai（少数派热榜）, ithome（IT之家热榜）, ithome-xijiayi（IT之家·喜加一栏目）, juejin（掘金社区热榜）, jianshu（简书热榜）, guokr（果壳热榜）, 36kr（36氪热榜）, 51cto（51CTO热榜）, csdn（CSDN博客热榜）, nodeseek（NodeSeek 技术社区）, hellogithub（HelloGitHub 项目推荐） | | 游戏       | lol（英雄联盟热帖）, genshin（原神热榜）, honkai（崩坏3热榜）, starrail（星穹铁道热榜） | | 音乐       | netease-music（网易云音乐热歌榜）, qq-music（QQ音乐热歌榜） | | 其他       | weread（微信读书热门书籍）, weatheralarm（天气预警信息）, earthquake（地震速报）, history（历史上的今天） | 
+     * 查询热榜
      */
     async getMiscHotboard(requestParameters: GetMiscHotboardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscHotboard200Response> {
         const response = await this.getMiscHotboardRaw(requestParameters, initOverrides);
@@ -282,8 +493,47 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
+     * 需要在指定时区下查看某个时间点的农历信息？这个接口可以直接返回完整结果。  ## 功能概述 支持传入 Unix 时间戳（秒或毫秒）和 IANA 时区名，返回公历时间、星期、农历年月日、干支、生肖、节气与节日信息。不传 `ts` 时默认使用当前时间，不传 `timezone` 时默认 `Asia/Shanghai`。  ## 时区说明 - 支持标准 IANA 时区，例如 `Asia/Shanghai`、`Asia/Tokyo` - 也支持别名：`Shanghai`、`Beijing` - 时区非法时返回 400 并提示 `invalid timezone: xxx`
+     * 查询农历时间
+     */
+    async getMiscLunartimeRaw(requestParameters: GetMiscLunartimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscLunartime200Response>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['ts'] != null) {
+            queryParameters['ts'] = requestParameters['ts'];
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/misc/lunartime`;
+
+        const response = await this.request({
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscLunartime200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * 需要在指定时区下查看某个时间点的农历信息？这个接口可以直接返回完整结果。  ## 功能概述 支持传入 Unix 时间戳（秒或毫秒）和 IANA 时区名，返回公历时间、星期、农历年月日、干支、生肖、节气与节日信息。不传 `ts` 时默认使用当前时间，不传 `timezone` 时默认 `Asia/Shanghai`。  ## 时区说明 - 支持标准 IANA 时区，例如 `Asia/Shanghai`、`Asia/Tokyo` - 也支持别名：`Shanghai`、`Beijing` - 时区非法时返回 400 并提示 `invalid timezone: xxx`
+     * 查询农历时间
+     */
+    async getMiscLunartime(requestParameters: GetMiscLunartimeRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscLunartime200Response> {
+        const response = await this.getMiscLunartimeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * 想知道一个手机号码来自哪里？是移动、联通还是电信？这个接口可以告诉你答案。  ## 功能概述 提供一个国内的手机号码，我们会查询并返回它的归属地（省份和城市）以及所属的运营商信息。
-     * 查询手机号码归属地信息
+     * 查询手机归属地
      */
     async getMiscPhoneinfoRaw(requestParameters: GetMiscPhoneinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscPhoneinfo200Response>> {
         if (requestParameters['phone'] == null) {
@@ -316,7 +566,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 想知道一个手机号码来自哪里？是移动、联通还是电信？这个接口可以告诉你答案。  ## 功能概述 提供一个国内的手机号码，我们会查询并返回它的归属地（省份和城市）以及所属的运营商信息。
-     * 查询手机号码归属地信息
+     * 查询手机归属地
      */
     async getMiscPhoneinfo(requestParameters: GetMiscPhoneinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscPhoneinfo200Response> {
         const response = await this.getMiscPhoneinfoRaw(requestParameters, initOverrides);
@@ -325,7 +575,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 流程图 ```mermaid graph TD     A[开始] --> B{参数校验};     B --> |通过| C{是否允许小数?};     C --> |是| D[生成随机小数];     C --> |否| E[生成随机整数];     D --> F{是否允许重复?};     E --> F;     F --> |是| G[直接生成指定数量];     F --> |否| H[生成不重复的数字];     G --> I[返回结果];     H --> I;     B --> |失败| J[返回 400 错误]; ``` ## 使用须知 > [!WARNING] > **不重复生成的逻辑限制** > 当设置 `allow_repeat=false` 时，请确保取值范围 `(max - min + 1)` 大于或等于你请求的数量 `count`。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
-     * 生成高度可定制的随机数
+     * 随机数生成
      */
     async getMiscRandomnumberRaw(requestParameters: GetMiscRandomnumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscRandomnumber200Response>> {
         const queryParameters: any = {};
@@ -371,7 +621,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 流程图 ```mermaid graph TD     A[开始] --> B{参数校验};     B --> |通过| C{是否允许小数?};     C --> |是| D[生成随机小数];     C --> |否| E[生成随机整数];     D --> F{是否允许重复?};     E --> F;     F --> |是| G[直接生成指定数量];     F --> |否| H[生成不重复的数字];     G --> I[返回结果];     H --> I;     B --> |失败| J[返回 400 错误]; ``` ## 使用须知 > [!WARNING] > **不重复生成的逻辑限制** > 当设置 `allow_repeat=false` 时，请确保取值范围 `(max - min + 1)` 大于或等于你请求的数量 `count`。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
-     * 生成高度可定制的随机数
+     * 随机数生成
      */
     async getMiscRandomnumber(requestParameters: GetMiscRandomnumberRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscRandomnumber200Response> {
         const response = await this.getMiscRandomnumberRaw(requestParameters, initOverrides);
@@ -379,7 +629,7 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 这是一个用于将Unix时间戳转换为人类可读日期时间的旧版接口。  ## 功能概述 输入一个秒级或毫秒级的时间戳，返回其对应的本地时间和UTC时间。  > [!WARNING] > **接口已过时**：这个接口已被新的 `/convert/unixtime` 取代。新接口功能更强大，支持双向转换。我们建议你迁移到新接口。  [👉 前往新版接口文档](/docs/api-reference/get-convert-unixtime)
+     * 这是一个用于将Unix时间戳转换为人类可读日期时间的旧版接口。  ## 功能概述 输入一个秒级或毫秒级的时间戳，返回其对应的本地时间和UTC时间。  > [!WARNING] > **接口已过时**：这个接口已被新的 `/convert/unixtime` 取代。新接口功能更强大，支持双向转换。我们建议你迁移到新接口。  [➡️ 前往新版接口文档](/docs/api-reference/get-convert-unixtime)
      * 转换时间戳 (旧版，推荐使用/convert/unixtime)
      */
     async getMiscTimestampRaw(requestParameters: GetMiscTimestampRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTimestamp200Response>> {
@@ -412,7 +662,7 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 这是一个用于将Unix时间戳转换为人类可读日期时间的旧版接口。  ## 功能概述 输入一个秒级或毫秒级的时间戳，返回其对应的本地时间和UTC时间。  > [!WARNING] > **接口已过时**：这个接口已被新的 `/convert/unixtime` 取代。新接口功能更强大，支持双向转换。我们建议你迁移到新接口。  [👉 前往新版接口文档](/docs/api-reference/get-convert-unixtime)
+     * 这是一个用于将Unix时间戳转换为人类可读日期时间的旧版接口。  ## 功能概述 输入一个秒级或毫秒级的时间戳，返回其对应的本地时间和UTC时间。  > [!WARNING] > **接口已过时**：这个接口已被新的 `/convert/unixtime` 取代。新接口功能更强大，支持双向转换。我们建议你迁移到新接口。  [➡️ 前往新版接口文档](/docs/api-reference/get-convert-unixtime)
      * 转换时间戳 (旧版，推荐使用/convert/unixtime)
      */
     async getMiscTimestamp(requestParameters: GetMiscTimestampRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscTimestamp200Response> {
@@ -494,7 +744,7 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  > [!VIP] > 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。支持中通、圆通、韵达、申通、极兔、顺丰、京东、EMS、德邦等60+国内外主流快递公司。  ## 使用须知 - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 `carrier_code` 参数，查询速度会更快 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
+     * 买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  > [!VIP] > 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。支持中通、圆通、韵达、申通、极兔、顺丰、京东、EMS、德邦等60+国内外主流快递公司。  ## 使用须知 - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 `carrier_code` 参数，查询速度会更快 - **手机尾号验证**：部分快递公司需要验证收件人手机尾号才能查询详细物流，如果返回「暂无物流信息」，建议尝试传入 `phone` 参数 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
      * 查询快递物流信息
      */
     async getMiscTrackingQueryRaw(requestParameters: GetMiscTrackingQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingQuery200Response>> {
@@ -515,6 +765,10 @@ export class MiscApi extends runtime.BaseAPI {
             queryParameters['carrier_code'] = requestParameters['carrierCode'];
         }
 
+        if (requestParameters['phone'] != null) {
+            queryParameters['phone'] = requestParameters['phone'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
 
@@ -531,7 +785,7 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  > [!VIP] > 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。支持中通、圆通、韵达、申通、极兔、顺丰、京东、EMS、德邦等60+国内外主流快递公司。  ## 使用须知 - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 `carrier_code` 参数，查询速度会更快 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
+     * 买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  > [!VIP] > 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。支持中通、圆通、韵达、申通、极兔、顺丰、京东、EMS、德邦等60+国内外主流快递公司。  ## 使用须知 - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 `carrier_code` 参数，查询速度会更快 - **手机尾号验证**：部分快递公司需要验证收件人手机尾号才能查询详细物流，如果返回「暂无物流信息」，建议尝试传入 `phone` 参数 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
      * 查询快递物流信息
      */
     async getMiscTrackingQuery(requestParameters: GetMiscTrackingQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscTrackingQuery200Response> {
@@ -540,8 +794,8 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 出门前，查一下天气总是个好习惯。这个接口为你提供精准、实时的天气数据。  ## 功能概述 你可以通过城市名称或高德地图的Adcode来查询指定地区的实时天气状况，包括天气现象、温度、湿度、风向和风力等。  ## 使用须知 - **参数优先级**：当你同时提供了 `city` (城市名) 和 `adcode` (城市编码) 两个参数时，系统会 **优先使用 `adcode`** 进行查询，因为它更精确。 - **查询范围**：为了保证查询的准确性，我们的服务仅支持标准的“省”、“市”、“区/县”级别的行政区划名称查询，不保证能查询到乡镇或具体地点。  ## 错误处理指南 - **410 Gone**: 这个特殊的错误码意味着你查询的地区无效或不受我们支持。比如你输入了“火星”，或者某个我们无法识别的村庄名称。这个状态码告诉你，这个“资源”是永久性地不可用了。
-     * 查询实时天气信息
+     * 出门前，查一下天气总是个好习惯。这个接口为你提供精准、实时的天气数据，支持国内和国际城市。  ## 功能概述 这个接口支持三种查询方式： - 可以传 `adcode`，按行政区编码查询（优先级最高） - 可以传 `city`，按城市名称查询，支持中文（`北京`）和英文（`Tokyo`） - 两个都不传时，按客户端 IP 自动定位查询  支持 `lang` 参数，可选 `zh`（默认）和 `en`，城市名翻译覆盖 7000+ 城市。  ## 可选功能模块 - `extended=true`：扩展气象字段（体感温度、能见度、气压、紫外线、空气质量及污染物分项数据） - `forecast=true`：多天预报（最多7天，含日出日落、风速等详细数据） - `hourly=true`：逐小时预报（24小时） - `minutely=true`：分钟级降水预报（仅国内城市） - `indices=true`：18项生活指数（穿衣、紫外线、洗车、运动、花粉等）  ## 天气字段说明 `weather` 是天气现象文本，不是固定枚举。  常见值包括：晴、多云、阴、小雨、中雨、大雨、雷阵雨、小雪、中雪、大雪、雨夹雪、雾、霾、沙尘。  如果你的业务需要稳定分类，建议结合 `weather_code` 做自己的映射归类。
+     * 查询天气
      */
     async getMiscWeatherRaw(requestParameters: GetMiscWeatherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscWeather200Response>> {
         const queryParameters: any = {};
@@ -552,6 +806,30 @@ export class MiscApi extends runtime.BaseAPI {
 
         if (requestParameters['adcode'] != null) {
             queryParameters['adcode'] = requestParameters['adcode'];
+        }
+
+        if (requestParameters['extended'] != null) {
+            queryParameters['extended'] = requestParameters['extended'];
+        }
+
+        if (requestParameters['forecast'] != null) {
+            queryParameters['forecast'] = requestParameters['forecast'];
+        }
+
+        if (requestParameters['hourly'] != null) {
+            queryParameters['hourly'] = requestParameters['hourly'];
+        }
+
+        if (requestParameters['minutely'] != null) {
+            queryParameters['minutely'] = requestParameters['minutely'];
+        }
+
+        if (requestParameters['indices'] != null) {
+            queryParameters['indices'] = requestParameters['indices'];
+        }
+
+        if (requestParameters['lang'] != null) {
+            queryParameters['lang'] = requestParameters['lang'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -570,8 +848,8 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * 出门前，查一下天气总是个好习惯。这个接口为你提供精准、实时的天气数据。  ## 功能概述 你可以通过城市名称或高德地图的Adcode来查询指定地区的实时天气状况，包括天气现象、温度、湿度、风向和风力等。  ## 使用须知 - **参数优先级**：当你同时提供了 `city` (城市名) 和 `adcode` (城市编码) 两个参数时，系统会 **优先使用 `adcode`** 进行查询，因为它更精确。 - **查询范围**：为了保证查询的准确性，我们的服务仅支持标准的“省”、“市”、“区/县”级别的行政区划名称查询，不保证能查询到乡镇或具体地点。  ## 错误处理指南 - **410 Gone**: 这个特殊的错误码意味着你查询的地区无效或不受我们支持。比如你输入了“火星”，或者某个我们无法识别的村庄名称。这个状态码告诉你，这个“资源”是永久性地不可用了。
-     * 查询实时天气信息
+     * 出门前，查一下天气总是个好习惯。这个接口为你提供精准、实时的天气数据，支持国内和国际城市。  ## 功能概述 这个接口支持三种查询方式： - 可以传 `adcode`，按行政区编码查询（优先级最高） - 可以传 `city`，按城市名称查询，支持中文（`北京`）和英文（`Tokyo`） - 两个都不传时，按客户端 IP 自动定位查询  支持 `lang` 参数，可选 `zh`（默认）和 `en`，城市名翻译覆盖 7000+ 城市。  ## 可选功能模块 - `extended=true`：扩展气象字段（体感温度、能见度、气压、紫外线、空气质量及污染物分项数据） - `forecast=true`：多天预报（最多7天，含日出日落、风速等详细数据） - `hourly=true`：逐小时预报（24小时） - `minutely=true`：分钟级降水预报（仅国内城市） - `indices=true`：18项生活指数（穿衣、紫外线、洗车、运动、花粉等）  ## 天气字段说明 `weather` 是天气现象文本，不是固定枚举。  常见值包括：晴、多云、阴、小雨、中雨、大雨、雷阵雨、小雪、中雪、大雪、雨夹雪、雾、霾、沙尘。  如果你的业务需要稳定分类，建议结合 `weather_code` 做自己的映射归类。
+     * 查询天气
      */
     async getMiscWeather(requestParameters: GetMiscWeatherRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscWeather200Response> {
         const response = await this.getMiscWeatherRaw(requestParameters, initOverrides);
@@ -580,7 +858,7 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 需要和国外的朋友开会，想知道他那边现在几点？用这个接口一查便知。  ## 功能概述 根据标准的时区名称（例如 \'Asia/Shanghai\' 或 \'Europe/London\'），获取该时区的当前准确时间、UTC偏移量、星期等信息。
-     * 查询全球任意时区的时间
+     * 查询世界时间
      */
     async getMiscWorldtimeRaw(requestParameters: GetMiscWorldtimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscWorldtime200Response>> {
         if (requestParameters['city'] == null) {
@@ -613,15 +891,79 @@ export class MiscApi extends runtime.BaseAPI {
 
     /**
      * 需要和国外的朋友开会，想知道他那边现在几点？用这个接口一查便知。  ## 功能概述 根据标准的时区名称（例如 \'Asia/Shanghai\' 或 \'Europe/London\'），获取该时区的当前准确时间、UTC偏移量、星期等信息。
-     * 查询全球任意时区的时间
+     * 查询世界时间
      */
     async getMiscWorldtime(requestParameters: GetMiscWorldtimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetMiscWorldtime200Response> {
         const response = await this.getMiscWorldtimeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * 想知道两个日期之间相差多久？这个接口帮你精确计算时间差值。  ## 功能概述 输入开始日期和结束日期，返回它们之间的时间差，包括总天数、总小时数、总分钟数、总秒数、总周数，以及人性化显示格式（如\"1年2月3天\"）。  ## 日期格式 接口支持自动识别常见日期格式，包括：YYYY-MM-DD、YYYY/MM/DD、DD-MM-YYYY、ISO 8601（带时区）等。也可以通过`format`参数显式指定格式（如DD-MM-YYYY）。  > [!NOTE] > 当结束日期早于开始日期时，返回的数值为负数。
+     * 计算两个日期之间的时间差值
+     */
+    async postMiscDateDiffRaw(requestParameters: PostMiscDateDiffOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostMiscDateDiff200Response>> {
+        if (requestParameters['postMiscDateDiffRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postMiscDateDiffRequest',
+                'Required parameter "postMiscDateDiffRequest" was null or undefined when calling postMiscDateDiff().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+
+        let urlPath = `/misc/date-diff`;
+
+        const response = await this.request({
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostMiscDateDiffRequestToJSON(requestParameters['postMiscDateDiffRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostMiscDateDiff200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * 想知道两个日期之间相差多久？这个接口帮你精确计算时间差值。  ## 功能概述 输入开始日期和结束日期，返回它们之间的时间差，包括总天数、总小时数、总分钟数、总秒数、总周数，以及人性化显示格式（如\"1年2月3天\"）。  ## 日期格式 接口支持自动识别常见日期格式，包括：YYYY-MM-DD、YYYY/MM/DD、DD-MM-YYYY、ISO 8601（带时区）等。也可以通过`format`参数显式指定格式（如DD-MM-YYYY）。  > [!NOTE] > 当结束日期早于开始日期时，返回的数值为负数。
+     * 计算两个日期之间的时间差值
+     */
+    async postMiscDateDiff(requestParameters: PostMiscDateDiffOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostMiscDateDiff200Response> {
+        const response = await this.postMiscDateDiffRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
+/**
+ * @export
+ */
+export const GetMiscDistrictLevelEnum = {
+    Province: 'province',
+    City: 'city',
+    District: 'district',
+    Street: 'street'
+} as const;
+export type GetMiscDistrictLevelEnum = typeof GetMiscDistrictLevelEnum[keyof typeof GetMiscDistrictLevelEnum];
+/**
+ * @export
+ */
+export const GetMiscHolidayCalendarHolidayTypeEnum = {
+    All: 'all',
+    Legal: 'legal',
+    LegalRest: 'legal_rest',
+    LegalWorkday: 'legal_workday',
+    Solar: 'solar',
+    Lunar: 'lunar',
+    Term: 'term'
+} as const;
+export type GetMiscHolidayCalendarHolidayTypeEnum = typeof GetMiscHolidayCalendarHolidayTypeEnum[keyof typeof GetMiscHolidayCalendarHolidayTypeEnum];
 /**
  * @export
  */
@@ -637,7 +979,6 @@ export const GetMiscHotboardTypeEnum = {
     DoubanGroup: 'douban-group',
     Tieba: 'tieba',
     Hupu: 'hupu',
-    Miyoushe: 'miyoushe',
     Ngabbs: 'ngabbs',
     V2ex: 'v2ex',
     _52pojie: '52pojie',
@@ -667,9 +1008,19 @@ export const GetMiscHotboardTypeEnum = {
     Genshin: 'genshin',
     Honkai: 'honkai',
     Starrail: 'starrail',
+    NeteaseMusic: 'netease-music',
+    QqMusic: 'qq-music',
     Weread: 'weread',
     Weatheralarm: 'weatheralarm',
     Earthquake: 'earthquake',
     History: 'history'
 } as const;
 export type GetMiscHotboardTypeEnum = typeof GetMiscHotboardTypeEnum[keyof typeof GetMiscHotboardTypeEnum];
+/**
+ * @export
+ */
+export const GetMiscWeatherLangEnum = {
+    Zh: 'zh',
+    En: 'en'
+} as const;
+export type GetMiscWeatherLangEnum = typeof GetMiscWeatherLangEnum[keyof typeof GetMiscWeatherLangEnum];

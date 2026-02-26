@@ -49,6 +49,12 @@ export interface GetMiscHotboard200ResponseListInner {
      * @memberof GetMiscHotboard200ResponseListInner
      */
     url?: string;
+    /**
+     * 封面图 URL，音乐类热榜返回专辑封面，其他平台无此字段。
+     * @type {string}
+     * @memberof GetMiscHotboard200ResponseListInner
+     */
+    cover?: string;
 }
 
 /**
@@ -73,6 +79,7 @@ export function GetMiscHotboard200ResponseListInnerFromJSONTyped(json: any, igno
         'index': json['index'] == null ? undefined : json['index'],
         'title': json['title'] == null ? undefined : json['title'],
         'url': json['url'] == null ? undefined : json['url'],
+        'cover': json['cover'] == null ? undefined : json['cover'],
     };
 }
 
@@ -92,6 +99,7 @@ export function GetMiscHotboard200ResponseListInnerToJSONTyped(value?: GetMiscHo
         'index': value['index'],
         'title': value['title'],
         'url': value['url'],
+        'cover': value['cover'],
     };
 }
 

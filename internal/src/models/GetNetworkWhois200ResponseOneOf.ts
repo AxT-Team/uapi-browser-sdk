@@ -21,12 +21,6 @@ import { mapValues } from '../runtime';
  */
 export interface GetNetworkWhois200ResponseOneOf {
     /**
-     * 
-     * @type {number}
-     * @memberof GetNetworkWhois200ResponseOneOf
-     */
-    code?: number;
-    /**
      * **WHOIS原始文本**
      * 
      * 返回未经处理的原始WHOIS查询结果文本。
@@ -53,7 +47,6 @@ export function GetNetworkWhois200ResponseOneOfFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'whois': json['whois'] == null ? undefined : json['whois'],
     };
 }
@@ -69,7 +62,6 @@ export function GetNetworkWhois200ResponseOneOfToJSONTyped(value?: GetNetworkWho
 
     return {
         
-        'code': value['code'],
         'whois': value['whois'],
     };
 }

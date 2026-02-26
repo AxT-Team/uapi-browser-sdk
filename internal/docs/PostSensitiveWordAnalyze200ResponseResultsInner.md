@@ -7,11 +7,9 @@
 Name | Type
 ------------ | -------------
 `k` | string
-`r` | string
-`s` | Array&lt;number&gt;
-`v` | Array&lt;string&gt;
-`t` | Array&lt;string&gt;
-`d` | string
+`label` | string
+`category` | string
+`confidence` | number
 
 ## Example
 
@@ -21,11 +19,9 @@ import type { PostSensitiveWordAnalyze200ResponseResultsInner } from 'uapi-brows
 // TODO: Update the object below with actual values
 const example = {
   "k": null,
-  "r": null,
-  "s": null,
-  "v": null,
-  "t": null,
-  "d": null,
+  "label": null,
+  "category": null,
+  "confidence": null,
 } satisfies PostSensitiveWordAnalyze200ResponseResultsInner
 
 console.log(example)

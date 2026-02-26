@@ -19,7 +19,7 @@ import type { GetSearchEngines200Response } from 'uapi-browser-sdk-browser'
 const example = {
   "engine": null,
   "limits": null,
-  "supportedParameters": ["query (必需) - 搜索查询","limit (可选) - 返回条数，默认10，最大100","page (可选) - 页码，默认1","site (可选) - 站内搜索，例如：github.com","filetype (可选) - 文件类型，例如：pdf","fetch_full (可选) - 是否获取完整正文","timeout_ms (可选) - 超时时间（毫秒），默认3000"],
+  "supportedParameters": ["query (必需) - 搜索查询","limit (可选) - 返回条数，默认10，最大100","page (可选) - 页码，默认1","site (可选) - 站内搜索，例如：github.com","filetype (可选) - 文件类型，例如：pdf","fetch_full (可选) - 是否获取完整正文","timeout_ms (可选) - 超时时间（毫秒），默认3000","sort (可选) - 排序方式：relevance(相关性) 或 date(时间)","time_range (可选) - 时间范围：day/week/month/year"],
 } satisfies GetSearchEngines200Response
 
 console.log(example)

@@ -11,6 +11,8 @@ Name | Type
 `filetype` | string
 `fetchFull` | boolean
 `timeoutMs` | number
+`sort` | string
+`timeRange` | string
 
 ## Example
 
@@ -24,6 +26,8 @@ const example = {
   "filetype": null,
   "fetchFull": null,
   "timeoutMs": null,
+  "sort": null,
+  "timeRange": null,
 } satisfies PostSearchAggregateRequest
 
 console.log(example)

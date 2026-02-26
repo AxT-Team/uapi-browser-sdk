@@ -20,113 +20,65 @@ import { mapValues } from '../runtime';
  */
 export interface GetNetworkIpinfo200Response {
     /**
-     * 自治系统编号 (由GeoLite2或商业版提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    asn?: string;
-    /**
-     * IP范围起始 (仅在默认查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    beginip?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    code?: number;
-    /**
-     * IP范围结束 (仅在默认查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    endip?: string;
-    /**
-     * 
+     * 查询的IP地址
      * @type {string}
      * @memberof GetNetworkIpinfo200Response
      */
     ip?: string;
     /**
-     * 运营商
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    isp?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    latitude?: number;
-    /**
-     * 归属
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    llc?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    longitude?: number;
-    /**
-     * 格式：国家 省份 城市
+     * 地理位置，格式：国家 省份 城市
      * @type {string}
      * @memberof GetNetworkIpinfo200Response
      */
     region?: string;
     /**
-     * 行政区 (仅在商业查询中提供)
+     * 运营商名称
+     * @type {string}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    isp?: string;
+    /**
+     * 归属机构
+     * @type {string}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    llc?: string;
+    /**
+     * 自治系统编号
+     * @type {string}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    asn?: string;
+    /**
+     * 纬度
+     * @type {number}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    latitude?: number;
+    /**
+     * 经度
+     * @type {number}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    longitude?: number;
+    /**
+     * IP段起始地址（标准查询）
+     * @type {string}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    beginip?: string;
+    /**
+     * IP段结束地址（标准查询）
+     * @type {string}
+     * @memberof GetNetworkIpinfo200Response
+     */
+    endip?: string;
+    /**
+     * 行政区（商业查询）
      * @type {string}
      * @memberof GetNetworkIpinfo200Response
      */
     district?: string;
-    /**
-     * 行政区划代码 (仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    areaCode?: string;
-    /**
-     * 城市区号 (仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    cityCode?: string;
-    /**
-     * 邮政编码 (仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    zipCode?: string;
-    /**
-     * 时区 (仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    timeZone?: string;
-    /**
-     * 应用场景 (仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    scenes?: string;
-    /**
-     * 海拔（米）(仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    elevation?: string;
-    /**
-     * 气象站代码 (仅在商业查询中提供)
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    weatherStation?: string;
 }
 
 /**
@@ -146,24 +98,16 @@ export function GetNetworkIpinfo200ResponseFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'asn': json['asn'] == null ? undefined : json['asn'],
-        'beginip': json['beginip'] == null ? undefined : json['beginip'],
-        'code': json['code'] == null ? undefined : json['code'],
-        'endip': json['endip'] == null ? undefined : json['endip'],
         'ip': json['ip'] == null ? undefined : json['ip'],
-        'isp': json['isp'] == null ? undefined : json['isp'],
-        'latitude': json['latitude'] == null ? undefined : json['latitude'],
-        'llc': json['llc'] == null ? undefined : json['llc'],
-        'longitude': json['longitude'] == null ? undefined : json['longitude'],
         'region': json['region'] == null ? undefined : json['region'],
+        'isp': json['isp'] == null ? undefined : json['isp'],
+        'llc': json['llc'] == null ? undefined : json['llc'],
+        'asn': json['asn'] == null ? undefined : json['asn'],
+        'latitude': json['latitude'] == null ? undefined : json['latitude'],
+        'longitude': json['longitude'] == null ? undefined : json['longitude'],
+        'beginip': json['beginip'] == null ? undefined : json['beginip'],
+        'endip': json['endip'] == null ? undefined : json['endip'],
         'district': json['district'] == null ? undefined : json['district'],
-        'areaCode': json['area_code'] == null ? undefined : json['area_code'],
-        'cityCode': json['city_code'] == null ? undefined : json['city_code'],
-        'zipCode': json['zip_code'] == null ? undefined : json['zip_code'],
-        'timeZone': json['time_zone'] == null ? undefined : json['time_zone'],
-        'scenes': json['scenes'] == null ? undefined : json['scenes'],
-        'elevation': json['elevation'] == null ? undefined : json['elevation'],
-        'weatherStation': json['weather_station'] == null ? undefined : json['weather_station'],
     };
 }
 
@@ -178,24 +122,16 @@ export function GetNetworkIpinfo200ResponseToJSONTyped(value?: GetNetworkIpinfo2
 
     return {
         
-        'asn': value['asn'],
-        'beginip': value['beginip'],
-        'code': value['code'],
-        'endip': value['endip'],
         'ip': value['ip'],
-        'isp': value['isp'],
-        'latitude': value['latitude'],
-        'llc': value['llc'],
-        'longitude': value['longitude'],
         'region': value['region'],
+        'isp': value['isp'],
+        'llc': value['llc'],
+        'asn': value['asn'],
+        'latitude': value['latitude'],
+        'longitude': value['longitude'],
+        'beginip': value['beginip'],
+        'endip': value['endip'],
         'district': value['district'],
-        'area_code': value['areaCode'],
-        'city_code': value['cityCode'],
-        'zip_code': value['zipCode'],
-        'time_zone': value['timeZone'],
-        'scenes': value['scenes'],
-        'elevation': value['elevation'],
-        'weather_station': value['weatherStation'],
     };
 }
 

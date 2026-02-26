@@ -19,7 +19,7 @@ import type { GetGameMinecraftHistoryid502Response } from 'uapi-browser-sdk-brow
 const example = {
   "code": UPSTREAM_ERROR,
   "details": null,
-  "message": Failed to fetch data from Mojang API.,
+  "message": Service temporarily unavailable.,
 } satisfies GetGameMinecraftHistoryid502Response
 
 console.log(example)

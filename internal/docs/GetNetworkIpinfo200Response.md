@@ -6,24 +6,16 @@
 
 Name | Type
 ------------ | -------------
-`asn` | string
-`beginip` | string
-`code` | number
-`endip` | string
 `ip` | string
-`isp` | string
-`latitude` | number
-`llc` | string
-`longitude` | number
 `region` | string
+`isp` | string
+`llc` | string
+`asn` | string
+`latitude` | number
+`longitude` | number
+`beginip` | string
+`endip` | string
 `district` | string
-`areaCode` | string
-`cityCode` | string
-`zipCode` | string
-`timeZone` | string
-`scenes` | string
-`elevation` | string
-`weatherStation` | string
 
 ## Example
 
@@ -32,24 +24,16 @@ import type { GetNetworkIpinfo200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "asn": AS15169,
-  "beginip": 8.8.8.0,
-  "code": 200,
-  "endip": 8.8.8.255,
   "ip": 8.8.8.8,
-  "isp": Google,
-  "latitude": 37.386,
-  "llc": Google LLC,
-  "longitude": -122.0838,
-  "region": 美国 加利福尼亚州 圣克拉拉县,
-  "district": 临桂,
-  "areaCode": 450312,
-  "cityCode": 0773,
-  "zipCode": 541100,
-  "timeZone": Asia/Shanghai,
-  "scenes": 企业数据,
-  "elevation": 155,
-  "weatherStation": CHXX0434,
+  "region": 美国,
+  "isp": GOOGLE,
+  "llc": GOOGLE,
+  "asn": AS15169,
+  "latitude": 37.751,
+  "longitude": -97.822,
+  "beginip": 8.8.8.0,
+  "endip": 8.8.8.255,
+  "district": 龙岗区,
 } satisfies GetNetworkIpinfo200Response
 
 console.log(example)

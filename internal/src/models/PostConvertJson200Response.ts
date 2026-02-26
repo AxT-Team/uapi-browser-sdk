@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface PostConvertJson200Response {
     /**
-     * 状态码，200代表操作成功。
-     * @type {number}
-     * @memberof PostConvertJson200Response
-     */
-    code?: number;
-    /**
      * 格式化后的JSON字符串，带有标准缩进和换行。
      * @type {string}
      * @memberof PostConvertJson200Response
@@ -50,7 +44,6 @@ export function PostConvertJson200ResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'content': json['content'] == null ? undefined : json['content'],
     };
 }
@@ -66,7 +59,6 @@ export function PostConvertJson200ResponseToJSONTyped(value?: PostConvertJson200
 
     return {
         
-        'code': value['code'],
         'content': value['content'],
     };
 }

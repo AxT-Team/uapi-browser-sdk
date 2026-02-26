@@ -13,6 +13,17 @@ Name | Type
 `tag` | string
 `joinUrl` | string
 `lastUpdated` | string
+`memberCount` | number
+`maxMemberCount` | number
+`activeMemberNum` | number
+`ownerUin` | string
+`ownerUid` | string
+`createTime` | number
+`createTimeStr` | string
+`groupGrade` | number
+`groupMemo` | string
+`certType` | number
+`certText` | string
 
 ## Example
 
@@ -28,6 +39,17 @@ const example = {
   "tag": 推荐群聊,
   "joinUrl": http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=xxx&group_code=526357265,
   "lastUpdated": 2025-10-04T12:34:56Z,
+  "memberCount": 498,
+  "maxMemberCount": 500,
+  "activeMemberNum": 856,
+  "ownerUin": 1164779091,
+  "ownerUid": u_IuagWQ41A6XZhfJv4UpYqA,
+  "createTime": 1652321207,
+  "createTimeStr": 2022-05-12 10:06:47,
+  "groupGrade": 3,
+  "groupMemo": 欢迎加入本群,
+  "certType": 0,
+  "certText": 官方认证群,
 } satisfies GetSocialQqGroupinfo200Response
 
 console.log(example)

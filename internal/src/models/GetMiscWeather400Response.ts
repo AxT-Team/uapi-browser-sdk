@@ -27,12 +27,6 @@ export interface GetMiscWeather400Response {
     code?: string;
     /**
      * 
-     * @type {object}
-     * @memberof GetMiscWeather400Response
-     */
-    details?: object;
-    /**
-     * 
      * @type {string}
      * @memberof GetMiscWeather400Response
      */
@@ -57,7 +51,6 @@ export function GetMiscWeather400ResponseFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'code': json['code'] == null ? undefined : json['code'],
-        'details': json['details'] == null ? undefined : json['details'],
         'message': json['message'] == null ? undefined : json['message'],
     };
 }
@@ -74,7 +67,6 @@ export function GetMiscWeather400ResponseToJSONTyped(value?: GetMiscWeather400Re
     return {
         
         'code': value['code'],
-        'details': value['details'],
         'message': value['message'],
     };
 }

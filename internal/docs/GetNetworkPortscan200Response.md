@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `ip` | string
 `port` | number
 `portStatus` | string
@@ -19,7 +18,6 @@ import type { GetNetworkPortscan200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "ip": 1.2.3.4,
   "port": 80,
   "portStatus": open,

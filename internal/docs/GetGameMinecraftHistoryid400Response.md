@@ -19,7 +19,7 @@ import type { GetGameMinecraftHistoryid400Response } from 'uapi-browser-sdk-brow
 const example = {
   "code": INVALID_ARGUMENT,
   "details": null,
-  "message": Missing or invalid 'uuid' parameter.,
+  "message": uuid or name query parameter is required,
 } satisfies GetGameMinecraftHistoryid400Response
 
 console.log(example)

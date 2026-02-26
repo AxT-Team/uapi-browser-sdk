@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `message` | string
 `isBatch` | boolean
 `data` | [PostAiTranslate200ResponseData](PostAiTranslate200ResponseData.md)
@@ -22,7 +21,6 @@ import type { PostAiTranslate200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "message": Translation completed successfully,
   "isBatch": false,
   "data": null,

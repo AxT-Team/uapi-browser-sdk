@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `domain` | string
 `error` | string
 `records` | [Array&lt;GetNetworkDns200ResponseRecordsInner&gt;](GetNetworkDns200ResponseRecordsInner.md)
@@ -19,7 +18,6 @@ import type { GetNetworkDns200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "domain": cn.bing.com,
   "error": ,
   "records": null,

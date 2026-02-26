@@ -36,12 +36,6 @@ import {
 export interface GetAiTranslateLanguages200Response {
     /**
      * 
-     * @type {number}
-     * @memberof GetAiTranslateLanguages200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetAiTranslateLanguages200Response
      */
@@ -77,7 +71,6 @@ export function GetAiTranslateLanguages200ResponseFromJSONTyped(json: any, ignor
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'message': json['message'] == null ? undefined : json['message'],
         'data': json['data'] == null ? undefined : GetAiTranslateLanguages200ResponseDataFromJSON(json['data']),
         'performance': json['performance'] == null ? undefined : GetAiTranslateLanguages200ResponsePerformanceFromJSON(json['performance']),
@@ -95,7 +88,6 @@ export function GetAiTranslateLanguages200ResponseToJSONTyped(value?: GetAiTrans
 
     return {
         
-        'code': value['code'],
         'message': value['message'],
         'data': GetAiTranslateLanguages200ResponseDataToJSON(value['data']),
         'performance': GetAiTranslateLanguages200ResponsePerformanceToJSON(value['performance']),

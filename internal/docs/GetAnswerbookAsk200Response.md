@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `question` | string
 `answer` | string
 
@@ -17,7 +16,6 @@ import type { GetAnswerbookAsk200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "question": 我今天会有好运吗？,
   "answer": 一切都会好起来,
 } satisfies GetAnswerbookAsk200Response

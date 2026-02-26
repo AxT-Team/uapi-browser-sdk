@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `message` | string
 `date` | string
 `events` | [Array&lt;GetHistoryProgrammer200ResponseEventsInner&gt;](GetHistoryProgrammer200ResponseEventsInner.md)
@@ -18,7 +17,6 @@ import type { GetHistoryProgrammer200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "message": 获取成功,
   "date": 04-04,
   "events": null,

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GetMiscHotboard200ResponseResultsInner } from './GetMiscHotboard200ResponseResultsInner';
+import {
+    GetMiscHotboard200ResponseResultsInnerFromJSON,
+    GetMiscHotboard200ResponseResultsInnerFromJSONTyped,
+    GetMiscHotboard200ResponseResultsInnerToJSON,
+    GetMiscHotboard200ResponseResultsInnerToJSONTyped,
+} from './GetMiscHotboard200ResponseResultsInner';
 import type { GetMiscHotboard200ResponseListInner } from './GetMiscHotboard200ResponseListInner';
 import {
     GetMiscHotboard200ResponseListInnerFromJSON,
@@ -45,6 +52,36 @@ export interface GetMiscHotboard200Response {
      * @memberof GetMiscHotboard200Response
      */
     updateTime?: string;
+    /**
+     * 时光机模式返回的快照实际时间戳（毫秒）。
+     * @type {number}
+     * @memberof GetMiscHotboard200Response
+     */
+    snapshotTime?: number;
+    /**
+     * 搜索模式返回的搜索关键词。
+     * @type {string}
+     * @memberof GetMiscHotboard200Response
+     */
+    keyword?: string;
+    /**
+     * 搜索模式返回的结果数量。
+     * @type {number}
+     * @memberof GetMiscHotboard200Response
+     */
+    count?: number;
+    /**
+     * 搜索模式返回的结果数组。
+     * @type {Array<GetMiscHotboard200ResponseResultsInner>}
+     * @memberof GetMiscHotboard200Response
+     */
+    results?: Array<GetMiscHotboard200ResponseResultsInner>;
+    /**
+     * 数据源列表模式返回的可用历史数据源数组。
+     * @type {Array<string>}
+     * @memberof GetMiscHotboard200Response
+     */
+    sources?: Array<string>;
 }
 
 /**
@@ -67,6 +104,11 @@ export function GetMiscHotboard200ResponseFromJSONTyped(json: any, ignoreDiscrim
         'list': json['list'] == null ? undefined : ((json['list'] as Array<any>).map(GetMiscHotboard200ResponseListInnerFromJSON)),
         'type': json['type'] == null ? undefined : json['type'],
         'updateTime': json['update_time'] == null ? undefined : json['update_time'],
+        'snapshotTime': json['snapshot_time'] == null ? undefined : json['snapshot_time'],
+        'keyword': json['keyword'] == null ? undefined : json['keyword'],
+        'count': json['count'] == null ? undefined : json['count'],
+        'results': json['results'] == null ? undefined : ((json['results'] as Array<any>).map(GetMiscHotboard200ResponseResultsInnerFromJSON)),
+        'sources': json['sources'] == null ? undefined : json['sources'],
     };
 }
 
@@ -84,6 +126,11 @@ export function GetMiscHotboard200ResponseToJSONTyped(value?: GetMiscHotboard200
         'list': value['list'] == null ? undefined : ((value['list'] as Array<any>).map(GetMiscHotboard200ResponseListInnerToJSON)),
         'type': value['type'],
         'update_time': value['updateTime'],
+        'snapshot_time': value['snapshotTime'],
+        'keyword': value['keyword'],
+        'count': value['count'],
+        'results': value['results'] == null ? undefined : ((value['results'] as Array<any>).map(GetMiscHotboard200ResponseResultsInnerToJSON)),
+        'sources': value['sources'],
     };
 }
 

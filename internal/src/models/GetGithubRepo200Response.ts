@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GetGithubRepo200ResponseLatestRelease } from './GetGithubRepo200ResponseLatestRelease';
+import {
+    GetGithubRepo200ResponseLatestReleaseFromJSON,
+    GetGithubRepo200ResponseLatestReleaseFromJSONTyped,
+    GetGithubRepo200ResponseLatestReleaseToJSON,
+    GetGithubRepo200ResponseLatestReleaseToJSONTyped,
+} from './GetGithubRepo200ResponseLatestRelease';
 import type { GetGithubRepo200ResponseCollaboratorsInner } from './GetGithubRepo200ResponseCollaboratorsInner';
 import {
     GetGithubRepo200ResponseCollaboratorsInnerFromJSON,
@@ -165,6 +172,12 @@ export interface GetGithubRepo200Response {
      * @memberof GetGithubRepo200Response
      */
     maintainers?: Array<GetGithubRepo200ResponseCollaboratorsInner>;
+    /**
+     * 
+     * @type {GetGithubRepo200ResponseLatestRelease}
+     * @memberof GetGithubRepo200Response
+     */
+    latestRelease?: GetGithubRepo200ResponseLatestRelease | null;
 }
 
 /**
@@ -207,6 +220,7 @@ export function GetGithubRepo200ResponseFromJSONTyped(json: any, ignoreDiscrimin
         'languages': json['languages'] == null ? undefined : json['languages'],
         'collaborators': json['collaborators'] == null ? undefined : ((json['collaborators'] as Array<any>).map(GetGithubRepo200ResponseCollaboratorsInnerFromJSON)),
         'maintainers': json['maintainers'] == null ? undefined : ((json['maintainers'] as Array<any>).map(GetGithubRepo200ResponseCollaboratorsInnerFromJSON)),
+        'latestRelease': json['latest_release'] == null ? undefined : GetGithubRepo200ResponseLatestReleaseFromJSON(json['latest_release']),
     };
 }
 
@@ -244,6 +258,7 @@ export function GetGithubRepo200ResponseToJSONTyped(value?: GetGithubRepo200Resp
         'languages': value['languages'],
         'collaborators': value['collaborators'] == null ? undefined : ((value['collaborators'] as Array<any>).map(GetGithubRepo200ResponseCollaboratorsInnerToJSON)),
         'maintainers': value['maintainers'] == null ? undefined : ((value['maintainers'] as Array<any>).map(GetGithubRepo200ResponseCollaboratorsInnerToJSON)),
+        'latest_release': GetGithubRepo200ResponseLatestReleaseToJSON(value['latestRelease']),
     };
 }
 

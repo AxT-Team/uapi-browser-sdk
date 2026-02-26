@@ -26,12 +26,6 @@ export interface GetImageTobase64200Response {
      */
     base64?: string;
     /**
-     * 状态码，200代表成功。
-     * @type {number}
-     * @memberof GetImageTobase64200Response
-     */
-    code?: number;
-    /**
      * 操作结果描述。
      * @type {string}
      * @memberof GetImageTobase64200Response
@@ -57,7 +51,6 @@ export function GetImageTobase64200ResponseFromJSONTyped(json: any, ignoreDiscri
     return {
         
         'base64': json['base64'] == null ? undefined : json['base64'],
-        'code': json['code'] == null ? undefined : json['code'],
         'msg': json['msg'] == null ? undefined : json['msg'],
     };
 }
@@ -74,7 +67,6 @@ export function GetImageTobase64200ResponseToJSONTyped(value?: GetImageTobase642
     return {
         
         'base64': value['base64'],
-        'code': value['code'],
         'msg': value['msg'],
     };
 }

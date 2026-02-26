@@ -21,12 +21,6 @@ import { mapValues } from '../runtime';
 export interface GetRandomString200Response {
     /**
      * 
-     * @type {number}
-     * @memberof GetRandomString200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetRandomString200Response
      */
@@ -50,7 +44,6 @@ export function GetRandomString200ResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'text': json['text'] == null ? undefined : json['text'],
     };
 }
@@ -66,7 +59,6 @@ export function GetRandomString200ResponseToJSONTyped(value?: GetRandomString200
 
     return {
         
-        'code': value['code'],
         'text': value['text'],
     };
 }

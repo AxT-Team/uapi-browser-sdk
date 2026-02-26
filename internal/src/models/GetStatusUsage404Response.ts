@@ -27,12 +27,6 @@ export interface GetStatusUsage404Response {
     code?: string;
     /**
      * 
-     * @type {object}
-     * @memberof GetStatusUsage404Response
-     */
-    details?: object;
-    /**
-     * 
      * @type {string}
      * @memberof GetStatusUsage404Response
      */
@@ -57,7 +51,6 @@ export function GetStatusUsage404ResponseFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'code': json['code'] == null ? undefined : json['code'],
-        'details': json['details'] == null ? undefined : json['details'],
         'message': json['message'] == null ? undefined : json['message'],
     };
 }
@@ -74,7 +67,6 @@ export function GetStatusUsage404ResponseToJSONTyped(value?: GetStatusUsage404Re
     return {
         
         'code': value['code'],
-        'details': value['details'],
         'message': value['message'],
     };
 }

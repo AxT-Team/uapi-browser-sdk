@@ -7,7 +7,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `whois` | object
 
 ## Example
@@ -17,7 +16,6 @@ import type { GetNetworkWhois200ResponseOneOf1 } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "whois": {"domain":{"id":12345678901234,"domain":"exa***.com","punycode":"exa***.com","name":"exa***","extension":"com","whois_server":"whois.***.com","status":["ok"],"name_servers":["ns1.***.com","ns2.***.com"],"created_date":"2022-01-01T00:00:00Z","updated_date":"2024-01-01T00:00:00Z","expiration_date":"2026-01-01T00:00:00Z"},"registrar":{"id":9999,"name":"*** Registrar LLC","phone":"+86.1*********","email":"redacted@***.com"},"registrant":{"id":"Not Available From Registry","name":"REDACTED FOR PRIVACY","organization":"REDACTED FOR PRIVACY","country":"CN"}},
 } satisfies GetNetworkWhois200ResponseOneOf1
 

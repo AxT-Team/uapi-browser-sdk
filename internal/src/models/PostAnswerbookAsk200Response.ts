@@ -21,12 +21,6 @@ import { mapValues } from '../runtime';
 export interface PostAnswerbookAsk200Response {
     /**
      * 
-     * @type {number}
-     * @memberof PostAnswerbookAsk200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof PostAnswerbookAsk200Response
      */
@@ -56,7 +50,6 @@ export function PostAnswerbookAsk200ResponseFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'question': json['question'] == null ? undefined : json['question'],
         'answer': json['answer'] == null ? undefined : json['answer'],
     };
@@ -73,7 +66,6 @@ export function PostAnswerbookAsk200ResponseToJSONTyped(value?: PostAnswerbookAs
 
     return {
         
-        'code': value['code'],
         'question': value['question'],
         'answer': value['answer'],
     };

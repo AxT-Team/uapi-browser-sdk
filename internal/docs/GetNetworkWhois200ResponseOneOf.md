@@ -7,7 +7,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `whois` | string
 
 ## Example
@@ -17,7 +16,6 @@ import type { GetNetworkWhois200ResponseOneOf } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "whois": Domain Name: GOOGLE.COM
 Registry Domain ID: 2138514_DOMAIN_COM-VRSN
 Registrar WHOIS Server: whois.markmonitor.com

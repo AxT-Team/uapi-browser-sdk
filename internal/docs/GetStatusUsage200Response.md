@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`endpoints` | [Array&lt;EndpointsAggregateEndpointsInner&gt;](EndpointsAggregateEndpointsInner.md)
-`unaggregated` | [EndpointsAggregateUnaggregated](EndpointsAggregateUnaggregated.md)
+`endpoints` | [Array&lt;GetStatusUsage200ResponseAnyOfEndpointsInner&gt;](GetStatusUsage200ResponseAnyOfEndpointsInner.md)
+`unaggregated` | [GetStatusUsage200ResponseAnyOfUnaggregated](GetStatusUsage200ResponseAnyOfUnaggregated.md)
 `path` | string
 `count` | number
 

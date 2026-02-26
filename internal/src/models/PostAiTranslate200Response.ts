@@ -57,12 +57,6 @@ import {
 export interface PostAiTranslate200Response {
     /**
      * 
-     * @type {number}
-     * @memberof PostAiTranslate200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof PostAiTranslate200Response
      */
@@ -122,7 +116,6 @@ export function PostAiTranslate200ResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'message': json['message'] == null ? undefined : json['message'],
         'isBatch': json['is_batch'] == null ? undefined : json['is_batch'],
         'data': json['data'] == null ? undefined : PostAiTranslate200ResponseDataFromJSON(json['data']),
@@ -144,7 +137,6 @@ export function PostAiTranslate200ResponseToJSONTyped(value?: PostAiTranslate200
 
     return {
         
-        'code': value['code'],
         'message': value['message'],
         'is_batch': value['isBatch'],
         'data': PostAiTranslate200ResponseDataToJSON(value['data']),

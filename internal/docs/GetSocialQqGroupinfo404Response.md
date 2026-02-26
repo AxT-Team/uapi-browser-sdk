@@ -6,9 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`code` | string
-`details` | object
-`message` | string
+`error` | string
 
 ## Example
 
@@ -17,9 +15,7 @@ import type { GetSocialQqGroupinfo404Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": NOT_FOUND,
-  "details": null,
-  "message": QQ group not found or inaccessible.,
+  "error": QQ群不存在或无法访问,
 } satisfies GetSocialQqGroupinfo404Response
 
 console.log(example)

@@ -29,6 +29,7 @@ Name | Type
 `languages` | { [key: string]: number; }
 `collaborators` | [Array&lt;GetGithubRepo200ResponseCollaboratorsInner&gt;](GetGithubRepo200ResponseCollaboratorsInner.md)
 `maintainers` | [Array&lt;GetGithubRepo200ResponseCollaboratorsInner&gt;](GetGithubRepo200ResponseCollaboratorsInner.md)
+`latestRelease` | [GetGithubRepo200ResponseLatestRelease](GetGithubRepo200ResponseLatestRelease.md)
 
 ## Example
 
@@ -60,6 +61,7 @@ const example = {
   "languages": {"C":123456789,"Assembly":2345678},
   "collaborators": [{"login":"octocat","name":"The Octocat","email":"public@example.com","url":"https://github.com/octocat"}],
   "maintainers": [{"login":"devA","name":"Dev A","email":"devA@users.noreply.github.com","url":"https://github.com/devA"}],
+  "latestRelease": null,
 } satisfies GetGithubRepo200Response
 
 console.log(example)

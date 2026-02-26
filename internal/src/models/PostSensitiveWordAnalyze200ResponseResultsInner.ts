@@ -30,32 +30,43 @@ export interface PostSensitiveWordAnalyze200ResponseResultsInner {
      * @type {string}
      * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
      */
-    r?: string;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
-     */
-    s?: Array<number>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
-     */
-    v?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
-     */
-    t?: Array<string>;
+    label?: PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum;
     /**
      * 
      * @type {string}
      * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
      */
-    d?: string;
+    category?: PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
+     */
+    confidence?: number;
 }
+
+
+/**
+ * @export
+ */
+export const PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum = {
+    Sensitive: 'sensitive',
+    Normal: 'normal'
+} as const;
+export type PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum = typeof PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum[keyof typeof PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum];
+
+/**
+ * @export
+ */
+export const PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum = {
+    Safe: 'safe',
+    Threat: 'threat',
+    Porn: 'porn',
+    Fraud: 'fraud',
+    Insult: 'insult'
+} as const;
+export type PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum = typeof PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum[keyof typeof PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum];
+
 
 /**
  * Check if a given object implements the PostSensitiveWordAnalyze200ResponseResultsInner interface.
@@ -75,11 +86,9 @@ export function PostSensitiveWordAnalyze200ResponseResultsInnerFromJSONTyped(jso
     return {
         
         'k': json['k'] == null ? undefined : json['k'],
-        'r': json['r'] == null ? undefined : json['r'],
-        's': json['s'] == null ? undefined : json['s'],
-        'v': json['v'] == null ? undefined : json['v'],
-        't': json['t'] == null ? undefined : json['t'],
-        'd': json['d'] == null ? undefined : json['d'],
+        'label': json['label'] == null ? undefined : json['label'],
+        'category': json['category'] == null ? undefined : json['category'],
+        'confidence': json['confidence'] == null ? undefined : json['confidence'],
     };
 }
 
@@ -95,11 +104,9 @@ export function PostSensitiveWordAnalyze200ResponseResultsInnerToJSONTyped(value
     return {
         
         'k': value['k'],
-        'r': value['r'],
-        's': value['s'],
-        'v': value['v'],
-        't': value['t'],
-        'd': value['d'],
+        'label': value['label'],
+        'category': value['category'],
+        'confidence': value['confidence'],
     };
 }
 

@@ -1,16 +1,19 @@
 
 # GetGameMinecraftHistoryid200Response
 
+响应结构根据查询参数不同而变化
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`code` | number
-`history` | [Array&lt;GetGameMinecraftHistoryid200ResponseHistoryInner&gt;](GetGameMinecraftHistoryid200ResponseHistoryInner.md)
+`query` | string
+`count` | number
+`results` | [Array&lt;GetGameMinecraftHistoryid200ResponseResultsInner&gt;](GetGameMinecraftHistoryid200ResponseResultsInner.md)
 `id` | string
-`nameNum` | number
 `uuid` | string
+`nameNum` | number
+`history` | [Array&lt;GetGameMinecraftHistoryid200ResponseHistoryInner&gt;](GetGameMinecraftHistoryid200ResponseHistoryInner.md)
 
 ## Example
 
@@ -19,11 +22,13 @@ import type { GetGameMinecraftHistoryid200Response } from 'uapi-browser-sdk-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
+  "query": ExamplePlayer,
+  "count": 2,
+  "results": null,
+  "id": T8K_,
+  "uuid": ee9b4ed1-aac1-491e-b761-1471be374b80,
+  "nameNum": 4,
   "history": null,
-  "id": Notch,
-  "nameNum": 2,
-  "uuid": ee9b4ed1aac1491eb7611471be374b80,
 } satisfies GetGameMinecraftHistoryid200Response
 
 console.log(example)

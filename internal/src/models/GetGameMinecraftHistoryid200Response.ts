@@ -20,43 +20,62 @@ import {
     GetGameMinecraftHistoryid200ResponseHistoryInnerToJSON,
     GetGameMinecraftHistoryid200ResponseHistoryInnerToJSONTyped,
 } from './GetGameMinecraftHistoryid200ResponseHistoryInner';
+import type { GetGameMinecraftHistoryid200ResponseResultsInner } from './GetGameMinecraftHistoryid200ResponseResultsInner';
+import {
+    GetGameMinecraftHistoryid200ResponseResultsInnerFromJSON,
+    GetGameMinecraftHistoryid200ResponseResultsInnerFromJSONTyped,
+    GetGameMinecraftHistoryid200ResponseResultsInnerToJSON,
+    GetGameMinecraftHistoryid200ResponseResultsInnerToJSONTyped,
+} from './GetGameMinecraftHistoryid200ResponseResultsInner';
 
 /**
- * 
+ * 响应结构根据查询参数不同而变化
  * @export
  * @interface GetGameMinecraftHistoryid200Response
  */
 export interface GetGameMinecraftHistoryid200Response {
     /**
-     * 状态码，200代表成功。
+     * 【name 查询时返回】查询的用户名。
+     * @type {string}
+     * @memberof GetGameMinecraftHistoryid200Response
+     */
+    query?: string;
+    /**
+     * 【name 查询时返回】匹配到的用户数量，为 0 时表示未找到。
      * @type {number}
      * @memberof GetGameMinecraftHistoryid200Response
      */
-    code?: number;
+    count?: number;
     /**
-     * 一个包含所有历史用户名的数组，按时间倒序排列。
-     * @type {Array<GetGameMinecraftHistoryid200ResponseHistoryInner>}
+     * 【name 查询时返回】匹配用户列表，包含当前用户名或曾用名匹配的所有玩家。
+     * @type {Array<GetGameMinecraftHistoryid200ResponseResultsInner>}
      * @memberof GetGameMinecraftHistoryid200Response
      */
-    history?: Array<GetGameMinecraftHistoryid200ResponseHistoryInner>;
+    results?: Array<GetGameMinecraftHistoryid200ResponseResultsInner>;
     /**
-     * 玩家当前的用户名。
+     * 【uuid 查询时返回】玩家当前的用户名。
      * @type {string}
      * @memberof GetGameMinecraftHistoryid200Response
      */
     id?: string;
     /**
-     * 历史名称的总数（包含当前名称）。
+     * 【uuid 查询时返回】被查询玩家的UUID（带连字符格式）。
+     * @type {string}
+     * @memberof GetGameMinecraftHistoryid200Response
+     */
+    uuid?: string;
+    /**
+     * 【uuid 查询时返回】历史名称的总数（包含当前名称）。
      * @type {number}
      * @memberof GetGameMinecraftHistoryid200Response
      */
     nameNum?: number;
     /**
-     * 被查询玩家的32位无破折号UUID。
-     * @type {string}
+     * 【uuid 查询时返回】包含所有历史用户名的数组，按时间倒序排列。
+     * @type {Array<GetGameMinecraftHistoryid200ResponseHistoryInner>}
      * @memberof GetGameMinecraftHistoryid200Response
      */
-    uuid?: string;
+    history?: Array<GetGameMinecraftHistoryid200ResponseHistoryInner>;
 }
 
 /**
@@ -76,11 +95,13 @@ export function GetGameMinecraftHistoryid200ResponseFromJSONTyped(json: any, ign
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'history': json['history'] == null ? undefined : ((json['history'] as Array<any>).map(GetGameMinecraftHistoryid200ResponseHistoryInnerFromJSON)),
+        'query': json['query'] == null ? undefined : json['query'],
+        'count': json['count'] == null ? undefined : json['count'],
+        'results': json['results'] == null ? undefined : ((json['results'] as Array<any>).map(GetGameMinecraftHistoryid200ResponseResultsInnerFromJSON)),
         'id': json['id'] == null ? undefined : json['id'],
-        'nameNum': json['name_num'] == null ? undefined : json['name_num'],
         'uuid': json['uuid'] == null ? undefined : json['uuid'],
+        'nameNum': json['name_num'] == null ? undefined : json['name_num'],
+        'history': json['history'] == null ? undefined : ((json['history'] as Array<any>).map(GetGameMinecraftHistoryid200ResponseHistoryInnerFromJSON)),
     };
 }
 
@@ -95,11 +116,13 @@ export function GetGameMinecraftHistoryid200ResponseToJSONTyped(value?: GetGameM
 
     return {
         
-        'code': value['code'],
-        'history': value['history'] == null ? undefined : ((value['history'] as Array<any>).map(GetGameMinecraftHistoryid200ResponseHistoryInnerToJSON)),
+        'query': value['query'],
+        'count': value['count'],
+        'results': value['results'] == null ? undefined : ((value['results'] as Array<any>).map(GetGameMinecraftHistoryid200ResponseResultsInnerToJSON)),
         'id': value['id'],
-        'name_num': value['nameNum'],
         'uuid': value['uuid'],
+        'name_num': value['nameNum'],
+        'history': value['history'] == null ? undefined : ((value['history'] as Array<any>).map(GetGameMinecraftHistoryid200ResponseHistoryInnerToJSON)),
     };
 }
 

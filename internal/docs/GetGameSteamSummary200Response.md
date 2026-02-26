@@ -9,7 +9,6 @@ Name | Type
 `avatar` | string
 `avatarfull` | string
 `avatarmedium` | string
-`code` | number
 `communityvisibilitystate` | number
 `loccountrycode` | string
 `personaname` | string
@@ -32,7 +31,6 @@ const example = {
   "avatar": https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg,
   "avatarfull": https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg,
   "avatarmedium": https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg,
-  "code": 200,
   "communityvisibilitystate": 3,
   "loccountrycode": US,
   "personaname": Gabe Newell,

@@ -24,19 +24,7 @@ export interface GetSocialQqGroupinfo404Response {
      * @type {string}
      * @memberof GetSocialQqGroupinfo404Response
      */
-    code?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof GetSocialQqGroupinfo404Response
-     */
-    details?: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetSocialQqGroupinfo404Response
-     */
-    message?: string;
+    error?: string;
 }
 
 /**
@@ -56,9 +44,7 @@ export function GetSocialQqGroupinfo404ResponseFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'details': json['details'] == null ? undefined : json['details'],
-        'message': json['message'] == null ? undefined : json['message'],
+        'error': json['error'] == null ? undefined : json['error'],
     };
 }
 
@@ -73,9 +59,7 @@ export function GetSocialQqGroupinfo404ResponseToJSONTyped(value?: GetSocialQqGr
 
     return {
         
-        'code': value['code'],
-        'details': value['details'],
-        'message': value['message'],
+        'error': value['error'],
     };
 }
 

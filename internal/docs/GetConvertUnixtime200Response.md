@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `datetime` | string
 `timestamp` | number
 
@@ -17,7 +16,6 @@ import type { GetConvertUnixtime200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "datetime": 2023-10-27 15:04:05,
   "timestamp": 1698380645,
 } satisfies GetConvertUnixtime200Response

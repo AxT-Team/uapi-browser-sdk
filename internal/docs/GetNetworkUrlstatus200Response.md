@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `status` | number
 `url` | string
 
@@ -17,9 +16,8 @@ import type { GetNetworkUrlstatus200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
-  "status": 200,
-  "url": https://www.google.com,
+  "status": 0,
+  "url": https://example.invalid,
 } satisfies GetNetworkUrlstatus200Response
 
 console.log(example)

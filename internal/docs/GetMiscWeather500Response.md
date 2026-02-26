@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `code` | string
-`details` | object
 `message` | string
 
 ## Example
@@ -18,8 +17,7 @@ import type { GetMiscWeather500Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": INTERNAL_SERVER_ERROR,
-  "details": null,
-  "message": An internal error occurred while fetching weather data.,
+  "message": 服务器内部错误,
 } satisfies GetMiscWeather500Response
 
 console.log(example)

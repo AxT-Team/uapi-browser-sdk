@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `faviconUrl` | string
 `ip` | string
 `maxPlayers` | number
@@ -24,7 +23,6 @@ import type { GetGameMinecraftServerstatus200Response } from 'uapi-browser-sdk-b
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "faviconUrl": data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACayAAACqaXHeAAAA...,
   "ip": 172.65.252.238,
   "maxPlayers": 20000,

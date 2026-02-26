@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`endpoints` | [Array&lt;EndpointsAggregateEndpointsInner&gt;](EndpointsAggregateEndpointsInner.md)
+`endpoints` | [Array<EndpointsAggregateEndpointsInner>](EndpointsAggregateEndpointsInner.md)
 `unaggregated` | [EndpointsAggregateUnaggregated](EndpointsAggregateUnaggregated.md)
 
 ## Example

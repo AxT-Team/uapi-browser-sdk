@@ -12,39 +12,27 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-/**
- * 
- * @export
- * @interface GetNetworkUrlstatus200Response
- */
-export interface GetNetworkUrlstatus200Response {
-    /**
-     * 
-     * @type {number}
-     * @memberof GetNetworkUrlstatus200Response
-     */
-    code?: number;
-    /**
-     * HTTP响应状态码
-     * @type {number}
-     * @memberof GetNetworkUrlstatus200Response
-     */
-    status?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetNetworkUrlstatus200Response
-     */
-    url?: string;
-}
+import type { GetNetworkUrlstatus200ResponseOneOf } from './GetNetworkUrlstatus200ResponseOneOf';
+import {
+    instanceOfGetNetworkUrlstatus200ResponseOneOf,
+    GetNetworkUrlstatus200ResponseOneOfFromJSON,
+    GetNetworkUrlstatus200ResponseOneOfFromJSONTyped,
+    GetNetworkUrlstatus200ResponseOneOfToJSON,
+} from './GetNetworkUrlstatus200ResponseOneOf';
+import type { GetNetworkUrlstatus200ResponseOneOf1 } from './GetNetworkUrlstatus200ResponseOneOf1';
+import {
+    instanceOfGetNetworkUrlstatus200ResponseOneOf1,
+    GetNetworkUrlstatus200ResponseOneOf1FromJSON,
+    GetNetworkUrlstatus200ResponseOneOf1FromJSONTyped,
+    GetNetworkUrlstatus200ResponseOneOf1ToJSON,
+} from './GetNetworkUrlstatus200ResponseOneOf1';
 
 /**
- * Check if a given object implements the GetNetworkUrlstatus200Response interface.
+ * @type GetNetworkUrlstatus200Response
+ * 
+ * @export
  */
-export function instanceOfGetNetworkUrlstatus200Response(value: object): value is GetNetworkUrlstatus200Response {
-    return true;
-}
+export type GetNetworkUrlstatus200Response = GetNetworkUrlstatus200ResponseOneOf | GetNetworkUrlstatus200ResponseOneOf1;
 
 export function GetNetworkUrlstatus200ResponseFromJSON(json: any): GetNetworkUrlstatus200Response {
     return GetNetworkUrlstatus200ResponseFromJSONTyped(json, false);
@@ -54,15 +42,19 @@ export function GetNetworkUrlstatus200ResponseFromJSONTyped(json: any, ignoreDis
     if (json == null) {
         return json;
     }
-    return {
-        
-        'code': json['code'] == null ? undefined : json['code'],
-        'status': json['status'] == null ? undefined : json['status'],
-        'url': json['url'] == null ? undefined : json['url'],
-    };
+    if (typeof json !== 'object') {
+        return json;
+    }
+    if (instanceOfGetNetworkUrlstatus200ResponseOneOf(json)) {
+        return GetNetworkUrlstatus200ResponseOneOfFromJSONTyped(json, true);
+    }
+    if (instanceOfGetNetworkUrlstatus200ResponseOneOf1(json)) {
+        return GetNetworkUrlstatus200ResponseOneOf1FromJSONTyped(json, true);
+    }
+    return {} as any;
 }
 
-export function GetNetworkUrlstatus200ResponseToJSON(json: any): GetNetworkUrlstatus200Response {
+export function GetNetworkUrlstatus200ResponseToJSON(json: any): any {
     return GetNetworkUrlstatus200ResponseToJSONTyped(json, false);
 }
 
@@ -70,12 +62,15 @@ export function GetNetworkUrlstatus200ResponseToJSONTyped(value?: GetNetworkUrls
     if (value == null) {
         return value;
     }
-
-    return {
-        
-        'code': value['code'],
-        'status': value['status'],
-        'url': value['url'],
-    };
+    if (typeof value !== 'object') {
+        return value;
+    }
+    if (instanceOfGetNetworkUrlstatus200ResponseOneOf(value)) {
+        return GetNetworkUrlstatus200ResponseOneOfToJSON(value as GetNetworkUrlstatus200ResponseOneOf);
+    }
+    if (instanceOfGetNetworkUrlstatus200ResponseOneOf1(value)) {
+        return GetNetworkUrlstatus200ResponseOneOf1ToJSON(value as GetNetworkUrlstatus200ResponseOneOf1);
+    }
+    return {};
 }
 

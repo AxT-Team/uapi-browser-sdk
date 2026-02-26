@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
 `content` | string
 
 ## Example
@@ -16,7 +15,6 @@ import type { PostConvertJson200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
   "content": {
   "name": "John Doe",
   "age": 30,

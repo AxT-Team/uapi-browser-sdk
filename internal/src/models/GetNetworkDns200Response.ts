@@ -29,12 +29,6 @@ import {
 export interface GetNetworkDns200Response {
     /**
      * 
-     * @type {number}
-     * @memberof GetNetworkDns200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetNetworkDns200Response
      */
@@ -76,7 +70,6 @@ export function GetNetworkDns200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'domain': json['domain'] == null ? undefined : json['domain'],
         'error': json['error'] == null ? undefined : json['error'],
         'records': json['records'] == null ? undefined : ((json['records'] as Array<any>).map(GetNetworkDns200ResponseRecordsInnerFromJSON)),
@@ -95,7 +88,6 @@ export function GetNetworkDns200ResponseToJSONTyped(value?: GetNetworkDns200Resp
 
     return {
         
-        'code': value['code'],
         'domain': value['domain'],
         'error': value['error'],
         'records': value['records'] == null ? undefined : ((value['records'] as Array<any>).map(GetNetworkDns200ResponseRecordsInnerToJSON)),

@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface GetGameMinecraftUserinfo200Response {
     /**
-     * 状态码，200代表成功。
-     * @type {number}
-     * @memberof GetGameMinecraftUserinfo200Response
-     */
-    code?: number;
-    /**
      * 玩家当前使用的皮肤图片URL。
      * @type {string}
      * @memberof GetGameMinecraftUserinfo200Response
@@ -62,7 +56,6 @@ export function GetGameMinecraftUserinfo200ResponseFromJSONTyped(json: any, igno
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
         'skinUrl': json['skin_url'] == null ? undefined : json['skin_url'],
         'username': json['username'] == null ? undefined : json['username'],
         'uuid': json['uuid'] == null ? undefined : json['uuid'],
@@ -80,7 +73,6 @@ export function GetGameMinecraftUserinfo200ResponseToJSONTyped(value?: GetGameMi
 
     return {
         
-        'code': value['code'],
         'skin_url': value['skinUrl'],
         'username': value['username'],
         'uuid': value['uuid'],

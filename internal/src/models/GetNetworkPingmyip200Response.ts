@@ -27,12 +27,6 @@ export interface GetNetworkPingmyip200Response {
     avg?: number;
     /**
      * 
-     * @type {number}
-     * @memberof GetNetworkPingmyip200Response
-     */
-    code?: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetNetworkPingmyip200Response
      */
@@ -81,7 +75,6 @@ export function GetNetworkPingmyip200ResponseFromJSONTyped(json: any, ignoreDisc
     return {
         
         'avg': json['avg'] == null ? undefined : json['avg'],
-        'code': json['code'] == null ? undefined : json['code'],
         'host': json['host'] == null ? undefined : json['host'],
         'ip': json['ip'] == null ? undefined : json['ip'],
         'location': json['location'] == null ? undefined : json['location'],
@@ -102,7 +95,6 @@ export function GetNetworkPingmyip200ResponseToJSONTyped(value?: GetNetworkPingm
     return {
         
         'avg': value['avg'],
-        'code': value['code'],
         'host': value['host'],
         'ip': value['ip'],
         'location': value['location'],
