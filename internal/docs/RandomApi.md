@@ -246,7 +246,7 @@ async function example() {
   const api = new RandomApi();
 
   const body = {
-    // PostAnswerbookAskRequest | 包含问题的JSON对象
+    // PostAnswerbookAskRequest | 
     postAnswerbookAskRequest: ...,
   } satisfies PostAnswerbookAskOperationRequest;
 
@@ -267,7 +267,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postAnswerbookAskRequest** | [PostAnswerbookAskRequest](PostAnswerbookAskRequest.md) | 包含问题的JSON对象 | |
+| **postAnswerbookAskRequest** | [PostAnswerbookAskRequest](PostAnswerbookAskRequest.md) |  | |
 
 ### Return type
 

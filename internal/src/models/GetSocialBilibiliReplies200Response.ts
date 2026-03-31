@@ -41,6 +41,12 @@ export interface GetSocialBilibiliReplies200Response {
      */
     page?: GetSocialBilibiliReplies200ResponsePage;
     /**
+     * 评论区配置。不同视频或不同权限下可能为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    config?: object | null;
+    /**
      * 热门评论列表。结构与 `replies` 中的对象一致。如果当前页是第一页，且有热门评论，则此数组非空。
      * @type {Array<object>}
      * @memberof GetSocialBilibiliReplies200Response
@@ -52,6 +58,48 @@ export interface GetSocialBilibiliReplies200Response {
      * @memberof GetSocialBilibiliReplies200Response
      */
     replies?: Array<GetSocialBilibiliReplies200ResponseRepliesInner>;
+    /**
+     * UP 主相关信息。无数据时为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    upper?: object | null;
+    /**
+     * 置顶评论信息。没有置顶评论时为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    top?: object | null;
+    /**
+     * 评论区公告信息。没有公告时为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    notice?: object | null;
+    /**
+     * 评论区投票相关状态值。没有投票时通常为 0。
+     * @type {number}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    vote?: number;
+    /**
+     * 评论折叠相关信息。没有数据时为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    folder?: object | null;
+    /**
+     * 评论区控制信息。没有数据时为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    control?: object | null;
+    /**
+     * 游标翻页信息。部分场景下为 null。
+     * @type {object}
+     * @memberof GetSocialBilibiliReplies200Response
+     */
+    cursor?: object | null;
 }
 
 /**
@@ -72,8 +120,16 @@ export function GetSocialBilibiliReplies200ResponseFromJSONTyped(json: any, igno
     return {
         
         'page': json['page'] == null ? undefined : GetSocialBilibiliReplies200ResponsePageFromJSON(json['page']),
+        'config': json['config'] == null ? undefined : json['config'],
         'hots': json['hots'] == null ? undefined : json['hots'],
         'replies': json['replies'] == null ? undefined : ((json['replies'] as Array<any>).map(GetSocialBilibiliReplies200ResponseRepliesInnerFromJSON)),
+        'upper': json['upper'] == null ? undefined : json['upper'],
+        'top': json['top'] == null ? undefined : json['top'],
+        'notice': json['notice'] == null ? undefined : json['notice'],
+        'vote': json['vote'] == null ? undefined : json['vote'],
+        'folder': json['folder'] == null ? undefined : json['folder'],
+        'control': json['control'] == null ? undefined : json['control'],
+        'cursor': json['cursor'] == null ? undefined : json['cursor'],
     };
 }
 
@@ -89,8 +145,16 @@ export function GetSocialBilibiliReplies200ResponseToJSONTyped(value?: GetSocial
     return {
         
         'page': GetSocialBilibiliReplies200ResponsePageToJSON(value['page']),
+        'config': value['config'],
         'hots': value['hots'],
         'replies': value['replies'] == null ? undefined : ((value['replies'] as Array<any>).map(GetSocialBilibiliReplies200ResponseRepliesInnerToJSON)),
+        'upper': value['upper'],
+        'top': value['top'],
+        'notice': value['notice'],
+        'vote': value['vote'],
+        'folder': value['folder'],
+        'control': value['control'],
+        'cursor': value['cursor'],
     };
 }
 

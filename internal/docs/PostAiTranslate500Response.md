@@ -9,7 +9,6 @@ Name | Type
 `code` | number
 `message` | string
 `error` | string
-`isBatch` | boolean
 
 ## Example
 
@@ -21,7 +20,6 @@ const example = {
   "code": 500,
   "message": Translation service error,
   "error": Translation request failed,
-  "isBatch": false,
 } satisfies PostAiTranslate500Response
 
 console.log(example)

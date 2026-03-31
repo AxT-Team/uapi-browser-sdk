@@ -7,6 +7,7 @@
 
 Name | Type
 ------------ | -------------
+`aid` | number
 `view` | number
 `danmaku` | number
 `reply` | number
@@ -14,6 +15,11 @@ Name | Type
 `coin` | number
 `share` | number
 `like` | number
+`nowRank` | number
+`hisRank` | number
+`dislike` | number
+`evaluation` | string
+`vt` | number
 
 ## Example
 
@@ -22,6 +28,7 @@ import type { GetSocialBilibiliVideoinfo200ResponseStat } from 'uapi-browser-sdk
 
 // TODO: Update the object below with actual values
 const example = {
+  "aid": 75836761,
   "view": 14227982,
   "danmaku": 269829,
   "reply": 81682,
@@ -29,6 +36,11 @@ const example = {
   "coin": 787228,
   "share": 98661,
   "like": 989718,
+  "nowRank": 0,
+  "hisRank": 0,
+  "dislike": 0,
+  "evaluation": ,
+  "vt": 0,
 } satisfies GetSocialBilibiliVideoinfo200ResponseStat
 
 console.log(example)

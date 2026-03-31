@@ -7,13 +7,10 @@
 Name | Type
 ------------ | -------------
 `text` | string
-`texts` | Array&lt;string&gt;
 `sourceLang` | string
 `style` | string
 `context` | string
 `preserveFormat` | boolean
-`fastMode` | boolean
-`maxConcurrency` | number
 
 ## Example
 
@@ -23,13 +20,10 @@ import type { PostAiTranslateRequest } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "text": Hello, how are you today?,
-  "texts": null,
   "sourceLang": en,
   "style": professional,
   "context": business,
   "preserveFormat": true,
-  "fastMode": true,
-  "maxConcurrency": 3,
 } satisfies PostAiTranslateRequest
 
 console.log(example)

@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetSocialBilibiliUserinfo200ResponseData } from './GetSocialBilibiliUserinfo200ResponseData';
-import {
-    GetSocialBilibiliUserinfo200ResponseDataFromJSON,
-    GetSocialBilibiliUserinfo200ResponseDataFromJSONTyped,
-    GetSocialBilibiliUserinfo200ResponseDataToJSON,
-    GetSocialBilibiliUserinfo200ResponseDataToJSONTyped,
-} from './GetSocialBilibiliUserinfo200ResponseData';
-
 /**
  * 
  * @export
@@ -32,19 +24,79 @@ export interface GetSocialBilibiliUserinfo200Response {
      * @type {number}
      * @memberof GetSocialBilibiliUserinfo200Response
      */
-    code?: number;
-    /**
-     * 
-     * @type {GetSocialBilibiliUserinfo200ResponseData}
-     * @memberof GetSocialBilibiliUserinfo200Response
-     */
-    data?: GetSocialBilibiliUserinfo200ResponseData;
+    mid?: number;
     /**
      * 
      * @type {string}
      * @memberof GetSocialBilibiliUserinfo200Response
      */
-    message?: string;
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    sex?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    face?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    sign?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    level?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    birthday?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    vipType?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    vipStatus?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    following?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    follower?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    archiveCount?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetSocialBilibiliUserinfo200Response
+     */
+    articleCount?: number;
 }
 
 /**
@@ -64,9 +116,19 @@ export function GetSocialBilibiliUserinfo200ResponseFromJSONTyped(json: any, ign
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'data': json['data'] == null ? undefined : GetSocialBilibiliUserinfo200ResponseDataFromJSON(json['data']),
-        'message': json['message'] == null ? undefined : json['message'],
+        'mid': json['mid'] == null ? undefined : json['mid'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'sex': json['sex'] == null ? undefined : json['sex'],
+        'face': json['face'] == null ? undefined : json['face'],
+        'sign': json['sign'] == null ? undefined : json['sign'],
+        'level': json['level'] == null ? undefined : json['level'],
+        'birthday': json['birthday'] == null ? undefined : json['birthday'],
+        'vipType': json['vip_type'] == null ? undefined : json['vip_type'],
+        'vipStatus': json['vip_status'] == null ? undefined : json['vip_status'],
+        'following': json['following'] == null ? undefined : json['following'],
+        'follower': json['follower'] == null ? undefined : json['follower'],
+        'archiveCount': json['archive_count'] == null ? undefined : json['archive_count'],
+        'articleCount': json['article_count'] == null ? undefined : json['article_count'],
     };
 }
 
@@ -81,9 +143,19 @@ export function GetSocialBilibiliUserinfo200ResponseToJSONTyped(value?: GetSocia
 
     return {
         
-        'code': value['code'],
-        'data': GetSocialBilibiliUserinfo200ResponseDataToJSON(value['data']),
-        'message': value['message'],
+        'mid': value['mid'],
+        'name': value['name'],
+        'sex': value['sex'],
+        'face': value['face'],
+        'sign': value['sign'],
+        'level': value['level'],
+        'birthday': value['birthday'],
+        'vip_type': value['vipType'],
+        'vip_status': value['vipStatus'],
+        'following': value['following'],
+        'follower': value['follower'],
+        'archive_count': value['archiveCount'],
+        'article_count': value['articleCount'],
     };
 }
 

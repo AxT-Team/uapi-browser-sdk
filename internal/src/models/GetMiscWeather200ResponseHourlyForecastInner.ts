@@ -104,7 +104,7 @@ export interface GetMiscWeather200ResponseHourlyForecastInner {
      */
     pop?: number;
     /**
-     * 紫外线指数（可选）
+     * 紫外线指数（可选，国内城市通常不返回）
      * @type {number}
      * @memberof GetMiscWeather200ResponseHourlyForecastInner
      */

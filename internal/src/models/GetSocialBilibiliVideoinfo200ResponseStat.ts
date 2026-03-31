@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface GetSocialBilibiliVideoinfo200ResponseStat {
     /**
+     * AV 号。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200ResponseStat
+     */
+    aid?: number;
+    /**
      * 播放数。
      * @type {number}
      * @memberof GetSocialBilibiliVideoinfo200ResponseStat
@@ -61,6 +67,36 @@ export interface GetSocialBilibiliVideoinfo200ResponseStat {
      * @memberof GetSocialBilibiliVideoinfo200ResponseStat
      */
     like?: number;
+    /**
+     * 当前全站/分区排名。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200ResponseStat
+     */
+    nowRank?: number;
+    /**
+     * 历史排名。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200ResponseStat
+     */
+    hisRank?: number;
+    /**
+     * 点踩量（通常为 0）。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200ResponseStat
+     */
+    dislike?: number;
+    /**
+     * 评分/评估文案，通常为空。
+     * @type {string}
+     * @memberof GetSocialBilibiliVideoinfo200ResponseStat
+     */
+    evaluation?: string;
+    /**
+     * 视频类型相关历史字段。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200ResponseStat
+     */
+    vt?: number;
 }
 
 /**
@@ -80,6 +116,7 @@ export function GetSocialBilibiliVideoinfo200ResponseStatFromJSONTyped(json: any
     }
     return {
         
+        'aid': json['aid'] == null ? undefined : json['aid'],
         'view': json['view'] == null ? undefined : json['view'],
         'danmaku': json['danmaku'] == null ? undefined : json['danmaku'],
         'reply': json['reply'] == null ? undefined : json['reply'],
@@ -87,6 +124,11 @@ export function GetSocialBilibiliVideoinfo200ResponseStatFromJSONTyped(json: any
         'coin': json['coin'] == null ? undefined : json['coin'],
         'share': json['share'] == null ? undefined : json['share'],
         'like': json['like'] == null ? undefined : json['like'],
+        'nowRank': json['now_rank'] == null ? undefined : json['now_rank'],
+        'hisRank': json['his_rank'] == null ? undefined : json['his_rank'],
+        'dislike': json['dislike'] == null ? undefined : json['dislike'],
+        'evaluation': json['evaluation'] == null ? undefined : json['evaluation'],
+        'vt': json['vt'] == null ? undefined : json['vt'],
     };
 }
 
@@ -101,6 +143,7 @@ export function GetSocialBilibiliVideoinfo200ResponseStatToJSONTyped(value?: Get
 
     return {
         
+        'aid': value['aid'],
         'view': value['view'],
         'danmaku': value['danmaku'],
         'reply': value['reply'],
@@ -108,6 +151,11 @@ export function GetSocialBilibiliVideoinfo200ResponseStatToJSONTyped(value?: Get
         'coin': value['coin'],
         'share': value['share'],
         'like': value['like'],
+        'now_rank': value['nowRank'],
+        'his_rank': value['hisRank'],
+        'dislike': value['dislike'],
+        'evaluation': value['evaluation'],
+        'vt': value['vt'],
     };
 }
 

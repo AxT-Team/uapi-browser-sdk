@@ -13,6 +13,34 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GetSocialBilibiliVideoinfo200ResponseRights } from './GetSocialBilibiliVideoinfo200ResponseRights';
+import {
+    GetSocialBilibiliVideoinfo200ResponseRightsFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseRightsFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseRightsToJSON,
+    GetSocialBilibiliVideoinfo200ResponseRightsToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseRights';
+import type { GetSocialBilibiliVideoinfo200ResponseSubtitle } from './GetSocialBilibiliVideoinfo200ResponseSubtitle';
+import {
+    GetSocialBilibiliVideoinfo200ResponseSubtitleFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseSubtitleFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseSubtitleToJSON,
+    GetSocialBilibiliVideoinfo200ResponseSubtitleToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseSubtitle';
+import type { GetSocialBilibiliVideoinfo200ResponseStaffInner } from './GetSocialBilibiliVideoinfo200ResponseStaffInner';
+import {
+    GetSocialBilibiliVideoinfo200ResponseStaffInnerFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseStaffInnerFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseStaffInnerToJSON,
+    GetSocialBilibiliVideoinfo200ResponseStaffInnerToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseStaffInner';
+import type { GetSocialBilibiliVideoinfo200ResponseDescV2Inner } from './GetSocialBilibiliVideoinfo200ResponseDescV2Inner';
+import {
+    GetSocialBilibiliVideoinfo200ResponseDescV2InnerFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseDescV2InnerFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseDescV2InnerToJSON,
+    GetSocialBilibiliVideoinfo200ResponseDescV2InnerToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseDescV2Inner';
 import type { GetSocialBilibiliVideoinfo200ResponseStat } from './GetSocialBilibiliVideoinfo200ResponseStat';
 import {
     GetSocialBilibiliVideoinfo200ResponseStatFromJSON,
@@ -20,6 +48,13 @@ import {
     GetSocialBilibiliVideoinfo200ResponseStatToJSON,
     GetSocialBilibiliVideoinfo200ResponseStatToJSONTyped,
 } from './GetSocialBilibiliVideoinfo200ResponseStat';
+import type { GetSocialBilibiliVideoinfo200ResponseHonorReply } from './GetSocialBilibiliVideoinfo200ResponseHonorReply';
+import {
+    GetSocialBilibiliVideoinfo200ResponseHonorReplyFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseHonorReplyFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseHonorReplyToJSON,
+    GetSocialBilibiliVideoinfo200ResponseHonorReplyToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseHonorReply';
 import type { GetSocialBilibiliVideoinfo200ResponsePagesInner } from './GetSocialBilibiliVideoinfo200ResponsePagesInner';
 import {
     GetSocialBilibiliVideoinfo200ResponsePagesInnerFromJSON,
@@ -27,6 +62,20 @@ import {
     GetSocialBilibiliVideoinfo200ResponsePagesInnerToJSON,
     GetSocialBilibiliVideoinfo200ResponsePagesInnerToJSONTyped,
 } from './GetSocialBilibiliVideoinfo200ResponsePagesInner';
+import type { GetSocialBilibiliVideoinfo200ResponseUgcSeason } from './GetSocialBilibiliVideoinfo200ResponseUgcSeason';
+import {
+    GetSocialBilibiliVideoinfo200ResponseUgcSeasonFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseUgcSeasonFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseUgcSeasonToJSON,
+    GetSocialBilibiliVideoinfo200ResponseUgcSeasonToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseUgcSeason';
+import type { GetSocialBilibiliVideoinfo200ResponseDimension } from './GetSocialBilibiliVideoinfo200ResponseDimension';
+import {
+    GetSocialBilibiliVideoinfo200ResponseDimensionFromJSON,
+    GetSocialBilibiliVideoinfo200ResponseDimensionFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponseDimensionToJSON,
+    GetSocialBilibiliVideoinfo200ResponseDimensionToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponseDimension';
 import type { GetSocialBilibiliVideoinfo200ResponseOwner } from './GetSocialBilibiliVideoinfo200ResponseOwner';
 import {
     GetSocialBilibiliVideoinfo200ResponseOwnerFromJSON,
@@ -59,6 +108,12 @@ export interface GetSocialBilibiliVideoinfo200Response {
      * @memberof GetSocialBilibiliVideoinfo200Response
      */
     videos?: number;
+    /**
+     * 视频所属的子分区 ID。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    tid?: number;
     /**
      * 视频所属的子分区名称。
      * @type {string}
@@ -102,11 +157,29 @@ export interface GetSocialBilibiliVideoinfo200Response {
      */
     desc?: string;
     /**
+     * 结构化简介片段。
+     * @type {Array<GetSocialBilibiliVideoinfo200ResponseDescV2Inner>}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    descV2?: Array<GetSocialBilibiliVideoinfo200ResponseDescV2Inner>;
+    /**
+     * 视频状态码。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    state?: number;
+    /**
      * 稿件总时长（所有分P累加），单位为秒。
      * @type {number}
      * @memberof GetSocialBilibiliVideoinfo200Response
      */
     duration?: number;
+    /**
+     * 
+     * @type {GetSocialBilibiliVideoinfo200ResponseRights}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    rights?: GetSocialBilibiliVideoinfo200ResponseRights;
     /**
      * 
      * @type {GetSocialBilibiliVideoinfo200ResponseOwner}
@@ -120,11 +193,71 @@ export interface GetSocialBilibiliVideoinfo200Response {
      */
     stat?: GetSocialBilibiliVideoinfo200ResponseStat;
     /**
+     * 投稿时附带的动态文字。
+     * @type {string}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    dynamic?: string;
+    /**
+     * 主分P的 CID（弹幕 ID）。
+     * @type {number}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    cid?: number;
+    /**
+     * 
+     * @type {GetSocialBilibiliVideoinfo200ResponseDimension}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    dimension?: GetSocialBilibiliVideoinfo200ResponseDimension;
+    /**
+     * 不缓存标记。
+     * @type {boolean}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    noCache?: boolean;
+    /**
      * 视频分P列表。即使是单P视频，该数组也包含一个元素。
      * @type {Array<GetSocialBilibiliVideoinfo200ResponsePagesInner>}
      * @memberof GetSocialBilibiliVideoinfo200Response
      */
     pages?: Array<GetSocialBilibiliVideoinfo200ResponsePagesInner>;
+    /**
+     * 
+     * @type {GetSocialBilibiliVideoinfo200ResponseSubtitle}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    subtitle?: GetSocialBilibiliVideoinfo200ResponseSubtitle;
+    /**
+     * 联合投稿成员列表。
+     * @type {Array<GetSocialBilibiliVideoinfo200ResponseStaffInner>}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    staff?: Array<GetSocialBilibiliVideoinfo200ResponseStaffInner>;
+    /**
+     * 
+     * @type {GetSocialBilibiliVideoinfo200ResponseUgcSeason}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    ugcSeason?: GetSocialBilibiliVideoinfo200ResponseUgcSeason | null;
+    /**
+     * 是否为付费合集。
+     * @type {boolean}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    isChargeableSeason?: boolean;
+    /**
+     * 是否为剧情类视频。
+     * @type {boolean}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    isStory?: boolean;
+    /**
+     * 
+     * @type {GetSocialBilibiliVideoinfo200ResponseHonorReply}
+     * @memberof GetSocialBilibiliVideoinfo200Response
+     */
+    honorReply?: GetSocialBilibiliVideoinfo200ResponseHonorReply;
 }
 
 /**
@@ -147,6 +280,7 @@ export function GetSocialBilibiliVideoinfo200ResponseFromJSONTyped(json: any, ig
         'bvid': json['bvid'] == null ? undefined : json['bvid'],
         'aid': json['aid'] == null ? undefined : json['aid'],
         'videos': json['videos'] == null ? undefined : json['videos'],
+        'tid': json['tid'] == null ? undefined : json['tid'],
         'tname': json['tname'] == null ? undefined : json['tname'],
         'copyright': json['copyright'] == null ? undefined : json['copyright'],
         'pic': json['pic'] == null ? undefined : json['pic'],
@@ -154,10 +288,23 @@ export function GetSocialBilibiliVideoinfo200ResponseFromJSONTyped(json: any, ig
         'pubdate': json['pubdate'] == null ? undefined : json['pubdate'],
         'ctime': json['ctime'] == null ? undefined : json['ctime'],
         'desc': json['desc'] == null ? undefined : json['desc'],
+        'descV2': json['desc_v2'] == null ? undefined : ((json['desc_v2'] as Array<any>).map(GetSocialBilibiliVideoinfo200ResponseDescV2InnerFromJSON)),
+        'state': json['state'] == null ? undefined : json['state'],
         'duration': json['duration'] == null ? undefined : json['duration'],
+        'rights': json['rights'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseRightsFromJSON(json['rights']),
         'owner': json['owner'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseOwnerFromJSON(json['owner']),
         'stat': json['stat'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseStatFromJSON(json['stat']),
+        'dynamic': json['dynamic'] == null ? undefined : json['dynamic'],
+        'cid': json['cid'] == null ? undefined : json['cid'],
+        'dimension': json['dimension'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseDimensionFromJSON(json['dimension']),
+        'noCache': json['no_cache'] == null ? undefined : json['no_cache'],
         'pages': json['pages'] == null ? undefined : ((json['pages'] as Array<any>).map(GetSocialBilibiliVideoinfo200ResponsePagesInnerFromJSON)),
+        'subtitle': json['subtitle'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseSubtitleFromJSON(json['subtitle']),
+        'staff': json['staff'] == null ? undefined : ((json['staff'] as Array<any>).map(GetSocialBilibiliVideoinfo200ResponseStaffInnerFromJSON)),
+        'ugcSeason': json['ugc_season'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseUgcSeasonFromJSON(json['ugc_season']),
+        'isChargeableSeason': json['is_chargeable_season'] == null ? undefined : json['is_chargeable_season'],
+        'isStory': json['is_story'] == null ? undefined : json['is_story'],
+        'honorReply': json['honor_reply'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponseHonorReplyFromJSON(json['honor_reply']),
     };
 }
 
@@ -175,6 +322,7 @@ export function GetSocialBilibiliVideoinfo200ResponseToJSONTyped(value?: GetSoci
         'bvid': value['bvid'],
         'aid': value['aid'],
         'videos': value['videos'],
+        'tid': value['tid'],
         'tname': value['tname'],
         'copyright': value['copyright'],
         'pic': value['pic'],
@@ -182,10 +330,23 @@ export function GetSocialBilibiliVideoinfo200ResponseToJSONTyped(value?: GetSoci
         'pubdate': value['pubdate'],
         'ctime': value['ctime'],
         'desc': value['desc'],
+        'desc_v2': value['descV2'] == null ? undefined : ((value['descV2'] as Array<any>).map(GetSocialBilibiliVideoinfo200ResponseDescV2InnerToJSON)),
+        'state': value['state'],
         'duration': value['duration'],
+        'rights': GetSocialBilibiliVideoinfo200ResponseRightsToJSON(value['rights']),
         'owner': GetSocialBilibiliVideoinfo200ResponseOwnerToJSON(value['owner']),
         'stat': GetSocialBilibiliVideoinfo200ResponseStatToJSON(value['stat']),
+        'dynamic': value['dynamic'],
+        'cid': value['cid'],
+        'dimension': GetSocialBilibiliVideoinfo200ResponseDimensionToJSON(value['dimension']),
+        'no_cache': value['noCache'],
         'pages': value['pages'] == null ? undefined : ((value['pages'] as Array<any>).map(GetSocialBilibiliVideoinfo200ResponsePagesInnerToJSON)),
+        'subtitle': GetSocialBilibiliVideoinfo200ResponseSubtitleToJSON(value['subtitle']),
+        'staff': value['staff'] == null ? undefined : ((value['staff'] as Array<any>).map(GetSocialBilibiliVideoinfo200ResponseStaffInnerToJSON)),
+        'ugc_season': GetSocialBilibiliVideoinfo200ResponseUgcSeasonToJSON(value['ugcSeason']),
+        'is_chargeable_season': value['isChargeableSeason'],
+        'is_story': value['isStory'],
+        'honor_reply': GetSocialBilibiliVideoinfo200ResponseHonorReplyToJSON(value['honorReply']),
     };
 }
 

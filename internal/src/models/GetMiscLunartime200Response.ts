@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetMiscLunartime200ResponseData } from './GetMiscLunartime200ResponseData';
-import {
-    GetMiscLunartime200ResponseDataFromJSON,
-    GetMiscLunartime200ResponseDataFromJSONTyped,
-    GetMiscLunartime200ResponseDataToJSON,
-    GetMiscLunartime200ResponseDataToJSONTyped,
-} from './GetMiscLunartime200ResponseData';
-
 /**
  * 
  * @export
@@ -28,23 +20,137 @@ import {
  */
 export interface GetMiscLunartime200Response {
     /**
-     * 业务状态码，200 表示成功。
-     * @type {number}
-     * @memberof GetMiscLunartime200Response
-     */
-    code?: number;
-    /**
-     * 状态描述。
+     * 原始 ts 入参。
      * @type {string}
      * @memberof GetMiscLunartime200Response
      */
-    message?: string;
+    queryTimestamp?: string;
     /**
-     * 
-     * @type {GetMiscLunartime200ResponseData}
+     * 原始 timezone 入参。
+     * @type {string}
      * @memberof GetMiscLunartime200Response
      */
-    data?: GetMiscLunartime200ResponseData;
+    queryTimezone?: string;
+    /**
+     * 解析后的时区。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    timezone?: string;
+    /**
+     * 本地化时间，格式 YYYY-MM-DD HH:mm:ss。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    datetime?: string;
+    /**
+     * RFC3339 时间格式。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    datetimeRfc3339?: string;
+    /**
+     * 秒级 Unix 时间戳。
+     * @type {number}
+     * @memberof GetMiscLunartime200Response
+     */
+    timestampUnix?: number;
+    /**
+     * 星期英文。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    weekday?: string;
+    /**
+     * 星期中文。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    weekdayCn?: string;
+    /**
+     * 农历年份（数字）。
+     * @type {number}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarYear?: number;
+    /**
+     * 农历月份（数字）。
+     * @type {number}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarMonth?: number;
+    /**
+     * 农历日期（数字）。
+     * @type {number}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarDay?: number;
+    /**
+     * 是否闰月。
+     * @type {boolean}
+     * @memberof GetMiscLunartime200Response
+     */
+    isLeapMonth?: boolean;
+    /**
+     * 农历年份中文表示。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarYearCn?: string;
+    /**
+     * 农历月份中文表示。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarMonthCn?: string;
+    /**
+     * 农历日期中文表示。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarDayCn?: string;
+    /**
+     * 干支年。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    ganzhiYear?: string;
+    /**
+     * 干支月。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    ganzhiMonth?: string;
+    /**
+     * 干支日。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    ganzhiDay?: string;
+    /**
+     * 生肖。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    zodiac?: string;
+    /**
+     * 节气名称。有值时返回，无值时可能为空字符串或不返回。
+     * @type {string}
+     * @memberof GetMiscLunartime200Response
+     */
+    solarTerm?: string;
+    /**
+     * 农历节日数组。
+     * @type {Array<string>}
+     * @memberof GetMiscLunartime200Response
+     */
+    lunarFestivals?: Array<string>;
+    /**
+     * 公历节日数组。
+     * @type {Array<string>}
+     * @memberof GetMiscLunartime200Response
+     */
+    solarFestivals?: Array<string>;
 }
 
 /**
@@ -64,9 +170,28 @@ export function GetMiscLunartime200ResponseFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'message': json['message'] == null ? undefined : json['message'],
-        'data': json['data'] == null ? undefined : GetMiscLunartime200ResponseDataFromJSON(json['data']),
+        'queryTimestamp': json['query_timestamp'] == null ? undefined : json['query_timestamp'],
+        'queryTimezone': json['query_timezone'] == null ? undefined : json['query_timezone'],
+        'timezone': json['timezone'] == null ? undefined : json['timezone'],
+        'datetime': json['datetime'] == null ? undefined : json['datetime'],
+        'datetimeRfc3339': json['datetime_rfc3339'] == null ? undefined : json['datetime_rfc3339'],
+        'timestampUnix': json['timestamp_unix'] == null ? undefined : json['timestamp_unix'],
+        'weekday': json['weekday'] == null ? undefined : json['weekday'],
+        'weekdayCn': json['weekday_cn'] == null ? undefined : json['weekday_cn'],
+        'lunarYear': json['lunar_year'] == null ? undefined : json['lunar_year'],
+        'lunarMonth': json['lunar_month'] == null ? undefined : json['lunar_month'],
+        'lunarDay': json['lunar_day'] == null ? undefined : json['lunar_day'],
+        'isLeapMonth': json['is_leap_month'] == null ? undefined : json['is_leap_month'],
+        'lunarYearCn': json['lunar_year_cn'] == null ? undefined : json['lunar_year_cn'],
+        'lunarMonthCn': json['lunar_month_cn'] == null ? undefined : json['lunar_month_cn'],
+        'lunarDayCn': json['lunar_day_cn'] == null ? undefined : json['lunar_day_cn'],
+        'ganzhiYear': json['ganzhi_year'] == null ? undefined : json['ganzhi_year'],
+        'ganzhiMonth': json['ganzhi_month'] == null ? undefined : json['ganzhi_month'],
+        'ganzhiDay': json['ganzhi_day'] == null ? undefined : json['ganzhi_day'],
+        'zodiac': json['zodiac'] == null ? undefined : json['zodiac'],
+        'solarTerm': json['solar_term'] == null ? undefined : json['solar_term'],
+        'lunarFestivals': json['lunar_festivals'] == null ? undefined : json['lunar_festivals'],
+        'solarFestivals': json['solar_festivals'] == null ? undefined : json['solar_festivals'],
     };
 }
 
@@ -81,9 +206,28 @@ export function GetMiscLunartime200ResponseToJSONTyped(value?: GetMiscLunartime2
 
     return {
         
-        'code': value['code'],
-        'message': value['message'],
-        'data': GetMiscLunartime200ResponseDataToJSON(value['data']),
+        'query_timestamp': value['queryTimestamp'],
+        'query_timezone': value['queryTimezone'],
+        'timezone': value['timezone'],
+        'datetime': value['datetime'],
+        'datetime_rfc3339': value['datetimeRfc3339'],
+        'timestamp_unix': value['timestampUnix'],
+        'weekday': value['weekday'],
+        'weekday_cn': value['weekdayCn'],
+        'lunar_year': value['lunarYear'],
+        'lunar_month': value['lunarMonth'],
+        'lunar_day': value['lunarDay'],
+        'is_leap_month': value['isLeapMonth'],
+        'lunar_year_cn': value['lunarYearCn'],
+        'lunar_month_cn': value['lunarMonthCn'],
+        'lunar_day_cn': value['lunarDayCn'],
+        'ganzhi_year': value['ganzhiYear'],
+        'ganzhi_month': value['ganzhiMonth'],
+        'ganzhi_day': value['ganzhiDay'],
+        'zodiac': value['zodiac'],
+        'solar_term': value['solarTerm'],
+        'lunar_festivals': value['lunarFestivals'],
+        'solar_festivals': value['solarFestivals'],
     };
 }
 

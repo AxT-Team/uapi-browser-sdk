@@ -20,23 +20,17 @@ import { mapValues } from '../runtime';
  */
 export interface GetWebparseExtractimages200Response {
     /**
-     * 
-     * @type {number}
-     * @memberof GetWebparseExtractimages200Response
-     */
-    count?: number;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GetWebparseExtractimages200Response
-     */
-    images?: Array<string>;
-    /**
-     * 
+     * 实际解析的网页地址。
      * @type {string}
      * @memberof GetWebparseExtractimages200Response
      */
-    url?: string;
+    pageUrl?: string;
+    /**
+     * 页面中提取到的图片链接列表。
+     * @type {Array<string>}
+     * @memberof GetWebparseExtractimages200Response
+     */
+    imageUrls?: Array<string>;
 }
 
 /**
@@ -56,9 +50,8 @@ export function GetWebparseExtractimages200ResponseFromJSONTyped(json: any, igno
     }
     return {
         
-        'count': json['count'] == null ? undefined : json['count'],
-        'images': json['images'] == null ? undefined : json['images'],
-        'url': json['url'] == null ? undefined : json['url'],
+        'pageUrl': json['page_url'] == null ? undefined : json['page_url'],
+        'imageUrls': json['image_urls'] == null ? undefined : json['image_urls'],
     };
 }
 
@@ -73,9 +66,8 @@ export function GetWebparseExtractimages200ResponseToJSONTyped(value?: GetWebpar
 
     return {
         
-        'count': value['count'],
-        'images': value['images'],
-        'url': value['url'],
+        'page_url': value['pageUrl'],
+        'image_urls': value['imageUrls'],
     };
 }
 

@@ -8,8 +8,10 @@ Name | Type
 ------------ | -------------
 `province` | string
 `city` | string
+`district` | string
 `adcode` | string
 `weather` | string
+`weatherIcon` | string
 `temperature` | number
 `windDirection` | string
 `windPower` | string
@@ -42,8 +44,10 @@ import type { GetMiscWeather200Response } from 'uapi-browser-sdk-browser'
 const example = {
   "province": 北京市,
   "city": 北京,
+  "district": 海淀区,
   "adcode": ,
   "weather": 晴,
+  "weatherIcon": 100,
   "temperature": 18.3,
   "windDirection": 西南风,
   "windPower": 微风,

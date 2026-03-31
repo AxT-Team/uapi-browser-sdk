@@ -13,16 +13,8 @@
  */
 
 import { mapValues } from '../runtime';
-import type { PostAiTranslate200ResponseDataExplanation } from './PostAiTranslate200ResponseDataExplanation';
-import {
-    PostAiTranslate200ResponseDataExplanationFromJSON,
-    PostAiTranslate200ResponseDataExplanationFromJSONTyped,
-    PostAiTranslate200ResponseDataExplanationToJSON,
-    PostAiTranslate200ResponseDataExplanationToJSONTyped,
-} from './PostAiTranslate200ResponseDataExplanation';
-
 /**
- * 单个翻译的详细结果，仅在单个翻译时返回。
+ * 翻译结果的详细信息。
  * @export
  * @interface PostAiTranslate200ResponseData
  */
@@ -32,37 +24,7 @@ export interface PostAiTranslate200ResponseData {
      * @type {string}
      * @memberof PostAiTranslate200ResponseData
      */
-    originalText?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PostAiTranslate200ResponseData
-     */
     translatedText?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PostAiTranslate200ResponseData
-     */
-    detectedLang?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PostAiTranslate200ResponseData
-     */
-    confidenceScore?: number;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof PostAiTranslate200ResponseData
-     */
-    alternatives?: Array<string>;
-    /**
-     * 
-     * @type {PostAiTranslate200ResponseDataExplanation}
-     * @memberof PostAiTranslate200ResponseData
-     */
-    explanation?: PostAiTranslate200ResponseDataExplanation;
 }
 
 /**
@@ -82,12 +44,7 @@ export function PostAiTranslate200ResponseDataFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'originalText': json['original_text'] == null ? undefined : json['original_text'],
         'translatedText': json['translated_text'] == null ? undefined : json['translated_text'],
-        'detectedLang': json['detected_lang'] == null ? undefined : json['detected_lang'],
-        'confidenceScore': json['confidence_score'] == null ? undefined : json['confidence_score'],
-        'alternatives': json['alternatives'] == null ? undefined : json['alternatives'],
-        'explanation': json['explanation'] == null ? undefined : PostAiTranslate200ResponseDataExplanationFromJSON(json['explanation']),
     };
 }
 
@@ -102,12 +59,7 @@ export function PostAiTranslate200ResponseDataToJSONTyped(value?: PostAiTranslat
 
     return {
         
-        'original_text': value['originalText'],
         'translated_text': value['translatedText'],
-        'detected_lang': value['detectedLang'],
-        'confidence_score': value['confidenceScore'],
-        'alternatives': value['alternatives'],
-        'explanation': PostAiTranslate200ResponseDataExplanationToJSON(value['explanation']),
     };
 }
 

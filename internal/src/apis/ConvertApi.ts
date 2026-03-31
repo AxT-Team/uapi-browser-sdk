@@ -48,10 +48,9 @@ export interface PostConvertJsonOperationRequest {
 export class ConvertApi extends runtime.BaseAPI {
 
     /**
-     * 时间戳和日期字符串，哪个用着更顺手？别纠结了，这个接口让你轻松拥有两种格式！  ## 功能概述 这是一个非常智能的转换器。你给它一个 Unix 时间戳，它还你一个人类可读的日期时间；你给它一个日期时间字符串，它还你一个 Unix 时间戳。它会自动识别你输入的是哪种格式。  ## 使用须知 这个接口非常智能，能够自动识别输入格式：  - **输入时间戳**：支持10位秒级（如 `1672531200`）和13位毫秒级（如 `1672531200000`）。 - **输入日期字符串**：为了确保准确性，推荐使用 `YYYY-MM-DD HH:mm:ss` 标准格式（如 `2023-01-01 08:00:00`）。  > [!TIP] > 无论你输入哪种格式，响应中都会同时包含标准日期字符串和秒级Unix时间戳，方便你按需取用。  ## 错误处理指南 - **400 Bad Request**: 如果你提供的 `time` 参数既不是有效的时间戳，也不是我们支持的日期格式，就会收到这个错误。请检查你的输入值。
-     * 时间戳转换
+     * Creates request options for getConvertUnixtime without sending the request
      */
-    async getConvertUnixtimeRaw(requestParameters: GetConvertUnixtimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetConvertUnixtime200Response>> {
+    async getConvertUnixtimeRequestOpts(requestParameters: GetConvertUnixtimeRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['time'] == null) {
             throw new runtime.RequiredError(
                 'time',
@@ -70,12 +69,21 @@ export class ConvertApi extends runtime.BaseAPI {
 
         let urlPath = `/convert/unixtime`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 时间戳和日期字符串，哪个用着更顺手？别纠结了，这个接口让你轻松拥有两种格式！  ## 功能概述 这是一个非常智能的转换器。你给它一个 Unix 时间戳，它还你一个人类可读的日期时间；你给它一个日期时间字符串，它还你一个 Unix 时间戳。它会自动识别你输入的是哪种格式。  ## 使用须知 这个接口非常智能，能够自动识别输入格式：  - **输入时间戳**：支持10位秒级（如 `1672531200`）和13位毫秒级（如 `1672531200000`）。 - **输入日期字符串**：为了确保准确性，推荐使用 `YYYY-MM-DD HH:mm:ss` 标准格式（如 `2023-01-01 08:00:00`）。  > [!TIP] > 无论你输入哪种格式，响应中都会同时包含标准日期字符串和秒级Unix时间戳，方便你按需取用。  ## 错误处理指南 - **400 Bad Request**: 如果你提供的 `time` 参数既不是有效的时间戳，也不是我们支持的日期格式，就会收到这个错误。请检查你的输入值。
+     * 时间戳转换
+     */
+    async getConvertUnixtimeRaw(requestParameters: GetConvertUnixtimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetConvertUnixtime200Response>> {
+        const requestOptions = await this.getConvertUnixtimeRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetConvertUnixtime200ResponseFromJSON(jsonValue));
     }
@@ -90,10 +98,9 @@ export class ConvertApi extends runtime.BaseAPI {
     }
 
     /**
-     * 还在为一团乱麻的 JSON 字符串头疼吗？这个接口能瞬间让它变得井井有条，赏心悦目。  ## 功能概述 你只需要提供一个原始的、可能是压缩过的或者格式混乱的 JSON 字符串，这个 API 就会返回一个经过美化（带标准缩进和换行）的版本。这在调试 API 响应、或者需要在前端界面清晰展示 JSON 数据时非常有用。  ## 使用须知 > [!NOTE] > **请求格式** > 请注意，待格式化的 JSON 字符串需要被包裹在另一个 JSON 对象中，作为 `content` 字段的值提交。具体格式请参考请求体示例。  ## 错误处理指南 - **400 Bad Request**: 最常见的原因是你提供的 `content` 字符串本身不是一个有效的 JSON。请仔细检查括号、引号是否正确闭合，或者有没有多余的逗号等语法错误。
-     * JSON 格式化
+     * Creates request options for postConvertJson without sending the request
      */
-    async postConvertJsonRaw(requestParameters: PostConvertJsonOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostConvertJson200Response>> {
+    async postConvertJsonRequestOpts(requestParameters: PostConvertJsonOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postConvertJsonRequest'] == null) {
             throw new runtime.RequiredError(
                 'postConvertJsonRequest',
@@ -110,13 +117,22 @@ export class ConvertApi extends runtime.BaseAPI {
 
         let urlPath = `/convert/json`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostConvertJsonRequestToJSON(requestParameters['postConvertJsonRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 还在为一团乱麻的 JSON 字符串头疼吗？这个接口能瞬间让它变得井井有条，赏心悦目。  ## 功能概述 你只需要提供一个原始的、可能是压缩过的或者格式混乱的 JSON 字符串，这个 API 就会返回一个经过美化（带标准缩进和换行）的版本。这在调试 API 响应、或者需要在前端界面清晰展示 JSON 数据时非常有用。  ## 使用须知 > [!NOTE] > **请求格式** > 请注意，待格式化的 JSON 字符串需要被包裹在另一个 JSON 对象中，作为 `content` 字段的值提交。具体格式请参考请求体示例。  ## 错误处理指南 - **400 Bad Request**: 最常见的原因是你提供的 `content` 字符串本身不是一个有效的 JSON。请仔细检查括号、引号是否正确闭合，或者有没有多余的逗号等语法错误。
+     * JSON 格式化
+     */
+    async postConvertJsonRaw(requestParameters: PostConvertJsonOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostConvertJson200Response>> {
+        const requestOptions = await this.postConvertJsonRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostConvertJson200ResponseFromJSON(jsonValue));
     }

@@ -6,11 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`fastModeAvailable` | boolean
 `batchTranslationAvailable` | boolean
-`maxTextLength` | number
 `maxBatchSize` | number
-`typicalResponseTimeMs` | [GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs](GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs.md)
+`maxTextLength` | number
 
 ## Example
 
@@ -19,11 +17,9 @@ import type { GetAiTranslateLanguages200ResponsePerformance } from 'uapi-browser
 
 // TODO: Update the object below with actual values
 const example = {
-  "fastModeAvailable": true,
   "batchTranslationAvailable": true,
-  "maxTextLength": 10000,
   "maxBatchSize": 50,
-  "typicalResponseTimeMs": null,
+  "maxTextLength": 10000,
 } satisfies GetAiTranslateLanguages200ResponsePerformance
 
 console.log(example)

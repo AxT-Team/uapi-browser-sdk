@@ -47,7 +47,7 @@ const example = {
   "visibility": 25,
   "uvIndex": 5,
   "sunrise": 06:52,
-  "sunset": 1076,
+  "sunset": 17:56,
 } satisfies GetMiscWeather200ResponseForecastInner
 
 console.log(example)

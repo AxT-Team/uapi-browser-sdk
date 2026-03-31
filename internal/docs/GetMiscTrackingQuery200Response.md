@@ -6,9 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`code` | string
-`message` | string
-`data` | [GetMiscTrackingQuery200ResponseData](GetMiscTrackingQuery200ResponseData.md)
+`trackingNumber` | string
+`carrierCode` | string
+`carrierName` | string
+`trackCount` | number
+`tracks` | [Array&lt;GetMiscTrackingQuery200ResponseTracksInner&gt;](GetMiscTrackingQuery200ResponseTracksInner.md)
 
 ## Example
 
@@ -17,9 +19,11 @@ import type { GetMiscTrackingQuery200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": SUCCESS,
-  "message": 操作成功,
-  "data": null,
+  "trackingNumber": YT1234567890123,
+  "carrierCode": yuantong,
+  "carrierName": 圆通速递,
+  "trackCount": 3,
+  "tracks": null,
 } satisfies GetMiscTrackingQuery200Response
 
 console.log(example)

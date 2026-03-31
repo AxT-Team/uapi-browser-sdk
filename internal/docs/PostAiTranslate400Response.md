@@ -19,7 +19,7 @@ import type { PostAiTranslate400Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": 400,
   "message": Invalid request parameters,
-  "error": either 'text' or 'texts' must be provided,
+  "error": 'text' must be provided,
 } satisfies PostAiTranslate400Response
 
 console.log(example)

@@ -26,7 +26,7 @@ export interface GetMiscWeather200ResponseMinutelyPrecipDataInner {
      */
     time?: string;
     /**
-     * 5分钟累计降水量 mm
+     * 该时间点的降水量 mm
      * @type {number}
      * @memberof GetMiscWeather200ResponseMinutelyPrecipDataInner
      */

@@ -6,9 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`count` | number
-`images` | Array&lt;string&gt;
-`url` | string
+`pageUrl` | string
+`imageUrls` | Array&lt;string&gt;
 
 ## Example
 
@@ -17,9 +16,8 @@ import type { GetWebparseExtractimages200Response } from 'uapi-browser-sdk-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "count": 25,
-  "images": ["https://example.com/image1.jpg","https://example.com/image2.png"],
-  "url": https://example.com,
+  "pageUrl": https://cn.bing.com/,
+  "imageUrls": ["https://example.com/image1.jpg","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="],
 } satisfies GetWebparseExtractimages200Response
 
 console.log(example)

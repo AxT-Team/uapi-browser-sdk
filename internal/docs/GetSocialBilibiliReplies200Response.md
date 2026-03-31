@@ -7,8 +7,16 @@
 Name | Type
 ------------ | -------------
 `page` | [GetSocialBilibiliReplies200ResponsePage](GetSocialBilibiliReplies200ResponsePage.md)
+`config` | object
 `hots` | Array&lt;object&gt;
 `replies` | [Array&lt;GetSocialBilibiliReplies200ResponseRepliesInner&gt;](GetSocialBilibiliReplies200ResponseRepliesInner.md)
+`upper` | object
+`top` | object
+`notice` | object
+`vote` | number
+`folder` | object
+`control` | object
+`cursor` | object
 
 ## Example
 
@@ -18,8 +26,16 @@ import type { GetSocialBilibiliReplies200Response } from 'uapi-browser-sdk-brows
 // TODO: Update the object below with actual values
 const example = {
   "page": null,
+  "config": null,
   "hots": null,
   "replies": null,
+  "upper": null,
+  "top": null,
+  "notice": null,
+  "vote": 0,
+  "folder": null,
+  "control": null,
+  "cursor": null,
 } satisfies GetSocialBilibiliReplies200Response
 
 console.log(example)

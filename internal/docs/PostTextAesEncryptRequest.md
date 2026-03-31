@@ -17,7 +17,7 @@ import type { PostTextAesEncryptRequest } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "key": a-secret-key-123,
-  "text": top secret message,
+  "text": 这是一段需要加密的消息,
 } satisfies PostTextAesEncryptRequest
 
 console.log(example)

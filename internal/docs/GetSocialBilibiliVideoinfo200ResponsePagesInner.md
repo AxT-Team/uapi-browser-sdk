@@ -9,7 +9,11 @@ Name | Type
 `cid` | number
 `page` | number
 `part` | string
+`from` | string
 `duration` | number
+`vid` | string
+`weblink` | string
+`dimension` | [GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension](GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension.md)
 
 ## Example
 
@@ -21,7 +25,11 @@ const example = {
   "cid": 130283995,
   "page": 1,
   "part": 【官方MV】Rick Astley - Never Gonna Give You Up,
+  "from": vupload,
   "duration": 213,
+  "vid": ,
+  "weblink": ,
+  "dimension": null,
 } satisfies GetSocialBilibiliVideoinfo200ResponsePagesInner
 
 console.log(example)

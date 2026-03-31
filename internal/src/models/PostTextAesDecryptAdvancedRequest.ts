@@ -33,13 +33,13 @@ export interface PostTextAesDecryptAdvancedRequest {
     key: string;
     /**
      * 加密模式（必须与加密时相同）：GCM/CBC/ECB/CTR/OFB/CFB
-     * @type {string}
+     * @type {PostTextAesDecryptAdvancedRequestModeEnum}
      * @memberof PostTextAesDecryptAdvancedRequest
      */
     mode: PostTextAesDecryptAdvancedRequestModeEnum;
     /**
      * 填充方式（可选，必须与加密时相同）：PKCS7/ZERO/NONE。GCM模式默认为NONE
-     * @type {string}
+     * @type {PostTextAesDecryptAdvancedRequestPaddingEnum}
      * @memberof PostTextAesDecryptAdvancedRequest
      */
     padding?: PostTextAesDecryptAdvancedRequestPaddingEnum;

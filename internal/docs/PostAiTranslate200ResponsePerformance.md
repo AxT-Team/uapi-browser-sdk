@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `processingTimeMs` | number
-`cacheHit` | boolean
 
 ## Example
 
@@ -17,7 +16,6 @@ import type { PostAiTranslate200ResponsePerformance } from 'uapi-browser-sdk-bro
 // TODO: Update the object below with actual values
 const example = {
   "processingTimeMs": 850,
-  "cacheHit": false,
 } satisfies PostAiTranslate200ResponsePerformance
 
 console.log(example)

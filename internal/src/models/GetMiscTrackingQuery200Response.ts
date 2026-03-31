@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetMiscTrackingQuery200ResponseData } from './GetMiscTrackingQuery200ResponseData';
+import type { GetMiscTrackingQuery200ResponseTracksInner } from './GetMiscTrackingQuery200ResponseTracksInner';
 import {
-    GetMiscTrackingQuery200ResponseDataFromJSON,
-    GetMiscTrackingQuery200ResponseDataFromJSONTyped,
-    GetMiscTrackingQuery200ResponseDataToJSON,
-    GetMiscTrackingQuery200ResponseDataToJSONTyped,
-} from './GetMiscTrackingQuery200ResponseData';
+    GetMiscTrackingQuery200ResponseTracksInnerFromJSON,
+    GetMiscTrackingQuery200ResponseTracksInnerFromJSONTyped,
+    GetMiscTrackingQuery200ResponseTracksInnerToJSON,
+    GetMiscTrackingQuery200ResponseTracksInnerToJSONTyped,
+} from './GetMiscTrackingQuery200ResponseTracksInner';
 
 /**
  * 
@@ -28,23 +28,35 @@ import {
  */
 export interface GetMiscTrackingQuery200Response {
     /**
-     * 
+     * 快递单号
      * @type {string}
      * @memberof GetMiscTrackingQuery200Response
      */
-    code?: string;
+    trackingNumber?: string;
     /**
-     * 
+     * 快递公司编码
      * @type {string}
      * @memberof GetMiscTrackingQuery200Response
      */
-    message?: string;
+    carrierCode?: string;
     /**
-     * 
-     * @type {GetMiscTrackingQuery200ResponseData}
+     * 快递公司名称
+     * @type {string}
      * @memberof GetMiscTrackingQuery200Response
      */
-    data?: GetMiscTrackingQuery200ResponseData;
+    carrierName?: string;
+    /**
+     * 物流轨迹数量
+     * @type {number}
+     * @memberof GetMiscTrackingQuery200Response
+     */
+    trackCount?: number;
+    /**
+     * 物流轨迹列表，按时间倒序排列
+     * @type {Array<GetMiscTrackingQuery200ResponseTracksInner>}
+     * @memberof GetMiscTrackingQuery200Response
+     */
+    tracks?: Array<GetMiscTrackingQuery200ResponseTracksInner>;
 }
 
 /**
@@ -64,9 +76,11 @@ export function GetMiscTrackingQuery200ResponseFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'message': json['message'] == null ? undefined : json['message'],
-        'data': json['data'] == null ? undefined : GetMiscTrackingQuery200ResponseDataFromJSON(json['data']),
+        'trackingNumber': json['tracking_number'] == null ? undefined : json['tracking_number'],
+        'carrierCode': json['carrier_code'] == null ? undefined : json['carrier_code'],
+        'carrierName': json['carrier_name'] == null ? undefined : json['carrier_name'],
+        'trackCount': json['track_count'] == null ? undefined : json['track_count'],
+        'tracks': json['tracks'] == null ? undefined : ((json['tracks'] as Array<any>).map(GetMiscTrackingQuery200ResponseTracksInnerFromJSON)),
     };
 }
 
@@ -81,9 +95,11 @@ export function GetMiscTrackingQuery200ResponseToJSONTyped(value?: GetMiscTracki
 
     return {
         
-        'code': value['code'],
-        'message': value['message'],
-        'data': GetMiscTrackingQuery200ResponseDataToJSON(value['data']),
+        'tracking_number': value['trackingNumber'],
+        'carrier_code': value['carrierCode'],
+        'carrier_name': value['carrierName'],
+        'track_count': value['trackCount'],
+        'tracks': value['tracks'] == null ? undefined : ((value['tracks'] as Array<any>).map(GetMiscTrackingQuery200ResponseTracksInnerToJSON)),
     };
 }
 

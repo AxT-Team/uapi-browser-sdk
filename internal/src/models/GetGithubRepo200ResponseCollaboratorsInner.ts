@@ -20,25 +20,25 @@ import { mapValues } from '../runtime';
  */
 export interface GetGithubRepo200ResponseCollaboratorsInner {
     /**
-     * 
+     * GitHub 登录名。
      * @type {string}
      * @memberof GetGithubRepo200ResponseCollaboratorsInner
      */
     login?: string;
     /**
-     * 
+     * 显示名称。
      * @type {string}
      * @memberof GetGithubRepo200ResponseCollaboratorsInner
      */
     name?: string;
     /**
-     * 
+     * 公开邮箱。
      * @type {string}
      * @memberof GetGithubRepo200ResponseCollaboratorsInner
      */
     email?: string;
     /**
-     * 
+     * GitHub 主页链接。
      * @type {string}
      * @memberof GetGithubRepo200ResponseCollaboratorsInner
      */

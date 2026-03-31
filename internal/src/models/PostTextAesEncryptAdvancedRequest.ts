@@ -33,13 +33,13 @@ export interface PostTextAesEncryptAdvancedRequest {
     key: string;
     /**
      * 加密模式：GCM/CBC/ECB/CTR/OFB/CFB（可选，默认GCM）
-     * @type {string}
+     * @type {PostTextAesEncryptAdvancedRequestModeEnum}
      * @memberof PostTextAesEncryptAdvancedRequest
      */
     mode?: PostTextAesEncryptAdvancedRequestModeEnum;
     /**
      * 填充方式：PKCS7/ZERO/NONE（可选，默认PKCS7）
-     * @type {string}
+     * @type {PostTextAesEncryptAdvancedRequestPaddingEnum}
      * @memberof PostTextAesEncryptAdvancedRequest
      */
     padding?: PostTextAesEncryptAdvancedRequestPaddingEnum;
@@ -51,7 +51,7 @@ export interface PostTextAesEncryptAdvancedRequest {
     iv?: string;
     /**
      * 输出格式：base64（默认）或hex
-     * @type {string}
+     * @type {PostTextAesEncryptAdvancedRequestOutputFormatEnum}
      * @memberof PostTextAesEncryptAdvancedRequest
      */
     outputFormat?: PostTextAesEncryptAdvancedRequestOutputFormatEnum;

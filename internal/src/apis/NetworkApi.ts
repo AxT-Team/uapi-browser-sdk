@@ -147,10 +147,9 @@ export interface GetNetworkWxdomainRequest {
 export class NetworkApi extends runtime.BaseAPI {
 
     /**
-     * 想知道一个域名指向了哪个IP？或者它的邮件服务器是谁？这个接口就像一个在线的 `dig` 或 `nslookup` 工具。  ## 功能概述 你可以查询指定域名的各种DNS记录，包括 `A` (IPv4), `AAAA` (IPv6), `CNAME` (别名), `MX` (邮件交换), `NS` (域名服务器) 和 `TXT` (文本记录)。
-     * 执行DNS解析查询
+     * Creates request options for getNetworkDns without sending the request
      */
-    async getNetworkDnsRaw(requestParameters: GetNetworkDnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkDns200Response>> {
+    async getNetworkDnsRequestOpts(requestParameters: GetNetworkDnsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['domain'] == null) {
             throw new runtime.RequiredError(
                 'domain',
@@ -173,12 +172,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/dns`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道一个域名指向了哪个IP？或者它的邮件服务器是谁？这个接口就像一个在线的 `dig` 或 `nslookup` 工具。  ## 功能概述 你可以查询指定域名的各种DNS记录，包括 `A` (IPv4), `AAAA` (IPv6), `CNAME` (别名), `MX` (邮件交换), `NS` (域名服务器) 和 `TXT` (文本记录)。
+     * 执行DNS解析查询
+     */
+    async getNetworkDnsRaw(requestParameters: GetNetworkDnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkDns200Response>> {
+        const requestOptions = await this.getNetworkDnsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkDns200ResponseFromJSON(jsonValue));
     }
@@ -193,10 +201,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道一个网站的背后运营主体是谁吗？如果它是在中国大陆运营的，ICP备案信息可以告诉你答案。  ## 功能概述 提供一个域名，查询其在中国工信部的ICP（Internet Content Provider）备案信息。这对于商业合作前的背景调查、验证网站合法性等场景很有帮助。  > [!NOTE] > **查询范围** > 此查询仅对在中国大陆工信部进行过备案的域名有效。对于国外域名或未备案的域名，将查询不到结果。
-     * 查询域名ICP备案信息
+     * Creates request options for getNetworkIcp without sending the request
      */
-    async getNetworkIcpRaw(requestParameters: GetNetworkIcpRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkIcp200Response>> {
+    async getNetworkIcpRequestOpts(requestParameters: GetNetworkIcpRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['domain'] == null) {
             throw new runtime.RequiredError(
                 'domain',
@@ -215,12 +222,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/icp`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道一个网站的背后运营主体是谁吗？如果它是在中国大陆运营的，ICP备案信息可以告诉你答案。  ## 功能概述 提供一个域名，查询其在中国工信部的ICP（Internet Content Provider）备案信息。这对于商业合作前的背景调查、验证网站合法性等场景很有帮助。  > [!NOTE] > **查询范围** > 此查询仅对在中国大陆工信部进行过备案的域名有效。对于国外域名或未备案的域名，将查询不到结果。
+     * 查询域名ICP备案信息
+     */
+    async getNetworkIcpRaw(requestParameters: GetNetworkIcpRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkIcp200Response>> {
+        const requestOptions = await this.getNetworkIcpRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkIcp200ResponseFromJSON(jsonValue));
     }
@@ -235,10 +251,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
-     * 查询 IP
+     * Creates request options for getNetworkIpinfo without sending the request
      */
-    async getNetworkIpinfoRaw(requestParameters: GetNetworkIpinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkIpinfo200Response>> {
+    async getNetworkIpinfoRequestOpts(requestParameters: GetNetworkIpinfoRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['ip'] == null) {
             throw new runtime.RequiredError(
                 'ip',
@@ -261,12 +276,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/ipinfo`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+     * 查询 IP
+     */
+    async getNetworkIpinfoRaw(requestParameters: GetNetworkIpinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkIpinfo200Response>> {
+        const requestOptions = await this.getNetworkIpinfoRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkIpinfo200ResponseFromJSON(jsonValue));
     }
@@ -281,10 +305,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
-     * 查询我的 IP
+     * Creates request options for getNetworkMyip without sending the request
      */
-    async getNetworkMyipRaw(requestParameters: GetNetworkMyipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkMyip200Response>> {
+    async getNetworkMyipRequestOpts(requestParameters: GetNetworkMyipRequest): Promise<runtime.RequestOpts> {
         const queryParameters: any = {};
 
         if (requestParameters['source'] != null) {
@@ -296,12 +319,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/myip`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+     * 查询我的 IP
+     */
+    async getNetworkMyipRaw(requestParameters: GetNetworkMyipRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkMyip200Response>> {
+        const requestOptions = await this.getNetworkMyipRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkMyip200ResponseFromJSON(jsonValue));
     }
@@ -316,10 +348,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道从我们的服务器到你的服务器网络延迟高不高？这个工具可以帮你测试网络连通性。  ## 功能概述 这个接口会从我们的服务器节点对你指定的主机（域名或IP地址）执行 ICMP Ping 操作。它会返回最小、最大、平均延迟以及丢包率等关键指标，是诊断网络问题的得力助手。
-     * Ping 主机
+     * Creates request options for getNetworkPing without sending the request
      */
-    async getNetworkPingRaw(requestParameters: GetNetworkPingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPing200Response>> {
+    async getNetworkPingRequestOpts(requestParameters: GetNetworkPingRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['host'] == null) {
             throw new runtime.RequiredError(
                 'host',
@@ -338,12 +369,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/ping`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道从我们的服务器到你的服务器网络延迟高不高？这个工具可以帮你测试网络连通性。  ## 功能概述 这个接口会从我们的服务器节点对你指定的主机（域名或IP地址）执行 ICMP Ping 操作。它会返回最小、最大、平均延迟以及丢包率等关键指标，是诊断网络问题的得力助手。
+     * Ping 主机
+     */
+    async getNetworkPingRaw(requestParameters: GetNetworkPingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPing200Response>> {
+        const requestOptions = await this.getNetworkPingRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkPing200ResponseFromJSON(jsonValue));
     }
@@ -358,10 +398,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 这是一个非常方便的快捷接口，想知道你的网络到我们服务器的回程延迟吗？点一下就行！  ## 功能概述 这个接口是 `/network/myip` 和 `/network/ping` 的结合体。它会自动获取你客户端的公网IP，然后从我们的服务器Ping这个IP，并返回延迟数据。这对于快速判断你本地网络到服务器的连接质量非常有用。
-     * Ping 我的 IP
+     * Creates request options for getNetworkPingmyip without sending the request
      */
-    async getNetworkPingmyipRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPingmyip200Response>> {
+    async getNetworkPingmyipRequestOpts(): Promise<runtime.RequestOpts> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -369,12 +408,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/pingmyip`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 这是一个非常方便的快捷接口，想知道你的网络到我们服务器的回程延迟吗？点一下就行！  ## 功能概述 这个接口是 `/network/myip` 和 `/network/ping` 的结合体。它会自动获取你客户端的公网IP，然后从我们的服务器Ping这个IP，并返回延迟数据。这对于快速判断你本地网络到服务器的连接质量非常有用。
+     * Ping 我的 IP
+     */
+    async getNetworkPingmyipRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPingmyip200Response>> {
+        const requestOptions = await this.getNetworkPingmyipRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkPingmyip200ResponseFromJSON(jsonValue));
     }
@@ -389,10 +437,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想检查一下你的服务器上某个端口（比如SSH的22端口或者Web的80端口）是否对外开放？这个工具可以帮你快速确认。  ## 功能概述 你可以指定一个主机和端口号，我们的服务器会尝试连接该端口，并告诉你它是开放的（open）、关闭的（closed）还是超时了（timeout）。这对于网络服务配置检查和基本的安全扫描很有用。
-     * 端口扫描
+     * Creates request options for getNetworkPortscan without sending the request
      */
-    async getNetworkPortscanRaw(requestParameters: GetNetworkPortscanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPortscan200Response>> {
+    async getNetworkPortscanRequestOpts(requestParameters: GetNetworkPortscanRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['host'] == null) {
             throw new runtime.RequiredError(
                 'host',
@@ -426,12 +473,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/portscan`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想检查一下你的服务器上某个端口（比如SSH的22端口或者Web的80端口）是否对外开放？这个工具可以帮你快速确认。  ## 功能概述 你可以指定一个主机和端口号，我们的服务器会尝试连接该端口，并告诉你它是开放的（open）、关闭的（closed）还是超时了（timeout）。这对于网络服务配置检查和基本的安全扫描很有用。
+     * 端口扫描
+     */
+    async getNetworkPortscanRaw(requestParameters: GetNetworkPortscanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkPortscan200Response>> {
+        const requestOptions = await this.getNetworkPortscanRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkPortscan200ResponseFromJSON(jsonValue));
     }
@@ -446,10 +502,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。
-     * 检查URL的可访问性状态
+     * Creates request options for getNetworkUrlstatus without sending the request
      */
-    async getNetworkUrlstatusRaw(requestParameters: GetNetworkUrlstatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkUrlstatus200Response>> {
+    async getNetworkUrlstatusRequestOpts(requestParameters: GetNetworkUrlstatusRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['url'] == null) {
             throw new runtime.RequiredError(
                 'url',
@@ -468,12 +523,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/urlstatus`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。
+     * 检查URL的可访问性状态
+     */
+    async getNetworkUrlstatusRaw(requestParameters: GetNetworkUrlstatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkUrlstatus200Response>> {
+        const requestOptions = await this.getNetworkUrlstatusRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkUrlstatus200ResponseFromJSON(jsonValue));
     }
@@ -488,10 +552,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道一个域名是什么时候注册的、注册商是谁、什么时候到期？WHOIS信息可以告诉你这一切。  ## 功能概述 这是一个在线的WHOIS查询工具。你可以通过如下两种方式获取WHOIS信息：  - **默认行为**（不带参数）：`GET /api/v1/network/whois?domain=google.com`   - 返回一个JSON对象，`whois` 字段为原始、未处理的WHOIS文本字符串。 - **JSON格式化**：`GET /api/v1/network/whois?domain=google.com&format=json`   - 返回一个JSON对象，`whois` 字段为解析后的JSON对象，包含WHOIS信息中的键值对。  这样你既可以获得最全的原始信息，也可以方便地处理结构化数据。
-     * 查询域名的WHOIS注册信息
+     * Creates request options for getNetworkWhois without sending the request
      */
-    async getNetworkWhoisRaw(requestParameters: GetNetworkWhoisRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkWhois200Response>> {
+    async getNetworkWhoisRequestOpts(requestParameters: GetNetworkWhoisRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['domain'] == null) {
             throw new runtime.RequiredError(
                 'domain',
@@ -514,12 +577,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/whois`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道一个域名是什么时候注册的、注册商是谁、什么时候到期？WHOIS信息可以告诉你这一切。  ## 功能概述 这是一个在线的WHOIS查询工具。你可以通过如下两种方式获取WHOIS信息：  - **默认行为**（不带参数）：`GET /api/v1/network/whois?domain=google.com`   - 返回一个JSON对象，`whois` 字段为原始、未处理的WHOIS文本字符串。 - **JSON格式化**：`GET /api/v1/network/whois?domain=google.com&format=json`   - 返回一个JSON对象，`whois` 字段为解析后的JSON对象，包含WHOIS信息中的键值对。  这样你既可以获得最全的原始信息，也可以方便地处理结构化数据。
+     * 查询域名的WHOIS注册信息
+     */
+    async getNetworkWhoisRaw(requestParameters: GetNetworkWhoisRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkWhois200Response>> {
+        const requestOptions = await this.getNetworkWhoisRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkWhois200ResponseFromJSON(jsonValue));
     }
@@ -534,10 +606,9 @@ export class NetworkApi extends runtime.BaseAPI {
     }
 
     /**
-     * 准备在微信里推广你的网站？最好先检查一下域名是否被“拉黑”了。  ## 功能概述 这个接口可以帮你查询一个域名在微信内置浏览器中的访问状态，即是否被微信封禁。这对于做微信生态推广和营销的开发者来说至关重要。
-     * 检查域名在微信中的访问状态
+     * Creates request options for getNetworkWxdomain without sending the request
      */
-    async getNetworkWxdomainRaw(requestParameters: GetNetworkWxdomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkWxdomain200Response>> {
+    async getNetworkWxdomainRequestOpts(requestParameters: GetNetworkWxdomainRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['domain'] == null) {
             throw new runtime.RequiredError(
                 'domain',
@@ -556,12 +627,21 @@ export class NetworkApi extends runtime.BaseAPI {
 
         let urlPath = `/network/wxdomain`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 准备在微信里推广你的网站？最好先检查一下域名是否被“拉黑”了。  ## 功能概述 这个接口可以帮你查询一个域名在微信内置浏览器中的访问状态，即是否被微信封禁。这对于做微信生态推广和营销的开发者来说至关重要。
+     * 检查域名在微信中的访问状态
+     */
+    async getNetworkWxdomainRaw(requestParameters: GetNetworkWxdomainRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetNetworkWxdomain200Response>> {
+        const requestOptions = await this.getNetworkWxdomainRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetNetworkWxdomain200ResponseFromJSON(jsonValue));
     }

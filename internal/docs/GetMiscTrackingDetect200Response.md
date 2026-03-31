@@ -6,9 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`code` | string
-`message` | string
-`data` | [GetMiscTrackingDetect200ResponseData](GetMiscTrackingDetect200ResponseData.md)
+`trackingNumber` | string
+`carrierCode` | string
+`carrierName` | string
+`alternatives` | [Array&lt;GetMiscTrackingDetect200ResponseAlternativesInner&gt;](GetMiscTrackingDetect200ResponseAlternativesInner.md)
 
 ## Example
 
@@ -17,9 +18,10 @@ import type { GetMiscTrackingDetect200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": SUCCESS,
-  "message": 操作成功,
-  "data": null,
+  "trackingNumber": SF1234567890123,
+  "carrierCode": shunfeng,
+  "carrierName": 顺丰速运,
+  "alternatives": [{"code":"ems","name":"EMS"}],
 } satisfies GetMiscTrackingDetect200Response
 
 console.log(example)

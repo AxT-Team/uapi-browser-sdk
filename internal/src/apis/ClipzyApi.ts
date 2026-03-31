@@ -65,10 +65,9 @@ export interface PostClipzyStoreOperationRequest {
 export class ClipzyApi extends runtime.BaseAPI {
 
     /**
-     * **此接口用于“最高安全等级”方法。**  您提供第一步中获得的ID，它会返回存储在服务器上的**加密数据**。您需要在自己的客户端中，使用您自己保管的密钥来解密它。
-     * 步骤2 (方法一): 获取加密数据
+     * Creates request options for getClipzyGet without sending the request
      */
-    async getClipzyGetRaw(requestParameters: GetClipzyGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetClipzyGet200Response>> {
+    async getClipzyGetRequestOpts(requestParameters: GetClipzyGetRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -87,12 +86,21 @@ export class ClipzyApi extends runtime.BaseAPI {
 
         let urlPath = `/api/get`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * **此接口用于“最高安全等级”方法。**  您提供第一步中获得的ID，它会返回存储在服务器上的**加密数据**。您需要在自己的客户端中，使用您自己保管的密钥来解密它。
+     * 步骤2 (方法一): 获取加密数据
+     */
+    async getClipzyGetRaw(requestParameters: GetClipzyGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetClipzyGet200Response>> {
+        const requestOptions = await this.getClipzyGetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetClipzyGet200ResponseFromJSON(jsonValue));
     }
@@ -107,10 +115,9 @@ export class ClipzyApi extends runtime.BaseAPI {
     }
 
     /**
-     * **此接口用于“方便自动化”方法。**  您提供第一步获得的ID，并附上您自己保管的**解密密钥**作为 `key` 参数。服务器会直接为您解密，并返回纯文本内容。  > [!IMPORTANT] > 查看文档首页的 **cURL 示例**，了解此接口最典型的用法。
-     * 步骤2 (方法二): 获取原始文本
+     * Creates request options for getClipzyRaw without sending the request
      */
-    async getClipzyRawRaw(requestParameters: GetClipzyRawRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async getClipzyRawRequestOpts(requestParameters: GetClipzyRawRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -137,12 +144,21 @@ export class ClipzyApi extends runtime.BaseAPI {
         let urlPath = `/api/raw/{id}`;
         urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * **此接口用于“方便自动化”方法。**  您提供第一步获得的ID，并附上您自己保管的**解密密钥**作为 `key` 参数。服务器会直接为您解密，并返回纯文本内容。  > [!IMPORTANT] > 查看文档首页的 **cURL 示例**，了解此接口最典型的用法。
+     * 步骤2 (方法二): 获取原始文本
+     */
+    async getClipzyRawRaw(requestParameters: GetClipzyRawRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        const requestOptions = await this.getClipzyRawRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse<string>(response);
@@ -161,10 +177,9 @@ export class ClipzyApi extends runtime.BaseAPI {
     }
 
     /**
-     * 这是所有流程的第一步。您的客户端应用需要先在本地准备好 **加密后的数据**，然后调用此接口进行上传。成功后，您会得到一个用于后续操作的唯一ID。  > [!NOTE] > 您发送给此接口的应该是**密文**，而不是原始文本。请参考文档首页的JavaScript示例来了解如何在客户端进行加密。
-     * 步骤1：上传加密数据
+     * Creates request options for postClipzyStore without sending the request
      */
-    async postClipzyStoreRaw(requestParameters: PostClipzyStoreOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostClipzyStore200Response>> {
+    async postClipzyStoreRequestOpts(requestParameters: PostClipzyStoreOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postClipzyStoreRequest'] == null) {
             throw new runtime.RequiredError(
                 'postClipzyStoreRequest',
@@ -181,13 +196,22 @@ export class ClipzyApi extends runtime.BaseAPI {
 
         let urlPath = `/api/store`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostClipzyStoreRequestToJSON(requestParameters['postClipzyStoreRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 这是所有流程的第一步。您的客户端应用需要先在本地准备好 **加密后的数据**，然后调用此接口进行上传。成功后，您会得到一个用于后续操作的唯一ID。  > [!NOTE] > 您发送给此接口的应该是**密文**，而不是原始文本。请参考文档首页的JavaScript示例来了解如何在客户端进行加密。
+     * 步骤1：上传加密数据
+     */
+    async postClipzyStoreRaw(requestParameters: PostClipzyStoreOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostClipzyStore200Response>> {
+        const requestOptions = await this.postClipzyStoreRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostClipzyStore200ResponseFromJSON(jsonValue));
     }

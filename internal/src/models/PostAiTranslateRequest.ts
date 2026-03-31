@@ -20,17 +20,11 @@ import { mapValues } from '../runtime';
  */
 export interface PostAiTranslateRequest {
     /**
-     * 单个翻译时使用的待翻译文本，与texts参数二选一。最大长度10,000字符。
+     * 待翻译的文本内容。最大长度10,000字符。
      * @type {string}
      * @memberof PostAiTranslateRequest
      */
-    text?: string;
-    /**
-     * 批量翻译时使用的待翻译文本列表，与text参数二选一。最多50条，总计最大100,000字符。
-     * @type {Array<string>}
-     * @memberof PostAiTranslateRequest
-     */
-    texts?: Array<string>;
+    text: string;
     /**
      * 源语言代码，可选。如果不指定，系统会自动检测源语言。
      * @type {string}
@@ -39,13 +33,13 @@ export interface PostAiTranslateRequest {
     sourceLang?: string;
     /**
      * 翻译风格，可选。支持casual(随意口语化)、professional(专业商务，默认)、academic(学术正式)、literary(文学艺术)。
-     * @type {string}
+     * @type {PostAiTranslateRequestStyleEnum}
      * @memberof PostAiTranslateRequest
      */
     style?: PostAiTranslateRequestStyleEnum;
     /**
      * 翻译上下文场景，可选。支持general(通用，默认)、business(商务)、technical(技术)、medical(医疗)、legal(法律)、marketing(市场营销)、entertainment(娱乐)、education(教育)、news(新闻)。
-     * @type {string}
+     * @type {PostAiTranslateRequestContextEnum}
      * @memberof PostAiTranslateRequest
      */
     context?: PostAiTranslateRequestContextEnum;
@@ -55,18 +49,6 @@ export interface PostAiTranslateRequest {
      * @memberof PostAiTranslateRequest
      */
     preserveFormat?: boolean;
-    /**
-     * 是否启用快速模式。快速模式响应时间约800ms，准确率95%+；普通模式响应时间约2000ms，准确率98%+。
-     * @type {boolean}
-     * @memberof PostAiTranslateRequest
-     */
-    fastMode?: boolean;
-    /**
-     * 批量翻译时的最大并发数，范围1-10。仅在批量翻译时有效。
-     * @type {number}
-     * @memberof PostAiTranslateRequest
-     */
-    maxConcurrency?: number;
 }
 
 
@@ -102,6 +84,7 @@ export type PostAiTranslateRequestContextEnum = typeof PostAiTranslateRequestCon
  * Check if a given object implements the PostAiTranslateRequest interface.
  */
 export function instanceOfPostAiTranslateRequest(value: object): value is PostAiTranslateRequest {
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 
@@ -115,14 +98,11 @@ export function PostAiTranslateRequestFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'text': json['text'] == null ? undefined : json['text'],
-        'texts': json['texts'] == null ? undefined : json['texts'],
+        'text': json['text'],
         'sourceLang': json['source_lang'] == null ? undefined : json['source_lang'],
         'style': json['style'] == null ? undefined : json['style'],
         'context': json['context'] == null ? undefined : json['context'],
         'preserveFormat': json['preserve_format'] == null ? undefined : json['preserve_format'],
-        'fastMode': json['fast_mode'] == null ? undefined : json['fast_mode'],
-        'maxConcurrency': json['max_concurrency'] == null ? undefined : json['max_concurrency'],
     };
 }
 
@@ -138,13 +118,10 @@ export function PostAiTranslateRequestToJSONTyped(value?: PostAiTranslateRequest
     return {
         
         'text': value['text'],
-        'texts': value['texts'],
         'source_lang': value['sourceLang'],
         'style': value['style'],
         'context': value['context'],
         'preserve_format': value['preserveFormat'],
-        'fast_mode': value['fastMode'],
-        'max_concurrency': value['maxConcurrency'],
     };
 }
 

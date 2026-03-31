@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetMiscTrackingCarriers200ResponseData } from './GetMiscTrackingCarriers200ResponseData';
+import type { GetMiscTrackingCarriers200ResponseCarriersInner } from './GetMiscTrackingCarriers200ResponseCarriersInner';
 import {
-    GetMiscTrackingCarriers200ResponseDataFromJSON,
-    GetMiscTrackingCarriers200ResponseDataFromJSONTyped,
-    GetMiscTrackingCarriers200ResponseDataToJSON,
-    GetMiscTrackingCarriers200ResponseDataToJSONTyped,
-} from './GetMiscTrackingCarriers200ResponseData';
+    GetMiscTrackingCarriers200ResponseCarriersInnerFromJSON,
+    GetMiscTrackingCarriers200ResponseCarriersInnerFromJSONTyped,
+    GetMiscTrackingCarriers200ResponseCarriersInnerToJSON,
+    GetMiscTrackingCarriers200ResponseCarriersInnerToJSONTyped,
+} from './GetMiscTrackingCarriers200ResponseCarriersInner';
 
 /**
  * 
@@ -28,23 +28,17 @@ import {
  */
 export interface GetMiscTrackingCarriers200Response {
     /**
-     * 
-     * @type {string}
+     * 快递公司列表
+     * @type {Array<GetMiscTrackingCarriers200ResponseCarriersInner>}
      * @memberof GetMiscTrackingCarriers200Response
      */
-    code?: string;
+    carriers?: Array<GetMiscTrackingCarriers200ResponseCarriersInner>;
     /**
-     * 
-     * @type {string}
+     * 支持的快递公司总数
+     * @type {number}
      * @memberof GetMiscTrackingCarriers200Response
      */
-    message?: string;
-    /**
-     * 
-     * @type {GetMiscTrackingCarriers200ResponseData}
-     * @memberof GetMiscTrackingCarriers200Response
-     */
-    data?: GetMiscTrackingCarriers200ResponseData;
+    total?: number;
 }
 
 /**
@@ -64,9 +58,8 @@ export function GetMiscTrackingCarriers200ResponseFromJSONTyped(json: any, ignor
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'message': json['message'] == null ? undefined : json['message'],
-        'data': json['data'] == null ? undefined : GetMiscTrackingCarriers200ResponseDataFromJSON(json['data']),
+        'carriers': json['carriers'] == null ? undefined : ((json['carriers'] as Array<any>).map(GetMiscTrackingCarriers200ResponseCarriersInnerFromJSON)),
+        'total': json['total'] == null ? undefined : json['total'],
     };
 }
 
@@ -81,9 +74,8 @@ export function GetMiscTrackingCarriers200ResponseToJSONTyped(value?: GetMiscTra
 
     return {
         
-        'code': value['code'],
-        'message': value['message'],
-        'data': GetMiscTrackingCarriers200ResponseDataToJSON(value['data']),
+        'carriers': value['carriers'] == null ? undefined : ((value['carriers'] as Array<any>).map(GetMiscTrackingCarriers200ResponseCarriersInnerToJSON)),
+        'total': value['total'],
     };
 }
 

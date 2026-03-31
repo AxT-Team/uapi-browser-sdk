@@ -1,7 +1,7 @@
 
 # GetMiscWeather200ResponseMinutelyPrecip
 
-分钟级降水预报（minutely=true 时返回，仅国内城市可用）
+分钟级降水预报（minutely=true 时返回，仅国内城市可用，精确到2分钟）
 
 ## Properties
 

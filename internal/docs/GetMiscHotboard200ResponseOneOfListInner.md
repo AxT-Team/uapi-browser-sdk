@@ -1,0 +1,44 @@
+
+# GetMiscHotboard200ResponseOneOfListInner
+
+
+## Properties
+
+Name | Type
+------------ | -------------
+`extra` | { [key: string]: any; }
+`hotValue` | string
+`index` | number
+`title` | string
+`url` | string
+`cover` | string
+
+## Example
+
+```typescript
+import type { GetMiscHotboard200ResponseOneOfListInner } from 'uapi-browser-sdk-browser'
+
+// TODO: Update the object below with actual values
+const example = {
+  "extra": null,
+  "hotValue": 1234567,
+  "index": 1,
+  "title": 今天天气真好,
+  "url": https://s.weibo.com/weibo?q=%23%E4%BB%8A%E5%A4%A9%E5%A4%A9%E6%B0%94%E7%9C%9F%E5%A5%BD%23,
+  "cover": https://p1.music.126.net/xxx/109951170483249998.jpg,
+} satisfies GetMiscHotboard200ResponseOneOfListInner
+
+console.log(example)
+
+// Convert the instance to a JSON string
+const exampleJSON: string = JSON.stringify(example)
+console.log(exampleJSON)
+
+// Parse the JSON string back to an object
+const exampleParsed = JSON.parse(exampleJSON) as GetMiscHotboard200ResponseOneOfListInner
+console.log(exampleParsed)
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+

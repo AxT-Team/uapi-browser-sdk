@@ -30,13 +30,13 @@ export interface PostTranslateStreamRequest {
      * @type {string}
      * @memberof PostTranslateStreamRequest
      */
-    toLang: PostTranslateStreamRequestToLangEnum;
+    toLang: string;
     /**
      * 源语言，支持：中文、英文、auto（自动检测）。默认为auto
      * @type {string}
      * @memberof PostTranslateStreamRequest
      */
-    fromLang?: PostTranslateStreamRequestFromLangEnum;
+    fromLang?: string;
     /**
      * 语气参数，可选
      * @type {string}
@@ -44,27 +44,6 @@ export interface PostTranslateStreamRequest {
      */
     tone?: string;
 }
-
-
-/**
- * @export
- */
-export const PostTranslateStreamRequestToLangEnum = {
-    : '中文',
-    2: '英文'
-} as const;
-export type PostTranslateStreamRequestToLangEnum = typeof PostTranslateStreamRequestToLangEnum[keyof typeof PostTranslateStreamRequestToLangEnum];
-
-/**
- * @export
- */
-export const PostTranslateStreamRequestFromLangEnum = {
-    : '中文',
-    2: '英文',
-    Auto: 'auto'
-} as const;
-export type PostTranslateStreamRequestFromLangEnum = typeof PostTranslateStreamRequestFromLangEnum[keyof typeof PostTranslateStreamRequestFromLangEnum];
-
 
 /**
  * Check if a given object implements the PostTranslateStreamRequest interface.

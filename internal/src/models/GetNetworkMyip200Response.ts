@@ -74,11 +74,17 @@ export interface GetNetworkMyip200Response {
      */
     endip?: string;
     /**
-     * 行政区（商业查询）
+     * 行政区。仅 `source=commercial` 时可能返回。
      * @type {string}
      * @memberof GetNetworkMyip200Response
      */
     district?: string;
+    /**
+     * 时区名称。仅 `source=commercial` 时可能返回。
+     * @type {string}
+     * @memberof GetNetworkMyip200Response
+     */
+    timeZone?: string;
 }
 
 /**
@@ -108,6 +114,7 @@ export function GetNetworkMyip200ResponseFromJSONTyped(json: any, ignoreDiscrimi
         'beginip': json['beginip'] == null ? undefined : json['beginip'],
         'endip': json['endip'] == null ? undefined : json['endip'],
         'district': json['district'] == null ? undefined : json['district'],
+        'timeZone': json['time_zone'] == null ? undefined : json['time_zone'],
     };
 }
 
@@ -132,6 +139,7 @@ export function GetNetworkMyip200ResponseToJSONTyped(value?: GetNetworkMyip200Re
         'beginip': value['beginip'],
         'endip': value['endip'],
         'district': value['district'],
+        'time_zone': value['timeZone'],
     };
 }
 

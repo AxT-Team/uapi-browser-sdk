@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface PostTranslateTextRequest {
     /**
-     * 待翻译的文本内容。
+     * 待翻译的文本内容，最大长度3000字符。
      * @type {string}
      * @memberof PostTranslateTextRequest
      */

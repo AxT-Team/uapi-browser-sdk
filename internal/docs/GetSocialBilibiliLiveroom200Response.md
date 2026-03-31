@@ -11,18 +11,21 @@ Name | Type
 `shortId` | number
 `attention` | number
 `online` | number
+`isPortrait` | boolean
 `liveStatus` | number
 `areaId` | number
 `parentAreaName` | string
+`parentAreaId` | number
 `areaName` | string
 `background` | string
 `title` | string
 `userCover` | string
 `description` | string
 `liveTime` | string
+`keyframe` | string
 `tags` | string
 `hotWords` | Array&lt;string&gt;
-`newPendants` | object
+`newPendants` | [GetSocialBilibiliLiveroom200ResponseNewPendants](GetSocialBilibiliLiveroom200ResponseNewPendants.md)
 
 ## Example
 
@@ -36,15 +39,18 @@ const example = {
   "shortId": 22625027,
   "attention": 1789089,
   "online": 3662242,
+  "isPortrait": false,
   "liveStatus": 1,
   "areaId": 372,
   "parentAreaName": 虚拟主播,
+  "parentAreaId": 9,
   "areaName": 虚拟偶像,
   "background": http://i0.hdslb.com/bfs/live/room_bg/672328094.jpg,
   "title": 【B限】杂谈~来聊聊天吧~,
   "userCover": http://i0.hdslb.com/bfs/live/user_cover/672328094.jpg,
   "description": 这里是嘉然的直播间，欢迎回家！,
   "liveTime": 2023-10-27 20:00:00,
+  "keyframe": http://i0.hdslb.com/bfs/live-key-frame/keyframe.jpg,
   "tags": VUP,虚拟偶像,A-SOUL,嘉然,
   "hotWords": null,
   "newPendants": null,

@@ -65,7 +65,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | 成功获取AI翻译配置信息！ |  -  |
+| **200** | 成功获取AI翻译配置信息 |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -76,7 +76,7 @@ No authorization required
 
 AI智能翻译
 
-这是一个商业级的AI智能翻译服务，采用最新的神经网络翻译技术和大语言模型，提供远超传统机器翻译的质量。  &gt; [!VIP] &gt; 本API目前处于**限时免费**阶段，我们鼓励开发者深度集成和测试。未来，它将转为付费API，为用户提供更稳定、更智能的翻译服务。  ## 功能概述  - **智能双模式**: 支持单个文本翻译和批量文本翻译的统一接口设计，自动识别请求类型并提供相应的翻译服务。系统会根据输入自动判断是处理单条文本还是批量文本，无需使用不同的接口。 - **多风格适配**: 提供随意口语化、专业商务、学术正式、文学艺术四种翻译风格，能够根据不同场景需求调整翻译的语言风格和表达方式。 - **上下文感知**: 支持通用、商务、技术、医疗、法律、市场营销、娱乐、教育、新闻等九种专业领域的上下文翻译，确保术语准确性和表达地道性。 - **高质量保证**: 内置质量评估系统，对每次翻译结果进行流畅度、准确度、完整性评分，并提供置信度分数和替代翻译建议。 - **智能解释**: 提供关键词组翻译注释、文化背景说明和语法结构分析，帮助用户理解翻译逻辑和文化差异。 - **高效批量**: 批量翻译支持最多50条文本，总计10万字符，配备智能并发控制（1-10并发）和失败重试机制。 - **快速模式**: 提供快速模式选项，在保证95%+准确率的前提下，响应时间缩短至800ms内，适合实时翻译和聊天应用。 - **格式保留**: 智能识别并保持原文的格式结构，包括换行、缩进、特殊符号等，确保翻译后的文本保持良好的可读性。
+这是一个商业级的AI智能翻译服务，采用最新的神经网络翻译技术和大语言模型，提供远超传统机器翻译的质量。  ## 功能概述  - **单文本翻译**: 专注处理单条文本翻译，适合需要高质量译文的业务场景。 - **多风格适配**: 提供随意口语化、专业商务、学术正式、文学艺术四种翻译风格，能够根据不同场景需求调整翻译的语言风格和表达方式。 - **上下文感知**: 支持通用、商务、技术、医疗、法律、市场营销、娱乐、教育、新闻等九种专业领域的上下文翻译，确保术语准确性和表达地道性。 - **格式保留**: 智能识别并保持原文的格式结构，包括换行、缩进、特殊符号等，确保翻译后的文本保持良好的可读性。  ## 支持的语言  我们支持超过100种语言的互译，详见下方参数列表。
 
 ### Example
 
@@ -92,9 +92,9 @@ async function example() {
   const api = new TranslateApi();
 
   const body = {
-    // 'sq' | 'ga' | 'et' | 'ar' | 'am' | 'az' | 'be' | 'bg' | 'eu' | 'is' | 'pl' | 'bs-Latn' | 'fa' | 'da' | 'de' | 'ru' | 'fr' | 'tl' | 'fi' | 'fy' | 'km' | 'ka' | 'gu' | 'ht' | 'ko' | 'ha' | 'kk' | 'nl' | 'gl' | 'ca' | 'cs' | 'ky' | 'kn' | 'tlh' | 'hr' | 'otq' | 'co' | 'ku' | 'la' | 'lo' | 'lv' | 'lt' | 'ro' | 'lb' | 'mg' | 'mt' | 'mr' | 'ms' | 'ml' | 'mi' | 'mk' | 'mn' | 'bn' | 'my' | 'mww' | 'hmn' | 'xh' | 'zu' | 'ne' | 'false' | 'pa' | 'ps' | 'pt' | 'ny' | 'ja' | 'sv' | 'sr-Latn' | 'sr-Cyrl' | 'st' | 'sm' | 'si' | 'eo' | 'sk' | 'sl' | 'sw' | 'gd' | 'so' | 'ceb' | 'te' | 'ta' | 'th' | 'tg' | 'tr' | 'cy' | 'zh-lzh' | 'ur' | 'uk' | 'uz' | 'haw' | 'es' | 'he' | 'el' | 'sd' | 'hu' | 'sn' | 'hy' | 'ig' | 'it' | 'yi' | 'hi' | 'id' | 'en' | 'su' | 'jw' | 'yua' | 'yo' | 'vi' | 'zh-CHS' | 'zh-CHT' | 目标语言代码。请从支持的语言列表中选择一个语言代码。
-    targetLang: zh-CHS,
-    // PostAiTranslateRequest | 包含翻译参数的JSON对象，支持单个文本或批量文本翻译
+    // 'sq' | 'ga' | 'et' | 'ar' | 'am' | 'az' | 'be' | 'bg' | 'eu' | 'is' | 'pl' | 'bs-Latn' | 'fa' | 'da' | 'de' | 'ru' | 'fr' | 'tl' | 'fi' | 'fy' | 'km' | 'ka' | 'gu' | 'ht' | 'ko' | 'ha' | 'kk' | 'nl' | 'gl' | 'ca' | 'cs' | 'ky' | 'kn' | 'tlh' | 'hr' | 'otq' | 'co' | 'ku' | 'la' | 'lo' | 'lv' | 'lt' | 'ro' | 'lb' | 'mg' | 'mt' | 'mr' | 'ms' | 'ml' | 'mi' | 'mk' | 'mn' | 'bn' | 'my' | 'mww' | 'hmn' | 'xh' | 'zu' | 'ne' | 'no' | 'pa' | 'ps' | 'pt' | 'ny' | 'ja' | 'sv' | 'sr-Latn' | 'sr-Cyrl' | 'st' | 'sm' | 'si' | 'eo' | 'sk' | 'sl' | 'sw' | 'gd' | 'so' | 'ceb' | 'te' | 'ta' | 'th' | 'tg' | 'tr' | 'cy' | 'zh-lzh' | 'ur' | 'uk' | 'uz' | 'haw' | 'es' | 'he' | 'el' | 'sd' | 'hu' | 'sn' | 'hy' | 'ig' | 'it' | 'yi' | 'hi' | 'id' | 'en' | 'su' | 'jw' | 'yua' | 'yo' | 'vi' | 'zh' | 'zh-TW' | 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。
+    targetLang: zh,
+    // PostAiTranslateRequest | 
     postAiTranslateRequest: ...,
   } satisfies PostAiTranslateOperationRequest;
 
@@ -115,8 +115,8 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **targetLang** | `sq`, `ga`, `et`, `ar`, `am`, `az`, `be`, `bg`, `eu`, `is`, `pl`, `bs-Latn`, `fa`, `da`, `de`, `ru`, `fr`, `tl`, `fi`, `fy`, `km`, `ka`, `gu`, `ht`, `ko`, `ha`, `kk`, `nl`, `gl`, `ca`, `cs`, `ky`, `kn`, `tlh`, `hr`, `otq`, `co`, `ku`, `la`, `lo`, `lv`, `lt`, `ro`, `lb`, `mg`, `mt`, `mr`, `ms`, `ml`, `mi`, `mk`, `mn`, `bn`, `my`, `mww`, `hmn`, `xh`, `zu`, `ne`, `false`, `pa`, `ps`, `pt`, `ny`, `ja`, `sv`, `sr-Latn`, `sr-Cyrl`, `st`, `sm`, `si`, `eo`, `sk`, `sl`, `sw`, `gd`, `so`, `ceb`, `te`, `ta`, `th`, `tg`, `tr`, `cy`, `zh-lzh`, `ur`, `uk`, `uz`, `haw`, `es`, `he`, `el`, `sd`, `hu`, `sn`, `hy`, `ig`, `it`, `yi`, `hi`, `id`, `en`, `su`, `jw`, `yua`, `yo`, `vi`, `zh-CHS`, `zh-CHT` | 目标语言代码。请从支持的语言列表中选择一个语言代码。 | [Defaults to `undefined`] [Enum: sq, ga, et, ar, am, az, be, bg, eu, is, pl, bs-Latn, fa, da, de, ru, fr, tl, fi, fy, km, ka, gu, ht, ko, ha, kk, nl, gl, ca, cs, ky, kn, tlh, hr, otq, co, ku, la, lo, lv, lt, ro, lb, mg, mt, mr, ms, ml, mi, mk, mn, bn, my, mww, hmn, xh, zu, ne, false, pa, ps, pt, ny, ja, sv, sr-Latn, sr-Cyrl, st, sm, si, eo, sk, sl, sw, gd, so, ceb, te, ta, th, tg, tr, cy, zh-lzh, ur, uk, uz, haw, es, he, el, sd, hu, sn, hy, ig, it, yi, hi, id, en, su, jw, yua, yo, vi, zh-CHS, zh-CHT] |
-| **postAiTranslateRequest** | [PostAiTranslateRequest](PostAiTranslateRequest.md) | 包含翻译参数的JSON对象，支持单个文本或批量文本翻译 | |
+| **targetLang** | `sq`, `ga`, `et`, `ar`, `am`, `az`, `be`, `bg`, `eu`, `is`, `pl`, `bs-Latn`, `fa`, `da`, `de`, `ru`, `fr`, `tl`, `fi`, `fy`, `km`, `ka`, `gu`, `ht`, `ko`, `ha`, `kk`, `nl`, `gl`, `ca`, `cs`, `ky`, `kn`, `tlh`, `hr`, `otq`, `co`, `ku`, `la`, `lo`, `lv`, `lt`, `ro`, `lb`, `mg`, `mt`, `mr`, `ms`, `ml`, `mi`, `mk`, `mn`, `bn`, `my`, `mww`, `hmn`, `xh`, `zu`, `ne`, `no`, `pa`, `ps`, `pt`, `ny`, `ja`, `sv`, `sr-Latn`, `sr-Cyrl`, `st`, `sm`, `si`, `eo`, `sk`, `sl`, `sw`, `gd`, `so`, `ceb`, `te`, `ta`, `th`, `tg`, `tr`, `cy`, `zh-lzh`, `ur`, `uk`, `uz`, `haw`, `es`, `he`, `el`, `sd`, `hu`, `sn`, `hy`, `ig`, `it`, `yi`, `hi`, `id`, `en`, `su`, `jw`, `yua`, `yo`, `vi`, `zh`, `zh-TW` | 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 | [Defaults to `undefined`] [Enum: sq, ga, et, ar, am, az, be, bg, eu, is, pl, bs-Latn, fa, da, de, ru, fr, tl, fi, fy, km, ka, gu, ht, ko, ha, kk, nl, gl, ca, cs, ky, kn, tlh, hr, otq, co, ku, la, lo, lv, lt, ro, lb, mg, mt, mr, ms, ml, mi, mk, mn, bn, my, mww, hmn, xh, zu, ne, no, pa, ps, pt, ny, ja, sv, sr-Latn, sr-Cyrl, st, sm, si, eo, sk, sl, sw, gd, so, ceb, te, ta, th, tg, tr, cy, zh-lzh, ur, uk, uz, haw, es, he, el, sd, hu, sn, hy, ig, it, yi, hi, id, en, su, jw, yua, yo, vi, zh, zh-TW] |
+| **postAiTranslateRequest** | [PostAiTranslateRequest](PostAiTranslateRequest.md) |  | |
 
 ### Return type
 
@@ -135,7 +135,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | 翻译成功！返回翻译结果、质量指标和性能统计。 |  -  |
+| **200** | 翻译成功！返回翻译结果和性能统计。 |  -  |
 | **400** | 请求参数错误。请检查必填参数和参数格式是否正确。 |  -  |
 | **401** | 认证失败。请检查API密钥是否有效。 |  -  |
 | **429** | 请求频率过高。请稍后重试。 |  -  |
@@ -166,7 +166,7 @@ async function example() {
   const api = new TranslateApi();
 
   const body = {
-    // PostTranslateStreamRequest | 包含翻译参数的JSON对象
+    // PostTranslateStreamRequest | 
     postTranslateStreamRequest: ...,
   } satisfies PostTranslateStreamOperationRequest;
 
@@ -187,7 +187,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTranslateStreamRequest** | [PostTranslateStreamRequest](PostTranslateStreamRequest.md) | 包含翻译参数的JSON对象 | |
+| **postTranslateStreamRequest** | [PostTranslateStreamRequest](PostTranslateStreamRequest.md) |  | |
 
 ### Return type
 
@@ -235,9 +235,9 @@ async function example() {
   const api = new TranslateApi();
 
   const body = {
-    // 'sq' | 'ga' | 'et' | 'ar' | 'am' | 'az' | 'be' | 'bg' | 'eu' | 'is' | 'pl' | 'bs-Latn' | 'fa' | 'da' | 'de' | 'ru' | 'fr' | 'tl' | 'fi' | 'fy' | 'km' | 'ka' | 'gu' | 'ht' | 'ko' | 'ha' | 'kk' | 'nl' | 'gl' | 'ca' | 'cs' | 'ky' | 'kn' | 'tlh' | 'hr' | 'otq' | 'co' | 'ku' | 'la' | 'lo' | 'lv' | 'lt' | 'ro' | 'lb' | 'mg' | 'mt' | 'mr' | 'ms' | 'ml' | 'mi' | 'mk' | 'mn' | 'bn' | 'my' | 'mww' | 'hmn' | 'xh' | 'zu' | 'ne' | 'false' | 'pa' | 'ps' | 'pt' | 'ny' | 'ja' | 'sv' | 'sr-Latn' | 'sr-Cyrl' | 'st' | 'sm' | 'si' | 'eo' | 'sk' | 'sl' | 'sw' | 'gd' | 'so' | 'ceb' | 'te' | 'ta' | 'th' | 'tg' | 'tr' | 'cy' | 'zh-lzh' | 'ur' | 'uk' | 'uz' | 'haw' | 'es' | 'he' | 'el' | 'sd' | 'hu' | 'sn' | 'hy' | 'ig' | 'it' | 'yi' | 'hi' | 'id' | 'en' | 'su' | 'jw' | 'yua' | 'yo' | 'vi' | 'zh-CHS' | 'zh-CHT' | 目标语言代码。请从支持的语言列表中选择一个语言代码。
-    toLang: zh-CHS,
-    // PostTranslateTextRequest | 包含待翻译文本的JSON对象
+    // 'sq' | 'ga' | 'et' | 'ar' | 'am' | 'az' | 'be' | 'bg' | 'eu' | 'is' | 'pl' | 'bs-Latn' | 'fa' | 'da' | 'de' | 'ru' | 'fr' | 'tl' | 'fi' | 'fy' | 'km' | 'ka' | 'gu' | 'ht' | 'ko' | 'ha' | 'kk' | 'nl' | 'gl' | 'ca' | 'cs' | 'ky' | 'kn' | 'tlh' | 'hr' | 'otq' | 'co' | 'ku' | 'la' | 'lo' | 'lv' | 'lt' | 'ro' | 'lb' | 'mg' | 'mt' | 'mr' | 'ms' | 'ml' | 'mi' | 'mk' | 'mn' | 'bn' | 'my' | 'mww' | 'hmn' | 'xh' | 'zu' | 'ne' | 'no' | 'pa' | 'ps' | 'pt' | 'ny' | 'ja' | 'sv' | 'sr-Latn' | 'sr-Cyrl' | 'st' | 'sm' | 'si' | 'eo' | 'sk' | 'sl' | 'sw' | 'gd' | 'so' | 'ceb' | 'te' | 'ta' | 'th' | 'tg' | 'tr' | 'cy' | 'zh-lzh' | 'ur' | 'uk' | 'uz' | 'haw' | 'es' | 'he' | 'el' | 'sd' | 'hu' | 'sn' | 'hy' | 'ig' | 'it' | 'yi' | 'hi' | 'id' | 'en' | 'su' | 'jw' | 'yua' | 'yo' | 'vi' | 'zh' | 'zh-TW' | 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。
+    toLang: zh,
+    // PostTranslateTextRequest | 
     postTranslateTextRequest: ...,
   } satisfies PostTranslateTextOperationRequest;
 
@@ -258,8 +258,8 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **toLang** | `sq`, `ga`, `et`, `ar`, `am`, `az`, `be`, `bg`, `eu`, `is`, `pl`, `bs-Latn`, `fa`, `da`, `de`, `ru`, `fr`, `tl`, `fi`, `fy`, `km`, `ka`, `gu`, `ht`, `ko`, `ha`, `kk`, `nl`, `gl`, `ca`, `cs`, `ky`, `kn`, `tlh`, `hr`, `otq`, `co`, `ku`, `la`, `lo`, `lv`, `lt`, `ro`, `lb`, `mg`, `mt`, `mr`, `ms`, `ml`, `mi`, `mk`, `mn`, `bn`, `my`, `mww`, `hmn`, `xh`, `zu`, `ne`, `false`, `pa`, `ps`, `pt`, `ny`, `ja`, `sv`, `sr-Latn`, `sr-Cyrl`, `st`, `sm`, `si`, `eo`, `sk`, `sl`, `sw`, `gd`, `so`, `ceb`, `te`, `ta`, `th`, `tg`, `tr`, `cy`, `zh-lzh`, `ur`, `uk`, `uz`, `haw`, `es`, `he`, `el`, `sd`, `hu`, `sn`, `hy`, `ig`, `it`, `yi`, `hi`, `id`, `en`, `su`, `jw`, `yua`, `yo`, `vi`, `zh-CHS`, `zh-CHT` | 目标语言代码。请从支持的语言列表中选择一个语言代码。 | [Defaults to `undefined`] [Enum: sq, ga, et, ar, am, az, be, bg, eu, is, pl, bs-Latn, fa, da, de, ru, fr, tl, fi, fy, km, ka, gu, ht, ko, ha, kk, nl, gl, ca, cs, ky, kn, tlh, hr, otq, co, ku, la, lo, lv, lt, ro, lb, mg, mt, mr, ms, ml, mi, mk, mn, bn, my, mww, hmn, xh, zu, ne, false, pa, ps, pt, ny, ja, sv, sr-Latn, sr-Cyrl, st, sm, si, eo, sk, sl, sw, gd, so, ceb, te, ta, th, tg, tr, cy, zh-lzh, ur, uk, uz, haw, es, he, el, sd, hu, sn, hy, ig, it, yi, hi, id, en, su, jw, yua, yo, vi, zh-CHS, zh-CHT] |
-| **postTranslateTextRequest** | [PostTranslateTextRequest](PostTranslateTextRequest.md) | 包含待翻译文本的JSON对象 | |
+| **toLang** | `sq`, `ga`, `et`, `ar`, `am`, `az`, `be`, `bg`, `eu`, `is`, `pl`, `bs-Latn`, `fa`, `da`, `de`, `ru`, `fr`, `tl`, `fi`, `fy`, `km`, `ka`, `gu`, `ht`, `ko`, `ha`, `kk`, `nl`, `gl`, `ca`, `cs`, `ky`, `kn`, `tlh`, `hr`, `otq`, `co`, `ku`, `la`, `lo`, `lv`, `lt`, `ro`, `lb`, `mg`, `mt`, `mr`, `ms`, `ml`, `mi`, `mk`, `mn`, `bn`, `my`, `mww`, `hmn`, `xh`, `zu`, `ne`, `no`, `pa`, `ps`, `pt`, `ny`, `ja`, `sv`, `sr-Latn`, `sr-Cyrl`, `st`, `sm`, `si`, `eo`, `sk`, `sl`, `sw`, `gd`, `so`, `ceb`, `te`, `ta`, `th`, `tg`, `tr`, `cy`, `zh-lzh`, `ur`, `uk`, `uz`, `haw`, `es`, `he`, `el`, `sd`, `hu`, `sn`, `hy`, `ig`, `it`, `yi`, `hi`, `id`, `en`, `su`, `jw`, `yua`, `yo`, `vi`, `zh`, `zh-TW` | 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 | [Defaults to `undefined`] [Enum: sq, ga, et, ar, am, az, be, bg, eu, is, pl, bs-Latn, fa, da, de, ru, fr, tl, fi, fy, km, ka, gu, ht, ko, ha, kk, nl, gl, ca, cs, ky, kn, tlh, hr, otq, co, ku, la, lo, lv, lt, ro, lb, mg, mt, mr, ms, ml, mi, mk, mn, bn, my, mww, hmn, xh, zu, ne, no, pa, ps, pt, ny, ja, sv, sr-Latn, sr-Cyrl, st, sm, si, eo, sk, sl, sw, gd, so, ceb, te, ta, th, tg, tr, cy, zh-lzh, ur, uk, uz, haw, es, he, el, sd, hu, sn, hy, ig, it, yi, hi, id, en, su, jw, yua, yo, vi, zh, zh-TW] |
+| **postTranslateTextRequest** | [PostTranslateTextRequest](PostTranslateTextRequest.md) |  | |
 
 ### Return type
 

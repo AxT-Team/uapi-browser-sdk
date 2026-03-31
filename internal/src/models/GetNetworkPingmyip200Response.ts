@@ -20,41 +20,23 @@ import { mapValues } from '../runtime';
  */
 export interface GetNetworkPingmyip200Response {
     /**
-     * 平均延迟(ms)
-     * @type {number}
-     * @memberof GetNetworkPingmyip200Response
-     */
-    avg?: number;
-    /**
-     * 
+     * 当前客户端的公网 IP 地址。
      * @type {string}
      * @memberof GetNetworkPingmyip200Response
      */
-    host?: string;
+    clientIp?: string;
     /**
-     * 
+     * 是否成功完成对当前客户端 IP 的 Ping。
+     * @type {boolean}
+     * @memberof GetNetworkPingmyip200Response
+     */
+    pingSuccessful?: boolean;
+    /**
+     * 操作结果说明。成功时通常会附带平均延迟信息。
      * @type {string}
      * @memberof GetNetworkPingmyip200Response
      */
-    ip?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetNetworkPingmyip200Response
-     */
-    location?: string;
-    /**
-     * 最大延迟(ms)
-     * @type {number}
-     * @memberof GetNetworkPingmyip200Response
-     */
-    max?: number;
-    /**
-     * 最小延迟(ms)
-     * @type {number}
-     * @memberof GetNetworkPingmyip200Response
-     */
-    min?: number;
+    message?: string;
 }
 
 /**
@@ -74,12 +56,9 @@ export function GetNetworkPingmyip200ResponseFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'avg': json['avg'] == null ? undefined : json['avg'],
-        'host': json['host'] == null ? undefined : json['host'],
-        'ip': json['ip'] == null ? undefined : json['ip'],
-        'location': json['location'] == null ? undefined : json['location'],
-        'max': json['max'] == null ? undefined : json['max'],
-        'min': json['min'] == null ? undefined : json['min'],
+        'clientIp': json['client_ip'] == null ? undefined : json['client_ip'],
+        'pingSuccessful': json['ping_successful'] == null ? undefined : json['ping_successful'],
+        'message': json['message'] == null ? undefined : json['message'],
     };
 }
 
@@ -94,12 +73,9 @@ export function GetNetworkPingmyip200ResponseToJSONTyped(value?: GetNetworkPingm
 
     return {
         
-        'avg': value['avg'],
-        'host': value['host'],
-        'ip': value['ip'],
-        'location': value['location'],
-        'max': value['max'],
-        'min': value['min'],
+        'client_ip': value['clientIp'],
+        'ping_successful': value['pingSuccessful'],
+        'message': value['message'],
     };
 }
 

@@ -15,7 +15,6 @@ Name | Type
 `longitude` | number
 `beginip` | string
 `endip` | string
-`district` | string
 
 ## Example
 
@@ -33,7 +32,6 @@ const example = {
   "longitude": -97.822,
   "beginip": 8.8.8.0,
   "endip": 8.8.8.255,
-  "district": 龙岗区,
 } satisfies GetNetworkIpinfo200Response
 
 console.log(example)

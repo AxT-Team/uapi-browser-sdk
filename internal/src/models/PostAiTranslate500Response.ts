@@ -37,12 +37,6 @@ export interface PostAiTranslate500Response {
      * @memberof PostAiTranslate500Response
      */
     error?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PostAiTranslate500Response
-     */
-    isBatch?: boolean;
 }
 
 /**
@@ -65,7 +59,6 @@ export function PostAiTranslate500ResponseFromJSONTyped(json: any, ignoreDiscrim
         'code': json['code'] == null ? undefined : json['code'],
         'message': json['message'] == null ? undefined : json['message'],
         'error': json['error'] == null ? undefined : json['error'],
-        'isBatch': json['is_batch'] == null ? undefined : json['is_batch'],
     };
 }
 
@@ -83,7 +76,6 @@ export function PostAiTranslate500ResponseToJSONTyped(value?: PostAiTranslate500
         'code': value['code'],
         'message': value['message'],
         'error': value['error'],
-        'is_batch': value['isBatch'],
     };
 }
 

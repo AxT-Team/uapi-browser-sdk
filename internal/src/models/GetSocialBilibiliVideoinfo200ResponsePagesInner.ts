@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension } from './GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension';
+import {
+    GetSocialBilibiliVideoinfo200ResponsePagesInnerDimensionFromJSON,
+    GetSocialBilibiliVideoinfo200ResponsePagesInnerDimensionFromJSONTyped,
+    GetSocialBilibiliVideoinfo200ResponsePagesInnerDimensionToJSON,
+    GetSocialBilibiliVideoinfo200ResponsePagesInnerDimensionToJSONTyped,
+} from './GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension';
+
 /**
  * 
  * @export
@@ -38,11 +46,35 @@ export interface GetSocialBilibiliVideoinfo200ResponsePagesInner {
      */
     part?: string;
     /**
+     * 视频来源。
+     * @type {string}
+     * @memberof GetSocialBilibiliVideoinfo200ResponsePagesInner
+     */
+    from?: string;
+    /**
      * 该分P的持续时间，单位为秒。
      * @type {number}
      * @memberof GetSocialBilibiliVideoinfo200ResponsePagesInner
      */
     duration?: number;
+    /**
+     * 外部视频源 ID，通常为空。
+     * @type {string}
+     * @memberof GetSocialBilibiliVideoinfo200ResponsePagesInner
+     */
+    vid?: string;
+    /**
+     * 外链地址，通常为空。
+     * @type {string}
+     * @memberof GetSocialBilibiliVideoinfo200ResponsePagesInner
+     */
+    weblink?: string;
+    /**
+     * 
+     * @type {GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension}
+     * @memberof GetSocialBilibiliVideoinfo200ResponsePagesInner
+     */
+    dimension?: GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension;
 }
 
 /**
@@ -65,7 +97,11 @@ export function GetSocialBilibiliVideoinfo200ResponsePagesInnerFromJSONTyped(jso
         'cid': json['cid'] == null ? undefined : json['cid'],
         'page': json['page'] == null ? undefined : json['page'],
         'part': json['part'] == null ? undefined : json['part'],
+        'from': json['from'] == null ? undefined : json['from'],
         'duration': json['duration'] == null ? undefined : json['duration'],
+        'vid': json['vid'] == null ? undefined : json['vid'],
+        'weblink': json['weblink'] == null ? undefined : json['weblink'],
+        'dimension': json['dimension'] == null ? undefined : GetSocialBilibiliVideoinfo200ResponsePagesInnerDimensionFromJSON(json['dimension']),
     };
 }
 
@@ -83,7 +119,11 @@ export function GetSocialBilibiliVideoinfo200ResponsePagesInnerToJSONTyped(value
         'cid': value['cid'],
         'page': value['page'],
         'part': value['part'],
+        'from': value['from'],
         'duration': value['duration'],
+        'vid': value['vid'],
+        'weblink': value['weblink'],
+        'dimension': GetSocialBilibiliVideoinfo200ResponsePagesInnerDimensionToJSON(value['dimension']),
     };
 }
 

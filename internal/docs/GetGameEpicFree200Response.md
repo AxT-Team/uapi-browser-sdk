@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`message` | string
 `data` | [Array&lt;GetGameEpicFree200ResponseDataInner&gt;](GetGameEpicFree200ResponseDataInner.md)
 
 ## Example
@@ -15,6 +16,7 @@ import type { GetGameEpicFree200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
+  "message": 获取成功,
   "data": null,
 } satisfies GetGameEpicFree200Response
 

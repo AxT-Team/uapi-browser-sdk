@@ -6,9 +6,19 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
-`data` | [GetSocialBilibiliUserinfo200ResponseData](GetSocialBilibiliUserinfo200ResponseData.md)
-`message` | string
+`mid` | number
+`name` | string
+`sex` | string
+`face` | string
+`sign` | string
+`level` | number
+`birthday` | string
+`vipType` | number
+`vipStatus` | number
+`following` | number
+`follower` | number
+`archiveCount` | number
+`articleCount` | number
 
 ## Example
 
@@ -17,9 +27,19 @@ import type { GetSocialBilibiliUserinfo200Response } from 'uapi-browser-sdk-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 0,
-  "data": null,
-  "message": 0,
+  "mid": 483307278,
+  "name": bishi,
+  "sex": 保密,
+  "face": http://i0.hdslb.com/bfs/face/....jpg,
+  "sign": 嗶哩嗶哩 - ( ゜- ゜)つロ 乾杯~,
+  "level": 6,
+  "birthday": 10-24,
+  "vipType": 2,
+  "vipStatus": 1,
+  "following": 148,
+  "follower": 123456,
+  "archiveCount": 321,
+  "articleCount": 12,
 } satisfies GetSocialBilibiliUserinfo200Response
 
 console.log(example)

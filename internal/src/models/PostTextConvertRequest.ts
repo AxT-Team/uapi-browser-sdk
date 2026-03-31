@@ -27,13 +27,13 @@ export interface PostTextConvertRequest {
     text: string;
     /**
      * 源格式类型
-     * @type {string}
+     * @type {PostTextConvertRequestFromEnum}
      * @memberof PostTextConvertRequest
      */
     from: PostTextConvertRequestFromEnum;
     /**
      * 目标格式类型
-     * @type {string}
+     * @type {PostTextConvertRequestToEnum}
      * @memberof PostTextConvertRequest
      */
     to: PostTextConvertRequestToEnum;

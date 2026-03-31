@@ -68,10 +68,9 @@ export interface PostWebTomarkdownAsyncRequest {
 export class WebParseApi extends runtime.BaseAPI {
 
     /**
-     * 提交了网页转 Markdown 任务后，想知道处理进度和结果？用这个接口来查询。  ## 功能概述 通过任务 ID 查询转换任务的当前状态、处理进度和最终结果。任务结果缓存 30 分钟，期间可重复查询。  ## 任务状态  | 状态 | 说明 | |------|------| | `pending` | 等待处理 | | `processing` | 处理中 | | `completed` | 已完成，可获取结果 | | `failed` | 失败 | | `timeout` | 超时（超过 60 秒） |  > [!NOTE] > 建议每 2-5 秒轮询一次，当状态为 `completed`、`failed` 或 `timeout` 时停止轮询。
-     * 转换任务状态
+     * Creates request options for getWebTomarkdownAsyncStatus without sending the request
      */
-    async getWebTomarkdownAsyncStatusRaw(requestParameters: GetWebTomarkdownAsyncStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWebTomarkdownAsyncStatus200Response>> {
+    async getWebTomarkdownAsyncStatusRequestOpts(requestParameters: GetWebTomarkdownAsyncStatusRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['taskId'] == null) {
             throw new runtime.RequiredError(
                 'taskId',
@@ -87,12 +86,21 @@ export class WebParseApi extends runtime.BaseAPI {
         let urlPath = `/web/tomarkdown/async/{task_id}`;
         urlPath = urlPath.replace(`{${"task_id"}}`, encodeURIComponent(String(requestParameters['taskId'])));
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 提交了网页转 Markdown 任务后，想知道处理进度和结果？用这个接口来查询。  ## 功能概述 通过任务 ID 查询转换任务的当前状态、处理进度和最终结果。任务结果缓存 30 分钟，期间可重复查询。  ## 任务状态  | 状态 | 说明 | |------|------| | `pending` | 等待处理 | | `processing` | 处理中 | | `completed` | 已完成，可获取结果 | | `failed` | 失败 | | `timeout` | 超时（超过 60 秒） |  > [!NOTE] > 建议每 2-5 秒轮询一次，当状态为 `completed`、`failed` 或 `timeout` 时停止轮询。
+     * 转换任务状态
+     */
+    async getWebTomarkdownAsyncStatusRaw(requestParameters: GetWebTomarkdownAsyncStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWebTomarkdownAsyncStatus200Response>> {
+        const requestOptions = await this.getWebTomarkdownAsyncStatusRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWebTomarkdownAsyncStatus200ResponseFromJSON(jsonValue));
     }
@@ -107,10 +115,9 @@ export class WebParseApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想批量获取一个网页上的所有图片链接？这个接口帮你搞定。  ## 功能概述 提供一个网页 URL，返回该页面中所有图片的链接列表。适合用于图片采集、素材下载等场景。
-     * 提取网页图片
+     * Creates request options for getWebparseExtractimages without sending the request
      */
-    async getWebparseExtractimagesRaw(requestParameters: GetWebparseExtractimagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWebparseExtractimages200Response>> {
+    async getWebparseExtractimagesRequestOpts(requestParameters: GetWebparseExtractimagesRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['url'] == null) {
             throw new runtime.RequiredError(
                 'url',
@@ -129,12 +136,21 @@ export class WebParseApi extends runtime.BaseAPI {
 
         let urlPath = `/webparse/extractimages`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想批量获取一个网页上的所有图片链接？这个接口帮你搞定。  ## 功能概述 提供一个网页 URL，返回该页面中所有图片的链接列表。适合用于图片采集、素材下载等场景。
+     * 提取网页图片
+     */
+    async getWebparseExtractimagesRaw(requestParameters: GetWebparseExtractimagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWebparseExtractimages200Response>> {
+        const requestOptions = await this.getWebparseExtractimagesRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWebparseExtractimages200ResponseFromJSON(jsonValue));
     }
@@ -149,10 +165,9 @@ export class WebParseApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想在应用里做链接预览卡片？这个接口帮你一键获取网页的标题、描述、图标等信息。  ## 功能概述 提供一个网页 URL，返回该页面的元数据，包括标题、描述、关键词、Favicon、Open Graph 信息等。非常适合用于生成链接预览卡片或做 SEO 分析。
-     * 提取网页元数据
+     * Creates request options for getWebparseMetadata without sending the request
      */
-    async getWebparseMetadataRaw(requestParameters: GetWebparseMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWebparseMetadata200Response>> {
+    async getWebparseMetadataRequestOpts(requestParameters: GetWebparseMetadataRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['url'] == null) {
             throw new runtime.RequiredError(
                 'url',
@@ -171,12 +186,21 @@ export class WebParseApi extends runtime.BaseAPI {
 
         let urlPath = `/webparse/metadata`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想在应用里做链接预览卡片？这个接口帮你一键获取网页的标题、描述、图标等信息。  ## 功能概述 提供一个网页 URL，返回该页面的元数据，包括标题、描述、关键词、Favicon、Open Graph 信息等。非常适合用于生成链接预览卡片或做 SEO 分析。
+     * 提取网页元数据
+     */
+    async getWebparseMetadataRaw(requestParameters: GetWebparseMetadataRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetWebparseMetadata200Response>> {
+        const requestOptions = await this.getWebparseMetadataRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWebparseMetadata200ResponseFromJSON(jsonValue));
     }
@@ -191,10 +215,9 @@ export class WebParseApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想把一个网页的内容转成干净的 Markdown 文本？这个异步接口可以帮你搞定，特别适合处理大型或复杂的网页。  ## 功能概述  > [!VIP] > 本 API 目前处于**限时免费**阶段，未来将转为付费服务。  提交一个网页 URL，我们会自动抓取主体内容，剔除广告、导航栏等干扰元素，并转换为 Markdown 格式。同时会提取标题、作者、发布日期等元数据，生成 YAML Front Matter。  任务提交后会立即返回任务 ID，你可以用它来查询处理进度和结果。单个任务最长处理 60 秒，结果缓存 30 分钟。
-     * 网页转 Markdown
+     * Creates request options for postWebTomarkdownAsync without sending the request
      */
-    async postWebTomarkdownAsyncRaw(requestParameters: PostWebTomarkdownAsyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostWebTomarkdownAsync202Response>> {
+    async postWebTomarkdownAsyncRequestOpts(requestParameters: PostWebTomarkdownAsyncRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['url'] == null) {
             throw new runtime.RequiredError(
                 'url',
@@ -213,18 +236,27 @@ export class WebParseApi extends runtime.BaseAPI {
 
         let urlPath = `/web/tomarkdown/async`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想把一个网页的内容转成干净的 Markdown 文本？这个异步接口可以帮你搞定，特别适合处理大型或复杂的网页。  ## 功能概述  提交一个网页 URL，我们会自动抓取主体内容，剔除广告、导航栏等干扰元素，并转换为 Markdown 格式。同时会提取标题、作者、发布日期等元数据，生成 YAML Front Matter。  任务提交后会立即返回任务 ID，你可以用它来查询处理进度和结果。单个任务最长处理 60 秒，结果缓存 30 分钟。
+     * 网页转 Markdown
+     */
+    async postWebTomarkdownAsyncRaw(requestParameters: PostWebTomarkdownAsyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostWebTomarkdownAsync202Response>> {
+        const requestOptions = await this.postWebTomarkdownAsyncRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostWebTomarkdownAsync202ResponseFromJSON(jsonValue));
     }
 
     /**
-     * 想把一个网页的内容转成干净的 Markdown 文本？这个异步接口可以帮你搞定，特别适合处理大型或复杂的网页。  ## 功能概述  > [!VIP] > 本 API 目前处于**限时免费**阶段，未来将转为付费服务。  提交一个网页 URL，我们会自动抓取主体内容，剔除广告、导航栏等干扰元素，并转换为 Markdown 格式。同时会提取标题、作者、发布日期等元数据，生成 YAML Front Matter。  任务提交后会立即返回任务 ID，你可以用它来查询处理进度和结果。单个任务最长处理 60 秒，结果缓存 30 分钟。
+     * 想把一个网页的内容转成干净的 Markdown 文本？这个异步接口可以帮你搞定，特别适合处理大型或复杂的网页。  ## 功能概述  提交一个网页 URL，我们会自动抓取主体内容，剔除广告、导航栏等干扰元素，并转换为 Markdown 格式。同时会提取标题、作者、发布日期等元数据，生成 YAML Front Matter。  任务提交后会立即返回任务 ID，你可以用它来查询处理进度和结果。单个任务最长处理 60 秒，结果缓存 30 分钟。
      * 网页转 Markdown
      */
     async postWebTomarkdownAsync(requestParameters: PostWebTomarkdownAsyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostWebTomarkdownAsync202Response> {

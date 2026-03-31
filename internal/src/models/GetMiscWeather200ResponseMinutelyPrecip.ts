@@ -22,7 +22,7 @@ import {
 } from './GetMiscWeather200ResponseMinutelyPrecipDataInner';
 
 /**
- * 分钟级降水预报（minutely=true 时返回，仅国内城市可用）
+ * 分钟级降水预报（minutely=true 时返回，仅国内城市可用，精确到2分钟）
  * @export
  * @interface GetMiscWeather200ResponseMinutelyPrecip
  */
@@ -40,7 +40,7 @@ export interface GetMiscWeather200ResponseMinutelyPrecip {
      */
     updateTime?: string;
     /**
-     * 每5分钟一个数据点，共24个
+     * 精确到2分钟的数据点
      * @type {Array<GetMiscWeather200ResponseMinutelyPrecipDataInner>}
      * @memberof GetMiscWeather200ResponseMinutelyPrecip
      */

@@ -28,6 +28,12 @@ import {
  */
 export interface GetGameEpicFree200Response {
     /**
+     * 操作结果描述。
+     * @type {string}
+     * @memberof GetGameEpicFree200Response
+     */
+    message?: string;
+    /**
      * 免费游戏列表数组。
      * @type {Array<GetGameEpicFree200ResponseDataInner>}
      * @memberof GetGameEpicFree200Response
@@ -52,6 +58,7 @@ export function GetGameEpicFree200ResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
+        'message': json['message'] == null ? undefined : json['message'],
         'data': json['data'] == null ? undefined : ((json['data'] as Array<any>).map(GetGameEpicFree200ResponseDataInnerFromJSON)),
     };
 }
@@ -67,6 +74,7 @@ export function GetGameEpicFree200ResponseToJSONTyped(value?: GetGameEpicFree200
 
     return {
         
+        'message': value['message'],
         'data': value['data'] == null ? undefined : ((value['data'] as Array<any>).map(GetGameEpicFree200ResponseDataInnerToJSON)),
     };
 }

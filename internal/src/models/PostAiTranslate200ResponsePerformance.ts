@@ -25,12 +25,6 @@ export interface PostAiTranslate200ResponsePerformance {
      * @memberof PostAiTranslate200ResponsePerformance
      */
     processingTimeMs?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PostAiTranslate200ResponsePerformance
-     */
-    cacheHit?: boolean;
 }
 
 /**
@@ -51,7 +45,6 @@ export function PostAiTranslate200ResponsePerformanceFromJSONTyped(json: any, ig
     return {
         
         'processingTimeMs': json['processing_time_ms'] == null ? undefined : json['processing_time_ms'],
-        'cacheHit': json['cache_hit'] == null ? undefined : json['cache_hit'],
     };
 }
 
@@ -67,7 +60,6 @@ export function PostAiTranslate200ResponsePerformanceToJSONTyped(value?: PostAiT
     return {
         
         'processing_time_ms': value['processingTimeMs'],
-        'cache_hit': value['cacheHit'],
     };
 }
 

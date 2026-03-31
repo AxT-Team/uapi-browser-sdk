@@ -27,7 +27,7 @@ export interface PostTranslateStream400Response {
     error?: string;
     /**
      * 错误码
-     * @type {string}
+     * @type {PostTranslateStream400ResponseCodeEnum}
      * @memberof PostTranslateStream400Response
      */
     code?: PostTranslateStream400ResponseCodeEnum;

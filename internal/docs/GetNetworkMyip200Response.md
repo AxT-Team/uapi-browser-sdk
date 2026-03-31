@@ -16,6 +16,7 @@ Name | Type
 `beginip` | string
 `endip` | string
 `district` | string
+`timeZone` | string
 
 ## Example
 
@@ -33,7 +34,8 @@ const example = {
   "longitude": 108.3168,
   "beginip": 117.182.64.0,
   "endip": 117.182.127.255,
-  "district": 青秀区,
+  "district": 临桂区,
+  "timeZone": Asia/Shanghai,
 } satisfies GetNetworkMyip200Response
 
 console.log(example)

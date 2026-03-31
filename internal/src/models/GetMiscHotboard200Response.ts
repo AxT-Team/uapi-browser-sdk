@@ -12,84 +12,34 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { GetMiscHotboard200ResponseResultsInner } from './GetMiscHotboard200ResponseResultsInner';
+import type { GetMiscHotboard200ResponseOneOf } from './GetMiscHotboard200ResponseOneOf';
 import {
-    GetMiscHotboard200ResponseResultsInnerFromJSON,
-    GetMiscHotboard200ResponseResultsInnerFromJSONTyped,
-    GetMiscHotboard200ResponseResultsInnerToJSON,
-    GetMiscHotboard200ResponseResultsInnerToJSONTyped,
-} from './GetMiscHotboard200ResponseResultsInner';
-import type { GetMiscHotboard200ResponseListInner } from './GetMiscHotboard200ResponseListInner';
+    instanceOfGetMiscHotboard200ResponseOneOf,
+    GetMiscHotboard200ResponseOneOfFromJSON,
+    GetMiscHotboard200ResponseOneOfFromJSONTyped,
+    GetMiscHotboard200ResponseOneOfToJSON,
+} from './GetMiscHotboard200ResponseOneOf';
+import type { GetMiscHotboard200ResponseOneOf1 } from './GetMiscHotboard200ResponseOneOf1';
 import {
-    GetMiscHotboard200ResponseListInnerFromJSON,
-    GetMiscHotboard200ResponseListInnerFromJSONTyped,
-    GetMiscHotboard200ResponseListInnerToJSON,
-    GetMiscHotboard200ResponseListInnerToJSONTyped,
-} from './GetMiscHotboard200ResponseListInner';
+    instanceOfGetMiscHotboard200ResponseOneOf1,
+    GetMiscHotboard200ResponseOneOf1FromJSON,
+    GetMiscHotboard200ResponseOneOf1FromJSONTyped,
+    GetMiscHotboard200ResponseOneOf1ToJSON,
+} from './GetMiscHotboard200ResponseOneOf1';
+import type { GetMiscHotboard200ResponseOneOf2 } from './GetMiscHotboard200ResponseOneOf2';
+import {
+    instanceOfGetMiscHotboard200ResponseOneOf2,
+    GetMiscHotboard200ResponseOneOf2FromJSON,
+    GetMiscHotboard200ResponseOneOf2FromJSONTyped,
+    GetMiscHotboard200ResponseOneOf2ToJSON,
+} from './GetMiscHotboard200ResponseOneOf2';
 
 /**
+ * @type GetMiscHotboard200Response
  * 
  * @export
- * @interface GetMiscHotboard200Response
  */
-export interface GetMiscHotboard200Response {
-    /**
-     * 热榜条目列表。
-     * @type {Array<GetMiscHotboard200ResponseListInner>}
-     * @memberof GetMiscHotboard200Response
-     */
-    list?: Array<GetMiscHotboard200ResponseListInner>;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetMiscHotboard200Response
-     */
-    type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetMiscHotboard200Response
-     */
-    updateTime?: string;
-    /**
-     * 时光机模式返回的快照实际时间戳（毫秒）。
-     * @type {number}
-     * @memberof GetMiscHotboard200Response
-     */
-    snapshotTime?: number;
-    /**
-     * 搜索模式返回的搜索关键词。
-     * @type {string}
-     * @memberof GetMiscHotboard200Response
-     */
-    keyword?: string;
-    /**
-     * 搜索模式返回的结果数量。
-     * @type {number}
-     * @memberof GetMiscHotboard200Response
-     */
-    count?: number;
-    /**
-     * 搜索模式返回的结果数组。
-     * @type {Array<GetMiscHotboard200ResponseResultsInner>}
-     * @memberof GetMiscHotboard200Response
-     */
-    results?: Array<GetMiscHotboard200ResponseResultsInner>;
-    /**
-     * 数据源列表模式返回的可用历史数据源数组。
-     * @type {Array<string>}
-     * @memberof GetMiscHotboard200Response
-     */
-    sources?: Array<string>;
-}
-
-/**
- * Check if a given object implements the GetMiscHotboard200Response interface.
- */
-export function instanceOfGetMiscHotboard200Response(value: object): value is GetMiscHotboard200Response {
-    return true;
-}
+export type GetMiscHotboard200Response = GetMiscHotboard200ResponseOneOf | GetMiscHotboard200ResponseOneOf1 | GetMiscHotboard200ResponseOneOf2;
 
 export function GetMiscHotboard200ResponseFromJSON(json: any): GetMiscHotboard200Response {
     return GetMiscHotboard200ResponseFromJSONTyped(json, false);
@@ -99,20 +49,22 @@ export function GetMiscHotboard200ResponseFromJSONTyped(json: any, ignoreDiscrim
     if (json == null) {
         return json;
     }
-    return {
-        
-        'list': json['list'] == null ? undefined : ((json['list'] as Array<any>).map(GetMiscHotboard200ResponseListInnerFromJSON)),
-        'type': json['type'] == null ? undefined : json['type'],
-        'updateTime': json['update_time'] == null ? undefined : json['update_time'],
-        'snapshotTime': json['snapshot_time'] == null ? undefined : json['snapshot_time'],
-        'keyword': json['keyword'] == null ? undefined : json['keyword'],
-        'count': json['count'] == null ? undefined : json['count'],
-        'results': json['results'] == null ? undefined : ((json['results'] as Array<any>).map(GetMiscHotboard200ResponseResultsInnerFromJSON)),
-        'sources': json['sources'] == null ? undefined : json['sources'],
-    };
+    if (typeof json !== 'object') {
+        return json;
+    }
+    if (instanceOfGetMiscHotboard200ResponseOneOf(json)) {
+        return GetMiscHotboard200ResponseOneOfFromJSONTyped(json, true);
+    }
+    if (instanceOfGetMiscHotboard200ResponseOneOf1(json)) {
+        return GetMiscHotboard200ResponseOneOf1FromJSONTyped(json, true);
+    }
+    if (instanceOfGetMiscHotboard200ResponseOneOf2(json)) {
+        return GetMiscHotboard200ResponseOneOf2FromJSONTyped(json, true);
+    }
+    return {} as any;
 }
 
-export function GetMiscHotboard200ResponseToJSON(json: any): GetMiscHotboard200Response {
+export function GetMiscHotboard200ResponseToJSON(json: any): any {
     return GetMiscHotboard200ResponseToJSONTyped(json, false);
 }
 
@@ -120,17 +72,18 @@ export function GetMiscHotboard200ResponseToJSONTyped(value?: GetMiscHotboard200
     if (value == null) {
         return value;
     }
-
-    return {
-        
-        'list': value['list'] == null ? undefined : ((value['list'] as Array<any>).map(GetMiscHotboard200ResponseListInnerToJSON)),
-        'type': value['type'],
-        'update_time': value['updateTime'],
-        'snapshot_time': value['snapshotTime'],
-        'keyword': value['keyword'],
-        'count': value['count'],
-        'results': value['results'] == null ? undefined : ((value['results'] as Array<any>).map(GetMiscHotboard200ResponseResultsInnerToJSON)),
-        'sources': value['sources'],
-    };
+    if (typeof value !== 'object') {
+        return value;
+    }
+    if (instanceOfGetMiscHotboard200ResponseOneOf(value)) {
+        return GetMiscHotboard200ResponseOneOfToJSON(value as GetMiscHotboard200ResponseOneOf);
+    }
+    if (instanceOfGetMiscHotboard200ResponseOneOf1(value)) {
+        return GetMiscHotboard200ResponseOneOf1ToJSON(value as GetMiscHotboard200ResponseOneOf1);
+    }
+    if (instanceOfGetMiscHotboard200ResponseOneOf2(value)) {
+        return GetMiscHotboard200ResponseOneOf2ToJSON(value as GetMiscHotboard200ResponseOneOf2);
+    }
+    return {};
 }
 

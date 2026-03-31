@@ -1,6 +1,6 @@
 # uapi-browser-sdk
 
-![Banner](https://raw.githubusercontent.com/AxT-Team/uapi-browser-sdk/main/banner.png)
+![Banner](https://raw.githubusercontent.com/uapis/uapi-browser-sdk/main/banner.png)
 
 [![Browser TS](https://img.shields.io/badge/TypeScript-ES2020-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Docs](https://img.shields.io/badge/Docs-uapis.cn-2EAE5D?style=flat-square)](https://uapis.cn/)

@@ -168,10 +168,9 @@ export interface PostTextMd5VerifyOperationRequest {
 export class TextApi extends runtime.BaseAPI {
 
     /**
-     * 一个快速计算文本 MD5 哈希值的工具，适用于短文本且不关心参数暴露的场景。  ## 功能概述 通过GET请求的查询参数传入文本，返回其32位小写的MD5哈希值。  > [!NOTE] > 对于较长或敏感的文本，我们推荐使用本接口的 POST 版本，以避免URL长度限制和参数暴露问题。
-     * MD5 哈希
+     * Creates request options for getTextMd5 without sending the request
      */
-    async getTextMd5Raw(requestParameters: GetTextMd5Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTextMd5200Response>> {
+    async getTextMd5RequestOpts(requestParameters: GetTextMd5Request): Promise<runtime.RequestOpts> {
         if (requestParameters['text'] == null) {
             throw new runtime.RequiredError(
                 'text',
@@ -190,12 +189,21 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/md5`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 一个快速计算文本 MD5 哈希值的工具，适用于短文本且不关心参数暴露的场景。  ## 功能概述 通过GET请求的查询参数传入文本，返回其32位小写的MD5哈希值。  > [!NOTE] > 对于较长或敏感的文本，我们推荐使用本接口的 POST 版本，以避免URL长度限制和参数暴露问题。
+     * MD5 哈希
+     */
+    async getTextMd5Raw(requestParameters: GetTextMd5Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTextMd5200Response>> {
+        const requestOptions = await this.getTextMd5RequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetTextMd5200ResponseFromJSON(jsonValue));
     }
@@ -210,10 +218,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 收到了用AES加密的密文？把它、密钥和随机数（nonce）交给我们，就能还原出原始内容。  ## 功能概述 这是一个标准的AES解密接口。你需要提供经过Base64编码的密文、加密时使用的密钥和nonce（随机数，通常为16字节字符串）。  > [!IMPORTANT] > **关于密钥 `key`** > 我们支持 AES-128, AES-192, 和 AES-256。请确保你提供的密钥 `key` 的长度（字节数）正好是 **16**、**24** 或 **32**，以分别对应这三种加密强度。 >  > **关于随机数 `nonce`** > 通常为16字节字符串，需与加密时一致。
-     * AES 解密
+     * Creates request options for postTextAesDecrypt without sending the request
      */
-    async postTextAesDecryptRaw(requestParameters: PostTextAesDecryptOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesDecrypt200Response>> {
+    async postTextAesDecryptRequestOpts(requestParameters: PostTextAesDecryptOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextAesDecryptRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextAesDecryptRequest',
@@ -230,13 +237,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/aes/decrypt`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextAesDecryptRequestToJSON(requestParameters['postTextAesDecryptRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 收到了用AES加密的密文？把它、密钥和随机数（nonce）交给我们，就能还原出原始内容。  ## 功能概述 这是一个标准的AES解密接口。你需要提供经过Base64编码的密文、加密时使用的密钥和nonce（随机数，通常为16字节字符串）。  > [!IMPORTANT] > **关于密钥 `key`** > 我们支持 AES-128, AES-192, 和 AES-256。请确保你提供的密钥 `key` 的长度（字节数）正好是 **16**、**24** 或 **32**，以分别对应这三种加密强度。 >  > **关于随机数 `nonce`** > 通常为16字节字符串，需与加密时一致。
+     * AES 解密
+     */
+    async postTextAesDecryptRaw(requestParameters: PostTextAesDecryptOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesDecrypt200Response>> {
+        const requestOptions = await this.postTextAesDecryptRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextAesDecrypt200ResponseFromJSON(jsonValue));
     }
@@ -251,10 +267,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 需要解密通过高级加密接口加密的数据？这个接口提供与加密接口完全配对的解密功能，支持相同的6种加密模式和3种填充方式。  > [!IMPORTANT] > **解密参数必须与加密时一致** > 解密时，必须提供与加密时相同的密钥、模式和填充方式。对于非GCM模式，还需要提供加密时返回的IV。  ## 功能概述 这是一个功能完整的AES解密接口，能够解密通过高级加密接口加密的所有密文。支持所有6种加密模式和3种填充方式，与加密接口完全配对。  ### 解密流程 1. 获取加密时返回的密文和配置参数 2. 使用相同的密钥、模式、填充方式和IV（如需要） 3. 调用本接口进行解密 4. 获取原始明文  ### 支持的解密模式 - **GCM模式**（推荐）：自动验证数据完整性，如果密文被篡改会解密失败 - **CBC模式**：经典块解密模式，需要提供加密时的IV - **CTR/OFB/CFB模式**：流密码解密，需要提供加密时的IV - **ECB模式**：不需要IV，但安全性较低  ### 填充方式处理 - **PKCS7填充**：解密后自动移除填充 - **Zero填充**：解密后自动移除0x00填充 - **None填充**：无填充处理  ## 参数说明 - **`text`**: 待解密的密文（Base64编码，来自加密接口返回的ciphertext字段） - **`key`**: 解密密钥（必须与加密时相同） - **`mode`**: 加密模式（必须与加密时相同） - **`padding`**: 填充方式（可选，默认PKCS7，必须与加密时相同） - **`iv`**: 初始化向量（非GCM模式必须提供，Base64编码）  ## 常见错误处理 如果解密失败，请检查以下几点： - 密钥是否与加密时完全相同 - 模式和填充方式是否匹配 - 非GCM模式下是否提供了正确的IV - 密文是否完整且未被修改 - GCM模式下密文是否被篡改
-     * AES高级解密
+     * Creates request options for postTextAesDecryptAdvanced without sending the request
      */
-    async postTextAesDecryptAdvancedRaw(requestParameters: PostTextAesDecryptAdvancedOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesDecryptAdvanced200Response>> {
+    async postTextAesDecryptAdvancedRequestOpts(requestParameters: PostTextAesDecryptAdvancedOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextAesDecryptAdvancedRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextAesDecryptAdvancedRequest',
@@ -271,13 +286,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/aes/decrypt-advanced`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextAesDecryptAdvancedRequestToJSON(requestParameters['postTextAesDecryptAdvancedRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 需要解密通过高级加密接口加密的数据？这个接口提供与加密接口完全配对的解密功能，支持相同的6种加密模式和3种填充方式。  > [!IMPORTANT] > **解密参数必须与加密时一致** > 解密时，必须提供与加密时相同的密钥、模式和填充方式。对于非GCM模式，还需要提供加密时返回的IV。  ## 功能概述 这是一个功能完整的AES解密接口，能够解密通过高级加密接口加密的所有密文。支持所有6种加密模式和3种填充方式，与加密接口完全配对。  ### 解密流程 1. 获取加密时返回的密文和配置参数 2. 使用相同的密钥、模式、填充方式和IV（如需要） 3. 调用本接口进行解密 4. 获取原始明文  ### 支持的解密模式 - **GCM模式**（推荐）：自动验证数据完整性，如果密文被篡改会解密失败 - **CBC模式**：经典块解密模式，需要提供加密时的IV - **CTR/OFB/CFB模式**：流密码解密，需要提供加密时的IV - **ECB模式**：不需要IV，但安全性较低  ### 填充方式处理 - **PKCS7填充**：解密后自动移除填充 - **Zero填充**：解密后自动移除0x00填充 - **None填充**：无填充处理  ## 参数说明 - **`text`**: 待解密的密文（Base64编码，来自加密接口返回的ciphertext字段） - **`key`**: 解密密钥（必须与加密时相同） - **`mode`**: 加密模式（必须与加密时相同） - **`padding`**: 填充方式（可选，默认PKCS7，必须与加密时相同） - **`iv`**: 初始化向量（非GCM模式必须提供，Base64编码）  ## 常见错误处理 如果解密失败，请检查以下几点： - 密钥是否与加密时完全相同 - 模式和填充方式是否匹配 - 非GCM模式下是否提供了正确的IV - 密文是否完整且未被修改 - GCM模式下密文是否被篡改
+     * AES高级解密
+     */
+    async postTextAesDecryptAdvancedRaw(requestParameters: PostTextAesDecryptAdvancedOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesDecryptAdvanced200Response>> {
+        const requestOptions = await this.postTextAesDecryptAdvancedRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextAesDecryptAdvanced200ResponseFromJSON(jsonValue));
     }
@@ -292,10 +316,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 需要安全地传输或存储一些文本信息？AES加密是一个可靠的选择。  ## 功能概述 这是一个标准的AES加密接口。你提供需要加密的明文和密钥，我们返回经过Base64编码的密文。  > [!IMPORTANT] > **关于密钥 `key`** > 我们支持 AES-128, AES-192, 和 AES-256。请确保你提供的密钥 `key` 的长度（字节数）正好是 **16**、**24** 或 **32**，以分别对应这三种加密强度。
-     * AES 加密
+     * Creates request options for postTextAesEncrypt without sending the request
      */
-    async postTextAesEncryptRaw(requestParameters: PostTextAesEncryptOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesEncrypt200Response>> {
+    async postTextAesEncryptRequestOpts(requestParameters: PostTextAesEncryptOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextAesEncryptRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextAesEncryptRequest',
@@ -312,13 +335,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/aes/encrypt`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextAesEncryptRequestToJSON(requestParameters['postTextAesEncryptRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 需要安全地传输或存储一些文本信息？AES加密是一个可靠的选择。  ## 功能概述 这是一个标准的AES加密接口。你提供需要加密的明文和密钥，我们返回经过Base64编码的密文。  > [!IMPORTANT] > **关于密钥 `key`** > 我们支持 AES-128, AES-192, 和 AES-256。请确保你提供的密钥 `key` 的长度（字节数）正好是 **16**、**24** 或 **32**，以分别对应这三种加密强度。
+     * AES 加密
+     */
+    async postTextAesEncryptRaw(requestParameters: PostTextAesEncryptOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesEncrypt200Response>> {
+        const requestOptions = await this.postTextAesEncryptRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextAesEncrypt200ResponseFromJSON(jsonValue));
     }
@@ -333,10 +365,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 需要更灵活的AES加密方案？这个高级接口支持6种加密模式和3种填充方式，让你根据具体场景选择最合适的加密配置。  > [!IMPORTANT] > **推荐使用GCM模式** > GCM模式提供认证加密(AEAD)，不仅能加密数据，还能验证数据完整性，防止密文被篡改。这是目前最推荐的加密模式。  ## 功能概述 这是一个功能全面的AES加密接口，支持多种加密模式和填充方式。你可以根据不同的安全需求和性能要求，灵活选择合适的加密配置。  ### 支持的加密模式 - **GCM模式**（推荐）：认证加密模式，提供完整性保护 - **CBC模式**：经典块加密模式，需要IV和填充，适用于文件加密 - **CTR模式**：流密码模式，无需填充，适用于实时数据加密 - **OFB/CFB模式**：流密码模式，无需填充，适用于流数据加密 - **ECB模式**（不推荐）：仅用于兼容性需求  ### 支持的填充方式 - **PKCS7填充**（推荐）：标准填充方式 - **Zero填充**：使用0x00字节填充 - **None填充**：无填充，用于流密码模式  ### 输出格式支持 - **base64**（默认）：标准Base64编码输出，适合传输和存储 - **hex**：十六进制编码输出，方便与在线加密工具对比验证  通过 `output_format` 参数可以直接获取HEX格式的密文，无需额外调用转换接口。  ## 参数说明 - **`text`**: 待加密的明文文本 - **`key`**: 加密密钥（支持任意长度） - **`mode`**: 加密模式（可选，默认GCM） - **`padding`**: 填充方式（可选，默认PKCS7） - **`iv`**: 自定义IV（可选，Base64编码，16字节） - **`output_format`**: 输出格式（可选，默认base64）  ## 使用示例  **示例1：HEX格式输出** ```json {   \"text\": \"测试文本123\",   \"key\": \"1234567890123456\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\",   \"output_format\": \"hex\" } ``` 返回示例： ```json {   \"ciphertext\": \"aaaca6027da10918bb5d23d81939552c\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\" } ```  **示例2：Base64格式输出（默认）** ```json {   \"text\": \"测试文本123\",   \"key\": \"1234567890123456\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\" } ``` 返回示例： ```json {   \"ciphertext\": \"qqymAn2hCRi7XSPYGTlVLA==\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\" } ```  ## 技术规格 - **加密算法**: AES-256 - **编码格式**: Base64/HEX（输入/输出） - **IV长度**: 16字节（128位） - **版本标注**: v3.4.8+  > [!NOTE] > **关于IV（初始化向量）** > - GCM模式无需提供IV > - CBC/CTR/OFB/CFB模式可选提供IV > - ECB模式不使用IV > - 建议每次加密使用不同的IV以确保安全性  > [!TIP] > **关于输出格式** > - 如需与在线加密工具（如 toolhelper.cn）对比结果，建议使用 `output_format: \"hex\"`  > - Base64格式更适合网络传输和API调用 > - 两种格式可以相互转换，数据完全一致
-     * AES高级加密
+     * Creates request options for postTextAesEncryptAdvanced without sending the request
      */
-    async postTextAesEncryptAdvancedRaw(requestParameters: PostTextAesEncryptAdvancedOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesEncryptAdvanced200Response>> {
+    async postTextAesEncryptAdvancedRequestOpts(requestParameters: PostTextAesEncryptAdvancedOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextAesEncryptAdvancedRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextAesEncryptAdvancedRequest',
@@ -353,13 +384,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/aes/encrypt-advanced`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextAesEncryptAdvancedRequestToJSON(requestParameters['postTextAesEncryptAdvancedRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 需要更灵活的AES加密方案？这个高级接口支持6种加密模式和3种填充方式，让你根据具体场景选择最合适的加密配置。  > [!IMPORTANT] > **推荐使用GCM模式** > GCM模式提供认证加密(AEAD)，不仅能加密数据，还能验证数据完整性，防止密文被篡改。这是目前最推荐的加密模式。  ## 功能概述 这是一个功能全面的AES加密接口，支持多种加密模式和填充方式。你可以根据不同的安全需求和性能要求，灵活选择合适的加密配置。  ### 支持的加密模式 - **GCM模式**（推荐）：认证加密模式，提供完整性保护 - **CBC模式**：经典块加密模式，需要IV和填充，适用于文件加密 - **CTR模式**：流密码模式，无需填充，适用于实时数据加密 - **OFB/CFB模式**：流密码模式，无需填充，适用于流数据加密 - **ECB模式**（不推荐）：仅用于兼容性需求  ### 支持的填充方式 - **PKCS7填充**（推荐）：标准填充方式 - **Zero填充**：使用0x00字节填充 - **None填充**：无填充，用于流密码模式  ### 输出格式支持 - **base64**（默认）：标准Base64编码输出，适合传输和存储 - **hex**：十六进制编码输出，方便与在线加密工具对比验证  通过 `output_format` 参数可以直接获取HEX格式的密文，无需额外调用转换接口。  ## 参数说明 - **`text`**: 待加密的明文文本 - **`key`**: 加密密钥（支持任意长度） - **`mode`**: 加密模式（可选，默认GCM） - **`padding`**: 填充方式（可选，默认PKCS7） - **`iv`**: 自定义IV（可选，Base64编码，16字节） - **`output_format`**: 输出格式（可选，默认base64）  ## 使用示例  **示例1：HEX格式输出** ```json {   \"text\": \"测试文本123\",   \"key\": \"1234567890123456\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\",   \"output_format\": \"hex\" } ``` 返回示例： ```json {   \"ciphertext\": \"aaaca6027da10918bb5d23d81939552c\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\" } ```  **示例2：Base64格式输出（默认）** ```json {   \"text\": \"测试文本123\",   \"key\": \"1234567890123456\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\" } ``` 返回示例： ```json {   \"ciphertext\": \"qqymAn2hCRi7XSPYGTlVLA==\",   \"mode\": \"ECB\",   \"padding\": \"PKCS7\" } ```  ## 技术规格 - **加密算法**: AES-256 - **编码格式**: Base64/HEX（输入/输出） - **IV长度**: 16字节（128位） - **版本标注**: v3.4.8+  > [!NOTE] > **关于IV（初始化向量）** > - GCM模式无需提供IV > - CBC/CTR/OFB/CFB模式可选提供IV > - ECB模式不使用IV > - 建议每次加密使用不同的IV以确保安全性  > [!TIP] > **关于输出格式** > - 如需与在线加密工具（如 toolhelper.cn）对比结果，建议使用 `output_format: \"hex\"`  > - Base64格式更适合网络传输和API调用 > - 两种格式可以相互转换，数据完全一致
+     * AES高级加密
+     */
+    async postTextAesEncryptAdvancedRaw(requestParameters: PostTextAesEncryptAdvancedOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAesEncryptAdvanced200Response>> {
+        const requestOptions = await this.postTextAesEncryptAdvancedRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextAesEncryptAdvanced200ResponseFromJSON(jsonValue));
     }
@@ -374,10 +414,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 想知道一篇文章有多少字、多少个词、或者多少行？这个接口可以帮你快速统计。  ## 功能概述 你提供一段文本，我们会从多个维度进行分析，并返回其字符数、词数、句子数、段落数和行数。这对于文本编辑、内容管理等场景非常有用。
-     * 文本分析
+     * Creates request options for postTextAnalyze without sending the request
      */
-    async postTextAnalyzeRaw(requestParameters: PostTextAnalyzeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAnalyze200Response>> {
+    async postTextAnalyzeRequestOpts(requestParameters: PostTextAnalyzeOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextAnalyzeRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextAnalyzeRequest',
@@ -394,13 +433,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/analyze`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextAnalyzeRequestToJSON(requestParameters['postTextAnalyzeRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 想知道一篇文章有多少字、多少个词、或者多少行？这个接口可以帮你快速统计。  ## 功能概述 你提供一段文本，我们会从多个维度进行分析，并返回其字符数、词数、句子数、段落数和行数。这对于文本编辑、内容管理等场景非常有用。
+     * 文本分析
+     */
+    async postTextAnalyzeRaw(requestParameters: PostTextAnalyzeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextAnalyze200Response>> {
+        const requestOptions = await this.postTextAnalyzeRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextAnalyze200ResponseFromJSON(jsonValue));
     }
@@ -415,10 +463,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 这是一个简单实用的 Base64 解码工具。  ## 功能概述 你提供一个 Base64 编码的字符串，我们帮你解码成原始的 UTF-8 文本。
-     * Base64 解码
+     * Creates request options for postTextBase64Decode without sending the request
      */
-    async postTextBase64DecodeRaw(requestParameters: PostTextBase64DecodeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextBase64Decode200Response>> {
+    async postTextBase64DecodeRequestOpts(requestParameters: PostTextBase64DecodeOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextBase64DecodeRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextBase64DecodeRequest',
@@ -435,13 +482,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/base64/decode`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextBase64DecodeRequestToJSON(requestParameters['postTextBase64DecodeRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 这是一个简单实用的 Base64 解码工具。  ## 功能概述 你提供一个 Base64 编码的字符串，我们帮你解码成原始的 UTF-8 文本。
+     * Base64 解码
+     */
+    async postTextBase64DecodeRaw(requestParameters: PostTextBase64DecodeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextBase64Decode200Response>> {
+        const requestOptions = await this.postTextBase64DecodeRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextBase64Decode200ResponseFromJSON(jsonValue));
     }
@@ -456,10 +512,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 这是一个简单实用的 Base64 编码工具。  ## 功能概述 你提供一段原始文本，我们帮你转换成 Base64 编码的字符串。
-     * Base64 编码
+     * Creates request options for postTextBase64Encode without sending the request
      */
-    async postTextBase64EncodeRaw(requestParameters: PostTextBase64EncodeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextBase64Encode200Response>> {
+    async postTextBase64EncodeRequestOpts(requestParameters: PostTextBase64EncodeOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextBase64EncodeRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextBase64EncodeRequest',
@@ -476,13 +531,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/base64/encode`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextBase64EncodeRequestToJSON(requestParameters['postTextBase64EncodeRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 这是一个简单实用的 Base64 编码工具。  ## 功能概述 你提供一段原始文本，我们帮你转换成 Base64 编码的字符串。
+     * Base64 编码
+     */
+    async postTextBase64EncodeRaw(requestParameters: PostTextBase64EncodeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextBase64Encode200Response>> {
+        const requestOptions = await this.postTextBase64EncodeRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextBase64Encode200ResponseFromJSON(jsonValue));
     }
@@ -497,10 +561,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 需要在不同文本格式之间转换？这个接口支持Base64、Hex、URL、HTML、Unicode等多种格式互转，还能生成MD5、SHA256等哈希值。  ## 功能概述 你提供待转换的文本、源格式和目标格式，接口会自动完成转换。支持7种双向格式（plain、base64、hex、url、html、unicode、binary）和4种单向哈希（md5、sha1、sha256、sha512）。  ## 格式说明 **双向转换格式**：plain（纯文本）、base64、hex（十六进制）、url、html（HTML实体）、unicode（\\uXXXX转义）、binary（二进制字符串）  **单向哈希格式**：md5、sha1、sha256、sha512（仅可作为目标格式，不可逆）  ## 链式转换 支持多次调用实现复杂转换，如先将文本转为base64，再将base64转为hex。
-     * 格式转换
+     * Creates request options for postTextConvert without sending the request
      */
-    async postTextConvertRaw(requestParameters: PostTextConvertOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextConvert200Response>> {
+    async postTextConvertRequestOpts(requestParameters: PostTextConvertOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextConvertRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextConvertRequest',
@@ -517,13 +580,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/convert`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextConvertRequestToJSON(requestParameters['postTextConvertRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 需要在不同文本格式之间转换？这个接口支持Base64、Hex、URL、HTML、Unicode等多种格式互转，还能生成MD5、SHA256等哈希值。  ## 功能概述 你提供待转换的文本、源格式和目标格式，接口会自动完成转换。支持7种双向格式（plain、base64、hex、url、html、unicode、binary）和4种单向哈希（md5、sha1、sha256、sha512）。  ## 格式说明 **双向转换格式**：plain（纯文本）、base64、hex（十六进制）、url、html（HTML实体）、unicode（\\uXXXX转义）、binary（二进制字符串）  **单向哈希格式**：md5、sha1、sha256、sha512（仅可作为目标格式，不可逆）  ## 链式转换 支持多次调用实现复杂转换，如先将文本转为base64，再将base64转为hex。
+     * 格式转换
+     */
+    async postTextConvertRaw(requestParameters: PostTextConvertOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextConvert200Response>> {
+        const requestOptions = await this.postTextConvertRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextConvert200ResponseFromJSON(jsonValue));
     }
@@ -538,10 +610,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 一个用于计算文本 MD5 哈希值的标准工具，推荐使用此版本。  ## 功能概述 通过POST请求的表单体传入文本，返回其32位小写的MD5哈希值。相比GET版本，此方法更适合处理较长或包含敏感信息的文本。
-     * MD5 哈希 (POST)
+     * Creates request options for postTextMd5 without sending the request
      */
-    async postTextMd5Raw(requestParameters: PostTextMd5OperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTextMd5200Response>> {
+    async postTextMd5RequestOpts(requestParameters: PostTextMd5OperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextMd5Request'] == null) {
             throw new runtime.RequiredError(
                 'postTextMd5Request',
@@ -558,13 +629,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/md5`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextMd5RequestToJSON(requestParameters['postTextMd5Request']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 一个用于计算文本 MD5 哈希值的标准工具，推荐使用此版本。  ## 功能概述 通过POST请求的表单体传入文本，返回其32位小写的MD5哈希值。相比GET版本，此方法更适合处理较长或包含敏感信息的文本。
+     * MD5 哈希 (POST)
+     */
+    async postTextMd5Raw(requestParameters: PostTextMd5OperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTextMd5200Response>> {
+        const requestOptions = await this.postTextMd5RequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetTextMd5200ResponseFromJSON(jsonValue));
     }
@@ -579,10 +659,9 @@ export class TextApi extends runtime.BaseAPI {
     }
 
     /**
-     * 下载了一个文件，想确认它在传输过程中有没有损坏？校验MD5值是最常用的方法。  ## 功能概述 你提供原始文本和一个MD5哈希值，我们帮你计算文本的哈希，并与你提供的哈希进行比对，告诉你它们是否匹配。这在文件完整性校验等场景下非常有用。
-     * MD5 校验
+     * Creates request options for postTextMd5Verify without sending the request
      */
-    async postTextMd5VerifyRaw(requestParameters: PostTextMd5VerifyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextMd5Verify200Response>> {
+    async postTextMd5VerifyRequestOpts(requestParameters: PostTextMd5VerifyOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['postTextMd5VerifyRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTextMd5VerifyRequest',
@@ -599,13 +678,22 @@ export class TextApi extends runtime.BaseAPI {
 
         let urlPath = `/text/md5/verify`;
 
-        const response = await this.request({
+        return {
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTextMd5VerifyRequestToJSON(requestParameters['postTextMd5VerifyRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * 下载了一个文件，想确认它在传输过程中有没有损坏？校验MD5值是最常用的方法。  ## 功能概述 你提供原始文本和一个MD5哈希值，我们帮你计算文本的哈希，并与你提供的哈希进行比对，告诉你它们是否匹配。这在文件完整性校验等场景下非常有用。
+     * MD5 校验
+     */
+    async postTextMd5VerifyRaw(requestParameters: PostTextMd5VerifyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTextMd5Verify200Response>> {
+        const requestOptions = await this.postTextMd5VerifyRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTextMd5Verify200ResponseFromJSON(jsonValue));
     }

@@ -7,12 +7,9 @@
 Name | Type
 ------------ | -------------
 `message` | string
-`isBatch` | boolean
 `data` | [PostAiTranslate200ResponseData](PostAiTranslate200ResponseData.md)
-`batchData` | [Array&lt;PostAiTranslate200ResponseBatchDataInner&gt;](PostAiTranslate200ResponseBatchDataInner.md)
-`batchSummary` | [PostAiTranslate200ResponseBatchSummary](PostAiTranslate200ResponseBatchSummary.md)
 `performance` | [PostAiTranslate200ResponsePerformance](PostAiTranslate200ResponsePerformance.md)
-`qualityMetrics` | [PostAiTranslate200ResponseQualityMetrics](PostAiTranslate200ResponseQualityMetrics.md)
+`isBatch` | boolean
 
 ## Example
 
@@ -22,12 +19,9 @@ import type { PostAiTranslate200Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "message": Translation completed successfully,
-  "isBatch": false,
   "data": null,
-  "batchData": null,
-  "batchSummary": null,
   "performance": null,
-  "qualityMetrics": null,
+  "isBatch": false,
 } satisfies PostAiTranslate200Response
 
 console.log(example)

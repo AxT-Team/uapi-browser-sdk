@@ -6,9 +6,28 @@
 
 Name | Type
 ------------ | -------------
-`code` | number
-`message` | string
-`data` | [GetMiscLunartime200ResponseData](GetMiscLunartime200ResponseData.md)
+`queryTimestamp` | string
+`queryTimezone` | string
+`timezone` | string
+`datetime` | string
+`datetimeRfc3339` | string
+`timestampUnix` | number
+`weekday` | string
+`weekdayCn` | string
+`lunarYear` | number
+`lunarMonth` | number
+`lunarDay` | number
+`isLeapMonth` | boolean
+`lunarYearCn` | string
+`lunarMonthCn` | string
+`lunarDayCn` | string
+`ganzhiYear` | string
+`ganzhiMonth` | string
+`ganzhiDay` | string
+`zodiac` | string
+`solarTerm` | string
+`lunarFestivals` | Array&lt;string&gt;
+`solarFestivals` | Array&lt;string&gt;
 
 ## Example
 
@@ -17,9 +36,28 @@ import type { GetMiscLunartime200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": 200,
-  "message": success,
-  "data": null,
+  "queryTimestamp": 1707537600,
+  "queryTimezone": Asia/Shanghai,
+  "timezone": Asia/Shanghai,
+  "datetime": 2024-02-10 12:00:00,
+  "datetimeRfc3339": 2024-02-10T12:00:00+08:00,
+  "timestampUnix": 1707537600,
+  "weekday": Saturday,
+  "weekdayCn": 星期六,
+  "lunarYear": 2024,
+  "lunarMonth": 1,
+  "lunarDay": 1,
+  "isLeapMonth": false,
+  "lunarYearCn": 二〇二四,
+  "lunarMonthCn": 正月,
+  "lunarDayCn": 初一,
+  "ganzhiYear": 甲辰,
+  "ganzhiMonth": 丙寅,
+  "ganzhiDay": 甲辰,
+  "zodiac": 龙,
+  "solarTerm": ,
+  "lunarFestivals": null,
+  "solarFestivals": null,
 } satisfies GetMiscLunartime200Response
 
 console.log(example)

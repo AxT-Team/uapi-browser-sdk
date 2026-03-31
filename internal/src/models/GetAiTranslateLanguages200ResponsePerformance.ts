@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs } from './GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs';
-import {
-    GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMsFromJSON,
-    GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMsFromJSONTyped,
-    GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMsToJSON,
-    GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMsToJSONTyped,
-} from './GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs';
-
 /**
  * 
  * @export
@@ -32,19 +24,7 @@ export interface GetAiTranslateLanguages200ResponsePerformance {
      * @type {boolean}
      * @memberof GetAiTranslateLanguages200ResponsePerformance
      */
-    fastModeAvailable?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetAiTranslateLanguages200ResponsePerformance
-     */
     batchTranslationAvailable?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetAiTranslateLanguages200ResponsePerformance
-     */
-    maxTextLength?: number;
     /**
      * 
      * @type {number}
@@ -53,10 +33,10 @@ export interface GetAiTranslateLanguages200ResponsePerformance {
     maxBatchSize?: number;
     /**
      * 
-     * @type {GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs}
+     * @type {number}
      * @memberof GetAiTranslateLanguages200ResponsePerformance
      */
-    typicalResponseTimeMs?: GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs;
+    maxTextLength?: number;
 }
 
 /**
@@ -76,11 +56,9 @@ export function GetAiTranslateLanguages200ResponsePerformanceFromJSONTyped(json:
     }
     return {
         
-        'fastModeAvailable': json['fast_mode_available'] == null ? undefined : json['fast_mode_available'],
         'batchTranslationAvailable': json['batch_translation_available'] == null ? undefined : json['batch_translation_available'],
-        'maxTextLength': json['max_text_length'] == null ? undefined : json['max_text_length'],
         'maxBatchSize': json['max_batch_size'] == null ? undefined : json['max_batch_size'],
-        'typicalResponseTimeMs': json['typical_response_time_ms'] == null ? undefined : GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMsFromJSON(json['typical_response_time_ms']),
+        'maxTextLength': json['max_text_length'] == null ? undefined : json['max_text_length'],
     };
 }
 
@@ -95,11 +73,9 @@ export function GetAiTranslateLanguages200ResponsePerformanceToJSONTyped(value?:
 
     return {
         
-        'fast_mode_available': value['fastModeAvailable'],
         'batch_translation_available': value['batchTranslationAvailable'],
-        'max_text_length': value['maxTextLength'],
         'max_batch_size': value['maxBatchSize'],
-        'typical_response_time_ms': GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMsToJSON(value['typicalResponseTimeMs']),
+        'max_text_length': value['maxTextLength'],
     };
 }
 

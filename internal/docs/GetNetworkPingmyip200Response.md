@@ -6,12 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`avg` | number
-`host` | string
-`ip` | string
-`location` | string
-`max` | number
-`min` | number
+`clientIp` | string
+`pingSuccessful` | boolean
+`message` | string
 
 ## Example
 
@@ -20,12 +17,9 @@ import type { GetNetworkPingmyip200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "avg": 35.4,
-  "host": 123.123.123.123,
-  "ip": 123.123.123.123,
-  "location": 中国 北京,
-  "max": 40.1,
-  "min": 32.8,
+  "clientIp": 117.140.191.159,
+  "pingSuccessful": true,
+  "message": Ping successful, avg latency: 35.43 ms,
 } satisfies GetNetworkPingmyip200Response
 
 console.log(example)

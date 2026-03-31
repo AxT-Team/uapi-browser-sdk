@@ -108,7 +108,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextAesDecryptRequest | 包含待解密文本 \'text\'、密钥 \'key\' 和随机数 \'nonce\' 的JSON对象
+    // PostTextAesDecryptRequest | 
     postTextAesDecryptRequest: ...,
   } satisfies PostTextAesDecryptOperationRequest;
 
@@ -129,7 +129,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextAesDecryptRequest** | [PostTextAesDecryptRequest](PostTextAesDecryptRequest.md) | 包含待解密文本 \&#39;text\&#39;、密钥 \&#39;key\&#39; 和随机数 \&#39;nonce\&#39; 的JSON对象 | |
+| **postTextAesDecryptRequest** | [PostTextAesDecryptRequest](PostTextAesDecryptRequest.md) |  | |
 
 ### Return type
 
@@ -177,7 +177,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextAesDecryptAdvancedRequest | 包含解密配置的JSON对象
+    // PostTextAesDecryptAdvancedRequest | 
     postTextAesDecryptAdvancedRequest: ...,
   } satisfies PostTextAesDecryptAdvancedOperationRequest;
 
@@ -198,7 +198,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextAesDecryptAdvancedRequest** | [PostTextAesDecryptAdvancedRequest](PostTextAesDecryptAdvancedRequest.md) | 包含解密配置的JSON对象 | |
+| **postTextAesDecryptAdvancedRequest** | [PostTextAesDecryptAdvancedRequest](PostTextAesDecryptAdvancedRequest.md) |  | |
 
 ### Return type
 
@@ -245,7 +245,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextAesEncryptRequest | 包含待加密文本 \'text\' 和密钥 \'key\' 的JSON对象
+    // PostTextAesEncryptRequest | 
     postTextAesEncryptRequest: ...,
   } satisfies PostTextAesEncryptOperationRequest;
 
@@ -266,7 +266,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextAesEncryptRequest** | [PostTextAesEncryptRequest](PostTextAesEncryptRequest.md) | 包含待加密文本 \&#39;text\&#39; 和密钥 \&#39;key\&#39; 的JSON对象 | |
+| **postTextAesEncryptRequest** | [PostTextAesEncryptRequest](PostTextAesEncryptRequest.md) |  | |
 
 ### Return type
 
@@ -314,7 +314,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextAesEncryptAdvancedRequest | 包含加密配置的JSON对象
+    // PostTextAesEncryptAdvancedRequest | 
     postTextAesEncryptAdvancedRequest: ...,
   } satisfies PostTextAesEncryptAdvancedOperationRequest;
 
@@ -335,7 +335,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextAesEncryptAdvancedRequest** | [PostTextAesEncryptAdvancedRequest](PostTextAesEncryptAdvancedRequest.md) | 包含加密配置的JSON对象 | |
+| **postTextAesEncryptAdvancedRequest** | [PostTextAesEncryptAdvancedRequest](PostTextAesEncryptAdvancedRequest.md) |  | |
 
 ### Return type
 
@@ -382,7 +382,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextAnalyzeRequest | 包含待分析文本 \'text\' 的JSON对象
+    // PostTextAnalyzeRequest | 
     postTextAnalyzeRequest: ...,
   } satisfies PostTextAnalyzeOperationRequest;
 
@@ -403,7 +403,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextAnalyzeRequest** | [PostTextAnalyzeRequest](PostTextAnalyzeRequest.md) | 包含待分析文本 \&#39;text\&#39; 的JSON对象 | |
+| **postTextAnalyzeRequest** | [PostTextAnalyzeRequest](PostTextAnalyzeRequest.md) |  | |
 
 ### Return type
 
@@ -450,7 +450,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextBase64DecodeRequest | 包含待解码文本 \'text\' 的JSON对象
+    // PostTextBase64DecodeRequest | 
     postTextBase64DecodeRequest: ...,
   } satisfies PostTextBase64DecodeOperationRequest;
 
@@ -471,7 +471,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextBase64DecodeRequest** | [PostTextBase64DecodeRequest](PostTextBase64DecodeRequest.md) | 包含待解码文本 \&#39;text\&#39; 的JSON对象 | |
+| **postTextBase64DecodeRequest** | [PostTextBase64DecodeRequest](PostTextBase64DecodeRequest.md) |  | |
 
 ### Return type
 
@@ -518,7 +518,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextBase64EncodeRequest | 包含待编码文本 \'text\' 的JSON对象
+    // PostTextBase64EncodeRequest | 
     postTextBase64EncodeRequest: ...,
   } satisfies PostTextBase64EncodeOperationRequest;
 
@@ -539,7 +539,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextBase64EncodeRequest** | [PostTextBase64EncodeRequest](PostTextBase64EncodeRequest.md) | 包含待编码文本 \&#39;text\&#39; 的JSON对象 | |
+| **postTextBase64EncodeRequest** | [PostTextBase64EncodeRequest](PostTextBase64EncodeRequest.md) |  | |
 
 ### Return type
 
@@ -586,7 +586,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextConvertRequest | 包含转换配置的JSON对象
+    // PostTextConvertRequest | 
     postTextConvertRequest: ...,
   } satisfies PostTextConvertOperationRequest;
 
@@ -607,7 +607,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextConvertRequest** | [PostTextConvertRequest](PostTextConvertRequest.md) | 包含转换配置的JSON对象 | |
+| **postTextConvertRequest** | [PostTextConvertRequest](PostTextConvertRequest.md) |  | |
 
 ### Return type
 
@@ -722,7 +722,7 @@ async function example() {
   const api = new TextApi();
 
   const body = {
-    // PostTextMd5VerifyRequest | 包含待校验文本 \'text\' 和哈希值 \'hash\' 的JSON对象
+    // PostTextMd5VerifyRequest | 
     postTextMd5VerifyRequest: ...,
   } satisfies PostTextMd5VerifyOperationRequest;
 
@@ -743,7 +743,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postTextMd5VerifyRequest** | [PostTextMd5VerifyRequest](PostTextMd5VerifyRequest.md) | 包含待校验文本 \&#39;text\&#39; 和哈希值 \&#39;hash\&#39; 的JSON对象 | |
+| **postTextMd5VerifyRequest** | [PostTextMd5VerifyRequest](PostTextMd5VerifyRequest.md) |  | |
 
 ### Return type
 

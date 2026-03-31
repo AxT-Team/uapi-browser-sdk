@@ -73,12 +73,6 @@ export interface GetNetworkIpinfo200Response {
      * @memberof GetNetworkIpinfo200Response
      */
     endip?: string;
-    /**
-     * 行政区（商业查询）
-     * @type {string}
-     * @memberof GetNetworkIpinfo200Response
-     */
-    district?: string;
 }
 
 /**
@@ -107,7 +101,6 @@ export function GetNetworkIpinfo200ResponseFromJSONTyped(json: any, ignoreDiscri
         'longitude': json['longitude'] == null ? undefined : json['longitude'],
         'beginip': json['beginip'] == null ? undefined : json['beginip'],
         'endip': json['endip'] == null ? undefined : json['endip'],
-        'district': json['district'] == null ? undefined : json['district'],
     };
 }
 
@@ -131,7 +124,6 @@ export function GetNetworkIpinfo200ResponseToJSONTyped(value?: GetNetworkIpinfo2
         'longitude': value['longitude'],
         'beginip': value['beginip'],
         'endip': value['endip'],
-        'district': value['district'],
     };
 }
 

@@ -6,13 +6,13 @@
 
 Name | Type
 ------------ | -------------
-`list` | [Array&lt;GetMiscHotboard200ResponseListInner&gt;](GetMiscHotboard200ResponseListInner.md)
 `type` | string
 `updateTime` | string
 `snapshotTime` | number
+`list` | [Array&lt;GetMiscHotboard200ResponseOneOfListInner&gt;](GetMiscHotboard200ResponseOneOfListInner.md)
 `keyword` | string
 `count` | number
-`results` | [Array&lt;GetMiscHotboard200ResponseResultsInner&gt;](GetMiscHotboard200ResponseResultsInner.md)
+`results` | [Array&lt;GetMiscHotboard200ResponseOneOf1ResultsInner&gt;](GetMiscHotboard200ResponseOneOf1ResultsInner.md)
 `sources` | Array&lt;string&gt;
 
 ## Example
@@ -22,12 +22,12 @@ import type { GetMiscHotboard200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "list": null,
   "type": weibo,
-  "updateTime": 2023-10-27 12:00:00,
+  "updateTime": 2026-03-20 21:39:16,
   "snapshotTime": 1700000000000,
+  "list": null,
   "keyword": AI,
-  "count": 25,
+  "count": 0,
   "results": null,
   "sources": null,
 } satisfies GetMiscHotboard200Response

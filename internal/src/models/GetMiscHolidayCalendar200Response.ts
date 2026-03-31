@@ -13,13 +13,41 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetMiscHolidayCalendar200ResponseData } from './GetMiscHolidayCalendar200ResponseData';
+import type { GetMiscHolidayCalendar200ResponseHolidaysInner } from './GetMiscHolidayCalendar200ResponseHolidaysInner';
 import {
-    GetMiscHolidayCalendar200ResponseDataFromJSON,
-    GetMiscHolidayCalendar200ResponseDataFromJSONTyped,
-    GetMiscHolidayCalendar200ResponseDataToJSON,
-    GetMiscHolidayCalendar200ResponseDataToJSONTyped,
-} from './GetMiscHolidayCalendar200ResponseData';
+    GetMiscHolidayCalendar200ResponseHolidaysInnerFromJSON,
+    GetMiscHolidayCalendar200ResponseHolidaysInnerFromJSONTyped,
+    GetMiscHolidayCalendar200ResponseHolidaysInnerToJSON,
+    GetMiscHolidayCalendar200ResponseHolidaysInnerToJSONTyped,
+} from './GetMiscHolidayCalendar200ResponseHolidaysInner';
+import type { GetMiscHolidayCalendar200ResponseQuery } from './GetMiscHolidayCalendar200ResponseQuery';
+import {
+    GetMiscHolidayCalendar200ResponseQueryFromJSON,
+    GetMiscHolidayCalendar200ResponseQueryFromJSONTyped,
+    GetMiscHolidayCalendar200ResponseQueryToJSON,
+    GetMiscHolidayCalendar200ResponseQueryToJSONTyped,
+} from './GetMiscHolidayCalendar200ResponseQuery';
+import type { GetMiscHolidayCalendar200ResponseDaysInner } from './GetMiscHolidayCalendar200ResponseDaysInner';
+import {
+    GetMiscHolidayCalendar200ResponseDaysInnerFromJSON,
+    GetMiscHolidayCalendar200ResponseDaysInnerFromJSONTyped,
+    GetMiscHolidayCalendar200ResponseDaysInnerToJSON,
+    GetMiscHolidayCalendar200ResponseDaysInnerToJSONTyped,
+} from './GetMiscHolidayCalendar200ResponseDaysInner';
+import type { GetMiscHolidayCalendar200ResponseSummary } from './GetMiscHolidayCalendar200ResponseSummary';
+import {
+    GetMiscHolidayCalendar200ResponseSummaryFromJSON,
+    GetMiscHolidayCalendar200ResponseSummaryFromJSONTyped,
+    GetMiscHolidayCalendar200ResponseSummaryToJSON,
+    GetMiscHolidayCalendar200ResponseSummaryToJSONTyped,
+} from './GetMiscHolidayCalendar200ResponseSummary';
+import type { GetMiscHolidayCalendar200ResponseNearby } from './GetMiscHolidayCalendar200ResponseNearby';
+import {
+    GetMiscHolidayCalendar200ResponseNearbyFromJSON,
+    GetMiscHolidayCalendar200ResponseNearbyFromJSONTyped,
+    GetMiscHolidayCalendar200ResponseNearbyToJSON,
+    GetMiscHolidayCalendar200ResponseNearbyToJSONTyped,
+} from './GetMiscHolidayCalendar200ResponseNearby';
 
 /**
  * 
@@ -28,23 +56,41 @@ import {
  */
 export interface GetMiscHolidayCalendar200Response {
     /**
-     * 
-     * @type {number}
-     * @memberof GetMiscHolidayCalendar200Response
-     */
-    code?: number;
-    /**
-     * 
+     * 查询模式：day、month、year。
      * @type {string}
      * @memberof GetMiscHolidayCalendar200Response
      */
-    message?: string;
+    mode?: string;
     /**
      * 
-     * @type {GetMiscHolidayCalendar200ResponseData}
+     * @type {GetMiscHolidayCalendar200ResponseQuery}
      * @memberof GetMiscHolidayCalendar200Response
      */
-    data?: GetMiscHolidayCalendar200ResponseData;
+    query?: GetMiscHolidayCalendar200ResponseQuery;
+    /**
+     * 
+     * @type {GetMiscHolidayCalendar200ResponseSummary}
+     * @memberof GetMiscHolidayCalendar200Response
+     */
+    summary?: GetMiscHolidayCalendar200ResponseSummary;
+    /**
+     * 日期明细列表。
+     * @type {Array<GetMiscHolidayCalendar200ResponseDaysInner>}
+     * @memberof GetMiscHolidayCalendar200Response
+     */
+    days?: Array<GetMiscHolidayCalendar200ResponseDaysInner>;
+    /**
+     * 节日事件列表。
+     * @type {Array<GetMiscHolidayCalendar200ResponseHolidaysInner>}
+     * @memberof GetMiscHolidayCalendar200Response
+     */
+    holidays?: Array<GetMiscHolidayCalendar200ResponseHolidaysInner>;
+    /**
+     * 
+     * @type {GetMiscHolidayCalendar200ResponseNearby}
+     * @memberof GetMiscHolidayCalendar200Response
+     */
+    nearby?: GetMiscHolidayCalendar200ResponseNearby;
 }
 
 /**
@@ -64,9 +110,12 @@ export function GetMiscHolidayCalendar200ResponseFromJSONTyped(json: any, ignore
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'message': json['message'] == null ? undefined : json['message'],
-        'data': json['data'] == null ? undefined : GetMiscHolidayCalendar200ResponseDataFromJSON(json['data']),
+        'mode': json['mode'] == null ? undefined : json['mode'],
+        'query': json['query'] == null ? undefined : GetMiscHolidayCalendar200ResponseQueryFromJSON(json['query']),
+        'summary': json['summary'] == null ? undefined : GetMiscHolidayCalendar200ResponseSummaryFromJSON(json['summary']),
+        'days': json['days'] == null ? undefined : ((json['days'] as Array<any>).map(GetMiscHolidayCalendar200ResponseDaysInnerFromJSON)),
+        'holidays': json['holidays'] == null ? undefined : ((json['holidays'] as Array<any>).map(GetMiscHolidayCalendar200ResponseHolidaysInnerFromJSON)),
+        'nearby': json['nearby'] == null ? undefined : GetMiscHolidayCalendar200ResponseNearbyFromJSON(json['nearby']),
     };
 }
 
@@ -81,9 +130,12 @@ export function GetMiscHolidayCalendar200ResponseToJSONTyped(value?: GetMiscHoli
 
     return {
         
-        'code': value['code'],
-        'message': value['message'],
-        'data': GetMiscHolidayCalendar200ResponseDataToJSON(value['data']),
+        'mode': value['mode'],
+        'query': GetMiscHolidayCalendar200ResponseQueryToJSON(value['query']),
+        'summary': GetMiscHolidayCalendar200ResponseSummaryToJSON(value['summary']),
+        'days': value['days'] == null ? undefined : ((value['days'] as Array<any>).map(GetMiscHolidayCalendar200ResponseDaysInnerToJSON)),
+        'holidays': value['holidays'] == null ? undefined : ((value['holidays'] as Array<any>).map(GetMiscHolidayCalendar200ResponseHolidaysInnerToJSON)),
+        'nearby': GetMiscHolidayCalendar200ResponseNearbyToJSON(value['nearby']),
     };
 }
 

@@ -17,7 +17,7 @@ import type { GetAiTranslateLanguages200ResponseDataLanguagesInner } from 'uapi-
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": zh-CHS,
+  "code": zh,
   "name": Chinese (Simplified),
   "_native": 中文(简体),
 } satisfies GetAiTranslateLanguages200ResponseDataLanguagesInner

@@ -20,27 +20,6 @@ import {
     PostAiTranslate200ResponseDataToJSON,
     PostAiTranslate200ResponseDataToJSONTyped,
 } from './PostAiTranslate200ResponseData';
-import type { PostAiTranslate200ResponseQualityMetrics } from './PostAiTranslate200ResponseQualityMetrics';
-import {
-    PostAiTranslate200ResponseQualityMetricsFromJSON,
-    PostAiTranslate200ResponseQualityMetricsFromJSONTyped,
-    PostAiTranslate200ResponseQualityMetricsToJSON,
-    PostAiTranslate200ResponseQualityMetricsToJSONTyped,
-} from './PostAiTranslate200ResponseQualityMetrics';
-import type { PostAiTranslate200ResponseBatchSummary } from './PostAiTranslate200ResponseBatchSummary';
-import {
-    PostAiTranslate200ResponseBatchSummaryFromJSON,
-    PostAiTranslate200ResponseBatchSummaryFromJSONTyped,
-    PostAiTranslate200ResponseBatchSummaryToJSON,
-    PostAiTranslate200ResponseBatchSummaryToJSONTyped,
-} from './PostAiTranslate200ResponseBatchSummary';
-import type { PostAiTranslate200ResponseBatchDataInner } from './PostAiTranslate200ResponseBatchDataInner';
-import {
-    PostAiTranslate200ResponseBatchDataInnerFromJSON,
-    PostAiTranslate200ResponseBatchDataInnerFromJSONTyped,
-    PostAiTranslate200ResponseBatchDataInnerToJSON,
-    PostAiTranslate200ResponseBatchDataInnerToJSONTyped,
-} from './PostAiTranslate200ResponseBatchDataInner';
 import type { PostAiTranslate200ResponsePerformance } from './PostAiTranslate200ResponsePerformance';
 import {
     PostAiTranslate200ResponsePerformanceFromJSON,
@@ -62,29 +41,11 @@ export interface PostAiTranslate200Response {
      */
     message?: string;
     /**
-     * 标识是否为批量翻译请求。
-     * @type {boolean}
-     * @memberof PostAiTranslate200Response
-     */
-    isBatch?: boolean;
-    /**
      * 
      * @type {PostAiTranslate200ResponseData}
      * @memberof PostAiTranslate200Response
      */
     data?: PostAiTranslate200ResponseData;
-    /**
-     * 批量翻译结果列表，仅在批量翻译时返回。
-     * @type {Array<PostAiTranslate200ResponseBatchDataInner>}
-     * @memberof PostAiTranslate200Response
-     */
-    batchData?: Array<PostAiTranslate200ResponseBatchDataInner>;
-    /**
-     * 
-     * @type {PostAiTranslate200ResponseBatchSummary}
-     * @memberof PostAiTranslate200Response
-     */
-    batchSummary?: PostAiTranslate200ResponseBatchSummary;
     /**
      * 
      * @type {PostAiTranslate200ResponsePerformance}
@@ -92,11 +53,11 @@ export interface PostAiTranslate200Response {
      */
     performance?: PostAiTranslate200ResponsePerformance;
     /**
-     * 
-     * @type {PostAiTranslate200ResponseQualityMetrics}
+     * 是否为批量翻译请求。
+     * @type {boolean}
      * @memberof PostAiTranslate200Response
      */
-    qualityMetrics?: PostAiTranslate200ResponseQualityMetrics;
+    isBatch?: boolean;
 }
 
 /**
@@ -117,12 +78,9 @@ export function PostAiTranslate200ResponseFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'message': json['message'] == null ? undefined : json['message'],
-        'isBatch': json['is_batch'] == null ? undefined : json['is_batch'],
         'data': json['data'] == null ? undefined : PostAiTranslate200ResponseDataFromJSON(json['data']),
-        'batchData': json['batch_data'] == null ? undefined : ((json['batch_data'] as Array<any>).map(PostAiTranslate200ResponseBatchDataInnerFromJSON)),
-        'batchSummary': json['batch_summary'] == null ? undefined : PostAiTranslate200ResponseBatchSummaryFromJSON(json['batch_summary']),
         'performance': json['performance'] == null ? undefined : PostAiTranslate200ResponsePerformanceFromJSON(json['performance']),
-        'qualityMetrics': json['quality_metrics'] == null ? undefined : PostAiTranslate200ResponseQualityMetricsFromJSON(json['quality_metrics']),
+        'isBatch': json['is_batch'] == null ? undefined : json['is_batch'],
     };
 }
 
@@ -138,12 +96,9 @@ export function PostAiTranslate200ResponseToJSONTyped(value?: PostAiTranslate200
     return {
         
         'message': value['message'],
-        'is_batch': value['isBatch'],
         'data': PostAiTranslate200ResponseDataToJSON(value['data']),
-        'batch_data': value['batchData'] == null ? undefined : ((value['batchData'] as Array<any>).map(PostAiTranslate200ResponseBatchDataInnerToJSON)),
-        'batch_summary': PostAiTranslate200ResponseBatchSummaryToJSON(value['batchSummary']),
         'performance': PostAiTranslate200ResponsePerformanceToJSON(value['performance']),
-        'quality_metrics': PostAiTranslate200ResponseQualityMetricsToJSON(value['qualityMetrics']),
+        'is_batch': value['isBatch'],
     };
 }
 

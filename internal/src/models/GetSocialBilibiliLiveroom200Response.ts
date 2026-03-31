@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GetSocialBilibiliLiveroom200ResponseNewPendants } from './GetSocialBilibiliLiveroom200ResponseNewPendants';
+import {
+    GetSocialBilibiliLiveroom200ResponseNewPendantsFromJSON,
+    GetSocialBilibiliLiveroom200ResponseNewPendantsFromJSONTyped,
+    GetSocialBilibiliLiveroom200ResponseNewPendantsToJSON,
+    GetSocialBilibiliLiveroom200ResponseNewPendantsToJSONTyped,
+} from './GetSocialBilibiliLiveroom200ResponseNewPendants';
+
 /**
  * 
  * @export
@@ -44,11 +52,17 @@ export interface GetSocialBilibiliLiveroom200Response {
      */
     attention?: number;
     /**
-     * 直播间当前的人气值。注意这不是真实在线人数。
+     * 直播间当前的人气值（对应你文档里的 PopularValue，不代表真实在线人数）。
      * @type {number}
      * @memberof GetSocialBilibiliLiveroom200Response
      */
     online?: number;
+    /**
+     * 是否为竖屏直播。
+     * @type {boolean}
+     * @memberof GetSocialBilibiliLiveroom200Response
+     */
+    isPortrait?: boolean;
     /**
      * 直播状态。0:未开播, 1:直播中, 2:轮播中。
      * @type {number}
@@ -67,6 +81,12 @@ export interface GetSocialBilibiliLiveroom200Response {
      * @memberof GetSocialBilibiliLiveroom200Response
      */
     parentAreaName?: string;
+    /**
+     * 父分区 ID。
+     * @type {number}
+     * @memberof GetSocialBilibiliLiveroom200Response
+     */
+    parentAreaId?: number;
     /**
      * 子分区名称。
      * @type {string}
@@ -104,6 +124,12 @@ export interface GetSocialBilibiliLiveroom200Response {
      */
     liveTime?: string;
     /**
+     * 关键帧封面图链接。
+     * @type {string}
+     * @memberof GetSocialBilibiliLiveroom200Response
+     */
+    keyframe?: string;
+    /**
      * 直播间设置的标签，以逗号分隔。
      * @type {string}
      * @memberof GetSocialBilibiliLiveroom200Response
@@ -116,11 +142,11 @@ export interface GetSocialBilibiliLiveroom200Response {
      */
     hotWords?: Array<string>;
     /**
-     * 主播佩戴的头像框、大航海等级等信息，结构可能比较复杂。
-     * @type {object}
+     * 
+     * @type {GetSocialBilibiliLiveroom200ResponseNewPendants}
      * @memberof GetSocialBilibiliLiveroom200Response
      */
-    newPendants?: object;
+    newPendants?: GetSocialBilibiliLiveroom200ResponseNewPendants | null;
 }
 
 /**
@@ -145,18 +171,21 @@ export function GetSocialBilibiliLiveroom200ResponseFromJSONTyped(json: any, ign
         'shortId': json['short_id'] == null ? undefined : json['short_id'],
         'attention': json['attention'] == null ? undefined : json['attention'],
         'online': json['online'] == null ? undefined : json['online'],
+        'isPortrait': json['is_portrait'] == null ? undefined : json['is_portrait'],
         'liveStatus': json['live_status'] == null ? undefined : json['live_status'],
         'areaId': json['area_id'] == null ? undefined : json['area_id'],
         'parentAreaName': json['parent_area_name'] == null ? undefined : json['parent_area_name'],
+        'parentAreaId': json['parent_area_id'] == null ? undefined : json['parent_area_id'],
         'areaName': json['area_name'] == null ? undefined : json['area_name'],
         'background': json['background'] == null ? undefined : json['background'],
         'title': json['title'] == null ? undefined : json['title'],
         'userCover': json['user_cover'] == null ? undefined : json['user_cover'],
         'description': json['description'] == null ? undefined : json['description'],
         'liveTime': json['live_time'] == null ? undefined : json['live_time'],
+        'keyframe': json['keyframe'] == null ? undefined : json['keyframe'],
         'tags': json['tags'] == null ? undefined : json['tags'],
         'hotWords': json['hot_words'] == null ? undefined : json['hot_words'],
-        'newPendants': json['new_pendants'] == null ? undefined : json['new_pendants'],
+        'newPendants': json['new_pendants'] == null ? undefined : GetSocialBilibiliLiveroom200ResponseNewPendantsFromJSON(json['new_pendants']),
     };
 }
 
@@ -176,18 +205,21 @@ export function GetSocialBilibiliLiveroom200ResponseToJSONTyped(value?: GetSocia
         'short_id': value['shortId'],
         'attention': value['attention'],
         'online': value['online'],
+        'is_portrait': value['isPortrait'],
         'live_status': value['liveStatus'],
         'area_id': value['areaId'],
         'parent_area_name': value['parentAreaName'],
+        'parent_area_id': value['parentAreaId'],
         'area_name': value['areaName'],
         'background': value['background'],
         'title': value['title'],
         'user_cover': value['userCover'],
         'description': value['description'],
         'live_time': value['liveTime'],
+        'keyframe': value['keyframe'],
         'tags': value['tags'],
         'hot_words': value['hotWords'],
-        'new_pendants': value['newPendants'],
+        'new_pendants': GetSocialBilibiliLiveroom200ResponseNewPendantsToJSON(value['newPendants']),
     };
 }
 

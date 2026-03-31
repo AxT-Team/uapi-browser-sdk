@@ -6,9 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`code` | string
-`message` | string
-`data` | [GetMiscTrackingCarriers200ResponseData](GetMiscTrackingCarriers200ResponseData.md)
+`carriers` | [Array&lt;GetMiscTrackingCarriers200ResponseCarriersInner&gt;](GetMiscTrackingCarriers200ResponseCarriersInner.md)
+`total` | number
 
 ## Example
 
@@ -17,9 +16,8 @@ import type { GetMiscTrackingCarriers200Response } from 'uapi-browser-sdk-browse
 
 // TODO: Update the object below with actual values
 const example = {
-  "code": SUCCESS,
-  "message": 操作成功,
-  "data": null,
+  "carriers": null,
+  "total": 13,
 } satisfies GetMiscTrackingCarriers200Response
 
 console.log(example)

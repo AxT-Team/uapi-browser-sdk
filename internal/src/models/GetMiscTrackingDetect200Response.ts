@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { GetMiscTrackingDetect200ResponseData } from './GetMiscTrackingDetect200ResponseData';
+import type { GetMiscTrackingDetect200ResponseAlternativesInner } from './GetMiscTrackingDetect200ResponseAlternativesInner';
 import {
-    GetMiscTrackingDetect200ResponseDataFromJSON,
-    GetMiscTrackingDetect200ResponseDataFromJSONTyped,
-    GetMiscTrackingDetect200ResponseDataToJSON,
-    GetMiscTrackingDetect200ResponseDataToJSONTyped,
-} from './GetMiscTrackingDetect200ResponseData';
+    GetMiscTrackingDetect200ResponseAlternativesInnerFromJSON,
+    GetMiscTrackingDetect200ResponseAlternativesInnerFromJSONTyped,
+    GetMiscTrackingDetect200ResponseAlternativesInnerToJSON,
+    GetMiscTrackingDetect200ResponseAlternativesInnerToJSONTyped,
+} from './GetMiscTrackingDetect200ResponseAlternativesInner';
 
 /**
  * 
@@ -28,23 +28,29 @@ import {
  */
 export interface GetMiscTrackingDetect200Response {
     /**
-     * 
+     * 查询的快递单号
      * @type {string}
      * @memberof GetMiscTrackingDetect200Response
      */
-    code?: string;
+    trackingNumber?: string;
     /**
-     * 
+     * 识别出的快递公司编码
      * @type {string}
      * @memberof GetMiscTrackingDetect200Response
      */
-    message?: string;
+    carrierCode?: string;
     /**
-     * 
-     * @type {GetMiscTrackingDetect200ResponseData}
+     * 识别出的快递公司名称
+     * @type {string}
      * @memberof GetMiscTrackingDetect200Response
      */
-    data?: GetMiscTrackingDetect200ResponseData;
+    carrierName?: string;
+    /**
+     * 其他可能的快递公司列表。如果没有备选项，会返回空数组。
+     * @type {Array<GetMiscTrackingDetect200ResponseAlternativesInner>}
+     * @memberof GetMiscTrackingDetect200Response
+     */
+    alternatives?: Array<GetMiscTrackingDetect200ResponseAlternativesInner>;
 }
 
 /**
@@ -64,9 +70,10 @@ export function GetMiscTrackingDetect200ResponseFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'code': json['code'] == null ? undefined : json['code'],
-        'message': json['message'] == null ? undefined : json['message'],
-        'data': json['data'] == null ? undefined : GetMiscTrackingDetect200ResponseDataFromJSON(json['data']),
+        'trackingNumber': json['tracking_number'] == null ? undefined : json['tracking_number'],
+        'carrierCode': json['carrier_code'] == null ? undefined : json['carrier_code'],
+        'carrierName': json['carrier_name'] == null ? undefined : json['carrier_name'],
+        'alternatives': json['alternatives'] == null ? undefined : ((json['alternatives'] as Array<any>).map(GetMiscTrackingDetect200ResponseAlternativesInnerFromJSON)),
     };
 }
 
@@ -81,9 +88,10 @@ export function GetMiscTrackingDetect200ResponseToJSONTyped(value?: GetMiscTrack
 
     return {
         
-        'code': value['code'],
-        'message': value['message'],
-        'data': GetMiscTrackingDetect200ResponseDataToJSON(value['data']),
+        'tracking_number': value['trackingNumber'],
+        'carrier_code': value['carrierCode'],
+        'carrier_name': value['carrierName'],
+        'alternatives': value['alternatives'] == null ? undefined : ((value['alternatives'] as Array<any>).map(GetMiscTrackingDetect200ResponseAlternativesInnerToJSON)),
     };
 }
 
