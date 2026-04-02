@@ -87,7 +87,7 @@ export interface GetMiscWeather200Response {
     weather?: string;
     /**
      * 天气图标代码。请从[天气图标代码表](#enum-list)中查看所有可能的值。
-     * @type {GetMiscWeather200ResponseWeatherIconEnum}
+     * @type {string}
      * @memberof GetMiscWeather200Response
      */
     weatherIcon?: GetMiscWeather200ResponseWeatherIconEnum;

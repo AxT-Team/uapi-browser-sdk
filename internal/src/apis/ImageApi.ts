@@ -168,9 +168,10 @@ export interface PostImageSvgRequest {
 export class ImageApi extends runtime.BaseAPI {
 
     /**
-     * Creates request options for getAvatarGravatar without sending the request
+     * 提供一个超高速、高可用的Gravatar头像代理服务。内置了强大的ETag条件缓存，确保用户在更新Gravatar头像后能几乎立刻看到变化，同时最大化地利用缓存。
+     * 获取Gravatar头像
      */
-    async getAvatarGravatarRequestOpts(requestParameters: GetAvatarGravatarRequest): Promise<runtime.RequestOpts> {
+    async getAvatarGravatarRaw(requestParameters: GetAvatarGravatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         const queryParameters: any = {};
 
         if (requestParameters['email'] != null) {
@@ -198,21 +199,12 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/avatar/gravatar`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 提供一个超高速、高可用的Gravatar头像代理服务。内置了强大的ETag条件缓存，确保用户在更新Gravatar头像后能几乎立刻看到变化，同时最大化地利用缓存。
-     * 获取Gravatar头像
-     */
-    async getAvatarGravatarRaw(requestParameters: GetAvatarGravatarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.getAvatarGravatarRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -227,9 +219,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getImageBingDaily without sending the request
+     * 每天都想换张新壁纸？让必应的美图点亮你的一天吧！  ## 功能概述 这个接口会获取 Bing 搜索引擎当天全球同步的每日壁纸，并直接以图片形式返回。你可以用它来做应用的启动页、网站背景，或者任何需要每日更新精美图片的地方。  ## 使用须知 此接口成功时直接返回图片二进制数据，通常是 `image/jpeg`，不是 JSON 格式。接入时请按图片响应来处理。
+     * 必应壁纸
      */
-    async getImageBingDailyRequestOpts(): Promise<runtime.RequestOpts> {
+    async getImageBingDailyRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -237,21 +230,12 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/bing-daily`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 每天都想换张新壁纸？让必应的美图点亮你的一天吧！  ## 功能概述 这个接口会获取 Bing 搜索引擎当天全球同步的每日壁纸，并直接以图片形式返回。你可以用它来做应用的启动页、网站背景，或者任何需要每日更新精美图片的地方。  ## 使用须知 此接口成功时直接返回图片二进制数据，通常是 `image/jpeg`，不是 JSON 格式。接入时请按图片响应来处理。
-     * 必应壁纸
-     */
-    async getImageBingDailyRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.getImageBingDailyRequestOpts();
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -266,9 +250,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getImageMotou without sending the request
+     * 想在线rua一下好友的头像吗？这个趣味接口可以满足你。  ## 功能概述 此接口通过GET方法，专门用于通过QQ号生成摸摸头GIF。你只需要提供一个QQ号码，我们就会自动获取其公开头像，并制作成一个可爱的动图。  ## 使用须知 - **响应格式**：接口成功时直接返回 `image/gif` 格式的二进制数据。 - **背景颜色**：你可以通过 `bg_color` 参数来控制GIF的背景。使用 `transparent` 选项可以让它更好地融入各种聊天背景中。
+     * 生成摸摸头GIF (QQ号)
      */
-    async getImageMotouRequestOpts(requestParameters: GetImageMotouRequest): Promise<runtime.RequestOpts> {
+    async getImageMotouRaw(requestParameters: GetImageMotouRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters['qq'] == null) {
             throw new runtime.RequiredError(
                 'qq',
@@ -291,21 +276,12 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/motou`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想在线rua一下好友的头像吗？这个趣味接口可以满足你。  ## 功能概述 此接口通过GET方法，专门用于通过QQ号生成摸摸头GIF。你只需要提供一个QQ号码，我们就会自动获取其公开头像，并制作成一个可爱的动图。  ## 使用须知 - **响应格式**：接口成功时直接返回 `image/gif` 格式的二进制数据。 - **背景颜色**：你可以通过 `bg_color` 参数来控制GIF的背景。使用 `transparent` 选项可以让它更好地融入各种聊天背景中。
-     * 生成摸摸头GIF (QQ号)
-     */
-    async getImageMotouRaw(requestParameters: GetImageMotouRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.getImageMotouRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -320,9 +296,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getImageQrcode without sending the request
+     * 无论是网址、文本还是联系方式，通通可以变成一个二维码！这是一个非常灵活的二维码生成工具。  ## 功能概述 你提供一段文本内容，我们为你生成对应的二维码图片。你可以自定义尺寸、前景色、背景色，还支持透明背景，并选择不同的返回格式以适应不同场景。
+     * 生成二维码
      */
-    async getImageQrcodeRequestOpts(requestParameters: GetImageQrcodeRequest): Promise<runtime.RequestOpts> {
+    async getImageQrcodeRaw(requestParameters: GetImageQrcodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters['text'] == null) {
             throw new runtime.RequiredError(
                 'text',
@@ -361,21 +338,12 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/qrcode`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 无论是网址、文本还是联系方式，通通可以变成一个二维码！这是一个非常灵活的二维码生成工具。  ## 功能概述 你提供一段文本内容，我们为你生成对应的二维码图片。你可以自定义尺寸、前景色、背景色，还支持透明背景，并选择不同的返回格式以适应不同场景。
-     * 生成二维码
-     */
-    async getImageQrcodeRaw(requestParameters: GetImageQrcodeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.getImageQrcodeRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -390,9 +358,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getImageTobase64 without sending the request
+     * 看到一张网上的图片，想把它转换成 Base64 编码以便嵌入到你的 HTML 或 CSS 中？用这个接口就对了。  ## 功能概述 你提供一个公开可访问的图片 URL，我们帮你把它下载下来，并转换成包含 MIME 类型的 Base64 Data URI 字符串返回给你。
+     * 图片转 Base64
      */
-    async getImageTobase64RequestOpts(requestParameters: GetImageTobase64Request): Promise<runtime.RequestOpts> {
+    async getImageTobase64Raw(requestParameters: GetImageTobase64Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageTobase64200Response>> {
         if (requestParameters['url'] == null) {
             throw new runtime.RequiredError(
                 'url',
@@ -411,21 +380,12 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/tobase64`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 看到一张网上的图片，想把它转换成 Base64 编码以便嵌入到你的 HTML 或 CSS 中？用这个接口就对了。  ## 功能概述 你提供一个公开可访问的图片 URL，我们帮你把它下载下来，并转换成包含 MIME 类型的 Base64 Data URI 字符串返回给你。
-     * 图片转 Base64
-     */
-    async getImageTobase64Raw(requestParameters: GetImageTobase64Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageTobase64200Response>> {
-        const requestOptions = await this.getImageTobase64RequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetImageTobase64200ResponseFromJSON(jsonValue));
     }
@@ -440,9 +400,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postImageCompress without sending the request
+     * 还在为图片体积和加载速度发愁吗？体验一下我们强大的**无损压缩服务**，它能在几乎不牺牲任何肉眼可感知的画质的前提下，将图片体积压缩到极致。  ## 功能概述 你只需要上传一张常见的图片（如 PNG, JPG），选择一个压缩等级，就能获得一个体积小到惊人的压缩文件。这对于需要大量展示高清图片的网站、App 或小程序来说，是优化用户体验、节省带宽和存储成本的利器。  ## 使用须知 > [!TIP] > 为了给您最好的压缩效果，我们的算法需要进行复杂计算，处理时间可能会稍长一些，请耐心等待。  > [!WARNING] > **服务排队提醒** > 这是一个计算密集型服务。在高并发时，您的请求可能会被排队等待处理。如果您需要将其集成到对延迟敏感的生产服务中，请注意这一点。  ### 请求与响应格式 - 请求必须使用 `multipart/form-data` 格式上传文件。 - 成功响应将直接返回压缩后的文件二进制流 (`image/_*`)，并附带 `Content-Disposition` 头，建议客户端根据此头信息保存文件。  ## 参数详解 ### `level` (压缩等级) 这是一个从 `1` 到 `5` 的整数，它决定了压缩的强度和策略，数字越小，压缩率越高。所有等级都经过精心调校，以在最大化压缩率的同时保证出色的视觉质量。 - `1`: **极限压缩** (推荐，体积最小，画质优异) - `2`: **高效压缩** - `3`: **智能均衡** (默认选项) - `4`: **画质优先** - `5`: **专业保真** (压缩率稍低，保留最多图像信息)  ## 错误处理指南 - **400 Bad Request**: 通常因为没有上传文件，或者 `level` 参数不在 1-5 的范围内。 - **500 Internal Server Error**: 如果在压缩过程中服务器发生内部错误，会返回此状态码。
+     * 无损压缩图片
      */
-    async postImageCompressRequestOpts(requestParameters: PostImageCompressRequest): Promise<runtime.RequestOpts> {
+    async postImageCompressRaw(requestParameters: PostImageCompressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters['file'] == null) {
             throw new runtime.RequiredError(
                 'file',
@@ -485,22 +446,13 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/compress`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: formParams,
-        };
-    }
-
-    /**
-     * 还在为图片体积和加载速度发愁吗？体验一下我们强大的**无损压缩服务**，它能在几乎不牺牲任何肉眼可感知的画质的前提下，将图片体积压缩到极致。  ## 功能概述 你只需要上传一张常见的图片（如 PNG, JPG），选择一个压缩等级，就能获得一个体积小到惊人的压缩文件。这对于需要大量展示高清图片的网站、App 或小程序来说，是优化用户体验、节省带宽和存储成本的利器。  ## 使用须知 > [!TIP] > 为了给您最好的压缩效果，我们的算法需要进行复杂计算，处理时间可能会稍长一些，请耐心等待。  > [!WARNING] > **服务排队提醒** > 这是一个计算密集型服务。在高并发时，您的请求可能会被排队等待处理。如果您需要将其集成到对延迟敏感的生产服务中，请注意这一点。  ### 请求与响应格式 - 请求必须使用 `multipart/form-data` 格式上传文件。 - 成功响应将直接返回压缩后的文件二进制流 (`image/_*`)，并附带 `Content-Disposition` 头，建议客户端根据此头信息保存文件。  ## 参数详解 ### `level` (压缩等级) 这是一个从 `1` 到 `5` 的整数，它决定了压缩的强度和策略，数字越小，压缩率越高。所有等级都经过精心调校，以在最大化压缩率的同时保证出色的视觉质量。 - `1`: **极限压缩** (推荐，体积最小，画质优异) - `2`: **高效压缩** - `3`: **智能均衡** (默认选项) - `4`: **画质优先** - `5`: **专业保真** (压缩率稍低，保留最多图像信息)  ## 错误处理指南 - **400 Bad Request**: 通常因为没有上传文件，或者 `level` 参数不在 1-5 的范围内。 - **500 Internal Server Error**: 如果在压缩过程中服务器发生内部错误，会返回此状态码。
-     * 无损压缩图片
-     */
-    async postImageCompressRaw(requestParameters: PostImageCompressRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.postImageCompressRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -515,9 +467,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postImageFrombase64 without sending the request
+     * 当你需要在前端处理完图片（比如裁剪、加滤镜后），不通过传统表单，而是直接上传图片的场景，这个接口就派上用场了。  ## 功能概述 你只需要将图片的 Base64 编码字符串发送过来，我们就会把它解码、保存为图片文件，并返回一个可供访问的公开 URL。  ## 使用须知  > [!IMPORTANT] > **关于 `imageData` 格式** > 你发送的 `imageData` 字符串必须是完整的 Base64 Data URI 格式，它需要包含 MIME 类型信息，例如 `data:image/png;base64,iVBORw0KGgo...`。缺少 `data:image/...;base64,` 前缀将导致解码失败。
+     * 通过Base64编码上传图片
      */
-    async postImageFrombase64RequestOpts(requestParameters: PostImageFrombase64OperationRequest): Promise<runtime.RequestOpts> {
+    async postImageFrombase64Raw(requestParameters: PostImageFrombase64OperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImageFrombase64200Response>> {
         if (requestParameters['postImageFrombase64Request'] == null) {
             throw new runtime.RequiredError(
                 'postImageFrombase64Request',
@@ -534,22 +487,13 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/frombase64`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostImageFrombase64RequestToJSON(requestParameters['postImageFrombase64Request']),
-        };
-    }
-
-    /**
-     * 当你需要在前端处理完图片（比如裁剪、加滤镜后），不通过传统表单，而是直接上传图片的场景，这个接口就派上用场了。  ## 功能概述 你只需要将图片的 Base64 编码字符串发送过来，我们就会把它解码、保存为图片文件，并返回一个可供访问的公开 URL。  ## 使用须知  > [!IMPORTANT] > **关于 `imageData` 格式** > 你发送的 `imageData` 字符串必须是完整的 Base64 Data URI 格式，它需要包含 MIME 类型信息，例如 `data:image/png;base64,iVBORw0KGgo...`。缺少 `data:image/...;base64,` 前缀将导致解码失败。
-     * 通过Base64编码上传图片
-     */
-    async postImageFrombase64Raw(requestParameters: PostImageFrombase64OperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImageFrombase64200Response>> {
-        const requestOptions = await this.postImageFrombase64RequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostImageFrombase64200ResponseFromJSON(jsonValue));
     }
@@ -564,9 +508,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postImageMotou without sending the request
+     * 除了使用QQ头像，你还可以通过上传自己的图片或提供图片URL来制作独一无二的摸摸头GIF。  ## 功能概述 此接口通过POST方法，支持两种方式生成GIF： 1.  **图片URL**：在表单中提供 `image_url` 字段。 2.  **上传图片**：在表单中上传 `file` 文件。  ## 使用须知 - **响应格式**：接口成功时直接返回 `image/gif` 格式的二进制数据。 - **参数优先级**：如果同时提供了 `image_url` 和上传的 `file` 文件，系统将 **优先使用 `image_url`**。 - **背景颜色**：同样支持 `bg_color` 表单字段来控制GIF背景。
+     * 生成摸摸头GIF
      */
-    async postImageMotouRequestOpts(requestParameters: PostImageMotouRequest): Promise<runtime.RequestOpts> {
+    async postImageMotouRaw(requestParameters: PostImageMotouRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -602,22 +547,13 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/motou`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: formParams,
-        };
-    }
-
-    /**
-     * 除了使用QQ头像，你还可以通过上传自己的图片或提供图片URL来制作独一无二的摸摸头GIF。  ## 功能概述 此接口通过POST方法，支持两种方式生成GIF： 1.  **图片URL**：在表单中提供 `image_url` 字段。 2.  **上传图片**：在表单中上传 `file` 文件。  ## 使用须知 - **响应格式**：接口成功时直接返回 `image/gif` 格式的二进制数据。 - **参数优先级**：如果同时提供了 `image_url` 和上传的 `file` 文件，系统将 **优先使用 `image_url`**。 - **背景颜色**：同样支持 `bg_color` 表单字段来控制GIF背景。
-     * 生成摸摸头GIF
-     */
-    async postImageMotouRaw(requestParameters: PostImageMotouRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.postImageMotouRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -632,9 +568,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postImageNsfw without sending the request
+     * 这是一个图片内容审核接口，自动识别图片中的违规内容并返回处理建议。  ## 功能概述 上传图片文件或提供图片URL，接口会自动分析图片内容，返回是否违规、风险等级和处理建议。适合对接到用户上传流程中，实现自动化内容审核。  ## 返回字段说明 - **is_nsfw**: 是否判定为违规内容，`true` 表示违规，`false` 表示正常 - **nsfw_score**: 违规内容置信度，0-1 之间，越高表示越可能违规 - **normal_score**: 正常内容置信度，0-1 之间，与 nsfw_score 互补 - **suggestion**: 处理建议   - `pass`: 内容正常，可以直接放行   - `review`: 存在风险，建议转人工复核   - `block`: 高风险内容，建议直接拦截 - **risk_level**: 风险等级   - `low`: 低风险   - `medium`: 中风险   - `high`: 高风险 - **label**: 内容标签，`nsfw` 或 `normal` - **confidence**: 模型对当前判断的整体置信度 - **inference_time_ms**: 模型推理耗时，单位毫秒
+     * 图片敏感检测
      */
-    async postImageNsfwRequestOpts(requestParameters: PostImageNsfwRequest): Promise<runtime.RequestOpts> {
+    async postImageNsfwRaw(requestParameters: PostImageNsfwRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImageNsfw200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -666,22 +603,13 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/nsfw`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: formParams,
-        };
-    }
-
-    /**
-     * 这是一个图片内容审核接口，自动识别图片中的违规内容并返回处理建议。  ## 功能概述 上传图片文件或提供图片URL，接口会自动分析图片内容，返回是否违规、风险等级和处理建议。适合对接到用户上传流程中，实现自动化内容审核。  ## 返回字段说明 - **is_nsfw**: 是否判定为违规内容，`true` 表示违规，`false` 表示正常 - **nsfw_score**: 违规内容置信度，0-1 之间，越高表示越可能违规 - **normal_score**: 正常内容置信度，0-1 之间，与 nsfw_score 互补 - **suggestion**: 处理建议   - `pass`: 内容正常，可以直接放行   - `review`: 存在风险，建议转人工复核   - `block`: 高风险内容，建议直接拦截 - **risk_level**: 风险等级   - `low`: 低风险   - `medium`: 中风险   - `high`: 高风险 - **label**: 内容标签，`nsfw` 或 `normal` - **confidence**: 模型对当前判断的整体置信度 - **inference_time_ms**: 模型推理耗时，单位毫秒
-     * 图片敏感检测
-     */
-    async postImageNsfwRaw(requestParameters: PostImageNsfwRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImageNsfw200Response>> {
-        const requestOptions = await this.postImageNsfwRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostImageNsfw200ResponseFromJSON(jsonValue));
     }
@@ -696,9 +624,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postImageSpeechless without sending the request
+     * 你们怎么不说话了？是不是都在偷偷玩Uapi，求求你们不要玩Uapi了  ## 使用须知 - **响应格式**：接口成功时直接返回 `image/png` 格式的二进制数据。 - **文字内容**：至少需要提供 `top_text`（上方文字）或 `bottom_text`（下方文字）之一。 - **梗图逻辑**：上方描述某个行为，下方通常以「们」开头表示劝阻，形成戏谑的对比效果。
+     * 生成你们怎么不说话了表情包
      */
-    async postImageSpeechlessRequestOpts(requestParameters: PostImageSpeechlessOperationRequest): Promise<runtime.RequestOpts> {
+    async postImageSpeechlessRaw(requestParameters: PostImageSpeechlessOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters['postImageSpeechlessRequest'] == null) {
             throw new runtime.RequiredError(
                 'postImageSpeechlessRequest',
@@ -715,22 +644,13 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/speechless`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostImageSpeechlessRequestToJSON(requestParameters['postImageSpeechlessRequest']),
-        };
-    }
-
-    /**
-     * 你们怎么不说话了？是不是都在偷偷玩Uapi，求求你们不要玩Uapi了  ## 使用须知 - **响应格式**：接口成功时直接返回 `image/png` 格式的二进制数据。 - **文字内容**：至少需要提供 `top_text`（上方文字）或 `bottom_text`（下方文字）之一。 - **梗图逻辑**：上方描述某个行为，下方通常以「们」开头表示劝阻，形成戏谑的对比效果。
-     * 生成你们怎么不说话了表情包
-     */
-    async postImageSpeechlessRaw(requestParameters: PostImageSpeechlessOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.postImageSpeechlessRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }
@@ -745,9 +665,10 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postImageSvg without sending the request
+     * 需要将灵活的 SVG 矢量图形转换为常见的光栅图像格式吗？这个接口可以帮你轻松实现。  ## 功能概述 上传一个 SVG 文件，并指定目标格式（如 PNG、JPEG 等），接口将返回转换后的图像。你还可以调整输出图像的尺寸和（对于JPEG）压缩质量，以满足不同场景的需求。
+     * SVG转图片
      */
-    async postImageSvgRequestOpts(requestParameters: PostImageSvgRequest): Promise<runtime.RequestOpts> {
+    async postImageSvgRaw(requestParameters: PostImageSvgRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         const queryParameters: any = {};
 
         if (requestParameters['format'] != null) {
@@ -791,22 +712,13 @@ export class ImageApi extends runtime.BaseAPI {
 
         let urlPath = `/image/svg`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: formParams,
-        };
-    }
-
-    /**
-     * 需要将灵活的 SVG 矢量图形转换为常见的光栅图像格式吗？这个接口可以帮你轻松实现。  ## 功能概述 上传一个 SVG 文件，并指定目标格式（如 PNG、JPEG 等），接口将返回转换后的图像。你还可以调整输出图像的尺寸和（对于JPEG）压缩质量，以满足不同场景的需求。
-     * SVG转图片
-     */
-    async postImageSvgRaw(requestParameters: PostImageSvgRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
-        const requestOptions = await this.postImageSvgRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
     }

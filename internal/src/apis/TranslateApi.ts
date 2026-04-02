@@ -81,9 +81,10 @@ export interface PostTranslateTextOperationRequest {
 export class TranslateApi extends runtime.BaseAPI {
 
     /**
-     * Creates request options for getAiTranslateLanguages without sending the request
+     * 获取AI智能翻译服务支持的完整语言列表、翻译风格选项、上下文场景选项以及性能指标信息。
+     * AI翻译配置
      */
-    async getAiTranslateLanguagesRequestOpts(): Promise<runtime.RequestOpts> {
+    async getAiTranslateLanguagesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAiTranslateLanguages200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -91,21 +92,12 @@ export class TranslateApi extends runtime.BaseAPI {
 
         let urlPath = `/ai/translate/languages`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 获取AI智能翻译服务支持的完整语言列表、翻译风格选项、上下文场景选项以及性能指标信息。
-     * AI翻译配置
-     */
-    async getAiTranslateLanguagesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAiTranslateLanguages200Response>> {
-        const requestOptions = await this.getAiTranslateLanguagesRequestOpts();
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetAiTranslateLanguages200ResponseFromJSON(jsonValue));
     }
@@ -120,9 +112,10 @@ export class TranslateApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postAiTranslate without sending the request
+     * 这是一个商业级的AI智能翻译服务，采用最新的神经网络翻译技术和大语言模型，提供远超传统机器翻译的质量。  ## 功能概述  - **单文本翻译**: 专注处理单条文本翻译，适合需要高质量译文的业务场景。 - **多风格适配**: 提供随意口语化、专业商务、学术正式、文学艺术四种翻译风格，能够根据不同场景需求调整翻译的语言风格和表达方式。 - **上下文感知**: 支持通用、商务、技术、医疗、法律、市场营销、娱乐、教育、新闻等九种专业领域的上下文翻译，确保术语准确性和表达地道性。 - **格式保留**: 智能识别并保持原文的格式结构，包括换行、缩进、特殊符号等，确保翻译后的文本保持良好的可读性。  ## 支持的语言  我们支持超过100种语言的互译，详见下方参数列表。
+     * AI智能翻译
      */
-    async postAiTranslateRequestOpts(requestParameters: PostAiTranslateOperationRequest): Promise<runtime.RequestOpts> {
+    async postAiTranslateRaw(requestParameters: PostAiTranslateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostAiTranslate200Response>> {
         if (requestParameters['targetLang'] == null) {
             throw new runtime.RequiredError(
                 'targetLang',
@@ -150,22 +143,13 @@ export class TranslateApi extends runtime.BaseAPI {
 
         let urlPath = `/ai/translate`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostAiTranslateRequestToJSON(requestParameters['postAiTranslateRequest']),
-        };
-    }
-
-    /**
-     * 这是一个商业级的AI智能翻译服务，采用最新的神经网络翻译技术和大语言模型，提供远超传统机器翻译的质量。  ## 功能概述  - **单文本翻译**: 专注处理单条文本翻译，适合需要高质量译文的业务场景。 - **多风格适配**: 提供随意口语化、专业商务、学术正式、文学艺术四种翻译风格，能够根据不同场景需求调整翻译的语言风格和表达方式。 - **上下文感知**: 支持通用、商务、技术、医疗、法律、市场营销、娱乐、教育、新闻等九种专业领域的上下文翻译，确保术语准确性和表达地道性。 - **格式保留**: 智能识别并保持原文的格式结构，包括换行、缩进、特殊符号等，确保翻译后的文本保持良好的可读性。  ## 支持的语言  我们支持超过100种语言的互译，详见下方参数列表。
-     * AI智能翻译
-     */
-    async postAiTranslateRaw(requestParameters: PostAiTranslateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostAiTranslate200Response>> {
-        const requestOptions = await this.postAiTranslateRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostAiTranslate200ResponseFromJSON(jsonValue));
     }
@@ -180,9 +164,10 @@ export class TranslateApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postTranslateStream without sending the request
+     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 `auto` 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - `中文`（简体/繁体） - `英文` - `auto`（自动检测）
+     * 流式翻译（中英互译）
      */
-    async postTranslateStreamRequestOpts(requestParameters: PostTranslateStreamOperationRequest): Promise<runtime.RequestOpts> {
+    async postTranslateStreamRaw(requestParameters: PostTranslateStreamOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         if (requestParameters['postTranslateStreamRequest'] == null) {
             throw new runtime.RequiredError(
                 'postTranslateStreamRequest',
@@ -199,22 +184,13 @@ export class TranslateApi extends runtime.BaseAPI {
 
         let urlPath = `/translate/stream`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTranslateStreamRequestToJSON(requestParameters['postTranslateStreamRequest']),
-        };
-    }
-
-    /**
-     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 `auto` 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - `中文`（简体/繁体） - `英文` - `auto`（自动检测）
-     * 流式翻译（中英互译）
-     */
-    async postTranslateStreamRaw(requestParameters: PostTranslateStreamOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
-        const requestOptions = await this.postTranslateStreamRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse<string>(response);
@@ -233,9 +209,10 @@ export class TranslateApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postTranslateText without sending the request
+     * 需要跨越语言的鸿沟进行交流？这个翻译接口是你可靠的\'同声传译\'。  ## 功能概述 你可以将一段源语言文本（我们能自动检测源语言）翻译成你指定的任何目标语言。无论是中译英、日译法，都不在话下。  ## 支持的语言 我们支持超过100种语言的互译，包括但不限于：中文（简体/繁体）、英语、日语、韩语、法语、德语、西班牙语、俄语、阿拉伯语等主流语言，以及各种小语种。详见下方参数列表。
+     * 翻译
      */
-    async postTranslateTextRequestOpts(requestParameters: PostTranslateTextOperationRequest): Promise<runtime.RequestOpts> {
+    async postTranslateTextRaw(requestParameters: PostTranslateTextOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTranslateText200Response>> {
         if (requestParameters['toLang'] == null) {
             throw new runtime.RequiredError(
                 'toLang',
@@ -263,22 +240,13 @@ export class TranslateApi extends runtime.BaseAPI {
 
         let urlPath = `/translate/text`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostTranslateTextRequestToJSON(requestParameters['postTranslateTextRequest']),
-        };
-    }
-
-    /**
-     * 需要跨越语言的鸿沟进行交流？这个翻译接口是你可靠的\'同声传译\'。  ## 功能概述 你可以将一段源语言文本（我们能自动检测源语言）翻译成你指定的任何目标语言。无论是中译英、日译法，都不在话下。  ## 支持的语言 我们支持超过100种语言的互译，包括但不限于：中文（简体/繁体）、英语、日语、韩语、法语、德语、西班牙语、俄语、阿拉伯语等主流语言，以及各种小语种。详见下方参数列表。
-     * 翻译
-     */
-    async postTranslateTextRaw(requestParameters: PostTranslateTextOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostTranslateText200Response>> {
-        const requestOptions = await this.postTranslateTextRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostTranslateText200ResponseFromJSON(jsonValue));
     }

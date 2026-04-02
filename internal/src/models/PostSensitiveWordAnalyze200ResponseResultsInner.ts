@@ -27,13 +27,13 @@ export interface PostSensitiveWordAnalyze200ResponseResultsInner {
     k?: string;
     /**
      * 
-     * @type {PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum}
+     * @type {string}
      * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
      */
     label?: PostSensitiveWordAnalyze200ResponseResultsInnerLabelEnum;
     /**
      * 
-     * @type {PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum}
+     * @type {string}
      * @memberof PostSensitiveWordAnalyze200ResponseResultsInner
      */
     category?: PostSensitiveWordAnalyze200ResponseResultsInnerCategoryEnum;

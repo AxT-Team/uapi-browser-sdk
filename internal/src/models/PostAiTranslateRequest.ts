@@ -33,13 +33,13 @@ export interface PostAiTranslateRequest {
     sourceLang?: string;
     /**
      * 翻译风格，可选。支持casual(随意口语化)、professional(专业商务，默认)、academic(学术正式)、literary(文学艺术)。
-     * @type {PostAiTranslateRequestStyleEnum}
+     * @type {string}
      * @memberof PostAiTranslateRequest
      */
     style?: PostAiTranslateRequestStyleEnum;
     /**
      * 翻译上下文场景，可选。支持general(通用，默认)、business(商务)、technical(技术)、medical(医疗)、legal(法律)、marketing(市场营销)、entertainment(娱乐)、education(教育)、news(新闻)。
-     * @type {PostAiTranslateRequestContextEnum}
+     * @type {string}
      * @memberof PostAiTranslateRequest
      */
     context?: PostAiTranslateRequestContextEnum;

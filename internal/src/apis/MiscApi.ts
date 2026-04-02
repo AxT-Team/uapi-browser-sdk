@@ -225,9 +225,10 @@ export interface PostMiscDateDiffOperationRequest {
 export class MiscApi extends runtime.BaseAPI {
 
     /**
-     * Creates request options for getHistoryProgrammer without sending the request
+     * 想查看程序员历史上某个特定日期发生的大事件？指定月份和日期，我们就能告诉你！  ## 功能概述 通过指定月份和日期，获取该日发生的程序员相关历史事件。同样使用AI智能筛选，确保事件的相关性和重要性。
+     * 程序员历史事件
      */
-    async getHistoryProgrammerRequestOpts(requestParameters: GetHistoryProgrammerRequest): Promise<runtime.RequestOpts> {
+    async getHistoryProgrammerRaw(requestParameters: GetHistoryProgrammerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHistoryProgrammer200Response>> {
         if (requestParameters['month'] == null) {
             throw new runtime.RequiredError(
                 'month',
@@ -257,21 +258,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/history/programmer`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想查看程序员历史上某个特定日期发生的大事件？指定月份和日期，我们就能告诉你！  ## 功能概述 通过指定月份和日期，获取该日发生的程序员相关历史事件。同样使用AI智能筛选，确保事件的相关性和重要性。
-     * 程序员历史事件
-     */
-    async getHistoryProgrammerRaw(requestParameters: GetHistoryProgrammerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHistoryProgrammer200Response>> {
-        const requestOptions = await this.getHistoryProgrammerRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetHistoryProgrammer200ResponseFromJSON(jsonValue));
     }
@@ -286,9 +278,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getHistoryProgrammerToday without sending the request
+     * 想知道程序员历史上的今天发生了什么大事吗？这个接口告诉你答案！  ## 功能概述 我们使用AI智能筛选从海量历史事件中挑选出与程序员、计算机科学相关的重要事件。每个事件都经过重要性评分和相关性评分，确保内容质量。
+     * 程序员历史上的今天
      */
-    async getHistoryProgrammerTodayRequestOpts(): Promise<runtime.RequestOpts> {
+    async getHistoryProgrammerTodayRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHistoryProgrammerToday200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -296,21 +289,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/history/programmer/today`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想知道程序员历史上的今天发生了什么大事吗？这个接口告诉你答案！  ## 功能概述 我们使用AI智能筛选从海量历史事件中挑选出与程序员、计算机科学相关的重要事件。每个事件都经过重要性评分和相关性评分，确保内容质量。
-     * 程序员历史上的今天
-     */
-    async getHistoryProgrammerTodayRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHistoryProgrammerToday200Response>> {
-        const requestOptions = await this.getHistoryProgrammerTodayRequestOpts();
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetHistoryProgrammerToday200ResponseFromJSON(jsonValue));
     }
@@ -325,9 +309,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscDistrict without sending the request
+     * 一个接口，覆盖全球 243 个国家、中国省/市/区/街道四级行政区划，支持关键词搜索、行政编码查询、坐标反查三种查询模式（必须至少传入一种查询参数）。  ## 功能概述 根据用户输入的搜索条件快速查找行政区域信息。例如：中国 > 山东省 > 济南市 > 历下区 > 舜华路街道。  无需注册、无需密钥，直接调用即可获取结构化的行政区域数据。支持三种查询方式： - 传 `adcode`，按行政编码精确查询，同时返回下级区划列表 - 传 `lat` + `lng`，坐标反查附近地点 - 传 `keywords`，按关键词搜索，支持中英文  ## 中国与国际数据差异 中国数据包含 `adcode`、`citycode` 等字段，支持省/市/区/街道四级逐级查询；国际城市数据不含这些字段，但额外提供 `population`（人口）和 `timezone`（时区）。  > [!NOTE] > 部分城市（如东莞、文昌）没有区县层级，市级下方直接显示街道。街道级别的 `adcode` 返回的是所属区县的 `adcode`。
+     * Adcode 国内外行政区域查询
      */
-    async getMiscDistrictRequestOpts(requestParameters: GetMiscDistrictRequest): Promise<runtime.RequestOpts> {
+    async getMiscDistrictRaw(requestParameters: GetMiscDistrictRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscDistrict200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['keywords'] != null) {
@@ -363,21 +348,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/district`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 一个接口，覆盖全球 243 个国家、中国省/市/区/街道四级行政区划，支持关键词搜索、行政编码查询、坐标反查三种查询模式（必须至少传入一种查询参数）。  ## 功能概述 根据用户输入的搜索条件快速查找行政区域信息。例如：中国 > 山东省 > 济南市 > 历下区 > 舜华路街道。  无需注册、无需密钥，直接调用即可获取结构化的行政区域数据。支持三种查询方式： - 传 `adcode`，按行政编码精确查询，同时返回下级区划列表 - 传 `lat` + `lng`，坐标反查附近地点 - 传 `keywords`，按关键词搜索，支持中英文  ## 中国与国际数据差异 中国数据包含 `adcode`、`citycode` 等字段，支持省/市/区/街道四级逐级查询；国际城市数据不含这些字段，但额外提供 `population`（人口）和 `timezone`（时区）。  > [!NOTE] > 部分城市（如东莞、文昌）没有区县层级，市级下方直接显示街道。街道级别的 `adcode` 返回的是所属区县的 `adcode`。
-     * Adcode 国内外行政区域查询
-     */
-    async getMiscDistrictRaw(requestParameters: GetMiscDistrictRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscDistrict200Response>> {
-        const requestOptions = await this.getMiscDistrictRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscDistrict200ResponseFromJSON(jsonValue));
     }
@@ -392,9 +368,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscHolidayCalendar without sending the request
+     * 查询指定日期、月份或年份的万年历与节假日信息。  ## 功能概述 这个接口支持三种查询方式：按天（`date`）、按月（`month`）和按年（`year`）。调用时三者选一个传入即可。  如果你只关心某一类事件，可以通过 `holiday_type` 进行筛选，例如只看法定休假/调休、公历节日、农历节日或节气。  在 `date` 模式下，传 `include_nearby=true` 可以额外返回该日期前后最近的节日；返回数量由 `nearby_limit` 控制，默认 7，最大 30。
+     * 查询节假日与万年历
      */
-    async getMiscHolidayCalendarRequestOpts(requestParameters: GetMiscHolidayCalendarRequest): Promise<runtime.RequestOpts> {
+    async getMiscHolidayCalendarRaw(requestParameters: GetMiscHolidayCalendarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscHolidayCalendar200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['date'] != null) {
@@ -430,21 +407,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/holiday-calendar`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 查询指定日期、月份或年份的万年历与节假日信息。  ## 功能概述 这个接口支持三种查询方式：按天（`date`）、按月（`month`）和按年（`year`）。调用时三者选一个传入即可。  如果你只关心某一类事件，可以通过 `holiday_type` 进行筛选，例如只看法定休假/调休、公历节日、农历节日或节气。  在 `date` 模式下，传 `include_nearby=true` 可以额外返回该日期前后最近的节日；返回数量由 `nearby_limit` 控制，默认 7，最大 30。
-     * 查询节假日与万年历
-     */
-    async getMiscHolidayCalendarRaw(requestParameters: GetMiscHolidayCalendarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscHolidayCalendar200Response>> {
-        const requestOptions = await this.getMiscHolidayCalendarRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscHolidayCalendar200ResponseFromJSON(jsonValue));
     }
@@ -459,9 +427,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscHotboard without sending the request
+     * 想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 `type` 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 `type` + `time` 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 `type` + `keyword` + `time_start` + `time_end` 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 `limit` 限制返回数量。  ### 数据源列表 传 `sources=true`，返回所有支持历史数据的平台列表。
+     * 查询热榜
      */
-    async getMiscHotboardRequestOpts(requestParameters: GetMiscHotboardRequest): Promise<runtime.RequestOpts> {
+    async getMiscHotboardRaw(requestParameters: GetMiscHotboardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscHotboard200Response>> {
         if (requestParameters['type'] == null) {
             throw new runtime.RequiredError(
                 'type',
@@ -504,21 +473,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/hotboard`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 `type` 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 `type` + `time` 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 `type` + `keyword` + `time_start` + `time_end` 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 `limit` 限制返回数量。  ### 数据源列表 传 `sources=true`，返回所有支持历史数据的平台列表。
-     * 查询热榜
-     */
-    async getMiscHotboardRaw(requestParameters: GetMiscHotboardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscHotboard200Response>> {
-        const requestOptions = await this.getMiscHotboardRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscHotboard200ResponseFromJSON(jsonValue));
     }
@@ -533,9 +493,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscLunartime without sending the request
+     * 需要在指定时区下查看某个时间点的农历信息？这个接口可以直接返回完整结果。  ## 功能概述 支持传入 Unix 时间戳（秒或毫秒）和 IANA 时区名，返回公历时间、星期、农历年月日、干支、生肖、节气与节日信息。不传 `ts` 时默认使用当前时间，不传 `timezone` 时默认 `Asia/Shanghai`。  ## 时区说明 - 支持标准 IANA 时区，例如 `Asia/Shanghai`、`Asia/Tokyo` - 也支持别名：`Shanghai`、`Beijing` - 时区非法时返回 400 并提示 `invalid timezone: xxx`
+     * 查询农历时间
      */
-    async getMiscLunartimeRequestOpts(requestParameters: GetMiscLunartimeRequest): Promise<runtime.RequestOpts> {
+    async getMiscLunartimeRaw(requestParameters: GetMiscLunartimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscLunartime200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['ts'] != null) {
@@ -551,21 +512,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/lunartime`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 需要在指定时区下查看某个时间点的农历信息？这个接口可以直接返回完整结果。  ## 功能概述 支持传入 Unix 时间戳（秒或毫秒）和 IANA 时区名，返回公历时间、星期、农历年月日、干支、生肖、节气与节日信息。不传 `ts` 时默认使用当前时间，不传 `timezone` 时默认 `Asia/Shanghai`。  ## 时区说明 - 支持标准 IANA 时区，例如 `Asia/Shanghai`、`Asia/Tokyo` - 也支持别名：`Shanghai`、`Beijing` - 时区非法时返回 400 并提示 `invalid timezone: xxx`
-     * 查询农历时间
-     */
-    async getMiscLunartimeRaw(requestParameters: GetMiscLunartimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscLunartime200Response>> {
-        const requestOptions = await this.getMiscLunartimeRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscLunartime200ResponseFromJSON(jsonValue));
     }
@@ -580,9 +532,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscPhoneinfo without sending the request
+     * 想知道一个手机号码来自哪里？是移动、联通还是电信？这个接口可以告诉你答案。  ## 功能概述 提供一个国内的手机号码，我们会查询并返回它的归属地（省份和城市）以及所属的运营商信息。
+     * 查询手机归属地
      */
-    async getMiscPhoneinfoRequestOpts(requestParameters: GetMiscPhoneinfoRequest): Promise<runtime.RequestOpts> {
+    async getMiscPhoneinfoRaw(requestParameters: GetMiscPhoneinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscPhoneinfo200Response>> {
         if (requestParameters['phone'] == null) {
             throw new runtime.RequiredError(
                 'phone',
@@ -601,21 +554,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/phoneinfo`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想知道一个手机号码来自哪里？是移动、联通还是电信？这个接口可以告诉你答案。  ## 功能概述 提供一个国内的手机号码，我们会查询并返回它的归属地（省份和城市）以及所属的运营商信息。
-     * 查询手机归属地
-     */
-    async getMiscPhoneinfoRaw(requestParameters: GetMiscPhoneinfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscPhoneinfo200Response>> {
-        const requestOptions = await this.getMiscPhoneinfoRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscPhoneinfo200ResponseFromJSON(jsonValue));
     }
@@ -630,9 +574,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscRandomnumber without sending the request
+     * 需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 流程图 ```mermaid graph TD     A[开始] --> B{参数校验};     B --> |通过| C{是否允许小数?};     C --> |是| D[生成随机小数];     C --> |否| E[生成随机整数];     D --> F{是否允许重复?};     E --> F;     F --> |是| G[直接生成指定数量];     F --> |否| H[生成不重复的数字];     G --> I[返回结果];     H --> I;     B --> |失败| J[返回 400 错误]; ``` ## 使用须知 > [!WARNING] > **不重复生成的逻辑限制** > 当设置 `allow_repeat=false` 时，请确保取值范围 `(max - min + 1)` 大于或等于你请求的数量 `count`。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
+     * 随机数生成
      */
-    async getMiscRandomnumberRequestOpts(requestParameters: GetMiscRandomnumberRequest): Promise<runtime.RequestOpts> {
+    async getMiscRandomnumberRaw(requestParameters: GetMiscRandomnumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscRandomnumber200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['min'] != null) {
@@ -664,21 +609,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/randomnumber`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 流程图 ```mermaid graph TD     A[开始] --> B{参数校验};     B --> |通过| C{是否允许小数?};     C --> |是| D[生成随机小数];     C --> |否| E[生成随机整数];     D --> F{是否允许重复?};     E --> F;     F --> |是| G[直接生成指定数量];     F --> |否| H[生成不重复的数字];     G --> I[返回结果];     H --> I;     B --> |失败| J[返回 400 错误]; ``` ## 使用须知 > [!WARNING] > **不重复生成的逻辑限制** > 当设置 `allow_repeat=false` 时，请确保取值范围 `(max - min + 1)` 大于或等于你请求的数量 `count`。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
-     * 随机数生成
-     */
-    async getMiscRandomnumberRaw(requestParameters: GetMiscRandomnumberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscRandomnumber200Response>> {
-        const requestOptions = await this.getMiscRandomnumberRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscRandomnumber200ResponseFromJSON(jsonValue));
     }
@@ -693,9 +629,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscTimestamp without sending the request
+     * 这是一个用于将Unix时间戳转换为人类可读日期时间的旧版接口。  ## 功能概述 输入一个秒级或毫秒级的时间戳，返回其对应的本地时间和UTC时间。  > [!WARNING] > **接口已过时**：这个接口已被新的 `/convert/unixtime` 取代。新接口功能更强大，支持双向转换。我们建议你迁移到新接口。  [➡️ 前往新版接口文档](/docs/api-reference/get-convert-unixtime)
+     * 转换时间戳 (旧版，推荐使用/convert/unixtime)
      */
-    async getMiscTimestampRequestOpts(requestParameters: GetMiscTimestampRequest): Promise<runtime.RequestOpts> {
+    async getMiscTimestampRaw(requestParameters: GetMiscTimestampRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTimestamp200Response>> {
         if (requestParameters['ts'] == null) {
             throw new runtime.RequiredError(
                 'ts',
@@ -714,21 +651,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/timestamp`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 这是一个用于将Unix时间戳转换为人类可读日期时间的旧版接口。  ## 功能概述 输入一个秒级或毫秒级的时间戳，返回其对应的本地时间和UTC时间。  > [!WARNING] > **接口已过时**：这个接口已被新的 `/convert/unixtime` 取代。新接口功能更强大，支持双向转换。我们建议你迁移到新接口。  [➡️ 前往新版接口文档](/docs/api-reference/get-convert-unixtime)
-     * 转换时间戳 (旧版，推荐使用/convert/unixtime)
-     */
-    async getMiscTimestampRaw(requestParameters: GetMiscTimestampRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTimestamp200Response>> {
-        const requestOptions = await this.getMiscTimestampRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscTimestamp200ResponseFromJSON(jsonValue));
     }
@@ -743,9 +671,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscTrackingCarriers without sending the request
+     * 不确定系统支持哪些快递公司？这个接口返回完整的支持列表。  ## 功能概述 获取系统当前支持的所有快递公司列表，包括每家公司的标准编码（code）和中文名称（name）。  ## 使用建议 - **推荐缓存**：这个列表基本不会频繁变动，建议在应用启动时调用一次并缓存到本地 - **应用场景**：适合用于构建快递公司选择器、下拉菜单等UI组件 - **缓存时长**：建议缓存24小时或更久
+     * 获取支持的快递公司列表
      */
-    async getMiscTrackingCarriersRequestOpts(): Promise<runtime.RequestOpts> {
+    async getMiscTrackingCarriersRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingCarriers200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -753,21 +682,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/tracking/carriers`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 不确定系统支持哪些快递公司？这个接口返回完整的支持列表。  ## 功能概述 获取系统当前支持的所有快递公司列表，包括每家公司的标准编码（code）和中文名称（name）。  ## 使用建议 - **推荐缓存**：这个列表基本不会频繁变动，建议在应用启动时调用一次并缓存到本地 - **应用场景**：适合用于构建快递公司选择器、下拉菜单等UI组件 - **缓存时长**：建议缓存24小时或更久
-     * 获取支持的快递公司列表
-     */
-    async getMiscTrackingCarriersRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingCarriers200Response>> {
-        const requestOptions = await this.getMiscTrackingCarriersRequestOpts();
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscTrackingCarriers200ResponseFromJSON(jsonValue));
     }
@@ -782,9 +702,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscTrackingDetect without sending the request
+     * 不确定手里的快递单号属于哪家快递公司？这个接口专门做识别，不查物流。  ## 功能概述 输入快递单号，系统会根据单号规则快速识别出最可能的快递公司。如果存在多个可能的匹配结果，还会在 `alternatives` 字段中返回备选项，供你参考选择。  ## 使用须知 - **识别速度快**：只做规则匹配，不查询物流信息，响应速度通常在100ms内 - **准确率高**：基于各快递公司的单号规则进行智能识别，准确率超过95% - **备选方案**：当单号规则可能匹配多家快递公司时，会提供所有可能的选项
+     * 识别快递公司
      */
-    async getMiscTrackingDetectRequestOpts(requestParameters: GetMiscTrackingDetectRequest): Promise<runtime.RequestOpts> {
+    async getMiscTrackingDetectRaw(requestParameters: GetMiscTrackingDetectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingDetect200Response>> {
         if (requestParameters['trackingNumber'] == null) {
             throw new runtime.RequiredError(
                 'trackingNumber',
@@ -803,21 +724,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/tracking/detect`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 不确定手里的快递单号属于哪家快递公司？这个接口专门做识别，不查物流。  ## 功能概述 输入快递单号，系统会根据单号规则快速识别出最可能的快递公司。如果存在多个可能的匹配结果，还会在 `alternatives` 字段中返回备选项，供你参考选择。  ## 使用须知 - **识别速度快**：只做规则匹配，不查询物流信息，响应速度通常在100ms内 - **准确率高**：基于各快递公司的单号规则进行智能识别，准确率超过95% - **备选方案**：当单号规则可能匹配多家快递公司时，会提供所有可能的选项
-     * 识别快递公司
-     */
-    async getMiscTrackingDetectRaw(requestParameters: GetMiscTrackingDetectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingDetect200Response>> {
-        const requestOptions = await this.getMiscTrackingDetectRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscTrackingDetect200ResponseFromJSON(jsonValue));
     }
@@ -832,9 +744,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscTrackingQuery without sending the request
+     * 买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。这个接口目前可以查询中通、圆通、韵达、申通、极兔、京东、EMS、德邦等主流快递公司的物流信息。  ## 使用须知 目前暂不支持顺丰快递单号的物流查询。  - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 `carrier_code` 参数，查询速度会更快 - **手机尾号验证**：部分快递公司需要验证收件人手机尾号才能查询详细物流，如果返回 `暂无物流信息`，建议尝试传入 `phone` 参数 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
+     * 查询快递物流信息
      */
-    async getMiscTrackingQueryRequestOpts(requestParameters: GetMiscTrackingQueryRequest): Promise<runtime.RequestOpts> {
+    async getMiscTrackingQueryRaw(requestParameters: GetMiscTrackingQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingQuery200Response>> {
         if (requestParameters['trackingNumber'] == null) {
             throw new runtime.RequiredError(
                 'trackingNumber',
@@ -861,21 +774,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/tracking/query`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。这个接口目前可以查询中通、圆通、韵达、申通、极兔、京东、EMS、德邦等主流快递公司的物流信息。  ## 使用须知 目前暂不支持顺丰快递单号的物流查询。  - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 `carrier_code` 参数，查询速度会更快 - **手机尾号验证**：部分快递公司需要验证收件人手机尾号才能查询详细物流，如果返回 `暂无物流信息`，建议尝试传入 `phone` 参数 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
-     * 查询快递物流信息
-     */
-    async getMiscTrackingQueryRaw(requestParameters: GetMiscTrackingQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscTrackingQuery200Response>> {
-        const requestOptions = await this.getMiscTrackingQueryRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscTrackingQuery200ResponseFromJSON(jsonValue));
     }
@@ -890,9 +794,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscWeather without sending the request
+     * 出门前，查一下天气总是个好习惯。这个接口为你提供精准、实时的天气数据，支持国内和国际城市。  ## 功能概述 这个接口支持三种查询方式： - 可以传 `adcode`，按行政区编码查询（优先级最高） - 可以传 `city`，按城市名称查询，支持中文（`北京`）和英文（`Tokyo`） - 两个都不传时，按客户端 IP 自动定位查询  支持 `lang` 参数，可选 `zh`（默认）和 `en`，城市名翻译覆盖 7000+ 城市。  ## 可选功能模块 - `extended=true`：扩展气象字段（体感温度、能见度、气压、紫外线、空气质量及污染物分项数据） - `forecast=true`：多天预报（最多7天，会额外返回每天的最高温度、最低温度，以及日出日落、风速等详细数据） - `hourly=true`：逐小时预报（24小时） - `minutely=true`：分钟级降水预报（仅国内城市，精确到2分钟） - `indices=true`：18项生活指数（穿衣、紫外线、洗车、运动、花粉等）  ## 天气字段说明 `weather` 是天气现象文本，不是固定枚举。  常见值包括：晴、多云、阴、小雨、中雨、大雨、雷阵雨、小雪、中雪、大雪、雨夹雪、雾、霾、沙尘。  如果你的业务需要稳定的天气分类，建议使用 `weather_code` 进行映射。完整的天气图标代码请参考[天气图标代码表](#enum-list)。
+     * 查询天气
      */
-    async getMiscWeatherRequestOpts(requestParameters: GetMiscWeatherRequest): Promise<runtime.RequestOpts> {
+    async getMiscWeatherRaw(requestParameters: GetMiscWeatherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscWeather200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['city'] != null) {
@@ -932,21 +837,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/weather`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 出门前，查一下天气总是个好习惯。这个接口为你提供精准、实时的天气数据，支持国内和国际城市。  ## 功能概述 这个接口支持三种查询方式： - 可以传 `adcode`，按行政区编码查询（优先级最高） - 可以传 `city`，按城市名称查询，支持中文（`北京`）和英文（`Tokyo`） - 两个都不传时，按客户端 IP 自动定位查询  支持 `lang` 参数，可选 `zh`（默认）和 `en`，城市名翻译覆盖 7000+ 城市。  ## 可选功能模块 - `extended=true`：扩展气象字段（体感温度、能见度、气压、紫外线、空气质量及污染物分项数据） - `forecast=true`：多天预报（最多7天，会额外返回每天的最高温度、最低温度，以及日出日落、风速等详细数据） - `hourly=true`：逐小时预报（24小时） - `minutely=true`：分钟级降水预报（仅国内城市，精确到2分钟） - `indices=true`：18项生活指数（穿衣、紫外线、洗车、运动、花粉等）  ## 天气字段说明 `weather` 是天气现象文本，不是固定枚举。  常见值包括：晴、多云、阴、小雨、中雨、大雨、雷阵雨、小雪、中雪、大雪、雨夹雪、雾、霾、沙尘。  如果你的业务需要稳定的天气分类，建议使用 `weather_code` 进行映射。完整的天气图标代码请参考[天气图标代码表](#enum-list)。
-     * 查询天气
-     */
-    async getMiscWeatherRaw(requestParameters: GetMiscWeatherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscWeather200Response>> {
-        const requestOptions = await this.getMiscWeatherRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscWeather200ResponseFromJSON(jsonValue));
     }
@@ -961,9 +857,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMiscWorldtime without sending the request
+     * 需要和国外的朋友开会，想知道他那边现在几点？用这个接口一查便知。  ## 功能概述 根据标准的时区名称（例如 \'Asia/Shanghai\' 或 \'Europe/London\'），获取该时区的当前准确时间、UTC偏移量、星期等信息。
+     * 查询世界时间
      */
-    async getMiscWorldtimeRequestOpts(requestParameters: GetMiscWorldtimeRequest): Promise<runtime.RequestOpts> {
+    async getMiscWorldtimeRaw(requestParameters: GetMiscWorldtimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscWorldtime200Response>> {
         if (requestParameters['city'] == null) {
             throw new runtime.RequiredError(
                 'city',
@@ -982,21 +879,12 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/worldtime`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 需要和国外的朋友开会，想知道他那边现在几点？用这个接口一查便知。  ## 功能概述 根据标准的时区名称（例如 \'Asia/Shanghai\' 或 \'Europe/London\'），获取该时区的当前准确时间、UTC偏移量、星期等信息。
-     * 查询世界时间
-     */
-    async getMiscWorldtimeRaw(requestParameters: GetMiscWorldtimeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetMiscWorldtime200Response>> {
-        const requestOptions = await this.getMiscWorldtimeRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetMiscWorldtime200ResponseFromJSON(jsonValue));
     }
@@ -1011,9 +899,10 @@ export class MiscApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postMiscDateDiff without sending the request
+     * 想知道两个日期之间相差多久？这个接口帮你精确计算时间差值。  ## 功能概述 输入开始日期和结束日期，返回它们之间的时间差，包括总天数、总小时数、总分钟数、总秒数、总周数，以及人性化显示格式（如\"1年2月3天\"）。  ## 日期格式 接口支持自动识别常见日期格式，包括：YYYY-MM-DD、YYYY/MM/DD、DD-MM-YYYY、ISO 8601（带时区）等。也可以通过`format`参数显式指定格式（如DD-MM-YYYY）。  > [!NOTE] > 当结束日期早于开始日期时，返回的数值为负数。
+     * 计算两个日期之间的时间差值
      */
-    async postMiscDateDiffRequestOpts(requestParameters: PostMiscDateDiffOperationRequest): Promise<runtime.RequestOpts> {
+    async postMiscDateDiffRaw(requestParameters: PostMiscDateDiffOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostMiscDateDiff200Response>> {
         if (requestParameters['postMiscDateDiffRequest'] == null) {
             throw new runtime.RequiredError(
                 'postMiscDateDiffRequest',
@@ -1030,22 +919,13 @@ export class MiscApi extends runtime.BaseAPI {
 
         let urlPath = `/misc/date-diff`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostMiscDateDiffRequestToJSON(requestParameters['postMiscDateDiffRequest']),
-        };
-    }
-
-    /**
-     * 想知道两个日期之间相差多久？这个接口帮你精确计算时间差值。  ## 功能概述 输入开始日期和结束日期，返回它们之间的时间差，包括总天数、总小时数、总分钟数、总秒数、总周数，以及人性化显示格式（如\"1年2月3天\"）。  ## 日期格式 接口支持自动识别常见日期格式，包括：YYYY-MM-DD、YYYY/MM/DD、DD-MM-YYYY、ISO 8601（带时区）等。也可以通过`format`参数显式指定格式（如DD-MM-YYYY）。  > [!NOTE] > 当结束日期早于开始日期时，返回的数值为负数。
-     * 计算两个日期之间的时间差值
-     */
-    async postMiscDateDiffRaw(requestParameters: PostMiscDateDiffOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostMiscDateDiff200Response>> {
-        const requestOptions = await this.postMiscDateDiffRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostMiscDateDiff200ResponseFromJSON(jsonValue));
     }

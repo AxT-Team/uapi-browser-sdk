@@ -89,9 +89,10 @@ export interface PostSensitiveWordQuickCheckOperationRequest {
 export class DefaultApi extends runtime.BaseAPI {
 
     /**
-     * Creates request options for getSearchEngines without sending the request
+     * 获取 UAPI Pro Search 引擎的详细信息，包括支持的功能特性、参数限制和使用说明。  ## 功能概述  此接口返回搜索引擎的完整配置信息，你可以用它来： - 了解搜索引擎支持哪些功能（如站内搜索、文件类型过滤等） - 获取参数的默认值和限制范围 - 查看当前引擎版本和可用状态  适合在应用初始化时调用，或用于动态配置搜索界面。       
+     * 搜索引擎配置
      */
-    async getSearchEnginesRequestOpts(): Promise<runtime.RequestOpts> {
+    async getSearchEnginesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetSearchEngines200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -99,21 +100,12 @@ export class DefaultApi extends runtime.BaseAPI {
 
         let urlPath = `/search/engines`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 获取 UAPI Pro Search 引擎的详细信息，包括支持的功能特性、参数限制和使用说明。  ## 功能概述  此接口返回搜索引擎的完整配置信息，你可以用它来： - 了解搜索引擎支持哪些功能（如站内搜索、文件类型过滤等） - 获取参数的默认值和限制范围 - 查看当前引擎版本和可用状态  适合在应用初始化时调用，或用于动态配置搜索界面。       
-     * 搜索引擎配置
-     */
-    async getSearchEnginesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetSearchEngines200Response>> {
-        const requestOptions = await this.getSearchEnginesRequestOpts();
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetSearchEngines200ResponseFromJSON(jsonValue));
     }
@@ -128,9 +120,10 @@ export class DefaultApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getSensitiveWordAnalyzeQuery without sending the request
+     * 通过URL查询参数分析单个关键词，便于GET请求调用。
+     * 敏感词分析 (GET)
      */
-    async getSensitiveWordAnalyzeQueryRequestOpts(requestParameters: GetSensitiveWordAnalyzeQueryRequest): Promise<runtime.RequestOpts> {
+    async getSensitiveWordAnalyzeQueryRaw(requestParameters: GetSensitiveWordAnalyzeQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSensitiveWordAnalyze200Response>> {
         if (requestParameters['keyword'] == null) {
             throw new runtime.RequiredError(
                 'keyword',
@@ -149,21 +142,12 @@ export class DefaultApi extends runtime.BaseAPI {
 
         let urlPath = `/sensitive-word/analyze-query`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 通过URL查询参数分析单个关键词，便于GET请求调用。
-     * 敏感词分析 (GET)
-     */
-    async getSensitiveWordAnalyzeQueryRaw(requestParameters: GetSensitiveWordAnalyzeQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSensitiveWordAnalyze200Response>> {
-        const requestOptions = await this.getSensitiveWordAnalyzeQueryRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostSensitiveWordAnalyze200ResponseFromJSON(jsonValue));
     }
@@ -178,9 +162,10 @@ export class DefaultApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postSearchAggregate without sending the request
+     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 `site:` 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 `filetype:` 操作符，快速找到 PDF、Word 等特定格式文件       
+     * 智能搜索
      */
-    async postSearchAggregateRequestOpts(requestParameters: PostSearchAggregateOperationRequest): Promise<runtime.RequestOpts> {
+    async postSearchAggregateRaw(requestParameters: PostSearchAggregateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSearchAggregate200Response>> {
         if (requestParameters['postSearchAggregateRequest'] == null) {
             throw new runtime.RequiredError(
                 'postSearchAggregateRequest',
@@ -197,22 +182,13 @@ export class DefaultApi extends runtime.BaseAPI {
 
         let urlPath = `/search/aggregate`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostSearchAggregateRequestToJSON(requestParameters['postSearchAggregateRequest']),
-        };
-    }
-
-    /**
-     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 `site:` 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 `filetype:` 操作符，快速找到 PDF、Word 等特定格式文件       
-     * 智能搜索
-     */
-    async postSearchAggregateRaw(requestParameters: PostSearchAggregateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSearchAggregate200Response>> {
-        const requestOptions = await this.postSearchAggregateRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostSearchAggregate200ResponseFromJSON(jsonValue));
     }
@@ -227,9 +203,10 @@ export class DefaultApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postSensitiveWordAnalyze without sending the request
+     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **输入限制**: 单条关键词最多 1,000 字符，总字符数最多 20,000。 - **标准标签**: 返回 `label` 字段，明确区分 `sensitive` 与 `normal`。 - **分类清晰**: 返回 `category` 字段，用于标识具体风险类别。 - **置信度输出**: 返回 `confidence` 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | `results` | array | 分析结果对象的数组。 | | `results[].k` | string | 您在请求中提供的原始关键词。 | | `results[].label` | string | 核心判断字段：`sensitive`(敏感)、`normal`(正常)。 | | `results[].category` | string | 风险分类：`safe`(安全)、`threat`(威胁)、`porn`(色情)、`fraud`(欺诈)、`insult`(辱骂)。 | | `results[].confidence` | number | 当前分类的置信度，范围0.0到1.0。 | | `total` | integer | 本次请求成功分析的关键词总数。 |       
+     * 分析敏感词
      */
-    async postSensitiveWordAnalyzeRequestOpts(requestParameters: PostSensitiveWordAnalyzeOperationRequest): Promise<runtime.RequestOpts> {
+    async postSensitiveWordAnalyzeRaw(requestParameters: PostSensitiveWordAnalyzeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSensitiveWordAnalyze200Response>> {
         if (requestParameters['postSensitiveWordAnalyzeRequest'] == null) {
             throw new runtime.RequiredError(
                 'postSensitiveWordAnalyzeRequest',
@@ -246,22 +223,13 @@ export class DefaultApi extends runtime.BaseAPI {
 
         let urlPath = `/sensitive-word/analyze`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostSensitiveWordAnalyzeRequestToJSON(requestParameters['postSensitiveWordAnalyzeRequest']),
-        };
-    }
-
-    /**
-     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **输入限制**: 单条关键词最多 1,000 字符，总字符数最多 20,000。 - **标准标签**: 返回 `label` 字段，明确区分 `sensitive` 与 `normal`。 - **分类清晰**: 返回 `category` 字段，用于标识具体风险类别。 - **置信度输出**: 返回 `confidence` 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | `results` | array | 分析结果对象的数组。 | | `results[].k` | string | 您在请求中提供的原始关键词。 | | `results[].label` | string | 核心判断字段：`sensitive`(敏感)、`normal`(正常)。 | | `results[].category` | string | 风险分类：`safe`(安全)、`threat`(威胁)、`porn`(色情)、`fraud`(欺诈)、`insult`(辱骂)。 | | `results[].confidence` | number | 当前分类的置信度，范围0.0到1.0。 | | `total` | integer | 本次请求成功分析的关键词总数。 |       
-     * 分析敏感词
-     */
-    async postSensitiveWordAnalyzeRaw(requestParameters: PostSensitiveWordAnalyzeOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSensitiveWordAnalyze200Response>> {
-        const requestOptions = await this.postSensitiveWordAnalyzeRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostSensitiveWordAnalyze200ResponseFromJSON(jsonValue));
     }
@@ -276,9 +244,10 @@ export class DefaultApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for postSensitiveWordQuickCheck without sending the request
+     * 在你的社区或应用中，需要来过滤掉不和谐的声音吗？这个接口可以助你一臂之力。  ## 功能概述  我们对敏感词检测接口进行了大幅升级，现在采用高效的 **Aho-Corasick 算法**，实现了多模式字符串匹配。这意味着你不再需要手动编写复杂的正则表达式，系统会自动高效地检测出文本中的所有敏感词。  ### 主要特性  - **高性能算法**：基于 Aho-Corasick 算法，单次扫描即可检测多个敏感词模式 - **简繁体支持**：自动识别和处理简体中文、繁体中文内容 - **多模匹配**：无需编写正则表达式，系统内置智能匹配逻辑 - **快速响应**：相比传统方法，检测速度显著提升  无论是论坛、社交平台还是评论系统，这个接口都能帮你快速构建内容审核功能。
+     * 敏感词检测（快速）
      */
-    async postSensitiveWordQuickCheckRequestOpts(requestParameters: PostSensitiveWordQuickCheckOperationRequest): Promise<runtime.RequestOpts> {
+    async postSensitiveWordQuickCheckRaw(requestParameters: PostSensitiveWordQuickCheckOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSensitiveWordQuickCheck200Response>> {
         if (requestParameters['postSensitiveWordQuickCheckRequest'] == null) {
             throw new runtime.RequiredError(
                 'postSensitiveWordQuickCheckRequest',
@@ -295,22 +264,13 @@ export class DefaultApi extends runtime.BaseAPI {
 
         let urlPath = `/text/profanitycheck`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostSensitiveWordQuickCheckRequestToJSON(requestParameters['postSensitiveWordQuickCheckRequest']),
-        };
-    }
-
-    /**
-     * 在你的社区或应用中，需要来过滤掉不和谐的声音吗？这个接口可以助你一臂之力。  ## 功能概述  我们对敏感词检测接口进行了大幅升级，现在采用高效的 **Aho-Corasick 算法**，实现了多模式字符串匹配。这意味着你不再需要手动编写复杂的正则表达式，系统会自动高效地检测出文本中的所有敏感词。  ### 主要特性  - **高性能算法**：基于 Aho-Corasick 算法，单次扫描即可检测多个敏感词模式 - **简繁体支持**：自动识别和处理简体中文、繁体中文内容 - **多模匹配**：无需编写正则表达式，系统内置智能匹配逻辑 - **快速响应**：相比传统方法，检测速度显著提升  无论是论坛、社交平台还是评论系统，这个接口都能帮你快速构建内容审核功能。
-     * 敏感词检测（快速）
-     */
-    async postSensitiveWordQuickCheckRaw(requestParameters: PostSensitiveWordQuickCheckOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostSensitiveWordQuickCheck200Response>> {
-        const requestOptions = await this.postSensitiveWordQuickCheckRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostSensitiveWordQuickCheck200ResponseFromJSON(jsonValue));
     }

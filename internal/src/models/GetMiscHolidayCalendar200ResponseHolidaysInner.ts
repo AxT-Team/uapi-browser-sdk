@@ -33,7 +33,7 @@ export interface GetMiscHolidayCalendar200ResponseHolidaysInner {
     name?: string;
     /**
      * 事件类型。
-     * @type {GetMiscHolidayCalendar200ResponseHolidaysInnerTypeEnum}
+     * @type {string}
      * @memberof GetMiscHolidayCalendar200ResponseHolidaysInner
      */
     type?: GetMiscHolidayCalendar200ResponseHolidaysInnerTypeEnum;

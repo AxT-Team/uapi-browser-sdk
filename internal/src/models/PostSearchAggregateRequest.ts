@@ -51,13 +51,13 @@ export interface PostSearchAggregateRequest {
     timeoutMs?: number;
     /**
      * 排序方式
-     * @type {PostSearchAggregateRequestSortEnum}
+     * @type {string}
      * @memberof PostSearchAggregateRequest
      */
     sort?: PostSearchAggregateRequestSortEnum;
     /**
      * 时间范围过滤
-     * @type {PostSearchAggregateRequestTimeRangeEnum}
+     * @type {string}
      * @memberof PostSearchAggregateRequest
      */
     timeRange?: PostSearchAggregateRequestTimeRangeEnum;

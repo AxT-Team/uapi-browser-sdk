@@ -1,10 +1,7 @@
 import type * as Internal from '../internal/src/index.js'
-
-export class UapiError extends Error {
-  constructor(public code: string, public status: number, public details?: unknown) {
-    super(`${status} ${code}`)
-  }
-}
+import { UapiError, type ResponseMeta, extractMetaFromHeaders, mapError } from './errors.js'
+export { UapiError, mapError, extractMetaFromHeaders } from './errors.js'
+export type { RateLimitPolicyEntry, RateLimitStateEntry, ResponseMeta } from './errors.js'
 export type GetClipzyGetResponse =
   Internal.GetClipzyGet200Response
 export interface GetClipzyGetArgs {
@@ -798,6 +795,7 @@ export interface PostSearchAggregateArgs {
 export class UapiClient {
   private baseURL: string
   private token?: string
+  private _lastResponseMeta?: ResponseMeta
   readonly clipzyZaiXianJianTieBan: ClipzyZaiXianJianTieBanApi
   readonly "Clipzy 在线剪贴板": ClipzyZaiXianJianTieBanApi
   readonly convert: ConvertApi
@@ -884,6 +882,10 @@ export class UapiClient {
     this["智能搜索"] = zhiNengSouSuo
   }
 
+  get lastResponseMeta(): ResponseMeta | undefined {
+    return this._lastResponseMeta
+  }
+
   async _request(
     method: string,
     path: string,
@@ -914,9 +916,11 @@ export class UapiClient {
       try {
         data = await res.json()
       } catch {}
-      const code = typeof data === 'object' && data && 'code' in data ? String((data as { code?: unknown }).code ?? 'API_ERROR').toUpperCase() : 'API_ERROR'
-      throw new UapiError(code, res.status, data)
+      const mapped = mapError(res, data)
+      this._lastResponseMeta = mapped.meta
+      throw mapped
     }
+    this._lastResponseMeta = extractMetaFromHeaders(res.headers)
     if (responseKind === 'arrayBuffer') {
       return res.arrayBuffer()
     }

@@ -45,9 +45,10 @@ export interface GetStatusUsageRequest {
 export class StatusApi extends runtime.BaseAPI {
 
     /**
-     * Creates request options for getStatusRatelimit without sending the request
+     * 想了解我们API的当前负载情况吗？这个接口为你提供了服务的“心电图”。  ## 功能概述 此接口返回我们后端自适应限流器的实时状态。你可以看到当前并发请求数、并发上限、系统负载、请求接受/拒绝数等核心指标。这对于监控API健康状况和性能表现至关重要。  > [!IMPORTANT] > 此接口为管理接口，需要提供有效的管理员级别API密钥才能访问。  ### 认证方式 请在请求头中添加 `Authorization: Bearer <你的API密钥>`。
+     * 限流状态
      */
-    async getStatusRatelimitRequestOpts(requestParameters: GetStatusRatelimitRequest): Promise<runtime.RequestOpts> {
+    async getStatusRatelimitRaw(requestParameters: GetStatusRatelimitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetStatusRatelimit200Response>> {
         if (requestParameters['authorization'] == null) {
             throw new runtime.RequiredError(
                 'authorization',
@@ -66,21 +67,12 @@ export class StatusApi extends runtime.BaseAPI {
 
         let urlPath = `/status/ratelimit`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想了解我们API的当前负载情况吗？这个接口为你提供了服务的“心电图”。  ## 功能概述 此接口返回我们后端自适应限流器的实时状态。你可以看到当前并发请求数、并发上限、系统负载、请求接受/拒绝数等核心指标。这对于监控API健康状况和性能表现至关重要。  > [!IMPORTANT] > 此接口为管理接口，需要提供有效的管理员级别API密钥才能访问。  ### 认证方式 请在请求头中添加 `Authorization: Bearer <你的API密钥>`。
-     * 限流状态
-     */
-    async getStatusRatelimitRaw(requestParameters: GetStatusRatelimitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetStatusRatelimit200Response>> {
-        const requestOptions = await this.getStatusRatelimitRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetStatusRatelimit200ResponseFromJSON(jsonValue));
     }
@@ -95,9 +87,10 @@ export class StatusApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getStatusUsage without sending the request
+     * 想知道哪个API接口最受欢迎吗？这个接口提供了详细的“账单”。  ## 功能概述 此接口用于获取每个API端点（Endpoint）的使用情况统计。你可以查询所有端点的列表，也可以通过 `path` 参数指定查询某一个特定端点。返回信息包括调用次数和平均处理时长
+     * 获取API端点使用统计
      */
-    async getStatusUsageRequestOpts(requestParameters: GetStatusUsageRequest): Promise<runtime.RequestOpts> {
+    async getStatusUsageRaw(requestParameters: GetStatusUsageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetStatusUsage200Response>> {
         const queryParameters: any = {};
 
         if (requestParameters['path'] != null) {
@@ -109,21 +102,12 @@ export class StatusApi extends runtime.BaseAPI {
 
         let urlPath = `/status/usage`;
 
-        return {
+        const response = await this.request({
             path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        };
-    }
-
-    /**
-     * 想知道哪个API接口最受欢迎吗？这个接口提供了详细的“账单”。  ## 功能概述 此接口用于获取每个API端点（Endpoint）的使用情况统计。你可以查询所有端点的列表，也可以通过 `path` 参数指定查询某一个特定端点。返回信息包括调用次数和平均处理时长
-     * 获取API端点使用统计
-     */
-    async getStatusUsageRaw(requestParameters: GetStatusUsageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetStatusUsage200Response>> {
-        const requestOptions = await this.getStatusUsageRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetStatusUsage200ResponseFromJSON(jsonValue));
     }
