@@ -1,40 +1,27 @@
-# uapi-browser-sdk-browser@1.0.0
+# uapi-browser-sdk internal
 
-A TypeScript SDK client for the uapis.cn API.
+这个目录保留的是 OpenAPI Generator 生成的原始参考文档，主要用来对照 operation、model 和生成器层面的类名。
+如果你是想直接安装并使用 SDK，请优先查看仓库根目录的 `README.md`。
 
-## Usage
-
-First, install the SDK from npm.
+## 安装
 
 ```bash
-npm install uapi-browser-sdk-browser --save
+npm install uapi-browser-sdk
 ```
 
-Next, try it out.
-
+## 最小示例
 
 ```ts
-import {
-  Configuration,
-  DefaultApi,
-} from 'uapi-browser-sdk-browser';
-import type { GetSearchEnginesRequest } from 'uapi-browser-sdk-browser';
+import { UapiClient } from 'uapi-browser-sdk'
 
-async function example() {
-  console.log("🚀 Testing uapi-browser-sdk-browser SDK...");
-  const api = new DefaultApi();
-
-  try {
-    const data = await api.getSearchEngines();
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Run the test
-example().catch(console.error);
+const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY')
+const result = await client.misc.getMiscHotboard({ type: 'weibo' })
+console.log(result)
 ```
+
+## 说明
+
+下面继续保留自动生成的 API / Model 索引，方便你按生成器原始命名检索。
 
 
 ## Documentation
