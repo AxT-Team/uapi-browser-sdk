@@ -18,7 +18,7 @@ npm i uapi-browser-sdk
 ```ts
 import { UapiClient } from 'uapi-browser-sdk'
 
-const client = new UapiClient('https://uapis.cn/api/v1')
+const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY')
 const result = await client.social.getSocialQqUserinfo({ qq: '10001' })
 console.log(result)
 ```
@@ -33,7 +33,7 @@ console.log(result)
 <script type="module">
   import { UapiClient } from 'https://cdn.jsdelivr.net/npm/uapi-browser-sdk@latest/dist/index.js';
 
-  const client = new UapiClient('https://uapis.cn/api/v1');
+  const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY');
   const data = await client.social.getSocialQqUserinfo({ qq: '10001' });
   console.log(data);
 </script>
@@ -79,7 +79,7 @@ SDK 采用原生 `fetch`，自动补上 `Authorization` 头且不依赖任何 No
 ```ts
 import { UapiClient, UapiError } from 'uapi-browser-sdk'
 
-const client = new UapiClient('https://uapis.cn/api/v1')
+const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY')
 
 // 成功路径
 const result = await client.social.getSocialQqUserinfo({ qq: '10001' })

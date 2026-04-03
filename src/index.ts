@@ -2,6 +2,14 @@ import type * as Internal from '../internal/src/index.js'
 import { UapiError, type ResponseMeta, extractMetaFromHeaders, mapError } from './errors.js'
 export { UapiError, mapError, extractMetaFromHeaders } from './errors.js'
 export type { RateLimitPolicyEntry, RateLimitStateEntry, ResponseMeta } from './errors.js'
+
+const API_PREFIX = '/api/v1'
+
+function normalizeBaseURL(baseURL: string): string {
+  const trimmed = baseURL.replace(/\/+$/, '')
+  return trimmed.endsWith(API_PREFIX) ? trimmed.slice(0, -API_PREFIX.length) : trimmed
+}
+
 export type GetClipzyGetResponse =
   Internal.GetClipzyGet200Response
 export interface GetClipzyGetArgs {
@@ -830,7 +838,7 @@ export class UapiClient {
   readonly "智能搜索": ZhiNengSouSuoApi
 
   constructor(baseURL: string, token?: string) {
-    this.baseURL = baseURL
+    this.baseURL = normalizeBaseURL(baseURL)
     this.token = token
     const clipzyZaiXianJianTieBan = new ClipzyZaiXianJianTieBanApi(this)
     this.clipzyZaiXianJianTieBan = clipzyZaiXianJianTieBan
@@ -894,7 +902,7 @@ export class UapiClient {
     headers?: Record<string, string>,
     responseKind: 'json' | 'text' | 'arrayBuffer' = 'json',
   ) {
-    const url = new URL(this.baseURL.replace(/\/$/, '') + path)
+    const url = new URL(this.baseURL + path)
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
         if (value !== undefined) {
