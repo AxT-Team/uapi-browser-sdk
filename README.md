@@ -19,9 +19,11 @@ npm i uapi-browser-sdk
 import { UapiClient } from 'uapi-browser-sdk'
 
 const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY')
-const result = await client.social.getSocialQqUserinfo({ qq: '10001' })
+const result = await client.misc.getMiscHotboard({ type: 'weibo' })
 console.log(result)
 ```
+
+这个接口默认只要传 `type` 就可以拿当前热榜。`time`、`keyword`、`timeStart`、`timeEnd`、`limit`、`sources` 都是按场景再传的可选参数。
 
 ## CDN 引入
 
