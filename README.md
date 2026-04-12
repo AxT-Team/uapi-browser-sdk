@@ -19,11 +19,9 @@ npm i uapi-browser-sdk
 import { UapiClient } from 'uapi-browser-sdk'
 
 const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY')
-const result = await client.misc.getMiscHotboard({ type: 'weibo' })
+const result = await client.social.getSocialQqUserinfo({ qq: '10001' })
 console.log(result)
 ```
-
-这个接口默认只要传 `type` 就可以拿当前热榜。`time`、`keyword`、`timeStart`、`timeEnd`、`limit`、`sources` 都是按场景再传的可选参数。
 
 ## CDN 引入
 
@@ -71,63 +69,6 @@ import { UapiClient } from 'https://esm.run/uapi-browser-sdk@latest';
 SDK 采用原生 `fetch`，自动补上 `Authorization` 头且不依赖任何 Node.js API；需要自定义超时或重试时，只要包装 `_request` 或替换调用处即可。
 
 如果你需要查看字段细节或内部逻辑，仓库中的 `./internal` 目录同步保留了由 `openapi-generator` 生成的完整结构体，随时可供参考。
-
-## 响应元信息
-
-每次请求完成后，SDK 会自动把响应 Header 解析成结构化的 `ResponseMeta`，你不用自己拆原始字符串。
-
-成功时可以通过 `client.lastResponseMeta` 读取，失败时可以通过 `err.meta` 读取，两条路径拿到的是同一套字段。
-
-```ts
-import { UapiClient, UapiError } from 'uapi-browser-sdk'
-
-const client = new UapiClient('https://uapis.cn', 'YOUR_API_KEY')
-
-// 成功路径
-await client.social.getSocialQqUserinfo({ qq: '10001' })
-const meta = client.lastResponseMeta
-if (meta) {
-  console.log('这次请求原价:', meta.creditsRequested ?? 0, '积分')
-  console.log('这次实际扣费:', meta.creditsCharged ?? 0, '积分')
-  console.log('特殊计价:', meta.creditsPricing ?? '原价')
-  console.log('余额剩余:', meta.balanceRemainingCents ?? 0, '分')
-  console.log('资源包剩余:', meta.quotaRemainingCredits ?? 0, '积分')
-  console.log('当前有效额度桶:', meta.activeQuotaBuckets ?? 0)
-  console.log('额度用空即停:', meta.stopOnEmpty ?? false)
-  console.log('Key QPS:', meta.billingKeyRateRemaining ?? 0, '/', meta.billingKeyRateLimit ?? 0, meta.billingKeyRateUnit ?? 'req')
-  console.log('Request ID:', meta.requestId)
-}
-
-// 失败路径
-try {
-  await client.social.getSocialQqUserinfo({ qq: '10001' })
-} catch (err) {
-  if (err instanceof UapiError && err.meta) {
-    console.log('Retry-After 秒数:', err.meta.retryAfterSeconds ?? null)
-    console.log('Retry-After 原始值:', err.meta.retryAfterRaw ?? null)
-    console.log('访客 QPS:', err.meta.visitorRateRemaining ?? 0, '/', err.meta.visitorRateLimit ?? 0)
-    console.log('Request ID:', err.meta.requestId)
-  }
-}
-```
-
-常用字段一览：
-
-| 字段 | 说明 |
-|------|------|
-| `creditsRequested` | 这次请求原本要扣多少积分，也就是请求价 |
-| `creditsCharged` | 这次请求实际扣了多少积分 |
-| `creditsPricing` | 特殊计价原因，例如缓存半价 `cache-hit-half-price` |
-| `balanceRemainingCents` | 账户余额剩余（分） |
-| `quotaRemainingCredits` | 资源包剩余积分 |
-| `activeQuotaBuckets` | 当前还有多少个有效额度桶参与计费 |
-| `stopOnEmpty` | 额度耗尽后是否直接停止服务 |
-| `retryAfterSeconds` / `retryAfterRaw` | 限流后的等待时长；当服务端返回 HTTP 时间字符串时看 `retryAfterRaw` |
-| `requestId` | 请求唯一 ID，排障时使用 |
-| `billingKeyRateLimit` / `billingKeyRateRemaining` | Billing Key 当前 QPS 规则的上限与剩余 |
-| `billingIpRateLimit` / `billingIpRateRemaining` | Billing Key 单 IP 当前 QPS 规则的上限与剩余 |
-| `visitorRateLimit` / `visitorRateRemaining` | 访客当前 QPS 规则的上限与剩余 |
-| `rateLimitPolicies` / `rateLimits` | 完整结构化限流策略数据 |
 
 ## 错误模型概览
 
