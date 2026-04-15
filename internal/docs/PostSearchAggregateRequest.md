@@ -10,7 +10,6 @@ Name | Type
 `site` | string
 `filetype` | string
 `fetchFull` | boolean
-`timeoutMs` | number
 `sort` | string
 `timeRange` | string
 
@@ -25,7 +24,6 @@ const example = {
   "site": null,
   "filetype": null,
   "fetchFull": null,
-  "timeoutMs": null,
   "sort": null,
   "timeRange": null,
 } satisfies PostSearchAggregateRequest

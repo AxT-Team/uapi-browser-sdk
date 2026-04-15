@@ -14,10 +14,7 @@ Name | Type
 `windScale` | string
 `humidity` | number
 `precip` | number
-`pressure` | number
-`cloud` | number
 `feelsLike` | number
-`dewPoint` | number
 `visibility` | number
 `pop` | number
 `uvIndex` | number
@@ -37,10 +34,7 @@ const example = {
   "windScale": 3级,
   "humidity": 25,
   "precip": 0,
-  "pressure": 1018.7,
-  "cloud": 6,
   "feelsLike": 6,
-  "dewPoint": -11,
   "visibility": 14,
   "pop": 0,
   "uvIndex": 0,

@@ -17,7 +17,7 @@ import type { GetDailyNewsImage502Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": UPSTREAM_ERROR,
-  "message": Failed to fetch news from upstream provider.,
+  "message": Unable to fetch the latest content. Please try again later.,
 } satisfies GetDailyNewsImage502Response
 
 console.log(example)

@@ -15,7 +15,7 @@ import type { GetNetworkWhois200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "whois": {domain={id=12345678901234, domain=exa***.com, punycode=exa***.com, name=exa***, extension=com, whois_server=whois.***.com, status=[ok], name_servers=[ns1.***.com, ns2.***.com], created_date=2022-01-01T00:00:00Z, updated_date=2024-01-01T00:00:00Z, expiration_date=2026-01-01T00:00:00Z}, registrar={id=9999, name=*** Registrar LLC, phone=+86.1*********, email=redacted@***.com}, registrant={id=Not Available From Registry, name=REDACTED FOR PRIVACY, organization=REDACTED FOR PRIVACY, country=CN}},
+  "whois": {domain={id=2138514_DOMAIN_COM-VRSN, domain=google.com, punycode=google.com, name=google, extension=com, whois_server=whois.markmonitor.com, status=[clientDeleteProhibited, clientTransferProhibited, clientUpdateProhibited, serverDeleteProhibited, serverTransferProhibited, serverUpdateProhibited], name_servers=[ns1.google.com, ns2.google.com, ns3.google.com, ns4.google.com], created_date=1997-09-15T04:00:00Z, created_date_in_time=1997-09-15T04:00:00Z, updated_date=2019-09-09T15:39:04Z, updated_date_in_time=2019-09-09T15:39:04Z, expiration_date=2028-09-14T04:00:00Z, expiration_date_in_time=2028-09-14T04:00:00Z}, registrar={id=292, name=MarkMonitor Inc., phone=+1.2086851750, email=abusecomplaints@markmonitor.com, referral_url=http://www.markmonitor.com}, registrant={organization=Google LLC, country=US, email=select request email form at https://domains.markmonitor.com/whois/google.com}, technical={email=select request email form at https://domains.markmonitor.com/whois/google.com}},
 } satisfies GetNetworkWhois200Response
 
 console.log(example)

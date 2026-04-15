@@ -10,6 +10,7 @@ Name | Type
 `date` | string
 `holidayType` | string
 `includeNearby` | boolean
+`excludePast` | boolean
 `month` | string
 `nearbyLimit` | number
 `timezone` | string
@@ -25,6 +26,7 @@ const example = {
   "date": 2025-10-01,
   "holidayType": legal,
   "includeNearby": true,
+  "excludePast": true,
   "month": ,
   "nearbyLimit": 7,
   "timezone": Asia/Shanghai,

@@ -8,7 +8,6 @@ Name | Type
 ------------ | -------------
 `code` | string
 `message` | string
-`timestamp` | Date
 
 ## Example
 
@@ -19,7 +18,6 @@ import type { PostSearchAggregate400Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": INVALID_REQUEST,
   "message": 请求参数格式错误,
-  "timestamp": 2024-01-15T10:30Z,
 } satisfies PostSearchAggregate400Response
 
 console.log(example)

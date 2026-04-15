@@ -14,7 +14,6 @@ Name | Type
 `position` | number
 `score` | number
 `publishTime` | Date
-`author` | string
 
 ## Example
 
@@ -23,15 +22,14 @@ import type { PostSearchAggregate200ResponseResultsInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "title": null,
-  "url": null,
-  "snippet": null,
-  "domain": null,
-  "source": null,
-  "position": null,
-  "score": null,
-  "publishTime": null,
-  "author": null,
+  "title": Go 1.26 正式发布,
+  "url": https://go.dev/blog/go1.26,
+  "snippet": 2026年2月10日，Go 团队正式发布了 Go 1.26 版本。,
+  "domain": go.dev,
+  "source": uapi-searchv1,
+  "position": 1,
+  "score": 0.93,
+  "publishTime": 2026-02-10T00:00Z,
 } satisfies PostSearchAggregate200ResponseResultsInner
 
 console.log(example)

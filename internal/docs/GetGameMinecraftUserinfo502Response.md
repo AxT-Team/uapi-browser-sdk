@@ -19,7 +19,7 @@ import type { GetGameMinecraftUserinfo502Response } from 'uapi-browser-sdk-brows
 const example = {
   "code": UPSTREAM_ERROR,
   "details": null,
-  "message": Failed to fetch data from Mojang API.,
+  "message": Unable to fetch game data. Please try again later.,
 } satisfies GetGameMinecraftUserinfo502Response
 
 console.log(example)

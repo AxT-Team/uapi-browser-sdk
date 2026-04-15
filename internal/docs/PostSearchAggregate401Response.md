@@ -8,7 +8,6 @@ Name | Type
 ------------ | -------------
 `code` | string
 `message` | string
-`timestamp` | Date
 
 ## Example
 
@@ -19,7 +18,6 @@ import type { PostSearchAggregate401Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": UNAUTHORIZED,
   "message": 无效的访问令牌,
-  "timestamp": 2024-01-15T10:30Z,
 } satisfies PostSearchAggregate401Response
 
 console.log(example)

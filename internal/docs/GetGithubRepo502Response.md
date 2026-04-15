@@ -17,7 +17,7 @@ import type { GetGithubRepo502Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": UPSTREAM_ERROR,
-  "message": Failed to fetch data from GitHub API.,
+  "message": Unable to fetch repository data. Please try again later.,
 } satisfies GetGithubRepo502Response
 
 console.log(example)

@@ -19,7 +19,7 @@ import type { GetNetworkWxdomain502Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": UPSTREAM_ERROR,
   "details": null,
-  "message": Failed to query upstream service for WeChat domain status.,
+  "message": Unable to complete the query. Please try again later.,
 } satisfies GetNetworkWxdomain502Response
 
 console.log(example)

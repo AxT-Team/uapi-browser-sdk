@@ -17,7 +17,7 @@ import type { GetDailyNewsImage500Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": INTERNAL_SERVER_ERROR,
-  "message": Failed to generate image due to an internal error.,
+  "message": Unable to generate the image. Please try again later.,
 } satisfies GetDailyNewsImage500Response
 
 console.log(example)

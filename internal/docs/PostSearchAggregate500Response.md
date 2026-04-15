@@ -8,7 +8,6 @@ Name | Type
 ------------ | -------------
 `code` | string
 `message` | string
-`timestamp` | Date
 
 ## Example
 
@@ -19,7 +18,6 @@ import type { PostSearchAggregate500Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": INTERNAL_ERROR,
   "message": 服务器内部错误,
-  "timestamp": 2024-01-15T10:30Z,
 } satisfies PostSearchAggregate500Response
 
 console.log(example)

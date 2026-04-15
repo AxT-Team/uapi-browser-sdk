@@ -12,6 +12,7 @@ Name | Type
 `motdClean` | string
 `motdHtml` | string
 `online` | boolean
+`onlinePlayers` | [Array&lt;GetGameMinecraftServerstatus200ResponseOnlinePlayersInner&gt;](GetGameMinecraftServerstatus200ResponseOnlinePlayersInner.md)
 `players` | number
 `port` | number
 `version` | string
@@ -30,6 +31,7 @@ const example = {
                                       SKYBLOCK,
   "motdHtml": <span style="color: #ffff55"><b>Hypixel Network </b></span><span style="color: #555555">[</span><span style="color: #aaaaaa">1.8-1.20</span><span style="color: #555555">]</span><br /><span style="color: #ffffff">                                      </span><span style="color: #55ff55"><b>SKYBLOCK</b></span>,
   "online": true,
+  "onlinePlayers": [{"name":"Steve","uuid":"00000000-0000-0000-0000-000000000001"},{"name":"Alex","uuid":"00000000-0000-0000-0000-000000000002"}],
   "players": 45321,
   "port": 25565,
   "version": Requires 1.8-1.20,

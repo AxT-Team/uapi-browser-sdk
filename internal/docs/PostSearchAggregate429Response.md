@@ -8,7 +8,6 @@ Name | Type
 ------------ | -------------
 `code` | string
 `message` | string
-`timestamp` | Date
 
 ## Example
 
@@ -19,7 +18,6 @@ import type { PostSearchAggregate429Response } from 'uapi-browser-sdk-browser'
 const example = {
   "code": RATE_LIMIT_EXCEEDED,
   "message": 请求过于频繁，请稍后重试,
-  "timestamp": 2024-01-15T10:30Z,
 } satisfies PostSearchAggregate429Response
 
 console.log(example)

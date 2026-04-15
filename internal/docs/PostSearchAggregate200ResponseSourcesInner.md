@@ -19,11 +19,11 @@ import type { PostSearchAggregate200ResponseSourcesInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": uapi-search,
+  "name": uapi-searchv1,
   "status": success,
-  "resultCount": 16,
-  "elapsedMs": 1256,
-  "firstResultHost": help.aliyun.com,
+  "resultCount": 15,
+  "elapsedMs": 3675,
+  "firstResultHost": go.dev,
 } satisfies PostSearchAggregate200ResponseSourcesInner
 
 console.log(example)

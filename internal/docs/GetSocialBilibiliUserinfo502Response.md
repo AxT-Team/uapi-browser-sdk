@@ -19,7 +19,7 @@ import type { GetSocialBilibiliUserinfo502Response } from 'uapi-browser-sdk-brow
 const example = {
   "code": UPSTREAM_ERROR,
   "details": null,
-  "message": Failed to fetch data from Bilibili API or request was blocked.,
+  "message": Unable to fetch the data. Please try again later.,
 } satisfies GetSocialBilibiliUserinfo502Response
 
 console.log(example)

@@ -13,7 +13,6 @@ Name | Type
 `keyword` | string
 `count` | number
 `results` | [Array&lt;GetMiscHotboard200ResponseOneOf1ResultsInner&gt;](GetMiscHotboard200ResponseOneOf1ResultsInner.md)
-`sources` | Array&lt;string&gt;
 
 ## Example
 
@@ -29,7 +28,6 @@ const example = {
   "keyword": AI,
   "count": 0,
   "results": null,
-  "sources": null,
 } satisfies GetMiscHotboard200Response
 
 console.log(example)
