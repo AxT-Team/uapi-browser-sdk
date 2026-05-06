@@ -14,8 +14,33 @@
     "type": "git",
     "url": "https://github.com/AxT-Team/uapi-browser-sdk"
   },
-  "scripts": { "build": "tsc -p tsconfig.json" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
   "devDependencies": {
     "typescript": "^5.4.0"
-  }
+  },
+  "description": "Official browser / vanilla-JS SDK for UAPI / uapis.cn — dependency-free `fetch`-based wrapper around 100+ free public-API endpoints. Works in browsers, Cloudflare Workers, and any modern JS runtime.",
+  "homepage": "https://uapis.cn/docs/sdk/browser",
+  "bugs": {
+    "url": "https://github.com/AxT-Team/uapi-browser-sdk/issues"
+  },
+  "author": "UAPI <dev@uapis.cn>",
+  "license": "MIT",
+  "keywords": [
+    "uapi",
+    "uapis",
+    "uapis.cn",
+    "sdk",
+    "browser",
+    "vanilla-js",
+    "typescript",
+    "fetch",
+    "public-api",
+    "free-api",
+    "openapi",
+    "client",
+    "agent",
+    "llm"
+  ]
 }
