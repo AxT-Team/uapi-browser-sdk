@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
-`level` | string
-`brief` | string
 `advice` | string
+`brief` | string
+`level` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetMiscWeather200ResponseLifeIndicesUv } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
-  "level": 高,
-  "brief": 较强,
   "advice": 紫外线较强，减少10-14点户外活动，涂抹SPF30+防晒霜，戴帽子和墨镜,
+  "brief": 较强,
+  "level": 高,
 } satisfies GetMiscWeather200ResponseLifeIndicesUv
 
 console.log(example)

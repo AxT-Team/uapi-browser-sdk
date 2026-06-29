@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`title` | string
 `hotValue` | string
+`title` | string
 `url` | string
 
 ## Example
@@ -17,8 +17,8 @@ import type { GetMiscHotboard200ResponseOneOf1ResultsInner } from 'uapi-browser-
 
 // TODO: Update the object below with actual values
 const example = {
-  "title": AI技术突破,
   "hotValue": 999999,
+  "title": AI技术突破,
   "url": https://example.com,
 } satisfies GetMiscHotboard200ResponseOneOf1ResultsInner
 

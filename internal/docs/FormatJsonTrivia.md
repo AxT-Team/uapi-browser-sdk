@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`question` | string
 `options` | [Array&lt;FormatJsonTriviaOptionsInner&gt;](FormatJsonTriviaOptionsInner.md)
+`question` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { FormatJsonTrivia } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "question": 哪种特征帮助海狸轻松啃咬坚硬木材？,
   "options": null,
+  "question": 哪种特征帮助海狸轻松啃咬坚硬木材？,
 } satisfies FormatJsonTrivia
 
 console.log(example)

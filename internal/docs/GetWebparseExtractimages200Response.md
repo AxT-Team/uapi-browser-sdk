@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`pageUrl` | string
 `imageUrls` | Array&lt;string&gt;
+`pageUrl` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetWebparseExtractimages200Response } from 'uapi-browser-sdk-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "pageUrl": https://cn.bing.com/,
   "imageUrls": ["https://example.com/image1.jpg","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="],
+  "pageUrl": https://cn.bing.com/,
 } satisfies GetWebparseExtractimages200Response
 
 console.log(example)

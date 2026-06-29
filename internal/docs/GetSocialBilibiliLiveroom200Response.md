@@ -6,26 +6,26 @@
 
 Name | Type
 ------------ | -------------
-`uid` | number
+`areaId` | number
+`areaName` | string
+`attention` | number
+`background` | string
+`description` | string
+`hotWords` | Array&lt;string&gt;
+`isPortrait` | boolean
+`keyframe` | string
+`liveStatus` | number
+`liveTime` | string
+`newPendants` | [GetSocialBilibiliLiveroom200ResponseNewPendants](GetSocialBilibiliLiveroom200ResponseNewPendants.md)
+`online` | number
+`parentAreaId` | number
+`parentAreaName` | string
 `roomId` | number
 `shortId` | number
-`attention` | number
-`online` | number
-`isPortrait` | boolean
-`liveStatus` | number
-`areaId` | number
-`parentAreaName` | string
-`parentAreaId` | number
-`areaName` | string
-`background` | string
-`title` | string
-`userCover` | string
-`description` | string
-`liveTime` | string
-`keyframe` | string
 `tags` | string
-`hotWords` | Array&lt;string&gt;
-`newPendants` | [GetSocialBilibiliLiveroom200ResponseNewPendants](GetSocialBilibiliLiveroom200ResponseNewPendants.md)
+`title` | string
+`uid` | number
+`userCover` | string
 
 ## Example
 
@@ -34,26 +34,26 @@ import type { GetSocialBilibiliLiveroom200Response } from 'uapi-browser-sdk-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "uid": 672328094,
+  "areaId": 372,
+  "areaName": 虚拟偶像,
+  "attention": 1789089,
+  "background": http://i0.hdslb.com/bfs/live/room_bg/672328094.jpg,
+  "description": 这里是嘉然的直播间，欢迎回家！,
+  "hotWords": null,
+  "isPortrait": false,
+  "keyframe": http://i0.hdslb.com/bfs/live-key-frame/keyframe.jpg,
+  "liveStatus": 1,
+  "liveTime": 2023-10-27 20:00:00,
+  "newPendants": null,
+  "online": 3662242,
+  "parentAreaId": 9,
+  "parentAreaName": 虚拟主播,
   "roomId": 22637261,
   "shortId": 22625027,
-  "attention": 1789089,
-  "online": 3662242,
-  "isPortrait": false,
-  "liveStatus": 1,
-  "areaId": 372,
-  "parentAreaName": 虚拟主播,
-  "parentAreaId": 9,
-  "areaName": 虚拟偶像,
-  "background": http://i0.hdslb.com/bfs/live/room_bg/672328094.jpg,
-  "title": 【B限】杂谈~来聊聊天吧~,
-  "userCover": http://i0.hdslb.com/bfs/live/user_cover/672328094.jpg,
-  "description": 这里是嘉然的直播间，欢迎回家！,
-  "liveTime": 2023-10-27 20:00:00,
-  "keyframe": http://i0.hdslb.com/bfs/live-key-frame/keyframe.jpg,
   "tags": VUP,虚拟偶像,A-SOUL,嘉然,
-  "hotWords": null,
-  "newPendants": null,
+  "title": 【B限】杂谈~来聊聊天吧~,
+  "uid": 672328094,
+  "userCover": http://i0.hdslb.com/bfs/live/user_cover/672328094.jpg,
 } satisfies GetSocialBilibiliLiveroom200Response
 
 console.log(example)

@@ -6,18 +6,18 @@
 
 Name | Type
 ------------ | -------------
-`time` | string
+`feelsLike` | number
+`humidity` | number
+`pop` | number
+`precip` | number
 `temperature` | number
+`time` | string
+`uvIndex` | number
+`visibility` | number
 `weather` | string
 `windDirection` | string
-`windSpeed` | number
 `windScale` | string
-`humidity` | number
-`precip` | number
-`feelsLike` | number
-`visibility` | number
-`pop` | number
-`uvIndex` | number
+`windSpeed` | number
 
 ## Example
 
@@ -26,18 +26,18 @@ import type { GetMiscWeather200ResponseHourlyForecastInner } from 'uapi-browser-
 
 // TODO: Update the object below with actual values
 const example = {
-  "time": 2026-02-19T17:00:00+0900,
+  "feelsLike": 6,
+  "humidity": 25,
+  "pop": 0,
+  "precip": 0,
   "temperature": 8,
+  "time": 2026-02-19T17:00:00+0900,
+  "uvIndex": 0,
+  "visibility": 14,
   "weather": 晴,
   "windDirection": 北北西,
-  "windSpeed": 17,
   "windScale": 3级,
-  "humidity": 25,
-  "precip": 0,
-  "feelsLike": 6,
-  "visibility": 14,
-  "pop": 0,
-  "uvIndex": 0,
+  "windSpeed": 17,
 } satisfies GetMiscWeather200ResponseHourlyForecastInner
 
 console.log(example)

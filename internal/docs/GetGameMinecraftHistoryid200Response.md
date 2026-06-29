@@ -7,13 +7,13 @@
 
 Name | Type
 ------------ | -------------
-`query` | string
 `count` | number
-`results` | [Array&lt;GetGameMinecraftHistoryid200ResponseResultsInner&gt;](GetGameMinecraftHistoryid200ResponseResultsInner.md)
-`id` | string
-`uuid` | string
-`nameNum` | number
 `history` | [Array&lt;GetGameMinecraftHistoryid200ResponseHistoryInner&gt;](GetGameMinecraftHistoryid200ResponseHistoryInner.md)
+`id` | string
+`nameNum` | number
+`query` | string
+`results` | [Array&lt;GetGameMinecraftHistoryid200ResponseResultsInner&gt;](GetGameMinecraftHistoryid200ResponseResultsInner.md)
+`uuid` | string
 
 ## Example
 
@@ -22,13 +22,13 @@ import type { GetGameMinecraftHistoryid200Response } from 'uapi-browser-sdk-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "query": ExamplePlayer,
   "count": 2,
-  "results": null,
-  "id": T8K_,
-  "uuid": ee9b4ed1-aac1-491e-b761-1471be374b80,
-  "nameNum": 4,
   "history": null,
+  "id": T8K_,
+  "nameNum": 4,
+  "query": ExamplePlayer,
+  "results": null,
+  "uuid": ee9b4ed1-aac1-491e-b761-1471be374b80,
 } satisfies GetGameMinecraftHistoryid200Response
 
 console.log(example)

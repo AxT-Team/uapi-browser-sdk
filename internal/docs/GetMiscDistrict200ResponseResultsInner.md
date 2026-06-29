@@ -6,18 +6,18 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
-`level` | string
+`adcode` | string
+`center` | [GetMiscDistrict200ResponseResultsInnerCenter](GetMiscDistrict200ResponseResultsInnerCenter.md)
+`city` | string
+`citycode` | string
 `country` | string
 `countryCode` | string
-`province` | string
-`city` | string
 `district` | string
-`street` | string
-`adcode` | string
-`citycode` | string
-`center` | [GetMiscDistrict200ResponseResultsInnerCenter](GetMiscDistrict200ResponseResultsInnerCenter.md)
+`level` | string
+`name` | string
 `population` | number
+`province` | string
+`street` | string
 `timezone` | string
 
 ## Example
@@ -27,18 +27,18 @@ import type { GetMiscDistrict200ResponseResultsInner } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": 北京市,
-  "level": province,
+  "adcode": 110000,
+  "center": null,
+  "city": 北京市,
+  "citycode": 010,
   "country": 中国,
   "countryCode": CN,
-  "province": 北京市,
-  "city": 北京市,
   "district": 朝阳区,
-  "street": 三里屯街道,
-  "adcode": 110000,
-  "citycode": 010,
-  "center": null,
+  "level": province,
+  "name": 北京市,
   "population": 8336599,
+  "province": 北京市,
+  "street": 三里屯街道,
   "timezone": Asia/Tokyo,
 } satisfies GetMiscDistrict200ResponseResultsInner
 

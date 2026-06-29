@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`sourceLang` | string
-`translatedText` | string
+`text` | string
+`translate` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostTranslateText200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceLang": en,
-  "translatedText": 你好，世界,
+  "text": hello world,
+  "translate": 你好，世界,
 } satisfies PostTranslateText200Response
 
 console.log(example)

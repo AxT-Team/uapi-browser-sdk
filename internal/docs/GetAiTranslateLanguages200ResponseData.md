@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`contexts` | [Array&lt;GetAiTranslateLanguages200ResponseDataContextsInner&gt;](GetAiTranslateLanguages200ResponseDataContextsInner.md)
 `languages` | [Array&lt;GetAiTranslateLanguages200ResponseDataLanguagesInner&gt;](GetAiTranslateLanguages200ResponseDataLanguagesInner.md)
 `styles` | [Array&lt;GetAiTranslateLanguages200ResponseDataStylesInner&gt;](GetAiTranslateLanguages200ResponseDataStylesInner.md)
-`contexts` | [Array&lt;GetAiTranslateLanguages200ResponseDataContextsInner&gt;](GetAiTranslateLanguages200ResponseDataContextsInner.md)
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { GetAiTranslateLanguages200ResponseData } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
+  "contexts": null,
   "languages": null,
   "styles": null,
-  "contexts": null,
 } satisfies GetAiTranslateLanguages200ResponseData
 
 console.log(example)

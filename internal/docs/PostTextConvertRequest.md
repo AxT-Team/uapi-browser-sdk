@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
 `from` | string
-`to` | string
 `options` | { [key: string]: any; }
+`text` | string
+`to` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { PostTextConvertRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "text": hello world,
   "from": plain,
-  "to": base64,
   "options": null,
+  "text": hello world,
+  "to": base64,
 } satisfies PostTextConvertRequest
 
 console.log(example)

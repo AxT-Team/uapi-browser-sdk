@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`email` | string
 `login` | string
 `name` | string
-`email` | string
 `url` | string
 
 ## Example
@@ -18,9 +18,9 @@ import type { GetGithubRepo200ResponseCollaboratorsInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
+  "email": null,
   "login": null,
   "name": null,
-  "email": null,
   "url": null,
 } satisfies GetGithubRepo200ResponseCollaboratorsInner
 

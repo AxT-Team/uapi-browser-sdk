@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`error` | string
 `code` | string
+`error` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostTranslateStream400Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "error": Missing required parameter,
   "code": MISSING_QUERY,
+  "error": Missing required parameter,
 } satisfies PostTranslateStream400Response
 
 console.log(example)

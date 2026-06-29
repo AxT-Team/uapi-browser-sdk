@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`result` | string
 `from` | string
-`to` | string
-`length` | number
 `info` | string
+`length` | number
+`result` | string
+`to` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { PostTextConvert200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "result": aGVsbG8gd29ybGQ=,
   "from": plain,
-  "to": base64,
-  "length": 16,
   "info": 此转换为单向哈希，不可逆,
+  "length": 16,
+  "result": aGVsbG8gd29ybGQ=,
+  "to": base64,
 } satisfies PostTextConvert200Response
 
 console.log(example)

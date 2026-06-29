@@ -7,12 +7,12 @@
 
 Name | Type
 ------------ | -------------
-`id` | number
-`title` | string
 `cover` | string
-`mid` | number
-`intro` | string
 `epCount` | number
+`id` | number
+`intro` | string
+`mid` | number
+`title` | string
 
 ## Example
 
@@ -21,12 +21,12 @@ import type { GetSocialBilibiliVideoinfo200ResponseUgcSeason } from 'uapi-browse
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 12345,
-  "title": 系列视频合集,
   "cover": http://i0.hdslb.com/bfs/archive/....jpg,
-  "mid": 483307278,
-  "intro": 这是一个合集,
   "epCount": 12,
+  "id": 12345,
+  "intro": 这是一个合集,
+  "mid": 483307278,
+  "title": 系列视频合集,
 } satisfies GetSocialBilibiliVideoinfo200ResponseUgcSeason
 
 console.log(example)

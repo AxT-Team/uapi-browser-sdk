@@ -7,17 +7,17 @@
 
 Name | Type
 ------------ | -------------
-`scope` | string
-`organization` | string
+`contributionCalendar` | [GetGithubUser200ResponseActivityContributionCalendar](GetGithubUser200ResponseActivityContributionCalendar.md)
 `from` | string
+`organization` | string
+`scope` | string
+`timeline` | [Array&lt;GetGithubUser200ResponseActivityTimelineInner&gt;](GetGithubUser200ResponseActivityTimelineInner.md)
 `to` | string
-`totalContributions` | number
 `totalCommitContributions` | number
+`totalContributions` | number
 `totalIssueContributions` | number
 `totalPullRequestContributions` | number
 `totalPullRequestReviewContributions` | number
-`contributionCalendar` | [GetGithubUser200ResponseActivityContributionCalendar](GetGithubUser200ResponseActivityContributionCalendar.md)
-`timeline` | [Array&lt;GetGithubUser200ResponseActivityTimelineInner&gt;](GetGithubUser200ResponseActivityTimelineInner.md)
 
 ## Example
 
@@ -26,17 +26,17 @@ import type { GetGithubUser200ResponseActivity } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "scope": organization,
-  "organization": linux-foundation,
+  "contributionCalendar": null,
   "from": 2025-04-12,
+  "organization": linux-foundation,
+  "scope": organization,
+  "timeline": null,
   "to": 2026-04-12,
-  "totalContributions": 4,
   "totalCommitContributions": 2,
+  "totalContributions": 4,
   "totalIssueContributions": 1,
   "totalPullRequestContributions": 1,
   "totalPullRequestReviewContributions": 0,
-  "contributionCalendar": null,
-  "timeline": null,
 } satisfies GetGithubUser200ResponseActivity
 
 console.log(example)

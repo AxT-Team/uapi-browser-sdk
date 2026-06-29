@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`status` | string
-`originalText` | string
-`maskedText` | string
 `forbiddenWords` | Array&lt;string&gt;
+`maskedText` | string
+`originalText` | string
+`status` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { PostSensitiveWordQuickCheck200Response } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
-  "status": forbidden,
-  "originalText": 假装是违禁词,
-  "maskedText": 假装是屏蔽后词语,
   "forbiddenWords": ["假装是违禁词列表"],
+  "maskedText": 假装是屏蔽后词语,
+  "originalText": 假装是违禁词,
+  "status": forbidden,
 } satisfies PostSensitiveWordQuickCheck200Response
 
 console.log(example)

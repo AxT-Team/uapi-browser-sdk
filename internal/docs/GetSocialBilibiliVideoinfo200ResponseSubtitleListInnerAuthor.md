@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
+`face` | string
 `mid` | number
 `name` | string
-`face` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetSocialBilibiliVideoinfo200ResponseSubtitleListInnerAuthor } fro
 
 // TODO: Update the object below with actual values
 const example = {
+  "face": http://i0.hdslb.com/bfs/face/....jpg,
   "mid": 483307278,
   "name": 字幕君,
-  "face": http://i0.hdslb.com/bfs/face/....jpg,
 } satisfies GetSocialBilibiliVideoinfo200ResponseSubtitleListInnerAuthor
 
 console.log(example)

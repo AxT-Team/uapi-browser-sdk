@@ -7,10 +7,10 @@
 
 Name | Type
 ------------ | -------------
-`uname` | string
-`sex` | string
 `avatar` | string
 `levelInfo` | [GetSocialBilibiliReplies200ResponseRepliesInnerMemberLevelInfo](GetSocialBilibiliReplies200ResponseRepliesInnerMemberLevelInfo.md)
+`sex` | string
+`uname` | string
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { GetSocialBilibiliReplies200ResponseRepliesInnerMember } from 'uapi
 
 // TODO: Update the object below with actual values
 const example = {
-  "uname": 评论区大神,
-  "sex": 男,
   "avatar": http://i0.hdslb.com/bfs/face/....jpg,
   "levelInfo": null,
+  "sex": 男,
+  "uname": 评论区大神,
 } satisfies GetSocialBilibiliReplies200ResponseRepliesInnerMember
 
 console.log(example)

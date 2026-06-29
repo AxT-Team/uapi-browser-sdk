@@ -8,17 +8,17 @@
 Name | Type
 ------------ | -------------
 `aid` | number
-`view` | number
-`danmaku` | number
-`reply` | number
-`favorite` | number
 `coin` | number
-`share` | number
-`like` | number
-`nowRank` | number
-`hisRank` | number
+`danmaku` | number
 `dislike` | number
 `evaluation` | string
+`favorite` | number
+`hisRank` | number
+`like` | number
+`nowRank` | number
+`reply` | number
+`share` | number
+`view` | number
 `vt` | number
 
 ## Example
@@ -29,17 +29,17 @@ import type { GetSocialBilibiliVideoinfo200ResponseStat } from 'uapi-browser-sdk
 // TODO: Update the object below with actual values
 const example = {
   "aid": 75836761,
-  "view": 14227982,
-  "danmaku": 269829,
-  "reply": 81682,
-  "favorite": 498308,
   "coin": 787228,
-  "share": 98661,
-  "like": 989718,
-  "nowRank": 0,
-  "hisRank": 0,
+  "danmaku": 269829,
   "dislike": 0,
   "evaluation": ,
+  "favorite": 498308,
+  "hisRank": 0,
+  "like": 989718,
+  "nowRank": 0,
+  "reply": 81682,
+  "share": 98661,
+  "view": 14227982,
   "vt": 0,
 } satisfies GetSocialBilibiliVideoinfo200ResponseStat
 

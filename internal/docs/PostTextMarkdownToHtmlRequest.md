@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
 `format` | string
 `sanitize` | boolean
+`text` | string
 
 ## Example
 
@@ -17,6 +17,8 @@ import type { PostTextMarkdownToHtmlRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
+  "format": html,
+  "sanitize": true,
   "text": # 咖啡
 
 **咖啡**（英语：*coffee*）是指将咖啡植物的种子（即[咖啡豆](https://baike.baidu.com/item/%E5%92%96%E5%95%A1%E8%B1%86/13579425)）经过烘焙磨粉后冲泡溶解制成的饮料，是世界上流行范围最为广泛的软性饮料之一。
@@ -61,8 +63,6 @@ Host: coffee-pot.local
 Content-Type: message/coffeepot
 Accept-Additions: cream, whole-milk
 ```,
-  "format": html,
-  "sanitize": true,
 } satisfies PostTextMarkdownToHtmlRequest
 
 console.log(example)

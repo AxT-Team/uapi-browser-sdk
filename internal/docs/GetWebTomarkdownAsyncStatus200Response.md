@@ -6,14 +6,14 @@
 
 Name | Type
 ------------ | -------------
-`taskId` | string
-`status` | string
-`url` | string
-`progress` | number
 `createdAt` | string
 `message` | string
-`startedAt` | string
+`progress` | number
+`status` | string
+`taskId` | string
+`url` | string
 `elapsed` | number
+`startedAt` | string
 `completedAt` | string
 `duration` | number
 `result` | [GetWebTomarkdownAsyncStatus200ResponseAnyOf2Result](GetWebTomarkdownAsyncStatus200ResponseAnyOf2Result.md)
@@ -26,14 +26,14 @@ import type { GetWebTomarkdownAsyncStatus200Response } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
-  "taskId": a1b2c3d4-e5f6-47a8-b9c0-d1e2f3a4b5c6,
-  "status": failed,
-  "url": https://example.com,
-  "progress": 100,
   "createdAt": 2025-10-13T10:30:45.123456Z,
   "message": 任务处理中，请继续轮询,
-  "startedAt": 2025-10-13T10:30:46.000000Z,
+  "progress": 100,
+  "status": failed,
+  "taskId": a1b2c3d4-e5f6-47a8-b9c0-d1e2f3a4b5c6,
+  "url": https://example.com,
   "elapsed": 2.5,
+  "startedAt": 2025-10-13T10:30:46.000000Z,
   "completedAt": 2025-10-13T10:30:48.000000Z,
   "duration": 2,
   "result": null,

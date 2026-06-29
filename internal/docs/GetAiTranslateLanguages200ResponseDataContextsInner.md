@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `code` | string
-`name` | string
 `description` | string
+`name` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { GetAiTranslateLanguages200ResponseDataContextsInner } from 'uapi-b
 // TODO: Update the object below with actual values
 const example = {
   "code": business,
-  "name": Business,
   "description": Business and corporate content,
+  "name": Business,
 } satisfies GetAiTranslateLanguages200ResponseDataContextsInner
 
 console.log(example)

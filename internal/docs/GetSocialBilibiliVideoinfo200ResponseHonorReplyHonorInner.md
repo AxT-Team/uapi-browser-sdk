@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `aid` | number
-`type` | number
 `desc` | string
+`type` | number
 `weeklyRecommendNum` | number
 
 ## Example
@@ -19,8 +19,8 @@ import type { GetSocialBilibiliVideoinfo200ResponseHonorReplyHonorInner } from '
 // TODO: Update the object below with actual values
 const example = {
   "aid": 75836761,
-  "type": 1,
   "desc": 每周必看,
+  "type": 1,
   "weeklyRecommendNum": 105,
 } satisfies GetSocialBilibiliVideoinfo200ResponseHonorReplyHonorInner
 

@@ -1,9 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './DefaultApi';
+export * from './AIGCApi';
 export * from './ClipzyApi';
 export * from './ConvertApi';
 export * from './DailyApi';
+export * from './DictionaryApi';
 export * from './GameApi';
 export * from './ImageApi';
 export * from './MiscApi';

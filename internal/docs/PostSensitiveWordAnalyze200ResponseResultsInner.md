@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`k` | string
-`label` | string
 `category` | string
 `confidence` | number
+`k` | string
+`label` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { PostSensitiveWordAnalyze200ResponseResultsInner } from 'uapi-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "k": null,
-  "label": null,
   "category": null,
   "confidence": null,
+  "k": null,
+  "label": null,
 } satisfies PostSensitiveWordAnalyze200ResponseResultsInner
 
 console.log(example)

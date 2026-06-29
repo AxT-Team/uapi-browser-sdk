@@ -8,10 +8,10 @@ Name | Type
 ------------ | -------------
 `days` | number
 `hours` | number
+`humanReadable` | string
 `minutes` | number
 `seconds` | number
 `weeks` | number
-`humanReadable` | string
 
 ## Example
 
@@ -22,10 +22,10 @@ import type { PostMiscDateDiff200Response } from 'uapi-browser-sdk-browser'
 const example = {
   "days": 364,
   "hours": 8736,
+  "humanReadable": 52周 0天,
   "minutes": 524160,
   "seconds": 31449600,
   "weeks": 52,
-  "humanReadable": 52周 0天,
 } satisfies PostMiscDateDiff200Response
 
 console.log(example)

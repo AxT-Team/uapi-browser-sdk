@@ -7,12 +7,12 @@
 
 Name | Type
 ------------ | -------------
-`tagName` | string
-`name` | string
-`publishedAt` | Date
-`htmlUrl` | string
-`prerelease` | boolean
 `draft` | boolean
+`htmlUrl` | string
+`name` | string
+`prerelease` | boolean
+`publishedAt` | Date
+`tagName` | string
 
 ## Example
 
@@ -21,12 +21,12 @@ import type { GetGithubRepo200ResponseLatestRelease } from 'uapi-browser-sdk-bro
 
 // TODO: Update the object below with actual values
 const example = {
-  "tagName": v1.2.3,
-  "name": Release v1.2.3,
-  "publishedAt": 2026-01-10T12:00Z,
-  "htmlUrl": https://github.com/owner/repo/releases/tag/v1.2.3,
-  "prerelease": false,
   "draft": false,
+  "htmlUrl": https://github.com/owner/repo/releases/tag/v1.2.3,
+  "name": Release v1.2.3,
+  "prerelease": false,
+  "publishedAt": 2026-01-10T12:00Z,
+  "tagName": v1.2.3,
 } satisfies GetGithubRepo200ResponseLatestRelease
 
 console.log(example)

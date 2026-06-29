@@ -6,28 +6,28 @@
 
 Name | Type
 ------------ | -------------
-`queryTimestamp` | string
-`queryTimezone` | string
-`timezone` | string
 `datetime` | string
 `datetimeRfc3339` | string
+`ganzhiDay` | string
+`ganzhiMonth` | string
+`ganzhiYear` | string
+`isLeapMonth` | boolean
+`lunarDay` | number
+`lunarDayCn` | string
+`lunarFestivals` | Array&lt;string&gt;
+`lunarMonth` | number
+`lunarMonthCn` | string
+`lunarYear` | number
+`lunarYearCn` | string
+`queryTimestamp` | string
+`queryTimezone` | string
+`solarFestivals` | Array&lt;string&gt;
+`solarTerm` | string
 `timestampUnix` | number
+`timezone` | string
 `weekday` | string
 `weekdayCn` | string
-`lunarYear` | number
-`lunarMonth` | number
-`lunarDay` | number
-`isLeapMonth` | boolean
-`lunarYearCn` | string
-`lunarMonthCn` | string
-`lunarDayCn` | string
-`ganzhiYear` | string
-`ganzhiMonth` | string
-`ganzhiDay` | string
 `zodiac` | string
-`solarTerm` | string
-`lunarFestivals` | Array&lt;string&gt;
-`solarFestivals` | Array&lt;string&gt;
 
 ## Example
 
@@ -36,28 +36,28 @@ import type { GetMiscLunartime200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "queryTimestamp": 1707537600,
-  "queryTimezone": Asia/Shanghai,
-  "timezone": Asia/Shanghai,
   "datetime": 2024-02-10 12:00:00,
   "datetimeRfc3339": 2024-02-10T12:00:00+08:00,
+  "ganzhiDay": 甲辰,
+  "ganzhiMonth": 丙寅,
+  "ganzhiYear": 甲辰,
+  "isLeapMonth": false,
+  "lunarDay": 1,
+  "lunarDayCn": 初一,
+  "lunarFestivals": null,
+  "lunarMonth": 1,
+  "lunarMonthCn": 正月,
+  "lunarYear": 2024,
+  "lunarYearCn": 二〇二四,
+  "queryTimestamp": 1707537600,
+  "queryTimezone": Asia/Shanghai,
+  "solarFestivals": null,
+  "solarTerm": ,
   "timestampUnix": 1707537600,
+  "timezone": Asia/Shanghai,
   "weekday": Saturday,
   "weekdayCn": 星期六,
-  "lunarYear": 2024,
-  "lunarMonth": 1,
-  "lunarDay": 1,
-  "isLeapMonth": false,
-  "lunarYearCn": 二〇二四,
-  "lunarMonthCn": 正月,
-  "lunarDayCn": 初一,
-  "ganzhiYear": 甲辰,
-  "ganzhiMonth": 丙寅,
-  "ganzhiDay": 甲辰,
   "zodiac": 龙,
-  "solarTerm": ,
-  "lunarFestivals": null,
-  "solarFestivals": null,
 } satisfies GetMiscLunartime200Response
 
 console.log(example)

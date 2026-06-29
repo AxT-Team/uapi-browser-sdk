@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
+`iv` | string
 `key` | string
 `mode` | string
-`padding` | string
-`iv` | string
 `outputFormat` | string
+`padding` | string
+`text` | string
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { PostTextAesEncryptAdvancedRequest } from 'uapi-browser-sdk-browser
 
 // TODO: Update the object below with actual values
 const example = {
-  "text": Hello, World! 你好世界！,
+  "iv": cmFuZG9tSVZoZXJl,
   "key": my-super-secret-key,
   "mode": GCM,
-  "padding": PKCS7,
-  "iv": cmFuZG9tSVZoZXJl,
   "outputFormat": hex,
+  "padding": PKCS7,
+  "text": Hello, World! 你好世界！,
 } satisfies PostTextAesEncryptAdvancedRequest
 
 console.log(example)

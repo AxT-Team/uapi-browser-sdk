@@ -7,24 +7,24 @@
 
 Name | Type
 ------------ | -------------
-`clothing` | [GetMiscWeather200ResponseLifeIndicesClothing](GetMiscWeather200ResponseLifeIndicesClothing.md)
-`uv` | [GetMiscWeather200ResponseLifeIndicesUv](GetMiscWeather200ResponseLifeIndicesUv.md)
-`carWash` | [GetMiscWeather200ResponseLifeIndicesCarWash](GetMiscWeather200ResponseLifeIndicesCarWash.md)
-`drying` | [GetMiscWeather200ResponseLifeIndicesDrying](GetMiscWeather200ResponseLifeIndicesDrying.md)
 `airConditioner` | [GetMiscWeather200ResponseLifeIndicesAirConditioner](GetMiscWeather200ResponseLifeIndicesAirConditioner.md)
-`coldRisk` | [GetMiscWeather200ResponseLifeIndicesColdRisk](GetMiscWeather200ResponseLifeIndicesColdRisk.md)
-`exercise` | [GetMiscWeather200ResponseLifeIndicesExercise](GetMiscWeather200ResponseLifeIndicesExercise.md)
-`comfort` | [GetMiscWeather200ResponseLifeIndicesComfort](GetMiscWeather200ResponseLifeIndicesComfort.md)
-`travel` | [GetMiscWeather200ResponseLifeIndicesTravel](GetMiscWeather200ResponseLifeIndicesTravel.md)
-`fishing` | [GetMiscWeather200ResponseLifeIndicesFishing](GetMiscWeather200ResponseLifeIndicesFishing.md)
-`allergy` | [GetMiscWeather200ResponseLifeIndicesAllergy](GetMiscWeather200ResponseLifeIndicesAllergy.md)
-`sunscreen` | [GetMiscWeather200ResponseLifeIndicesSunscreen](GetMiscWeather200ResponseLifeIndicesSunscreen.md)
-`mood` | [GetMiscWeather200ResponseLifeIndicesMood](GetMiscWeather200ResponseLifeIndicesMood.md)
-`beer` | [GetMiscWeather200ResponseLifeIndicesBeer](GetMiscWeather200ResponseLifeIndicesBeer.md)
-`umbrella` | [GetMiscWeather200ResponseLifeIndicesUmbrella](GetMiscWeather200ResponseLifeIndicesUmbrella.md)
-`traffic` | [GetMiscWeather200ResponseLifeIndicesTraffic](GetMiscWeather200ResponseLifeIndicesTraffic.md)
 `airPurifier` | [GetMiscWeather200ResponseLifeIndicesAirPurifier](GetMiscWeather200ResponseLifeIndicesAirPurifier.md)
+`allergy` | [GetMiscWeather200ResponseLifeIndicesAllergy](GetMiscWeather200ResponseLifeIndicesAllergy.md)
+`beer` | [GetMiscWeather200ResponseLifeIndicesBeer](GetMiscWeather200ResponseLifeIndicesBeer.md)
+`carWash` | [GetMiscWeather200ResponseLifeIndicesCarWash](GetMiscWeather200ResponseLifeIndicesCarWash.md)
+`clothing` | [GetMiscWeather200ResponseLifeIndicesClothing](GetMiscWeather200ResponseLifeIndicesClothing.md)
+`coldRisk` | [GetMiscWeather200ResponseLifeIndicesColdRisk](GetMiscWeather200ResponseLifeIndicesColdRisk.md)
+`comfort` | [GetMiscWeather200ResponseLifeIndicesComfort](GetMiscWeather200ResponseLifeIndicesComfort.md)
+`drying` | [GetMiscWeather200ResponseLifeIndicesDrying](GetMiscWeather200ResponseLifeIndicesDrying.md)
+`exercise` | [GetMiscWeather200ResponseLifeIndicesExercise](GetMiscWeather200ResponseLifeIndicesExercise.md)
+`fishing` | [GetMiscWeather200ResponseLifeIndicesFishing](GetMiscWeather200ResponseLifeIndicesFishing.md)
+`mood` | [GetMiscWeather200ResponseLifeIndicesMood](GetMiscWeather200ResponseLifeIndicesMood.md)
 `pollen` | [GetMiscWeather200ResponseLifeIndicesPollen](GetMiscWeather200ResponseLifeIndicesPollen.md)
+`sunscreen` | [GetMiscWeather200ResponseLifeIndicesSunscreen](GetMiscWeather200ResponseLifeIndicesSunscreen.md)
+`traffic` | [GetMiscWeather200ResponseLifeIndicesTraffic](GetMiscWeather200ResponseLifeIndicesTraffic.md)
+`travel` | [GetMiscWeather200ResponseLifeIndicesTravel](GetMiscWeather200ResponseLifeIndicesTravel.md)
+`umbrella` | [GetMiscWeather200ResponseLifeIndicesUmbrella](GetMiscWeather200ResponseLifeIndicesUmbrella.md)
+`uv` | [GetMiscWeather200ResponseLifeIndicesUv](GetMiscWeather200ResponseLifeIndicesUv.md)
 
 ## Example
 
@@ -33,24 +33,24 @@ import type { GetMiscWeather200ResponseLifeIndices } from 'uapi-browser-sdk-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "clothing": null,
-  "uv": null,
-  "carWash": null,
-  "drying": null,
   "airConditioner": null,
-  "coldRisk": null,
-  "exercise": null,
-  "comfort": null,
-  "travel": null,
-  "fishing": null,
-  "allergy": null,
-  "sunscreen": null,
-  "mood": null,
-  "beer": null,
-  "umbrella": null,
-  "traffic": null,
   "airPurifier": null,
+  "allergy": null,
+  "beer": null,
+  "carWash": null,
+  "clothing": null,
+  "coldRisk": null,
+  "comfort": null,
+  "drying": null,
+  "exercise": null,
+  "fishing": null,
+  "mood": null,
   "pollen": null,
+  "sunscreen": null,
+  "traffic": null,
+  "travel": null,
+  "umbrella": null,
+  "uv": null,
 } satisfies GetMiscWeather200ResponseLifeIndices
 
 console.log(example)

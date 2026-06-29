@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`code` | number
 `error` | string
 `message` | string
-`code` | number
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { PostWebTomarkdownAsync400Response } from 'uapi-browser-sdk-browser
 
 // TODO: Update the object below with actual values
 const example = {
+  "code": 400,
   "error": 缺少参数,
   "message": url 参数是必需的,
-  "code": 400,
 } satisfies PostWebTomarkdownAsync400Response
 
 console.log(example)

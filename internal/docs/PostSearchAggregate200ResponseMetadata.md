@@ -7,10 +7,10 @@
 
 Name | Type
 ------------ | -------------
-`requestParams` | [PostSearchAggregate200ResponseMetadataRequestParams](PostSearchAggregate200ResponseMetadataRequestParams.md)
-`dedupeRemoved` | number
-`rerankApplied` | boolean
 `contentFetched` | number
+`dedupeRemoved` | number
+`requestParams` | [PostSearchAggregate200ResponseMetadataRequestParams](PostSearchAggregate200ResponseMetadataRequestParams.md)
+`rerankApplied` | boolean
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { PostSearchAggregate200ResponseMetadata } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
-  "requestParams": null,
-  "dedupeRemoved": 0,
-  "rerankApplied": true,
   "contentFetched": 0,
+  "dedupeRemoved": 0,
+  "requestParams": null,
+  "rerankApplied": true,
 } satisfies PostSearchAggregate200ResponseMetadata
 
 console.log(example)

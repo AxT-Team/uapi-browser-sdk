@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`time` | string
 `context` | string
+`time` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetMiscTrackingQuery200ResponseTracksInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "time": 2025-10-27 15:30:00,
   "context": 快件已签收，感谢使用圆通速递,
+  "time": 2025-10-27 15:30:00,
 } satisfies GetMiscTrackingQuery200ResponseTracksInner
 
 console.log(example)

@@ -1,6 +1,6 @@
 # ImageApi
 
-All URIs are relative to *https://uapis.cn/api/v1*
+All URIs are relative to *https://uapis.cn*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -89,7 +89,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `image/*`, `application/json`
+- **Accept**: `image/png`, `application/json`
 
 
 ### HTTP response details
@@ -104,7 +104,7 @@ No authorization required
 
 ## getImageBingDaily
 
-> Blob getImageBingDaily(date, resolution, format)
+> Blob getImageBingDaily(date, random, resolution, format)
 
 获取必应每日壁纸
 
@@ -126,6 +126,8 @@ async function example() {
   const body = {
     // string | 壁纸日期，格式是 `YYYY-MM-DD`。不传时返回当天壁纸。 (optional)
     date: date_example,
+    // boolean | 是否每次请求随机返回一张历史壁纸。传 `true` 时生效；不能和 `date` 同时使用。不传或传 `false` 时保持默认当天/指定日期逻辑。 (optional)
+    random: true,
     // '4k' | '1080' | 返回图片的目标分辨率。可以传 `4k` 或 `1080`，不传时默认是 `4k`。 (optional)
     resolution: 4k,
     // 'image' | 'json' | 'redirect' | 响应格式。可以传 `image`、`json` 或 `redirect`。不传时默认是 `image`。 (optional)
@@ -150,6 +152,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **date** | `string` | 壁纸日期，格式是 &#x60;YYYY-MM-DD&#x60;。不传时返回当天壁纸。 | [Optional] [Defaults to `undefined`] |
+| **random** | `boolean` | 是否每次请求随机返回一张历史壁纸。传 &#x60;true&#x60; 时生效；不能和 &#x60;date&#x60; 同时使用。不传或传 &#x60;false&#x60; 时保持默认当天/指定日期逻辑。 | [Optional] [Defaults to `false`] |
 | **resolution** | `4k`, `1080` | 返回图片的目标分辨率。可以传 &#x60;4k&#x60; 或 &#x60;1080&#x60;，不传时默认是 &#x60;4k&#x60;。 | [Optional] [Defaults to `&#39;4k&#39;`] [Enum: 4k, 1080] |
 | **format** | `image`, `json`, `redirect` | 响应格式。可以传 &#x60;image&#x60;、&#x60;json&#x60; 或 &#x60;redirect&#x60;。不传时默认是 &#x60;image&#x60;。 | [Optional] [Defaults to `&#39;image&#39;`] [Enum: image, json, redirect] |
 
@@ -545,7 +548,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `multipart/form-data`
-- **Accept**: `image/*`, `application/json`
+- **Accept**: `image/png`, `application/json`
 
 
 ### HTTP response details
@@ -581,9 +584,9 @@ async function example() {
 
   const body = {
     // number | 目标宽度，单位是像素。可以单独传，也可以和 `height` 一起传。与 `max_width`、`max_height` 互斥。 (optional)
-    width: 56,
+    width: 800,
     // number | 目标高度，单位是像素。可以单独传，也可以和 `width` 一起传。与 `max_width`、`max_height` 互斥。 (optional)
-    height: 56,
+    height: 600,
     // number | 最大宽度，单位是像素。只有在不传 `width`、`height` 时才生效，会按原比例缩放。 (optional)
     maxWidth: 56,
     // number | 最大高度，单位是像素。只有在不传 `width`、`height` 时才生效，会按原比例缩放。 (optional)
@@ -729,7 +732,7 @@ No authorization required
 
 ## postImageMotou
 
-> Blob postImageMotou(imageUrl, file, bgColor)
+> Blob postImageMotou(bgColor, file, imageUrl)
 
 生成摸摸头GIF
 
@@ -749,12 +752,12 @@ async function example() {
   const api = new ImageApi();
 
   const body = {
-    // string | 图片的URL地址。如果提供此项，将优先使用该URL的图片。 (optional)
-    imageUrl: imageUrl_example,
-    // Blob | 上传的图片文件。支持JPG、PNG、GIF等常见格式。 (optional)
-    file: BINARY_DATA_HERE,
     // string | GIF的背景颜色。可选值为 \\\'white\\\', \\\'black\\\', \\\'transparent\\\'。 (optional)
     bgColor: bgColor_example,
+    // Blob | 上传的图片文件。支持JPG、PNG、GIF等常见格式。 (optional)
+    file: BINARY_DATA_HERE,
+    // string | 图片的URL地址。如果提供此项，将优先使用该URL的图片。 (optional)
+    imageUrl: imageUrl_example,
   } satisfies PostImageMotouRequest;
 
   try {
@@ -774,9 +777,9 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **imageUrl** | `string` | 图片的URL地址。如果提供此项，将优先使用该URL的图片。 | [Optional] [Defaults to `undefined`] |
-| **file** | `Blob` | 上传的图片文件。支持JPG、PNG、GIF等常见格式。 | [Optional] [Defaults to `undefined`] |
 | **bgColor** | `white`, `black`, `transparent` | GIF的背景颜色。可选值为 \\\&#39;white\\\&#39;, \\\&#39;black\\\&#39;, \\\&#39;transparent\\\&#39;。 | [Optional] [Defaults to `undefined`] [Enum: white, black, transparent] |
+| **file** | `Blob` | 上传的图片文件。支持JPG、PNG、GIF等常见格式。 | [Optional] [Defaults to `undefined`] |
+| **imageUrl** | `string` | 图片的URL地址。如果提供此项，将优先使用该URL的图片。 | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -821,7 +824,11 @@ import type { PostImageNsfwRequest } from 'uapi-browser-sdk-browser';
 
 async function example() {
   console.log("🚀 Testing uapi-browser-sdk-browser SDK...");
-  const api = new ImageApi();
+  const config = new Configuration({ 
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImageApi(config);
 
   const body = {
     // Blob | 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。 (optional)
@@ -856,7 +863,7 @@ example().catch(console.error);
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -877,7 +884,7 @@ No authorization required
 
 ## postImageOcr
 
-> PostImageOcr200Response postImageOcr(file, url, imageBase64, imageName, needLocation, returnMarkdown, enableCls)
+> PostImageOcr200Response postImageOcr(enableCls, file, imageBase64, imageName, needLocation, returnMarkdown, url)
 
 通用 OCR 文字识别
 
@@ -897,10 +904,10 @@ async function example() {
   const api = new ImageApi();
 
   const body = {
+    // string | 是否开启额外的文字方向校正。请传 `true` 或 `false`，不传时默认是 `false`。 (optional)
+    enableCls: enableCls_example,
     // Blob | 待识别的图片文件。支持 JPG、JPEG、PNG、BMP、GIF、WebP 等常见格式，最大不超过 10MB。请勿与 url 或 image_base64 同时提交。 (optional)
     file: BINARY_DATA_HERE,
-    // string | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 (optional)
-    url: url_example,
     // string | 图片的 Base64 字符串。可以传完整 Data URI，也可以只传纯 Base64 内容。请勿与 file 或 url 同时提交。 (optional)
     imageBase64: imageBase64_example,
     // string | 自定义图片文件名。传链接或纯 Base64 时建议一起传，便于保留或推断扩展名。 (optional)
@@ -909,8 +916,8 @@ async function example() {
     needLocation: needLocation_example,
     // string | 是否额外返回整理后的 Markdown 文本。请传 `true` 或 `false`，不传时默认是 `false`。 (optional)
     returnMarkdown: returnMarkdown_example,
-    // string | 是否开启额外的文字方向校正。请传 `true` 或 `false`，不传时默认是 `false`。 (optional)
-    enableCls: enableCls_example,
+    // string | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 (optional)
+    url: url_example,
   } satisfies PostImageOcrRequest;
 
   try {
@@ -930,13 +937,13 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **enableCls** | `true`, `false` | 是否开启额外的文字方向校正。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [Optional] [Defaults to `&#39;false&#39;`] [Enum: true, false] |
 | **file** | `Blob` | 待识别的图片文件。支持 JPG、JPEG、PNG、BMP、GIF、WebP 等常见格式，最大不超过 10MB。请勿与 url 或 image_base64 同时提交。 | [Optional] [Defaults to `undefined`] |
-| **url** | `string` | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 | [Optional] [Defaults to `undefined`] |
 | **imageBase64** | `string` | 图片的 Base64 字符串。可以传完整 Data URI，也可以只传纯 Base64 内容。请勿与 file 或 url 同时提交。 | [Optional] [Defaults to `undefined`] |
 | **imageName** | `string` | 自定义图片文件名。传链接或纯 Base64 时建议一起传，便于保留或推断扩展名。 | [Optional] [Defaults to `undefined`] |
 | **needLocation** | `true`, `false` | 是否返回文字坐标信息。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;true&#x60;。 | [Optional] [Defaults to `&#39;true&#39;`] [Enum: true, false] |
 | **returnMarkdown** | `true`, `false` | 是否额外返回整理后的 Markdown 文本。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [Optional] [Defaults to `&#39;false&#39;`] [Enum: true, false] |
-| **enableCls** | `true`, `false` | 是否开启额外的文字方向校正。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [Optional] [Defaults to `&#39;false&#39;`] [Enum: true, false] |
+| **url** | `string` | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -1102,7 +1109,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `multipart/form-data`
-- **Accept**: `image/*`, `application/json`
+- **Accept**: `image/png`, `application/json`
 
 
 ### HTTP response details

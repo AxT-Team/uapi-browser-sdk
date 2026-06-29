@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
+`data` | [Array&lt;GetMiscWeather200ResponseMinutelyPrecipDataInner&gt;](GetMiscWeather200ResponseMinutelyPrecipDataInner.md)
 `summary` | string
 `updateTime` | string
-`data` | [Array&lt;GetMiscWeather200ResponseMinutelyPrecipDataInner&gt;](GetMiscWeather200ResponseMinutelyPrecipDataInner.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetMiscWeather200ResponseMinutelyPrecip } from 'uapi-browser-sdk-b
 
 // TODO: Update the object below with actual values
 const example = {
+  "data": null,
   "summary": 未来2小时无降水,
   "updateTime": 2026-02-19T15:30:00+08:00,
-  "data": null,
 } satisfies GetMiscWeather200ResponseMinutelyPrecip
 
 console.log(example)

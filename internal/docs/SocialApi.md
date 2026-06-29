@@ -1,6 +1,6 @@
 # SocialApi
 
-All URIs are relative to *https://uapis.cn/api/v1*
+All URIs are relative to *https://uapis.cn*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -87,7 +87,7 @@ No authorization required
 
 ## getGithubUser
 
-> GetGithubUser200Response getGithubUser(user, activity, activityScope, org)
+> GetGithubUser200Response getGithubUser(user, activity, activityScope, org, pinned, repos, reposLimit)
 
 查询 GitHub 用户信息
 
@@ -115,6 +115,12 @@ async function example() {
     activityScope: activityScope_example,
     // string | 组织登录名。如果传入此参数，会自动视为开启 organization 级别的贡献查询，切勿再同时传 activity_scope=all。 (optional)
     org: org_example,
+    // boolean | 是否附带该用户在 GitHub 主页展示的 pinned 仓库数据。传入 true 开启，其他值均视为不开启。 (optional)
+    pinned: true,
+    // boolean | 是否附带该用户最近活跃的公开仓库列表。传入 true 开启，其他值均视为不开启。 (optional)
+    repos: true,
+    // number | 公开仓库列表的返回数量。只有开启 repos 时才有意义；如果单独传入 repos_limit，也会自动视为开启 repos。 (optional)
+    reposLimit: 56,
   } satisfies GetGithubUserRequest;
 
   try {
@@ -138,6 +144,9 @@ example().catch(console.error);
 | **activity** | `boolean` | 是否获取最近一年的贡献活动数据（如贡献图、时间线）。传入 true 开启，其他值均视为不开启。 | [Optional] [Defaults to `false`] |
 | **activityScope** | `all`, `organization` | 活动数据范围。可选 all 或 organization。只有开启 activity 时才有意义。 | [Optional] [Defaults to `&#39;all&#39;`] [Enum: all, organization] |
 | **org** | `string` | 组织登录名。如果传入此参数，会自动视为开启 organization 级别的贡献查询，切勿再同时传 activity_scope&#x3D;all。 | [Optional] [Defaults to `undefined`] |
+| **pinned** | `boolean` | 是否附带该用户在 GitHub 主页展示的 pinned 仓库数据。传入 true 开启，其他值均视为不开启。 | [Optional] [Defaults to `false`] |
+| **repos** | `boolean` | 是否附带该用户最近活跃的公开仓库列表。传入 true 开启，其他值均视为不开启。 | [Optional] [Defaults to `false`] |
+| **reposLimit** | `number` | 公开仓库列表的返回数量。只有开启 repos 时才有意义；如果单独传入 repos_limit，也会自动视为开启 repos。 | [Optional] [Defaults to `6`] |
 
 ### Return type
 
@@ -340,7 +349,7 @@ async function example() {
   const body = {
     // string | 目标评论区的ID。对于视频，这通常就是它的 `aid`。
     oid: 1706416465,
-    // string | 排序方式。支持 `0/time`（按时间）、`1/like`（按点赞）、`2/reply`（按回复数）、`3/hot/hottest/最热`（按最热）。默认为 `0/time`。 (optional)
+    // 'time' | 'like' | 'reply' | 'hot' | 排序方式。支持 `0/time`（按时间）、`1/like`（按点赞）、`2/reply`（按回复数）、`3/hot/hottest/最热`（按最热）。默认为 `0/time`。 (optional)
     sort: hot,
     // string | 每页获取的评论数量，范围是1到20。默认为 `20`。 (optional)
     ps: 5,
@@ -366,7 +375,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **oid** | `string` | 目标评论区的ID。对于视频，这通常就是它的 &#x60;aid&#x60;。 | [Defaults to `undefined`] |
-| **sort** | `string` | 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 | [Optional] [Defaults to `undefined`] |
+| **sort** | `time`, `like`, `reply`, `hot` | 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 | [Optional] [Defaults to `undefined`] [Enum: time, like, reply, hot] |
 | **ps** | `string` | 每页获取的评论数量，范围是1到20。默认为 &#x60;20&#x60;。 | [Optional] [Defaults to `undefined`] |
 | **pn** | `string` | 要获取的页码，从1开始。默认为 &#x60;1&#x60;。 | [Optional] [Defaults to `undefined`] |
 
@@ -620,7 +629,11 @@ import type { GetSocialQqUserinfoRequest } from 'uapi-browser-sdk-browser';
 
 async function example() {
   console.log("🚀 Testing uapi-browser-sdk-browser SDK...");
-  const api = new SocialApi();
+  const config = new Configuration({ 
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new SocialApi(config);
 
   const body = {
     // string | 需要查询的QQ号
@@ -652,7 +665,7 @@ example().catch(console.error);
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 

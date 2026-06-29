@@ -7,10 +7,10 @@
 
 Name | Type
 ------------ | -------------
+`acount` | number
+`count` | number
 `num` | number
 `size` | number
-`count` | number
-`acount` | number
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { GetSocialBilibiliReplies200ResponsePage } from 'uapi-browser-sdk-b
 
 // TODO: Update the object below with actual values
 const example = {
+  "acount": 123456,
+  "count": 81682,
   "num": 1,
   "size": 5,
-  "count": 81682,
-  "acount": 123456,
 } satisfies GetSocialBilibiliReplies200ResponsePage
 
 console.log(example)

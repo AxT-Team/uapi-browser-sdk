@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
-`level` | string
-`brief` | string
 `advice` | string
+`brief` | string
+`level` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetMiscWeather200ResponseLifeIndicesUmbrella } from 'uapi-browser-
 
 // TODO: Update the object below with actual values
 const example = {
-  "level": 不需要,
-  "brief": 无需,
   "advice": 天气晴好，无需带伞,
+  "brief": 无需,
+  "level": 不需要,
 } satisfies GetMiscWeather200ResponseLifeIndicesUmbrella
 
 console.log(example)

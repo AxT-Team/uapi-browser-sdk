@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`error` | string
 `details` | string
+`error` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostClipzyStore400Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "error": Invalid request body or parameters.,
   "details": Field 'compressedData' is required.,
+  "error": Invalid request body or parameters.,
 } satisfies PostClipzyStore400Response
 
 console.log(example)

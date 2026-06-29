@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`date` | string
-`contributionCount` | number
 `color` | string
+`contributionCount` | number
+`date` | string
 `weekday` | number
 
 ## Example
@@ -18,9 +18,9 @@ import type { GetGithubUser200ResponseActivityContributionCalendarWeeksInnerCont
 
 // TODO: Update the object below with actual values
 const example = {
-  "date": 2026-04-07,
-  "contributionCount": 1,
   "color": #40c463,
+  "contributionCount": 1,
+  "date": 2026-04-07,
   "weekday": 2,
 } satisfies GetGithubUser200ResponseActivityContributionCalendarWeeksInnerContributionDaysInner
 

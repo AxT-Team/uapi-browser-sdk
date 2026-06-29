@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
+`desc` | string
 `name` | string
 `value` | string
-`desc` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetSocialBilibiliLiveroom200ResponseNewPendantsFrame } from 'uapi-
 
 // TODO: Update the object below with actual values
 const example = {
+  "desc": 年度纪念头像框,
   "name": 头像框,
   "value": frame_value,
-  "desc": 年度纪念头像框,
 } satisfies GetSocialBilibiliLiveroom200ResponseNewPendantsFrame
 
 console.log(example)

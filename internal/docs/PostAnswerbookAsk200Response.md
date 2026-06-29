@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`question` | string
 `answer` | string
+`question` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostAnswerbookAsk200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "question": 我应该接受这份工作吗？,
   "answer": 专注当下,
+  "question": 我应该接受这份工作吗？,
 } satisfies PostAnswerbookAsk200Response
 
 console.log(example)

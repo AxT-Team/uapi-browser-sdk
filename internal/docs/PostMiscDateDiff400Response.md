@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `errorCode` | string
-`errorMessage` | string
 `errorDetails` | string
+`errorMessage` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { PostMiscDateDiff400Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "errorCode": DATE_PARSE_ERROR,
-  "errorMessage": 解析开始日期失败: 无法识别日期格式: invalid-date,
   "errorDetails": ,
+  "errorMessage": 解析开始日期失败: 无法识别日期格式: invalid-date,
 } satisfies PostMiscDateDiff400Response
 
 console.log(example)

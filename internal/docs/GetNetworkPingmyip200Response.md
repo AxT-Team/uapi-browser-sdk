@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `clientIp` | string
-`pingSuccessful` | boolean
 `message` | string
+`pingSuccessful` | boolean
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { GetNetworkPingmyip200Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "clientIp": 117.140.191.159,
-  "pingSuccessful": true,
   "message": Ping successful, avg latency: 35.43 ms,
+  "pingSuccessful": true,
 } satisfies GetNetworkPingmyip200Response
 
 console.log(example)

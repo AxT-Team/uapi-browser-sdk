@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
-`level` | string
-`brief` | string
 `advice` | string
+`brief` | string
+`level` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetMiscWeather200ResponseLifeIndicesPollen } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "level": 较低,
-  "brief": 不易发,
   "advice": 花粉浓度较低,
+  "brief": 不易发,
+  "level": 较低,
 } satisfies GetMiscWeather200ResponseLifeIndicesPollen
 
 console.log(example)

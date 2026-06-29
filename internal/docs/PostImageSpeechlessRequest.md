@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`topText` | string
 `bottomText` | string
+`topText` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostImageSpeechlessRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "topText": 玩Uapi,
   "bottomText": 们不要玩Uapi了,
+  "topText": 玩Uapi,
 } satisfies PostImageSpeechlessRequest
 
 console.log(example)

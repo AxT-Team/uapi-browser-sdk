@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
-`sourceLang` | string
-`style` | string
 `context` | string
 `preserveFormat` | boolean
+`sourceLang` | string
+`style` | string
+`text` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { PostAiTranslateRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "text": Hello, how are you today?,
-  "sourceLang": en,
-  "style": professional,
   "context": business,
   "preserveFormat": true,
+  "sourceLang": en,
+  "style": professional,
+  "text": Hello, how are you today?,
 } satisfies PostAiTranslateRequest
 
 console.log(example)

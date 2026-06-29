@@ -8,8 +8,8 @@ Name | Type
 ------------ | -------------
 `endpoints` | [Array&lt;GetStatusUsage200ResponseAnyOfEndpointsInner&gt;](GetStatusUsage200ResponseAnyOfEndpointsInner.md)
 `unaggregated` | [GetStatusUsage200ResponseAnyOfUnaggregated](GetStatusUsage200ResponseAnyOfUnaggregated.md)
-`path` | string
 `count` | number
+`path` | string
 
 ## Example
 
@@ -20,8 +20,8 @@ import type { GetStatusUsage200Response } from 'uapi-browser-sdk-browser'
 const example = {
   "endpoints": null,
   "unaggregated": null,
-  "path": /api/v1/image/motou,
   "count": 22310,
+  "path": /api/v1/image/motou,
 } satisfies GetStatusUsage200Response
 
 console.log(example)

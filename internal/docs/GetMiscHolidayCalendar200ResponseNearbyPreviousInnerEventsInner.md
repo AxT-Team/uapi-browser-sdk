@@ -7,9 +7,9 @@
 Name | Type
 ------------ | -------------
 `date` | string
+`isWorkday` | boolean
 `name` | string
 `type` | string
-`isWorkday` | boolean
 
 ## Example
 
@@ -19,9 +19,9 @@ import type { GetMiscHolidayCalendar200ResponseNearbyPreviousInnerEventsInner } 
 // TODO: Update the object below with actual values
 const example = {
   "date": 2025-09-28,
+  "isWorkday": true,
   "name": 国庆中秋,
   "type": legal_workday_adjust,
-  "isWorkday": true,
 } satisfies GetMiscHolidayCalendar200ResponseNearbyPreviousInnerEventsInner
 
 console.log(example)

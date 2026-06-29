@@ -1,6 +1,6 @@
 # MiscApi
 
-All URIs are relative to *https://uapis.cn/api/v1*
+All URIs are relative to *https://uapis.cn*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -10,6 +10,8 @@ All URIs are relative to *https://uapis.cn/api/v1*
 | [**getMiscHolidayCalendar**](MiscApi.md#getmischolidaycalendar) | **GET** /misc/holiday-calendar | 查询节假日与万年历 |
 | [**getMiscHotboard**](MiscApi.md#getmischotboard) | **GET** /misc/hotboard | 查询热榜 |
 | [**getMiscLunartime**](MiscApi.md#getmisclunartime) | **GET** /misc/lunartime | 查询农历时间 |
+| [**getMiscMovieBoxOffice**](MiscApi.md#getmiscmovieboxoffice) | **GET** /misc/movie-box-office | 查询电影票房 |
+| [**getMiscMovieRatingRank**](MiscApi.md#getmiscmovieratingrank) | **GET** /misc/movie-rating-rank | 电影收视排行查询 |
 | [**getMiscPhoneinfo**](MiscApi.md#getmiscphoneinfo) | **GET** /misc/phoneinfo | 查询手机归属地 |
 | [**getMiscRandomnumber**](MiscApi.md#getmiscrandomnumber) | **GET** /misc/randomnumber | 随机数生成 |
 | [**getMiscTimestamp**](MiscApi.md#getmisctimestamp) | **GET** /misc/timestamp | 转换时间戳 (旧版，推荐使用/convert/unixtime) |
@@ -17,6 +19,7 @@ All URIs are relative to *https://uapis.cn/api/v1*
 | [**getMiscTrackingDetect**](MiscApi.md#getmisctrackingdetect) | **GET** /misc/tracking/detect | 识别快递公司 |
 | [**getMiscTrackingQuery**](MiscApi.md#getmisctrackingquery) | **GET** /misc/tracking/query | 查询快递物流信息 |
 | [**getMiscWeather**](MiscApi.md#getmiscweather) | **GET** /misc/weather | 查询天气 |
+| [**getMiscWeatherHistory**](MiscApi.md#getmiscweatherhistory) | **GET** /misc/weather/history | 查询历史天气 |
 | [**getMiscWorldtime**](MiscApi.md#getmiscworldtime) | **GET** /misc/worldtime | 查询世界时间 |
 | [**postMiscDateDiff**](MiscApi.md#postmiscdatediffoperation) | **POST** /misc/date-diff | 计算两个日期之间的时间差值 |
 
@@ -263,7 +266,7 @@ async function example() {
 
   const body = {
     // string | 按天查询时填写这个参数，例如查某一天。格式：`YYYY-MM-DD`。和 `month`、`year` 三选一。 (optional)
-    date: 2025-10-01,
+    date: date_example,
     // string | 按月查询时填写这个参数，例如查某个月。格式：`YYYY-MM`。和 `date`、`year` 三选一。 (optional)
     month: month_example,
     // string | 按年查询时填写这个参数，例如查某一年。格式：`YYYY`。和 `date`、`month` 三选一。 (optional)
@@ -335,7 +338,7 @@ No authorization required
 
 查询热榜
 
-想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 &#x60;type&#x60; 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 &#x60;type&#x60; + &#x60;time&#x60; 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 &#x60;type&#x60; + &#x60;keyword&#x60; + &#x60;time_start&#x60; + &#x60;time_end&#x60; 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 &#x60;limit&#x60; 限制返回数量。
+想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 &#x60;type&#x60; 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 &#x60;type&#x60; + &#x60;time&#x60; 参数，返回指定时间附近最近可展示的历史热榜快照。  ### 搜索模式 传 &#x60;type&#x60; + &#x60;keyword&#x60; + &#x60;time_start&#x60; + &#x60;time_end&#x60; 参数，在指定历史时间范围内搜索包含关键词的热榜条目。可选传 &#x60;limit&#x60; 限制返回数量。
 
 ### Example
 
@@ -351,15 +354,15 @@ async function example() {
   const api = new MiscApi();
 
   const body = {
-    // 'bilibili' | 'acfun' | 'weibo' | 'zhihu' | 'zhihu-daily' | 'douyin' | 'kuaishou' | 'douban-movie' | 'douban-group' | 'tieba' | 'hupu' | 'ngabbs' | 'v2ex' | '52pojie' | 'hostloc' | 'coolapk' | 'baidu' | 'thepaper' | 'toutiao' | 'qq-news' | 'sina' | 'sina-news' | 'netease-news' | 'huxiu' | 'ifanr' | 'sspai' | 'ithome' | 'ithome-xijiayi' | 'juejin' | 'jianshu' | 'guokr' | '36kr' | '51cto' | 'csdn' | 'nodeseek' | 'hellogithub' | 'lol' | 'genshin' | 'honkai' | 'starrail' | 'netease-music' | 'qq-music' | 'weread' | 'weatheralarm' | 'earthquake' | 'history' | 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。
+    // 'bilibili' | 'acfun' | 'weibo' | 'zhihu' | 'zhihu-daily' | 'douyin' | 'xiaohongshu' | 'kuaishou' | 'douban-movie' | 'douban-group' | 'tieba' | 'hupu' | 'ngabbs' | 'v2ex' | '52pojie' | 'hostloc' | 'coolapk' | 'baidu' | 'thepaper' | 'toutiao' | 'qq-news' | 'sina' | 'sina-news' | 'netease-news' | 'huxiu' | 'ifanr' | 'sspai' | 'ithome' | 'ithome-xijiayi' | 'juejin' | 'jianshu' | 'guokr' | '36kr' | '51cto' | 'csdn' | 'nodeseek' | 'hellogithub' | 'lol' | 'genshin' | 'honkai' | 'starrail' | 'netease-music' | 'qq-music' | 'weread' | 'weatheralarm' | 'earthquake' | 'history' | 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。
     type: weibo,
-    // number | 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
+    // number | 时光机模式：毫秒时间戳，返回该时间附近最近可展示的历史热榜快照。不传则返回当前实时热榜。 (optional)
     time: 789,
-    // string | 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
+    // string | 搜索模式：搜索关键词，在指定历史时间范围内搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
     keyword: keyword_example,
-    // number | 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
+    // number | 搜索模式必填：搜索起始时间戳（毫秒），需位于该平台历史数据覆盖范围内。 (optional)
     timeStart: 789,
-    // number | 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
+    // number | 搜索模式必填：搜索结束时间戳（毫秒），需晚于 time_start 且位于该平台历史数据覆盖范围内。 (optional)
     timeEnd: 789,
     // number | 搜索模式下最大返回条数，默认 50，最大 200。 (optional)
     limit: 56,
@@ -382,11 +385,11 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **type** | `bilibili`, `acfun`, `weibo`, `zhihu`, `zhihu-daily`, `douyin`, `kuaishou`, `douban-movie`, `douban-group`, `tieba`, `hupu`, `ngabbs`, `v2ex`, `52pojie`, `hostloc`, `coolapk`, `baidu`, `thepaper`, `toutiao`, `qq-news`, `sina`, `sina-news`, `netease-news`, `huxiu`, `ifanr`, `sspai`, `ithome`, `ithome-xijiayi`, `juejin`, `jianshu`, `guokr`, `36kr`, `51cto`, `csdn`, `nodeseek`, `hellogithub`, `lol`, `genshin`, `honkai`, `starrail`, `netease-music`, `qq-music`, `weread`, `weatheralarm`, `earthquake`, `history` | 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 | [Defaults to `undefined`] [Enum: bilibili, acfun, weibo, zhihu, zhihu-daily, douyin, kuaishou, douban-movie, douban-group, tieba, hupu, ngabbs, v2ex, 52pojie, hostloc, coolapk, baidu, thepaper, toutiao, qq-news, sina, sina-news, netease-news, huxiu, ifanr, sspai, ithome, ithome-xijiayi, juejin, jianshu, guokr, 36kr, 51cto, csdn, nodeseek, hellogithub, lol, genshin, honkai, starrail, netease-music, qq-music, weread, weatheralarm, earthquake, history] |
-| **time** | `number` | 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 | [Optional] [Defaults to `undefined`] |
-| **keyword** | `string` | 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 | [Optional] [Defaults to `undefined`] |
-| **timeStart** | `number` | 搜索模式必填：搜索起始时间戳（毫秒）。 | [Optional] [Defaults to `undefined`] |
-| **timeEnd** | `number` | 搜索模式必填：搜索结束时间戳（毫秒）。 | [Optional] [Defaults to `undefined`] |
+| **type** | `bilibili`, `acfun`, `weibo`, `zhihu`, `zhihu-daily`, `douyin`, `xiaohongshu`, `kuaishou`, `douban-movie`, `douban-group`, `tieba`, `hupu`, `ngabbs`, `v2ex`, `52pojie`, `hostloc`, `coolapk`, `baidu`, `thepaper`, `toutiao`, `qq-news`, `sina`, `sina-news`, `netease-news`, `huxiu`, `ifanr`, `sspai`, `ithome`, `ithome-xijiayi`, `juejin`, `jianshu`, `guokr`, `36kr`, `51cto`, `csdn`, `nodeseek`, `hellogithub`, `lol`, `genshin`, `honkai`, `starrail`, `netease-music`, `qq-music`, `weread`, `weatheralarm`, `earthquake`, `history` | 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 | [Defaults to `undefined`] [Enum: bilibili, acfun, weibo, zhihu, zhihu-daily, douyin, xiaohongshu, kuaishou, douban-movie, douban-group, tieba, hupu, ngabbs, v2ex, 52pojie, hostloc, coolapk, baidu, thepaper, toutiao, qq-news, sina, sina-news, netease-news, huxiu, ifanr, sspai, ithome, ithome-xijiayi, juejin, jianshu, guokr, 36kr, 51cto, csdn, nodeseek, hellogithub, lol, genshin, honkai, starrail, netease-music, qq-music, weread, weatheralarm, earthquake, history] |
+| **time** | `number` | 时光机模式：毫秒时间戳，返回该时间附近最近可展示的历史热榜快照。不传则返回当前实时热榜。 | [Optional] [Defaults to `undefined`] |
+| **keyword** | `string` | 搜索模式：搜索关键词，在指定历史时间范围内搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 | [Optional] [Defaults to `undefined`] |
+| **timeStart** | `number` | 搜索模式必填：搜索起始时间戳（毫秒），需位于该平台历史数据覆盖范围内。 | [Optional] [Defaults to `undefined`] |
+| **timeEnd** | `number` | 搜索模式必填：搜索结束时间戳（毫秒），需晚于 time_start 且位于该平台历史数据覆盖范围内。 | [Optional] [Defaults to `undefined`] |
 | **limit** | `number` | 搜索模式下最大返回条数，默认 50，最大 200。 | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -485,6 +488,148 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## getMiscMovieBoxOffice
+
+> GetMiscMovieBoxOffice200Response getMiscMovieBoxOffice()
+
+查询电影票房
+
+正在做影视类应用，想直观展示今天哪部电影最卖座？大盘总票房突破了多少？这个接口能帮你实时获取院线大盘和影片票房排名。  ## 功能概述 调用此接口，无需任何参数，即可获取当前实时的电影市场大盘数据（包含总票房、总场次、总人次），以及每一部上映影片的具体表现（包括票房明细、排片占比、上座率、场均人次和累计票房等）。
+
+### Example
+
+```ts
+import {
+  Configuration,
+  MiscApi,
+} from 'uapi-browser-sdk-browser';
+import type { GetMiscMovieBoxOfficeRequest } from 'uapi-browser-sdk-browser';
+
+async function example() {
+  console.log("🚀 Testing uapi-browser-sdk-browser SDK...");
+  const api = new MiscApi();
+
+  try {
+    const data = await api.getMiscMovieBoxOffice();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetMiscMovieBoxOffice200Response**](GetMiscMovieBoxOffice200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | 查询成功！返回实时大盘汇总及影片排行榜列表。 |  -  |
+| **503** | 上游实时票房数据不可用或发生拥堵。 |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getMiscMovieRatingRank
+
+> GetMiscMovieRatingRank200Response getMiscMovieRatingRank(channel, platform, limit, period, date)
+
+电影收视排行查询
+
+想做影视榜单页或选题分析？这个接口提供影视的收视、热度和评分排行，既能查实时榜，也能按日、周、月回看历史快照。  ## 功能概述 用 &#x60;channel&#x60; 切换全网、卫视、网络平台或院线榜单，用 &#x60;period&#x60; + &#x60;date&#x60; 查询历史日榜、周榜和月榜。适合影视资讯页、数据看板、自媒体选题和内容运营分析。
+
+### Example
+
+```ts
+import {
+  Configuration,
+  MiscApi,
+} from 'uapi-browser-sdk-browser';
+import type { GetMiscMovieRatingRankRequest } from 'uapi-browser-sdk-browser';
+
+async function example() {
+  console.log("🚀 Testing uapi-browser-sdk-browser SDK...");
+  const api = new MiscApi();
+
+  const body = {
+    // 'all' | 'tv' | 'web' | 'cinema' | 渠道：all（全网）、tv（卫视）、web（网络平台）、cinema（院线），默认 all。 (optional)
+    channel: channel_example,
+    // string | 按渠道或平台关键字过滤，例如 卫视、爱奇艺。 (optional)
+    platform: 爱奇艺,
+    // number | 每个渠道仅返回前 N 条。 (optional)
+    limit: 10,
+    // 'realtime' | 'day' | 'week' | 'month' | 排行周期：realtime、day、week、month，默认 realtime。 (optional)
+    period: period_example,
+    // string | 历史快照日期，格式 YYYY-MM-DD；用于 day/week/month。 (optional)
+    date: 2026-06-08,
+  } satisfies GetMiscMovieRatingRankRequest;
+
+  try {
+    const data = await api.getMiscMovieRatingRank(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **channel** | `all`, `tv`, `web`, `cinema` | 渠道：all（全网）、tv（卫视）、web（网络平台）、cinema（院线），默认 all。 | [Optional] [Defaults to `&#39;all&#39;`] [Enum: all, tv, web, cinema] |
+| **platform** | `string` | 按渠道或平台关键字过滤，例如 卫视、爱奇艺。 | [Optional] [Defaults to `undefined`] |
+| **limit** | `number` | 每个渠道仅返回前 N 条。 | [Optional] [Defaults to `undefined`] |
+| **period** | `realtime`, `day`, `week`, `month` | 排行周期：realtime、day、week、month，默认 realtime。 | [Optional] [Defaults to `&#39;realtime&#39;`] [Enum: realtime, day, week, month] |
+| **date** | `string` | 历史快照日期，格式 YYYY-MM-DD；用于 day/week/month。 | [Optional] [Defaults to `undefined`] |
+
+### Return type
+
+[**GetMiscMovieRatingRank200Response**](GetMiscMovieRatingRank200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | 查询成功，返回影视排行数据。 |  -  |
+| **400** | 参数错误，例如 period 不是 realtime/day/week/month。 |  -  |
+| **404** | 指定日期或周期暂无历史快照数据。 |  -  |
+| **503** | 服务暂时不可用，请稍后重试。 |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## getMiscPhoneinfo
 
 > GetMiscPhoneinfo200Response getMiscPhoneinfo(phone)
@@ -560,7 +705,7 @@ No authorization required
 
 随机数生成
 
-需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 流程图 &#x60;&#x60;&#x60;mermaid graph TD     A[开始] --&gt; B{参数校验};     B --&gt; |通过| C{是否允许小数?};     C --&gt; |是| D[生成随机小数];     C --&gt; |否| E[生成随机整数];     D --&gt; F{是否允许重复?};     E --&gt; F;     F --&gt; |是| G[直接生成指定数量];     F --&gt; |否| H[生成不重复的数字];     G --&gt; I[返回结果];     H --&gt; I;     B --&gt; |失败| J[返回 400 错误]; &#x60;&#x60;&#x60; ## 使用须知 &gt; [!WARNING] &gt; **不重复生成的逻辑限制** &gt; 当设置 &#x60;allow_repeat&#x3D;false&#x60; 时，请确保取值范围 &#x60;(max - min + 1)&#x60; 大于或等于你请求的数量 &#x60;count&#x60;。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
+需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 使用须知 &gt; [!WARNING] &gt; **不重复生成的逻辑限制** &gt; 当设置 &#x60;allow_repeat&#x3D;false&#x60; 时，请确保取值范围 &#x60;(max - min + 1)&#x60; 大于或等于你请求的数量 &#x60;count&#x60;。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
 
 ### Example
 
@@ -834,7 +979,7 @@ No authorization required
 
 ## getMiscTrackingQuery
 
-> GetMiscTrackingQuery200Response getMiscTrackingQuery(trackingNumber, carrierCode, phone, full)
+> GetMiscTrackingQuery200Response getMiscTrackingQuery(trackingNumber, carrierCode, phone)
 
 查询快递物流信息
 
@@ -860,8 +1005,6 @@ async function example() {
     carrierCode: carrierCode_example,
     // string | 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 (optional)
     phone: phone_example,
-    // boolean | 使用这个参数可以获得完整的物流信息。但会消耗34积分/一次（不过缓存命中半价）。因为成本实在太贵了，否则非常非常亏说是 (optional)
-    full: true,
   } satisfies GetMiscTrackingQueryRequest;
 
   try {
@@ -884,7 +1027,6 @@ example().catch(console.error);
 | **trackingNumber** | `string` | 快递单号，通常是一串10-20位的数字或字母数字组合。 | [Defaults to `undefined`] |
 | **carrierCode** | `string` | 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 | [Optional] [Defaults to `undefined`] |
 | **phone** | `string` | 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 | [Optional] [Defaults to `undefined`] |
-| **full** | `boolean` | 使用这个参数可以获得完整的物流信息。但会消耗34积分/一次（不过缓存命中半价）。因为成本实在太贵了，否则非常非常亏说是 | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -1002,6 +1144,91 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## getMiscWeatherHistory
+
+> GetMiscWeatherHistory200Response getMiscWeatherHistory(city, adcode, startDate, endDate, days, lang)
+
+查询历史天气
+
+想知道某个城市过去一段时间有没有下雨、降雨量是多少？这个接口用于查询过去最多 366 天的城市每日历史天气。  ## 功能概述 支持按 &#x60;city&#x60;、&#x60;adcode&#x60; 或客户端 IP 自动定位查询。你可以传 &#x60;start_date&#x60; + &#x60;end_date&#x60; 指定日期范围，也可以只传 &#x60;days&#x60; 回看最近若干天。返回结果重点包含 &#x60;rained&#x60; 与 &#x60;rain&#x60;，适合做出行复盘、农业记录、气象看板和数据分析。  ## 使用须知 &gt; [!NOTE] &gt; 定位优先级：&#x60;adcode&#x60; &gt; &#x60;city&#x60; &gt; IP 自动定位。同时传 &#x60;start_date&#x60; 和 &#x60;days&#x60; 时，以 &#x60;start_date&#x60; + &#x60;end_date&#x60; 区间为准。
+
+### Example
+
+```ts
+import {
+  Configuration,
+  MiscApi,
+} from 'uapi-browser-sdk-browser';
+import type { GetMiscWeatherHistoryRequest } from 'uapi-browser-sdk-browser';
+
+async function example() {
+  console.log("🚀 Testing uapi-browser-sdk-browser SDK...");
+  const api = new MiscApi();
+
+  const body = {
+    // string | 城市名称，支持中文或英文；可选，不传 city/adcode 时会尝试 IP 自动定位。 (optional)
+    city: 北京,
+    // string | 6 位行政区划代码，优先级高于 city。 (optional)
+    adcode: 110000,
+    // string | 起始日期，格式 YYYY-MM-DD；与 end_date 搭配使用。 (optional)
+    startDate: 2026-05-01,
+    // string | 结束日期，格式 YYYY-MM-DD，默认昨天。 (optional)
+    endDate: 2026-05-31,
+    // number | 回看天数，1-366，默认 365；仅在未指定 start_date 时生效。 (optional)
+    days: 30,
+    // 'zh' | 'en' | 返回语言：zh（默认）或 en。 (optional)
+    lang: lang_example,
+  } satisfies GetMiscWeatherHistoryRequest;
+
+  try {
+    const data = await api.getMiscWeatherHistory(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **city** | `string` | 城市名称，支持中文或英文；可选，不传 city/adcode 时会尝试 IP 自动定位。 | [Optional] [Defaults to `undefined`] |
+| **adcode** | `string` | 6 位行政区划代码，优先级高于 city。 | [Optional] [Defaults to `undefined`] |
+| **startDate** | `string` | 起始日期，格式 YYYY-MM-DD；与 end_date 搭配使用。 | [Optional] [Defaults to `undefined`] |
+| **endDate** | `string` | 结束日期，格式 YYYY-MM-DD，默认昨天。 | [Optional] [Defaults to `undefined`] |
+| **days** | `number` | 回看天数，1-366，默认 365；仅在未指定 start_date 时生效。 | [Optional] [Defaults to `365`] |
+| **lang** | `zh`, `en` | 返回语言：zh（默认）或 en。 | [Optional] [Defaults to `&#39;zh&#39;`] [Enum: zh, en] |
+
+### Return type
+
+[**GetMiscWeatherHistory200Response**](GetMiscWeatherHistory200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | 查询成功，返回城市历史每日天气。 |  -  |
+| **400** | 参数错误，例如日期格式不正确或 lang 不是 zh/en。 |  -  |
+| **404** | 未找到城市位置。 |  -  |
+| **502** | 服务暂时不可用，请稍后重试。 |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## getMiscWorldtime
 
 > GetMiscWorldtime200Response getMiscWorldtime(city)
@@ -1024,7 +1251,7 @@ async function example() {
   const api = new MiscApi();
 
   const body = {
-    // string | 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 \'Shanghai\', \'Asia/Tokyo\', \'America/New_York\'。
+    // 'Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/La_Rioja' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Fort_Nelson' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Monticello' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Ojinaga' | 'America/Panama' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Colombo' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Hebron' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ulaanbaatar' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/Perth' | 'Australia/Sydney' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Ulyanovsk' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zurich' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 你需要查询的城市或地区。请从[支持的时区列表](#enum-list)中选择标准 IANA 时区名称，例如 \'Asia/Shanghai\', \'Asia/Tokyo\', \'America/New_York\'。
     city: Asia/Shanghai,
   } satisfies GetMiscWorldtimeRequest;
 
@@ -1045,7 +1272,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **city** | `string` | 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 \&#39;Shanghai\&#39;, \&#39;Asia/Tokyo\&#39;, \&#39;America/New_York\&#39;。 | [Defaults to `undefined`] |
+| **city** | `Africa/Abidjan`, `Africa/Accra`, `Africa/Addis_Ababa`, `Africa/Algiers`, `Africa/Asmera`, `Africa/Bamako`, `Africa/Bangui`, `Africa/Banjul`, `Africa/Bissau`, `Africa/Blantyre`, `Africa/Brazzaville`, `Africa/Bujumbura`, `Africa/Cairo`, `Africa/Casablanca`, `Africa/Ceuta`, `Africa/Conakry`, `Africa/Dakar`, `Africa/Dar_es_Salaam`, `Africa/Djibouti`, `Africa/Douala`, `Africa/El_Aaiun`, `Africa/Freetown`, `Africa/Gaborone`, `Africa/Harare`, `Africa/Johannesburg`, `Africa/Juba`, `Africa/Kampala`, `Africa/Khartoum`, `Africa/Kigali`, `Africa/Kinshasa`, `Africa/Lagos`, `Africa/Libreville`, `Africa/Lome`, `Africa/Luanda`, `Africa/Lubumbashi`, `Africa/Lusaka`, `Africa/Malabo`, `Africa/Maputo`, `Africa/Maseru`, `Africa/Mbabane`, `Africa/Mogadishu`, `Africa/Monrovia`, `Africa/Nairobi`, `Africa/Ndjamena`, `Africa/Niamey`, `Africa/Nouakchott`, `Africa/Ouagadougou`, `Africa/Porto-Novo`, `Africa/Sao_Tome`, `Africa/Tripoli`, `Africa/Tunis`, `Africa/Windhoek`, `America/Adak`, `America/Anchorage`, `America/Anguilla`, `America/Antigua`, `America/Araguaina`, `America/Argentina/La_Rioja`, `America/Argentina/Rio_Gallegos`, `America/Argentina/Salta`, `America/Argentina/San_Juan`, `America/Argentina/San_Luis`, `America/Argentina/Tucuman`, `America/Argentina/Ushuaia`, `America/Aruba`, `America/Asuncion`, `America/Bahia`, `America/Bahia_Banderas`, `America/Barbados`, `America/Belem`, `America/Belize`, `America/Blanc-Sablon`, `America/Boa_Vista`, `America/Bogota`, `America/Boise`, `America/Buenos_Aires`, `America/Cambridge_Bay`, `America/Campo_Grande`, `America/Cancun`, `America/Caracas`, `America/Catamarca`, `America/Cayenne`, `America/Cayman`, `America/Chicago`, `America/Chihuahua`, `America/Ciudad_Juarez`, `America/Coral_Harbour`, `America/Cordoba`, `America/Costa_Rica`, `America/Coyhaique`, `America/Creston`, `America/Cuiaba`, `America/Curacao`, `America/Danmarkshavn`, `America/Dawson`, `America/Dawson_Creek`, `America/Denver`, `America/Detroit`, `America/Dominica`, `America/Edmonton`, `America/Eirunepe`, `America/El_Salvador`, `America/Fort_Nelson`, `America/Fortaleza`, `America/Glace_Bay`, `America/Godthab`, `America/Goose_Bay`, `America/Grand_Turk`, `America/Grenada`, `America/Guadeloupe`, `America/Guatemala`, `America/Guayaquil`, `America/Guyana`, `America/Halifax`, `America/Havana`, `America/Hermosillo`, `America/Indiana/Knox`, `America/Indiana/Marengo`, `America/Indiana/Petersburg`, `America/Indiana/Tell_City`, `America/Indiana/Vevay`, `America/Indiana/Vincennes`, `America/Indiana/Winamac`, `America/Indianapolis`, `America/Inuvik`, `America/Iqaluit`, `America/Jamaica`, `America/Jujuy`, `America/Juneau`, `America/Kentucky/Monticello`, `America/Kralendijk`, `America/La_Paz`, `America/Lima`, `America/Los_Angeles`, `America/Louisville`, `America/Lower_Princes`, `America/Maceio`, `America/Managua`, `America/Manaus`, `America/Marigot`, `America/Martinique`, `America/Matamoros`, `America/Mazatlan`, `America/Mendoza`, `America/Menominee`, `America/Merida`, `America/Metlakatla`, `America/Mexico_City`, `America/Miquelon`, `America/Moncton`, `America/Monterrey`, `America/Montevideo`, `America/Montserrat`, `America/Nassau`, `America/New_York`, `America/Nome`, `America/Noronha`, `America/North_Dakota/Beulah`, `America/North_Dakota/Center`, `America/North_Dakota/New_Salem`, `America/Ojinaga`, `America/Panama`, `America/Paramaribo`, `America/Phoenix`, `America/Port-au-Prince`, `America/Port_of_Spain`, `America/Porto_Velho`, `America/Puerto_Rico`, `America/Punta_Arenas`, `America/Rankin_Inlet`, `America/Recife`, `America/Regina`, `America/Resolute`, `America/Rio_Branco`, `America/Santarem`, `America/Santiago`, `America/Santo_Domingo`, `America/Sao_Paulo`, `America/Scoresbysund`, `America/Sitka`, `America/St_Barthelemy`, `America/St_Johns`, `America/St_Kitts`, `America/St_Lucia`, `America/St_Thomas`, `America/St_Vincent`, `America/Swift_Current`, `America/Tegucigalpa`, `America/Thule`, `America/Tijuana`, `America/Toronto`, `America/Tortola`, `America/Vancouver`, `America/Whitehorse`, `America/Winnipeg`, `America/Yakutat`, `Antarctica/Casey`, `Antarctica/Davis`, `Antarctica/DumontDUrville`, `Antarctica/Macquarie`, `Antarctica/Mawson`, `Antarctica/McMurdo`, `Antarctica/Palmer`, `Antarctica/Rothera`, `Antarctica/Syowa`, `Antarctica/Troll`, `Antarctica/Vostok`, `Arctic/Longyearbyen`, `Asia/Aden`, `Asia/Almaty`, `Asia/Amman`, `Asia/Anadyr`, `Asia/Aqtau`, `Asia/Aqtobe`, `Asia/Ashgabat`, `Asia/Atyrau`, `Asia/Baghdad`, `Asia/Bahrain`, `Asia/Baku`, `Asia/Bangkok`, `Asia/Barnaul`, `Asia/Beirut`, `Asia/Bishkek`, `Asia/Brunei`, `Asia/Calcutta`, `Asia/Chita`, `Asia/Colombo`, `Asia/Damascus`, `Asia/Dhaka`, `Asia/Dili`, `Asia/Dubai`, `Asia/Dushanbe`, `Asia/Famagusta`, `Asia/Gaza`, `Asia/Hebron`, `Asia/Hong_Kong`, `Asia/Hovd`, `Asia/Irkutsk`, `Asia/Jakarta`, `Asia/Jayapura`, `Asia/Jerusalem`, `Asia/Kabul`, `Asia/Kamchatka`, `Asia/Karachi`, `Asia/Katmandu`, `Asia/Khandyga`, `Asia/Krasnoyarsk`, `Asia/Kuala_Lumpur`, `Asia/Kuching`, `Asia/Kuwait`, `Asia/Macau`, `Asia/Magadan`, `Asia/Makassar`, `Asia/Manila`, `Asia/Muscat`, `Asia/Nicosia`, `Asia/Novokuznetsk`, `Asia/Novosibirsk`, `Asia/Omsk`, `Asia/Oral`, `Asia/Phnom_Penh`, `Asia/Pontianak`, `Asia/Pyongyang`, `Asia/Qatar`, `Asia/Qostanay`, `Asia/Qyzylorda`, `Asia/Rangoon`, `Asia/Riyadh`, `Asia/Saigon`, `Asia/Sakhalin`, `Asia/Samarkand`, `Asia/Seoul`, `Asia/Shanghai`, `Asia/Singapore`, `Asia/Srednekolymsk`, `Asia/Taipei`, `Asia/Tashkent`, `Asia/Tbilisi`, `Asia/Tehran`, `Asia/Thimphu`, `Asia/Tokyo`, `Asia/Tomsk`, `Asia/Ulaanbaatar`, `Asia/Urumqi`, `Asia/Ust-Nera`, `Asia/Vientiane`, `Asia/Vladivostok`, `Asia/Yakutsk`, `Asia/Yekaterinburg`, `Asia/Yerevan`, `Atlantic/Azores`, `Atlantic/Bermuda`, `Atlantic/Canary`, `Atlantic/Cape_Verde`, `Atlantic/Faeroe`, `Atlantic/Madeira`, `Atlantic/Reykjavik`, `Atlantic/South_Georgia`, `Atlantic/St_Helena`, `Atlantic/Stanley`, `Australia/Adelaide`, `Australia/Brisbane`, `Australia/Broken_Hill`, `Australia/Darwin`, `Australia/Eucla`, `Australia/Hobart`, `Australia/Lindeman`, `Australia/Lord_Howe`, `Australia/Melbourne`, `Australia/Perth`, `Australia/Sydney`, `Europe/Amsterdam`, `Europe/Andorra`, `Europe/Astrakhan`, `Europe/Athens`, `Europe/Belgrade`, `Europe/Berlin`, `Europe/Bratislava`, `Europe/Brussels`, `Europe/Bucharest`, `Europe/Budapest`, `Europe/Busingen`, `Europe/Chisinau`, `Europe/Copenhagen`, `Europe/Dublin`, `Europe/Gibraltar`, `Europe/Guernsey`, `Europe/Helsinki`, `Europe/Isle_of_Man`, `Europe/Istanbul`, `Europe/Jersey`, `Europe/Kaliningrad`, `Europe/Kiev`, `Europe/Kirov`, `Europe/Lisbon`, `Europe/Ljubljana`, `Europe/London`, `Europe/Luxembourg`, `Europe/Madrid`, `Europe/Malta`, `Europe/Mariehamn`, `Europe/Minsk`, `Europe/Monaco`, `Europe/Moscow`, `Europe/Oslo`, `Europe/Paris`, `Europe/Podgorica`, `Europe/Prague`, `Europe/Riga`, `Europe/Rome`, `Europe/Samara`, `Europe/San_Marino`, `Europe/Sarajevo`, `Europe/Saratov`, `Europe/Simferopol`, `Europe/Skopje`, `Europe/Sofia`, `Europe/Stockholm`, `Europe/Tallinn`, `Europe/Tirane`, `Europe/Ulyanovsk`, `Europe/Vaduz`, `Europe/Vatican`, `Europe/Vienna`, `Europe/Vilnius`, `Europe/Volgograd`, `Europe/Warsaw`, `Europe/Zagreb`, `Europe/Zurich`, `Indian/Antananarivo`, `Indian/Chagos`, `Indian/Christmas`, `Indian/Cocos`, `Indian/Comoro`, `Indian/Kerguelen`, `Indian/Mahe`, `Indian/Maldives`, `Indian/Mauritius`, `Indian/Mayotte`, `Indian/Reunion`, `Pacific/Apia`, `Pacific/Auckland`, `Pacific/Bougainville`, `Pacific/Chatham`, `Pacific/Easter`, `Pacific/Efate`, `Pacific/Enderbury`, `Pacific/Fakaofo`, `Pacific/Fiji`, `Pacific/Funafuti`, `Pacific/Galapagos`, `Pacific/Gambier`, `Pacific/Guadalcanal`, `Pacific/Guam`, `Pacific/Honolulu`, `Pacific/Kiritimati`, `Pacific/Kosrae`, `Pacific/Kwajalein`, `Pacific/Majuro`, `Pacific/Marquesas`, `Pacific/Midway`, `Pacific/Nauru`, `Pacific/Niue`, `Pacific/Norfolk`, `Pacific/Noumea`, `Pacific/Pago_Pago`, `Pacific/Palau`, `Pacific/Pitcairn`, `Pacific/Ponape`, `Pacific/Port_Moresby`, `Pacific/Rarotonga`, `Pacific/Saipan`, `Pacific/Tahiti`, `Pacific/Tarawa`, `Pacific/Tongatapu`, `Pacific/Truk`, `Pacific/Wake`, `Pacific/Wallis` | 你需要查询的城市或地区。请从[支持的时区列表](#enum-list)中选择标准 IANA 时区名称，例如 \&#39;Asia/Shanghai\&#39;, \&#39;Asia/Tokyo\&#39;, \&#39;America/New_York\&#39;。 | [Defaults to `undefined`] [Enum: Africa/Abidjan, Africa/Accra, Africa/Addis_Ababa, Africa/Algiers, Africa/Asmera, Africa/Bamako, Africa/Bangui, Africa/Banjul, Africa/Bissau, Africa/Blantyre, Africa/Brazzaville, Africa/Bujumbura, Africa/Cairo, Africa/Casablanca, Africa/Ceuta, Africa/Conakry, Africa/Dakar, Africa/Dar_es_Salaam, Africa/Djibouti, Africa/Douala, Africa/El_Aaiun, Africa/Freetown, Africa/Gaborone, Africa/Harare, Africa/Johannesburg, Africa/Juba, Africa/Kampala, Africa/Khartoum, Africa/Kigali, Africa/Kinshasa, Africa/Lagos, Africa/Libreville, Africa/Lome, Africa/Luanda, Africa/Lubumbashi, Africa/Lusaka, Africa/Malabo, Africa/Maputo, Africa/Maseru, Africa/Mbabane, Africa/Mogadishu, Africa/Monrovia, Africa/Nairobi, Africa/Ndjamena, Africa/Niamey, Africa/Nouakchott, Africa/Ouagadougou, Africa/Porto-Novo, Africa/Sao_Tome, Africa/Tripoli, Africa/Tunis, Africa/Windhoek, America/Adak, America/Anchorage, America/Anguilla, America/Antigua, America/Araguaina, America/Argentina/La_Rioja, America/Argentina/Rio_Gallegos, America/Argentina/Salta, America/Argentina/San_Juan, America/Argentina/San_Luis, America/Argentina/Tucuman, America/Argentina/Ushuaia, America/Aruba, America/Asuncion, America/Bahia, America/Bahia_Banderas, America/Barbados, America/Belem, America/Belize, America/Blanc-Sablon, America/Boa_Vista, America/Bogota, America/Boise, America/Buenos_Aires, America/Cambridge_Bay, America/Campo_Grande, America/Cancun, America/Caracas, America/Catamarca, America/Cayenne, America/Cayman, America/Chicago, America/Chihuahua, America/Ciudad_Juarez, America/Coral_Harbour, America/Cordoba, America/Costa_Rica, America/Coyhaique, America/Creston, America/Cuiaba, America/Curacao, America/Danmarkshavn, America/Dawson, America/Dawson_Creek, America/Denver, America/Detroit, America/Dominica, America/Edmonton, America/Eirunepe, America/El_Salvador, America/Fort_Nelson, America/Fortaleza, America/Glace_Bay, America/Godthab, America/Goose_Bay, America/Grand_Turk, America/Grenada, America/Guadeloupe, America/Guatemala, America/Guayaquil, America/Guyana, America/Halifax, America/Havana, America/Hermosillo, America/Indiana/Knox, America/Indiana/Marengo, America/Indiana/Petersburg, America/Indiana/Tell_City, America/Indiana/Vevay, America/Indiana/Vincennes, America/Indiana/Winamac, America/Indianapolis, America/Inuvik, America/Iqaluit, America/Jamaica, America/Jujuy, America/Juneau, America/Kentucky/Monticello, America/Kralendijk, America/La_Paz, America/Lima, America/Los_Angeles, America/Louisville, America/Lower_Princes, America/Maceio, America/Managua, America/Manaus, America/Marigot, America/Martinique, America/Matamoros, America/Mazatlan, America/Mendoza, America/Menominee, America/Merida, America/Metlakatla, America/Mexico_City, America/Miquelon, America/Moncton, America/Monterrey, America/Montevideo, America/Montserrat, America/Nassau, America/New_York, America/Nome, America/Noronha, America/North_Dakota/Beulah, America/North_Dakota/Center, America/North_Dakota/New_Salem, America/Ojinaga, America/Panama, America/Paramaribo, America/Phoenix, America/Port-au-Prince, America/Port_of_Spain, America/Porto_Velho, America/Puerto_Rico, America/Punta_Arenas, America/Rankin_Inlet, America/Recife, America/Regina, America/Resolute, America/Rio_Branco, America/Santarem, America/Santiago, America/Santo_Domingo, America/Sao_Paulo, America/Scoresbysund, America/Sitka, America/St_Barthelemy, America/St_Johns, America/St_Kitts, America/St_Lucia, America/St_Thomas, America/St_Vincent, America/Swift_Current, America/Tegucigalpa, America/Thule, America/Tijuana, America/Toronto, America/Tortola, America/Vancouver, America/Whitehorse, America/Winnipeg, America/Yakutat, Antarctica/Casey, Antarctica/Davis, Antarctica/DumontDUrville, Antarctica/Macquarie, Antarctica/Mawson, Antarctica/McMurdo, Antarctica/Palmer, Antarctica/Rothera, Antarctica/Syowa, Antarctica/Troll, Antarctica/Vostok, Arctic/Longyearbyen, Asia/Aden, Asia/Almaty, Asia/Amman, Asia/Anadyr, Asia/Aqtau, Asia/Aqtobe, Asia/Ashgabat, Asia/Atyrau, Asia/Baghdad, Asia/Bahrain, Asia/Baku, Asia/Bangkok, Asia/Barnaul, Asia/Beirut, Asia/Bishkek, Asia/Brunei, Asia/Calcutta, Asia/Chita, Asia/Colombo, Asia/Damascus, Asia/Dhaka, Asia/Dili, Asia/Dubai, Asia/Dushanbe, Asia/Famagusta, Asia/Gaza, Asia/Hebron, Asia/Hong_Kong, Asia/Hovd, Asia/Irkutsk, Asia/Jakarta, Asia/Jayapura, Asia/Jerusalem, Asia/Kabul, Asia/Kamchatka, Asia/Karachi, Asia/Katmandu, Asia/Khandyga, Asia/Krasnoyarsk, Asia/Kuala_Lumpur, Asia/Kuching, Asia/Kuwait, Asia/Macau, Asia/Magadan, Asia/Makassar, Asia/Manila, Asia/Muscat, Asia/Nicosia, Asia/Novokuznetsk, Asia/Novosibirsk, Asia/Omsk, Asia/Oral, Asia/Phnom_Penh, Asia/Pontianak, Asia/Pyongyang, Asia/Qatar, Asia/Qostanay, Asia/Qyzylorda, Asia/Rangoon, Asia/Riyadh, Asia/Saigon, Asia/Sakhalin, Asia/Samarkand, Asia/Seoul, Asia/Shanghai, Asia/Singapore, Asia/Srednekolymsk, Asia/Taipei, Asia/Tashkent, Asia/Tbilisi, Asia/Tehran, Asia/Thimphu, Asia/Tokyo, Asia/Tomsk, Asia/Ulaanbaatar, Asia/Urumqi, Asia/Ust-Nera, Asia/Vientiane, Asia/Vladivostok, Asia/Yakutsk, Asia/Yekaterinburg, Asia/Yerevan, Atlantic/Azores, Atlantic/Bermuda, Atlantic/Canary, Atlantic/Cape_Verde, Atlantic/Faeroe, Atlantic/Madeira, Atlantic/Reykjavik, Atlantic/South_Georgia, Atlantic/St_Helena, Atlantic/Stanley, Australia/Adelaide, Australia/Brisbane, Australia/Broken_Hill, Australia/Darwin, Australia/Eucla, Australia/Hobart, Australia/Lindeman, Australia/Lord_Howe, Australia/Melbourne, Australia/Perth, Australia/Sydney, Europe/Amsterdam, Europe/Andorra, Europe/Astrakhan, Europe/Athens, Europe/Belgrade, Europe/Berlin, Europe/Bratislava, Europe/Brussels, Europe/Bucharest, Europe/Budapest, Europe/Busingen, Europe/Chisinau, Europe/Copenhagen, Europe/Dublin, Europe/Gibraltar, Europe/Guernsey, Europe/Helsinki, Europe/Isle_of_Man, Europe/Istanbul, Europe/Jersey, Europe/Kaliningrad, Europe/Kiev, Europe/Kirov, Europe/Lisbon, Europe/Ljubljana, Europe/London, Europe/Luxembourg, Europe/Madrid, Europe/Malta, Europe/Mariehamn, Europe/Minsk, Europe/Monaco, Europe/Moscow, Europe/Oslo, Europe/Paris, Europe/Podgorica, Europe/Prague, Europe/Riga, Europe/Rome, Europe/Samara, Europe/San_Marino, Europe/Sarajevo, Europe/Saratov, Europe/Simferopol, Europe/Skopje, Europe/Sofia, Europe/Stockholm, Europe/Tallinn, Europe/Tirane, Europe/Ulyanovsk, Europe/Vaduz, Europe/Vatican, Europe/Vienna, Europe/Vilnius, Europe/Volgograd, Europe/Warsaw, Europe/Zagreb, Europe/Zurich, Indian/Antananarivo, Indian/Chagos, Indian/Christmas, Indian/Cocos, Indian/Comoro, Indian/Kerguelen, Indian/Mahe, Indian/Maldives, Indian/Mauritius, Indian/Mayotte, Indian/Reunion, Pacific/Apia, Pacific/Auckland, Pacific/Bougainville, Pacific/Chatham, Pacific/Easter, Pacific/Efate, Pacific/Enderbury, Pacific/Fakaofo, Pacific/Fiji, Pacific/Funafuti, Pacific/Galapagos, Pacific/Gambier, Pacific/Guadalcanal, Pacific/Guam, Pacific/Honolulu, Pacific/Kiritimati, Pacific/Kosrae, Pacific/Kwajalein, Pacific/Majuro, Pacific/Marquesas, Pacific/Midway, Pacific/Nauru, Pacific/Niue, Pacific/Norfolk, Pacific/Noumea, Pacific/Pago_Pago, Pacific/Palau, Pacific/Pitcairn, Pacific/Ponape, Pacific/Port_Moresby, Pacific/Rarotonga, Pacific/Saipan, Pacific/Tahiti, Pacific/Tarawa, Pacific/Tongatapu, Pacific/Truk, Pacific/Wake, Pacific/Wallis] |
 
 ### Return type
 

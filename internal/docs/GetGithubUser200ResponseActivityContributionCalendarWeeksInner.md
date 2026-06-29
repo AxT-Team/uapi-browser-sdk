@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`firstDay` | string
 `contributionDays` | [Array&lt;GetGithubUser200ResponseActivityContributionCalendarWeeksInnerContributionDaysInner&gt;](GetGithubUser200ResponseActivityContributionCalendarWeeksInnerContributionDaysInner.md)
+`firstDay` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetGithubUser200ResponseActivityContributionCalendarWeeksInner } f
 
 // TODO: Update the object below with actual values
 const example = {
-  "firstDay": 2026-04-06,
   "contributionDays": null,
+  "firstDay": 2026-04-06,
 } satisfies GetGithubUser200ResponseActivityContributionCalendarWeeksInner
 
 console.log(example)

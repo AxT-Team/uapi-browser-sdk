@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
 `changedToAt` | string
+`name` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetGameMinecraftHistoryid200ResponseResultsInnerHistoryInner } fro
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": ExamplePlayer,
   "changedToAt": 2023/09/13 10:10:06,
+  "name": ExamplePlayer,
 } satisfies GetGameMinecraftHistoryid200ResponseResultsInnerHistoryInner
 
 console.log(example)

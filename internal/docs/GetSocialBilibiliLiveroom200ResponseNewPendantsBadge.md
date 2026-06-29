@@ -7,8 +7,8 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
 `desc` | string
+`name` | string
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { GetSocialBilibiliLiveroom200ResponseNewPendantsBadge } from 'uapi-
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": 舰长徽章,
   "desc": 年度舰长,
+  "name": 舰长徽章,
 } satisfies GetSocialBilibiliLiveroom200ResponseNewPendantsBadge
 
 console.log(example)

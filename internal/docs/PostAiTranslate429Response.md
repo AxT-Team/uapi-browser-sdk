@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `code` | number
-`message` | string
 `error` | string
+`message` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { PostAiTranslate429Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": 429,
-  "message": Rate limit exceeded,
   "error": Too many requests, please try again later,
+  "message": Rate limit exceeded,
 } satisfies PostAiTranslate429Response
 
 console.log(example)

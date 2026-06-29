@@ -6,25 +6,27 @@
 
 Name | Type
 ------------ | -------------
-`login` | string
-`name` | string
-`bio` | string
-`company` | string
-`location` | string
-`blog` | string
-`twitterUsername` | string
-`email` | string
-`htmlUrl` | string
+`activity` | [GetGithubUser200ResponseActivity](GetGithubUser200ResponseActivity.md)
 `avatarUrl` | string
-`type` | string
-`publicRepos` | number
-`publicGists` | number
+`bio` | string
+`blog` | string
+`company` | string
+`createdAt` | Date
+`email` | string
 `followers` | number
 `following` | number
-`createdAt` | Date
-`updatedAt` | Date
+`htmlUrl` | string
+`location` | string
+`login` | string
+`name` | string
 `organizations` | [Array&lt;GetGithubUser200ResponseOrganizationsInner&gt;](GetGithubUser200ResponseOrganizationsInner.md)
-`activity` | [GetGithubUser200ResponseActivity](GetGithubUser200ResponseActivity.md)
+`pinnedRepositories` | [Array&lt;GetGithubUser200ResponsePinnedRepositoriesInner&gt;](GetGithubUser200ResponsePinnedRepositoriesInner.md)
+`publicGists` | number
+`publicRepos` | number
+`repositories` | [Array&lt;GetGithubUser200ResponseRepositoriesInner&gt;](GetGithubUser200ResponseRepositoriesInner.md)
+`twitterUsername` | string
+`type` | string
+`updatedAt` | Date
 
 ## Example
 
@@ -33,25 +35,27 @@ import type { GetGithubUser200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "login": torvalds,
-  "name": Linus Torvalds,
-  "bio": Linux kernel creator,
-  "company": Linux Foundation,
-  "location": Portland, OR,
-  "blog": ,
-  "twitterUsername": ,
-  "email": ,
-  "htmlUrl": https://github.com/torvalds,
+  "activity": null,
   "avatarUrl": https://avatars.githubusercontent.com/u/1024025?v=4,
-  "type": User,
-  "publicRepos": 8,
-  "publicGists": 0,
+  "bio": Linux kernel creator,
+  "blog": ,
+  "company": Linux Foundation,
+  "createdAt": 2011-09-03T15:26:22Z,
+  "email": ,
   "followers": 100,
   "following": 0,
-  "createdAt": 2011-09-03T15:26:22Z,
-  "updatedAt": 2026-04-12T00:00Z,
+  "htmlUrl": https://github.com/torvalds,
+  "location": Portland, OR,
+  "login": torvalds,
+  "name": Linus Torvalds,
   "organizations": null,
-  "activity": null,
+  "pinnedRepositories": null,
+  "publicGists": 0,
+  "publicRepos": 8,
+  "repositories": null,
+  "twitterUsername": ,
+  "type": User,
+  "updatedAt": 2026-04-12T00:00Z,
 } satisfies GetGithubUser200Response
 
 console.log(example)

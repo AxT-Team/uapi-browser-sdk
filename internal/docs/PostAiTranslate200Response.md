@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`message` | string
 `data` | [PostAiTranslate200ResponseData](PostAiTranslate200ResponseData.md)
-`performance` | [PostAiTranslate200ResponsePerformance](PostAiTranslate200ResponsePerformance.md)
 `isBatch` | boolean
+`message` | string
+`performance` | [PostAiTranslate200ResponsePerformance](PostAiTranslate200ResponsePerformance.md)
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { PostAiTranslate200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "message": Translation completed successfully,
   "data": null,
-  "performance": null,
   "isBatch": false,
+  "message": Translation completed successfully,
+  "performance": null,
 } satisfies PostAiTranslate200Response
 
 console.log(example)

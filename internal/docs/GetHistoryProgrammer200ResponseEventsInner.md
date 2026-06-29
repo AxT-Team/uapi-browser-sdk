@@ -6,13 +6,13 @@
 
 Name | Type
 ------------ | -------------
-`year` | number
-`title` | string
-`description` | string
 `category` | string
+`description` | string
 `importance` | number
 `relevanceScore` | number
+`title` | string
 `url` | string
+`year` | number
 
 ## Example
 
@@ -21,13 +21,13 @@ import type { GetHistoryProgrammer200ResponseEventsInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "year": 1968,
-  "title": ASCII 标准发布,
-  "description": 美国信息交换标准代码正式发布，成为计算机文本编码的基础,
   "category": 技术标准,
+  "description": 美国信息交换标准代码正式发布，成为计算机文本编码的基础,
   "importance": 8,
   "relevanceScore": 0.92,
+  "title": ASCII 标准发布,
   "url": https://zh.wikipedia.org/wiki/ASCII,
+  "year": 1968,
 } satisfies GetHistoryProgrammer200ResponseEventsInner
 
 console.log(example)

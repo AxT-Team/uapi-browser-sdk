@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`type` | string
-`keyword` | string
 `count` | number
+`keyword` | string
 `results` | [Array&lt;GetMiscHotboard200ResponseOneOf1ResultsInner&gt;](GetMiscHotboard200ResponseOneOf1ResultsInner.md)
+`type` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { GetMiscHotboard200ResponseOneOf1 } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "type": weibo,
-  "keyword": AI,
   "count": 0,
+  "keyword": AI,
   "results": null,
+  "type": weibo,
 } satisfies GetMiscHotboard200ResponseOneOf1
 
 console.log(example)

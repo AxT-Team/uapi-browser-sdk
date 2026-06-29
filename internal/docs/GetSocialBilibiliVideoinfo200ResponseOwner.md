@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
+`face` | string
 `mid` | number
 `name` | string
-`face` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetSocialBilibiliVideoinfo200ResponseOwner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
+  "face": http://i2.hdslb.com/bfs/face/b0b721e6cb13e31af88cc45c432d6728c3065a6e.jpg,
   "mid": 2,
   "name": bishi,
-  "face": http://i2.hdslb.com/bfs/face/b0b721e6cb13e31af88cc45c432d6728c3065a6e.jpg,
 } satisfies GetSocialBilibiliVideoinfo200ResponseOwner
 
 console.log(example)

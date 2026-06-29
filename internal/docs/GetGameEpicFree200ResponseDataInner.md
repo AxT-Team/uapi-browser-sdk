@@ -6,19 +6,19 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`title` | string
 `cover` | string
-`originalPrice` | number
-`originalPriceDesc` | string
 `description` | string
-`seller` | string
-`isFreeNow` | boolean
-`freeStart` | string
-`freeStartAt` | number
 `freeEnd` | string
 `freeEndAt` | number
+`freeStart` | string
+`freeStartAt` | number
+`id` | string
+`isFreeNow` | boolean
 `link` | string
+`originalPrice` | number
+`originalPriceDesc` | string
+`seller` | string
+`title` | string
 
 ## Example
 
@@ -27,19 +27,19 @@ import type { GetGameEpicFree200ResponseDataInner } from 'uapi-browser-sdk-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": epic-game-123456,
-  "title": Control Ultimate Edition,
   "cover": https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_ControlUltimateEdition_RemedyEntertainment_S1_2560x1440-a2a40e2b9164c2c0e031bd4e88bacd01.jpg,
-  "originalPrice": 40,
-  "originalPriceDesc": ¥40.00,
   "description": 在这款超自然动作冒险游戏中，你将掌握一系列超自然能力、改装武器，探索神秘的联邦控制局。,
-  "seller": Remedy Entertainment,
-  "isFreeNow": true,
-  "freeStart": 2025/01/10 00:00:00,
-  "freeStartAt": 1736438400000,
   "freeEnd": 2025/01/17 00:00:00,
   "freeEndAt": 1737043200000,
+  "freeStart": 2025/01/10 00:00:00,
+  "freeStartAt": 1736438400000,
+  "id": epic-game-123456,
+  "isFreeNow": true,
   "link": https://store.epicgames.com/zh-CN/p/control,
+  "originalPrice": 40,
+  "originalPriceDesc": ¥40.00,
+  "seller": Remedy Entertainment,
+  "title": Control Ultimate Edition,
 } satisfies GetGameEpicFree200ResponseDataInner
 
 console.log(example)

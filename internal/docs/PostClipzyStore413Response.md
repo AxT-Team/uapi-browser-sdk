@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`error` | string
 `details` | string
+`error` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostClipzyStore413Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "error": Payload too large.,
   "details": Data exceeds the 8MB limit for the given TTL.,
+  "error": Payload too large.,
 } satisfies PostClipzyStore413Response
 
 console.log(example)

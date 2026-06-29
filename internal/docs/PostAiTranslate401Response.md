@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `code` | number
-`message` | string
 `error` | string
+`message` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { PostAiTranslate401Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": 401,
-  "message": Unauthorized,
   "error": Invalid or missing API token,
+  "message": Unauthorized,
 } satisfies PostAiTranslate401Response
 
 console.log(example)

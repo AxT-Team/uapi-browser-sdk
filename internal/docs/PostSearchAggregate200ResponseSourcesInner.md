@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
-`status` | string
-`resultCount` | number
 `elapsedMs` | number
 `firstResultHost` | string
+`name` | string
+`resultCount` | number
+`status` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { PostSearchAggregate200ResponseSourcesInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": uapi-searchv1,
-  "status": success,
-  "resultCount": 15,
   "elapsedMs": 3675,
   "firstResultHost": go.dev,
+  "name": uapi-searchv1,
+  "resultCount": 15,
+  "status": success,
 } satisfies PostSearchAggregate200ResponseSourcesInner
 
 console.log(example)

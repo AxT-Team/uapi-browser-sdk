@@ -6,14 +6,14 @@
 
 Name | Type
 ------------ | -------------
-`nsfwScore` | number
-`normalScore` | number
-`isNsfw` | boolean
-`label` | string
-`suggestion` | string
-`riskLevel` | string
 `confidence` | number
 `inferenceTimeMs` | number
+`isNsfw` | boolean
+`label` | string
+`normalScore` | number
+`nsfwScore` | number
+`riskLevel` | string
+`suggestion` | string
 
 ## Example
 
@@ -22,14 +22,14 @@ import type { PostImageNsfw200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "nsfwScore": 0.05,
-  "normalScore": 0.95,
-  "isNsfw": false,
-  "label": normal,
-  "suggestion": pass,
-  "riskLevel": low,
   "confidence": 0.95,
   "inferenceTimeMs": 156,
+  "isNsfw": false,
+  "label": normal,
+  "normalScore": 0.95,
+  "nsfwScore": 0.05,
+  "riskLevel": low,
+  "suggestion": pass,
 } satisfies PostImageNsfw200Response
 
 console.log(example)

@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`words` | string
 `location` | [PostImageOcr200ResponseWordsResultInnerLocation](PostImageOcr200ResponseWordsResultInnerLocation.md)
-`vertexesLocation` | [Array&lt;PostImageOcr200ResponseWordsResultInnerVertexesLocationInner&gt;](PostImageOcr200ResponseWordsResultInnerVertexesLocationInner.md)
 `score` | number
+`vertexesLocation` | [Array&lt;PostImageOcr200ResponseWordsResultInnerVertexesLocationInner&gt;](PostImageOcr200ResponseWordsResultInnerVertexesLocationInner.md)
+`words` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { PostImageOcr200ResponseWordsResultInner } from 'uapi-browser-sdk-b
 
 // TODO: Update the object below with actual values
 const example = {
-  "words": 收件人：张三,
   "location": null,
-  "vertexesLocation": null,
   "score": 0.992,
+  "vertexesLocation": null,
+  "words": 收件人：张三,
 } satisfies PostImageOcr200ResponseWordsResultInner
 
 console.log(example)

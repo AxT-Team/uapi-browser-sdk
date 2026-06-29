@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`question` | string
 `answer` | string
+`question` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetAnswerbookAsk200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "question": 我今天会有好运吗？,
   "answer": 一切都会好起来,
+  "question": 我今天会有好运吗？,
 } satisfies GetAnswerbookAsk200Response
 
 console.log(example)

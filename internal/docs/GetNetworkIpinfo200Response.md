@@ -6,15 +6,15 @@
 
 Name | Type
 ------------ | -------------
-`ip` | string
-`region` | string
-`isp` | string
-`llc` | string
 `asn` | string
-`latitude` | number
-`longitude` | number
 `beginip` | string
 `endip` | string
+`ip` | string
+`isp` | string
+`latitude` | number
+`llc` | string
+`longitude` | number
+`region` | string
 
 ## Example
 
@@ -23,15 +23,15 @@ import type { GetNetworkIpinfo200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "ip": 8.8.8.8,
-  "region": 美国,
-  "isp": GOOGLE,
-  "llc": GOOGLE,
   "asn": AS15169,
-  "latitude": 37.751,
-  "longitude": -97.822,
   "beginip": 8.8.8.0,
   "endip": 8.8.8.255,
+  "ip": 8.8.8.8,
+  "isp": GOOGLE,
+  "latitude": 37.751,
+  "llc": GOOGLE,
+  "longitude": -97.822,
+  "region": 美国,
 } satisfies GetNetworkIpinfo200Response
 
 console.log(example)

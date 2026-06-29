@@ -7,24 +7,24 @@
 
 Name | Type
 ------------ | -------------
-`bp` | number
-`elec` | number
-`download` | number
-`movie` | number
-`pay` | number
-`hd5` | number
-`noReprint` | number
-`autoplay` | number
-`ugcPay` | number
-`isCooperation` | number
-`ugcPayPreview` | number
-`noBackground` | number
-`cleanMode` | number
-`isSteinGate` | number
-`is360` | number
-`noShare` | number
 `arcPay` | number
+`autoplay` | number
+`bp` | number
+`cleanMode` | number
+`download` | number
+`elec` | number
 `freeWatch` | number
+`hd5` | number
+`is360` | number
+`isCooperation` | number
+`isSteinGate` | number
+`movie` | number
+`noBackground` | number
+`noReprint` | number
+`noShare` | number
+`pay` | number
+`ugcPay` | number
+`ugcPayPreview` | number
 
 ## Example
 
@@ -33,24 +33,24 @@ import type { GetSocialBilibiliVideoinfo200ResponseRights } from 'uapi-browser-s
 
 // TODO: Update the object below with actual values
 const example = {
-  "bp": 0,
-  "elec": 1,
-  "download": 1,
-  "movie": 0,
-  "pay": 0,
-  "hd5": 0,
-  "noReprint": 1,
-  "autoplay": 1,
-  "ugcPay": 0,
-  "isCooperation": 0,
-  "ugcPayPreview": 1,
-  "noBackground": 0,
-  "cleanMode": 0,
-  "isSteinGate": 0,
-  "is360": 0,
-  "noShare": 0,
   "arcPay": 0,
+  "autoplay": 1,
+  "bp": 0,
+  "cleanMode": 0,
+  "download": 1,
+  "elec": 1,
   "freeWatch": 1,
+  "hd5": 0,
+  "is360": 0,
+  "isCooperation": 0,
+  "isSteinGate": 0,
+  "movie": 0,
+  "noBackground": 0,
+  "noReprint": 1,
+  "noShare": 0,
+  "pay": 0,
+  "ugcPay": 0,
+  "ugcPayPreview": 1,
 } satisfies GetSocialBilibiliVideoinfo200ResponseRights
 
 console.log(example)

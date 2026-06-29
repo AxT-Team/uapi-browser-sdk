@@ -6,13 +6,13 @@
 
 Name | Type
 ------------ | -------------
+`author` | [GetSocialBilibiliVideoinfo200ResponseSubtitleListInnerAuthor](GetSocialBilibiliVideoinfo200ResponseSubtitleListInnerAuthor.md)
+`authorMid` | number
 `id` | number
+`isLock` | boolean
 `lan` | string
 `lanDoc` | string
-`isLock` | boolean
-`authorMid` | number
 `subtitleUrl` | string
-`author` | [GetSocialBilibiliVideoinfo200ResponseSubtitleListInnerAuthor](GetSocialBilibiliVideoinfo200ResponseSubtitleListInnerAuthor.md)
 
 ## Example
 
@@ -21,13 +21,13 @@ import type { GetSocialBilibiliVideoinfo200ResponseSubtitleListInner } from 'uap
 
 // TODO: Update the object below with actual values
 const example = {
+  "author": null,
+  "authorMid": 483307278,
   "id": 123456,
+  "isLock": false,
   "lan": zh-CN,
   "lanDoc": 中文（简体）,
-  "isLock": false,
-  "authorMid": 483307278,
   "subtitleUrl": //i0.hdslb.com/bfs/subtitle/xxxx.json,
-  "author": null,
 } satisfies GetSocialBilibiliVideoinfo200ResponseSubtitleListInner
 
 console.log(example)

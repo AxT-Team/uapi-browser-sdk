@@ -7,22 +7,22 @@
 Name | Type
 ------------ | -------------
 `date` | string
-`week` | string
+`humidity` | number
+`precip` | number
+`sunrise` | string
+`sunset` | string
 `tempMax` | number
 `tempMin` | number
+`uvIndex` | number
+`visibility` | number
 `weatherDay` | string
 `weatherNight` | string
+`week` | string
 `windDirDay` | string
 `windDirNight` | string
 `windScaleDay` | string
 `windScaleNight` | string
 `windSpeedDay` | number
-`humidity` | number
-`precip` | number
-`visibility` | number
-`uvIndex` | number
-`sunrise` | string
-`sunset` | string
 
 ## Example
 
@@ -32,22 +32,22 @@ import type { GetMiscWeather200ResponseForecastInner } from 'uapi-browser-sdk-br
 // TODO: Update the object below with actual values
 const example = {
   "date": 2026-02-19,
-  "week": 星期四,
+  "humidity": 40,
+  "precip": 0,
+  "sunrise": 06:52,
+  "sunset": 1076,
   "tempMax": 14,
   "tempMin": -1,
+  "uvIndex": 5,
+  "visibility": 25,
   "weatherDay": 晴,
   "weatherNight": 晴,
+  "week": 星期四,
   "windDirDay": 西南风,
   "windDirNight": 北风,
   "windScaleDay": 微风,
   "windScaleNight": 微风,
   "windSpeedDay": 17,
-  "humidity": 40,
-  "precip": 0,
-  "visibility": 25,
-  "uvIndex": 5,
-  "sunrise": 06:52,
-  "sunset": 17:56,
 } satisfies GetMiscWeather200ResponseForecastInner
 
 console.log(example)

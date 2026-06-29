@@ -8,15 +8,15 @@ Name | Type
 ------------ | -------------
 `aid` | number
 `bvid` | string
-`title` | string
 `cover` | string
+`createTime` | number
 `duration` | number
+`isInteractive` | boolean
+`isUgcPay` | number
 `playCount` | number
 `publishTime` | number
-`createTime` | number
 `state` | number
-`isUgcPay` | number
-`isInteractive` | boolean
+`title` | string
 
 ## Example
 
@@ -27,15 +27,15 @@ import type { GetSocialBilibiliArchives200ResponseVideosInner } from 'uapi-brows
 const example = {
   "aid": 115212162177124,
   "bvid": BV1JSpkzbEm6,
-  "title": THE FINALS - 2025-09-16 12-41-39,
   "cover": http://i0.hdslb.com/bfs/archive/0c8098c4736ce8ab4572fbe54b8d89b09f9e24e2.jpg,
+  "createTime": 1757999542,
   "duration": 468,
+  "isInteractive": false,
+  "isUgcPay": 0,
   "playCount": 210,
   "publishTime": 1757999542,
-  "createTime": 1757999542,
   "state": 0,
-  "isUgcPay": 0,
-  "isInteractive": false,
+  "title": THE FINALS - 2025-09-16 12-41-39,
 } satisfies GetSocialBilibiliArchives200ResponseVideosInner
 
 console.log(example)

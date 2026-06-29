@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
+`metadata` | [PostSearchAggregate200ResponseMetadata](PostSearchAggregate200ResponseMetadata.md)
+`processTimeMs` | number
 `query` | string
-`totalResults` | number
 `results` | [Array&lt;PostSearchAggregate200ResponseResultsInner&gt;](PostSearchAggregate200ResponseResultsInner.md)
 `sources` | [Array&lt;PostSearchAggregate200ResponseSourcesInner&gt;](PostSearchAggregate200ResponseSourcesInner.md)
-`processTimeMs` | number
-`metadata` | [PostSearchAggregate200ResponseMetadata](PostSearchAggregate200ResponseMetadata.md)
+`totalResults` | number
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { PostSearchAggregate200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
+  "metadata": null,
+  "processTimeMs": 3675,
   "query": Go最新的版本是多少,
-  "totalResults": 15,
   "results": null,
   "sources": null,
-  "processTimeMs": 3675,
-  "metadata": null,
+  "totalResults": 15,
 } satisfies PostSearchAggregate200Response
 
 console.log(example)

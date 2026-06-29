@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `code` | number
-`message` | string
 `error` | string
+`message` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { PostAiTranslate500Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "code": 500,
-  "message": Translation service error,
   "error": Translation request failed,
+  "message": Translation service error,
 } satisfies PostAiTranslate500Response
 
 console.log(example)

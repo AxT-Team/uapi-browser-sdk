@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
-`mode` | string
-`query` | [GetMiscHolidayCalendar200ResponseQuery](GetMiscHolidayCalendar200ResponseQuery.md)
-`summary` | [GetMiscHolidayCalendar200ResponseSummary](GetMiscHolidayCalendar200ResponseSummary.md)
 `days` | [Array&lt;GetMiscHolidayCalendar200ResponseDaysInner&gt;](GetMiscHolidayCalendar200ResponseDaysInner.md)
 `holidays` | [Array&lt;GetMiscHolidayCalendar200ResponseHolidaysInner&gt;](GetMiscHolidayCalendar200ResponseHolidaysInner.md)
+`mode` | string
 `nearby` | [GetMiscHolidayCalendar200ResponseNearby](GetMiscHolidayCalendar200ResponseNearby.md)
+`query` | [GetMiscHolidayCalendar200ResponseQuery](GetMiscHolidayCalendar200ResponseQuery.md)
+`summary` | [GetMiscHolidayCalendar200ResponseSummary](GetMiscHolidayCalendar200ResponseSummary.md)
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { GetMiscHolidayCalendar200Response } from 'uapi-browser-sdk-browser
 
 // TODO: Update the object below with actual values
 const example = {
-  "mode": day,
-  "query": null,
-  "summary": null,
   "days": null,
   "holidays": null,
+  "mode": day,
   "nearby": null,
+  "query": null,
+  "summary": null,
 } satisfies GetMiscHolidayCalendar200Response
 
 console.log(example)

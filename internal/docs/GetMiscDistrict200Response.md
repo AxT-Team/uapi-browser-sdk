@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`total` | number
 `results` | [Array&lt;GetMiscDistrict200ResponseResultsInner&gt;](GetMiscDistrict200ResponseResultsInner.md)
+`total` | number
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetMiscDistrict200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "total": 2,
   "results": null,
+  "total": 2,
 } satisfies GetMiscDistrict200Response
 
 console.log(example)

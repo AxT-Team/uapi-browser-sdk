@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `errorCode` | string
-`errorMessage` | string
 `errorDetails` | string
+`errorMessage` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { PostTextConvert400Response } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "errorCode": CONVERSION_FAILED,
-  "errorMessage": 不支持的源格式: unknown,
   "errorDetails": ,
+  "errorMessage": 不支持的源格式: unknown,
 } satisfies PostTextConvert400Response
 
 console.log(example)

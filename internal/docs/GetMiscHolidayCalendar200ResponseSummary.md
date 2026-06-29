@@ -7,13 +7,13 @@
 
 Name | Type
 ------------ | -------------
-`totalDays` | number
-`weekendDays` | number
-`workdays` | number
-`restDays` | number
 `holidayEvents` | number
 `legalRestDays` | number
 `legalWorkdays` | number
+`restDays` | number
+`totalDays` | number
+`weekendDays` | number
+`workdays` | number
 
 ## Example
 
@@ -22,13 +22,13 @@ import type { GetMiscHolidayCalendar200ResponseSummary } from 'uapi-browser-sdk-
 
 // TODO: Update the object below with actual values
 const example = {
-  "totalDays": 1,
-  "weekendDays": 0,
-  "workdays": 0,
-  "restDays": 1,
   "holidayEvents": 1,
   "legalRestDays": 1,
   "legalWorkdays": 0,
+  "restDays": 1,
+  "totalDays": 1,
+  "weekendDays": 0,
+  "workdays": 0,
 } satisfies GetMiscHolidayCalendar200ResponseSummary
 
 console.log(example)

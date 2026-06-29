@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`total` | number
 `page` | number
 `size` | number
+`total` | number
 `videos` | [Array&lt;GetSocialBilibiliArchives200ResponseVideosInner&gt;](GetSocialBilibiliArchives200ResponseVideosInner.md)
 
 ## Example
@@ -18,9 +18,9 @@ import type { GetSocialBilibiliArchives200Response } from 'uapi-browser-sdk-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "total": 26,
   "page": 1,
   "size": 20,
+  "total": 26,
   "videos": null,
 } satisfies GetSocialBilibiliArchives200Response
 

@@ -7,13 +7,13 @@
 Name | Type
 ------------ | -------------
 `cid` | number
+`dimension` | [GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension](GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension.md)
+`duration` | number
+`from` | string
 `page` | number
 `part` | string
-`from` | string
-`duration` | number
 `vid` | string
 `weblink` | string
-`dimension` | [GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension](GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension.md)
 
 ## Example
 
@@ -23,13 +23,13 @@ import type { GetSocialBilibiliVideoinfo200ResponsePagesInner } from 'uapi-brows
 // TODO: Update the object below with actual values
 const example = {
   "cid": 130283995,
+  "dimension": null,
+  "duration": 213,
+  "from": vupload,
   "page": 1,
   "part": 【官方MV】Rick Astley - Never Gonna Give You Up,
-  "from": vupload,
-  "duration": 213,
   "vid": ,
   "weblink": ,
-  "dimension": null,
 } satisfies GetSocialBilibiliVideoinfo200ResponsePagesInner
 
 console.log(example)

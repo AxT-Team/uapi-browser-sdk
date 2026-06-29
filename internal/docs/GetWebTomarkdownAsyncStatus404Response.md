@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`code` | number
 `error` | string
 `message` | string
-`code` | number
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { GetWebTomarkdownAsyncStatus404Response } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
+  "code": 404,
   "error": 任务不存在,
   "message": 未找到指定的task_id，任务可能已过期（30分钟TTL）,
-  "code": 404,
 } satisfies GetWebTomarkdownAsyncStatus404Response
 
 console.log(example)

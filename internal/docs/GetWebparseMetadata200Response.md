@@ -6,17 +6,17 @@
 
 Name | Type
 ------------ | -------------
-`pageUrl` | string
-`title` | string
-`description` | string
-`keywords` | Array&lt;string&gt;
-`faviconUrl` | string
-`language` | string
 `author` | string
-`publishedTime` | string
 `canonicalUrl` | string
+`description` | string
+`faviconUrl` | string
 `generator` | string
+`keywords` | Array&lt;string&gt;
+`language` | string
 `openGraph` | object
+`pageUrl` | string
+`publishedTime` | string
+`title` | string
 
 ## Example
 
@@ -25,17 +25,17 @@ import type { GetWebparseMetadata200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "pageUrl": https://www.bilibili.com,
-  "title": 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili,
-  "description": bilibili是国内知名的视频弹幕网站，这里有及时的动漫新番，活跃的ACG氛围，有创意的Up主。大家可以在这里找到许多欢乐。,
-  "keywords": ["B站","弹幕","视频"],
-  "faviconUrl": https://i0.hdslb.com/bfs/static/jinkela/long/images/512.png,
-  "language": zh-CN,
   "author": ,
-  "publishedTime": ,
   "canonicalUrl": https://www.bilibili.com/,
+  "description": bilibili是国内知名的视频弹幕网站，这里有及时的动漫新番，活跃的ACG氛围，有创意的Up主。大家可以在这里找到许多欢乐。,
+  "faviconUrl": https://i0.hdslb.com/bfs/static/jinkela/long/images/512.png,
   "generator": ,
+  "keywords": ["B站","弹幕","视频"],
+  "language": zh-CN,
   "openGraph": {},
+  "pageUrl": https://www.bilibili.com,
+  "publishedTime": ,
+  "title": 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili,
 } satisfies GetWebparseMetadata200Response
 
 console.log(example)

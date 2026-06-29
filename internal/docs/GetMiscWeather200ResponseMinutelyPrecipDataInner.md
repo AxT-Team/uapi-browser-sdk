@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`time` | string
 `precip` | number
+`time` | string
 `type` | string
 
 ## Example
@@ -17,8 +17,8 @@ import type { GetMiscWeather200ResponseMinutelyPrecipDataInner } from 'uapi-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "time": 2026-02-19T15:30:00+08:00,
   "precip": 0,
+  "time": 2026-02-19T15:30:00+08:00,
   "type": rain,
 } satisfies GetMiscWeather200ResponseMinutelyPrecipDataInner
 

@@ -7,8 +7,8 @@
 
 Name | Type
 ------------ | -------------
-`frame` | [GetSocialBilibiliLiveroom200ResponseNewPendantsFrame](GetSocialBilibiliLiveroom200ResponseNewPendantsFrame.md)
 `badge` | [GetSocialBilibiliLiveroom200ResponseNewPendantsBadge](GetSocialBilibiliLiveroom200ResponseNewPendantsBadge.md)
+`frame` | [GetSocialBilibiliLiveroom200ResponseNewPendantsFrame](GetSocialBilibiliLiveroom200ResponseNewPendantsFrame.md)
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { GetSocialBilibiliLiveroom200ResponseNewPendants } from 'uapi-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "frame": null,
   "badge": null,
+  "frame": null,
 } satisfies GetSocialBilibiliLiveroom200ResponseNewPendants
 
 console.log(example)

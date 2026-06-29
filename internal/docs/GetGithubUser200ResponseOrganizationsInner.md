@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`login` | string
+`avatarUrl` | string
 `description` | string
 `htmlUrl` | string
-`avatarUrl` | string
+`login` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { GetGithubUser200ResponseOrganizationsInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
-  "login": linux-foundation,
+  "avatarUrl": https://avatars.githubusercontent.com/u/123456?v=4,
   "description": Open source organization,
   "htmlUrl": https://github.com/linux-foundation,
-  "avatarUrl": https://avatars.githubusercontent.com/u/123456?v=4,
+  "login": linux-foundation,
 } satisfies GetGithubUser200ResponseOrganizationsInner
 
 console.log(example)

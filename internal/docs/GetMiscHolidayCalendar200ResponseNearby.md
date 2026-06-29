@@ -7,8 +7,8 @@
 
 Name | Type
 ------------ | -------------
-`previous` | [Array&lt;GetMiscHolidayCalendar200ResponseNearbyPreviousInner&gt;](GetMiscHolidayCalendar200ResponseNearbyPreviousInner.md)
 `next` | [Array&lt;GetMiscHolidayCalendar200ResponseNearbyNextInner&gt;](GetMiscHolidayCalendar200ResponseNearbyNextInner.md)
+`previous` | [Array&lt;GetMiscHolidayCalendar200ResponseNearbyPreviousInner&gt;](GetMiscHolidayCalendar200ResponseNearbyPreviousInner.md)
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { GetMiscHolidayCalendar200ResponseNearby } from 'uapi-browser-sdk-b
 
 // TODO: Update the object below with actual values
 const example = {
-  "previous": null,
   "next": null,
+  "previous": null,
 } satisfies GetMiscHolidayCalendar200ResponseNearby
 
 console.log(example)

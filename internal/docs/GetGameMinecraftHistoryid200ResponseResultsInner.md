@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`uuid` | string
-`nameNum` | number
 `history` | [Array&lt;GetGameMinecraftHistoryid200ResponseResultsInnerHistoryInner&gt;](GetGameMinecraftHistoryid200ResponseResultsInnerHistoryInner.md)
+`id` | string
+`nameNum` | number
+`uuid` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { GetGameMinecraftHistoryid200ResponseResultsInner } from 'uapi-brow
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": ExamplePlayer,
-  "uuid": a1b2c3d4-e5f6-7890-abcd-ef1234567890,
-  "nameNum": 1,
   "history": null,
+  "id": ExamplePlayer,
+  "nameNum": 1,
+  "uuid": a1b2c3d4-e5f6-7890-abcd-ef1234567890,
 } satisfies GetGameMinecraftHistoryid200ResponseResultsInner
 
 console.log(example)

@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `key` | string
-`text` | string
 `nonce` | string
+`text` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { PostTextAesDecryptRequest } from 'uapi-browser-sdk-browser'
 // TODO: Update the object below with actual values
 const example = {
   "key": a-secret-key-123,
-  "text": uyzVKczxZi3HdoGfeuaAt4F2/20WSmwFzIhJWMmDIaxeu97nLqbsX3wdp+NnRw==,
   "nonce": 1234567890abcdef,
+  "text": uyzVKczxZi3HdoGfeuaAt4F2/20WSmwFzIhJWMmDIaxeu97nLqbsX3wdp+NnRw==,
 } satisfies PostTextAesDecryptRequest
 
 console.log(example)

@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`startDate` | string
 `endDate` | string
 `format` | string
+`startDate` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { PostMiscDateDiffRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "startDate": 2025-01-01,
   "endDate": 2025-12-31,
   "format": YYYY-MM-DD,
+  "startDate": 2025-01-01,
 } satisfies PostMiscDateDiffRequest
 
 console.log(example)

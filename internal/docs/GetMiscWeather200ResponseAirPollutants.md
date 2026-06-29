@@ -7,12 +7,12 @@
 
 Name | Type
 ------------ | -------------
-`pm25` | number
-`pm10` | number
-`o3` | number
-`no2` | number
-`so2` | number
 `co` | number
+`no2` | number
+`o3` | number
+`pm10` | number
+`pm25` | number
+`so2` | number
 
 ## Example
 
@@ -21,12 +21,12 @@ import type { GetMiscWeather200ResponseAirPollutants } from 'uapi-browser-sdk-br
 
 // TODO: Update the object below with actual values
 const example = {
-  "pm25": 33,
-  "pm10": 69,
-  "o3": 91,
-  "no2": 13,
-  "so2": 7,
   "co": 0.4,
+  "no2": 13,
+  "o3": 91,
+  "pm10": 69,
+  "pm25": 33,
+  "so2": 7,
 } satisfies GetMiscWeather200ResponseAirPollutants
 
 console.log(example)

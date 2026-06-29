@@ -7,9 +7,9 @@
 Name | Type
 ------------ | -------------
 `ciphertext` | string
+`iv` | string
 `mode` | string
 `padding` | string
-`iv` | string
 
 ## Example
 
@@ -19,9 +19,9 @@ import type { PostTextAesEncryptAdvanced200Response } from 'uapi-browser-sdk-bro
 // TODO: Update the object below with actual values
 const example = {
   "ciphertext": kJB3X5YxNzA2MTA1NDQ3Mjc3ODg5...,
+  "iv": cmFuZG9tSVZoZXJl,
   "mode": GCM,
   "padding": NONE,
-  "iv": cmFuZG9tSVZoZXJl,
 } satisfies PostTextAesEncryptAdvanced200Response
 
 console.log(example)

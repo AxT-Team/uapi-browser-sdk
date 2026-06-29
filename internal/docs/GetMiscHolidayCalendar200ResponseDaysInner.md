@@ -7,27 +7,27 @@
 Name | Type
 ------------ | -------------
 `date` | string
-`year` | number
-`month` | number
 `day` | number
-`weekdayCn` | string
+`ganzhiDay` | string
+`ganzhiMonth` | string
+`ganzhiYear` | string
+`isHoliday` | boolean
+`isRestDay` | boolean
 `isWeekend` | boolean
 `isWorkday` | boolean
-`isRestDay` | boolean
-`isHoliday` | boolean
 `legalHolidayName` | string
 `legalHolidayType` | string
-`solarFestival` | string
-`lunarFestival` | string
-`solarTerm` | string
-`lunarYear` | number
-`lunarMonth` | number
 `lunarDay` | number
-`lunarMonthName` | string
 `lunarDayName` | string
-`ganzhiYear` | string
-`ganzhiMonth` | string
-`ganzhiDay` | string
+`lunarFestival` | string
+`lunarMonth` | number
+`lunarMonthName` | string
+`lunarYear` | number
+`month` | number
+`solarFestival` | string
+`solarTerm` | string
+`weekdayCn` | string
+`year` | number
 
 ## Example
 
@@ -37,27 +37,27 @@ import type { GetMiscHolidayCalendar200ResponseDaysInner } from 'uapi-browser-sd
 // TODO: Update the object below with actual values
 const example = {
   "date": 2025-10-01,
-  "year": 2025,
-  "month": 10,
   "day": 1,
-  "weekdayCn": 星期三,
+  "ganzhiDay": 癸卯,
+  "ganzhiMonth": 乙酉,
+  "ganzhiYear": 乙巳,
+  "isHoliday": true,
+  "isRestDay": true,
   "isWeekend": false,
   "isWorkday": false,
-  "isRestDay": true,
-  "isHoliday": true,
   "legalHolidayName": 国庆中秋,
   "legalHolidayType": rest,
-  "solarFestival": 国庆节,
-  "lunarFestival": ,
-  "solarTerm": ,
-  "lunarYear": 2025,
-  "lunarMonth": 8,
   "lunarDay": 10,
-  "lunarMonthName": 八月,
   "lunarDayName": 初十,
-  "ganzhiYear": 乙巳,
-  "ganzhiMonth": 乙酉,
-  "ganzhiDay": 癸卯,
+  "lunarFestival": ,
+  "lunarMonth": 8,
+  "lunarMonthName": 八月,
+  "lunarYear": 2025,
+  "month": 10,
+  "solarFestival": 国庆节,
+  "solarTerm": ,
+  "weekdayCn": 星期三,
+  "year": 2025,
 } satisfies GetMiscHolidayCalendar200ResponseDaysInner
 
 console.log(example)

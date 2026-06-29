@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`path` | string
 `count` | number
+`path` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetStatusUsage200ResponseAnyOfEndpointsInner } from 'uapi-browser-
 
 // TODO: Update the object below with actual values
 const example = {
-  "path": /api/v1/text/profanitycheck,
   "count": 2580791,
+  "path": /api/v1/text/profanitycheck,
 } satisfies GetStatusUsage200ResponseAnyOfEndpointsInner
 
 console.log(example)

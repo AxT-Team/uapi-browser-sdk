@@ -6,19 +6,19 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
-`plainText` | string
-`markdown` | string
-`wordsResult` | [Array&lt;PostImageOcr200ResponseWordsResultInner&gt;](PostImageOcr200ResponseWordsResultInner.md)
-`wordsResultNum` | number
-`needLocation` | boolean
-`timing` | object
-`summary` | object
+`blocks` | Array&lt;object&gt;
 `image` | object
 `lines` | Array&lt;object&gt;
-`blocks` | Array&lt;object&gt;
+`markdown` | string
+`needLocation` | boolean
 `pages` | Array&lt;object&gt;
+`plainText` | string
 `raw` | object
+`summary` | object
+`text` | string
+`timing` | object
+`wordsResult` | [Array&lt;PostImageOcr200ResponseWordsResultInner&gt;](PostImageOcr200ResponseWordsResultInner.md)
+`wordsResultNum` | number
 
 ## Example
 
@@ -27,10 +27,9 @@ import type { PostImageOcr200Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "text": 收件人：张三
-联系电话：13800000000,
-  "plainText": 收件人：张三
-联系电话：13800000000,
+  "blocks": null,
+  "image": {"height":720,"width":1280},
+  "lines": null,
   "markdown": # 快递面单
 
 收件人：张三
@@ -39,16 +38,17 @@ const example = {
 | 字段 | 内容 |
 | --- | --- |
 | 地址 | 上海市浦东新区世纪大道 100 号 |,
+  "needLocation": true,
+  "pages": null,
+  "plainText": 收件人：张三
+联系电话：13800000000,
+  "raw": null,
+  "summary": {"block_count":1,"line_count":2},
+  "text": 收件人：张三
+联系电话：13800000000,
+  "timing": {"total_ms":324},
   "wordsResult": null,
   "wordsResultNum": 2,
-  "needLocation": true,
-  "timing": {"total_ms":324},
-  "summary": {"line_count":2,"block_count":1},
-  "image": {"width":1280,"height":720},
-  "lines": null,
-  "blocks": null,
-  "pages": null,
-  "raw": null,
 } satisfies PostImageOcr200Response
 
 console.log(example)

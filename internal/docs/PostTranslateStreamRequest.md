@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`fromLang` | string
 `query` | string
 `toLang` | string
-`fromLang` | string
 `tone` | string
 
 ## Example
@@ -18,9 +18,9 @@ import type { PostTranslateStreamRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
+  "fromLang": 英文,
   "query": Hello, how are you?,
   "toLang": 中文,
-  "fromLang": 英文,
   "tone": ,
 } satisfies PostTranslateStreamRequest
 

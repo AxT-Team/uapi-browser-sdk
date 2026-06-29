@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`error` | string
 `code` | string
+`error` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { PostTranslateStream500Response } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "error": Translation service unavailable,
   "code": SERVICE_ERROR,
+  "error": Translation service unavailable,
 } satisfies PostTranslateStream500Response
 
 console.log(example)

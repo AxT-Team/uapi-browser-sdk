@@ -7,9 +7,9 @@
 Name | Type
 ------------ | -------------
 `date` | string
+`isWorkday` | boolean
 `name` | string
 `type` | string
-`isWorkday` | boolean
 
 ## Example
 
@@ -19,9 +19,9 @@ import type { GetMiscHolidayCalendar200ResponseHolidaysInner } from 'uapi-browse
 // TODO: Update the object below with actual values
 const example = {
   "date": 2025-10-01,
+  "isWorkday": true,
   "name": 国庆中秋,
   "type": legal_rest,
-  "isWorkday": true,
 } satisfies GetMiscHolidayCalendar200ResponseHolidaysInner
 
 console.log(example)

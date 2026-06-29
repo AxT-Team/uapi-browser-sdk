@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
+`fetchFull` | boolean
+`filetype` | string
 `query` | string
 `site` | string
-`filetype` | string
-`fetchFull` | boolean
 `sort` | string
 `timeRange` | string
 
@@ -20,10 +20,10 @@ import type { PostSearchAggregateRequest } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
+  "fetchFull": null,
+  "filetype": null,
   "query": Go最新的版本是多少,
   "site": null,
-  "filetype": null,
-  "fetchFull": null,
   "sort": null,
   "timeRange": null,
 } satisfies PostSearchAggregateRequest

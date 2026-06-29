@@ -7,11 +7,11 @@
 
 Name | Type
 ------------ | -------------
-`query` | string
 `limit` | number
 `page` | number
-`timeoutMs` | number
+`query` | string
 `sort` | string
+`timeoutMs` | number
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { PostSearchAggregate200ResponseMetadataRequestParams } from 'uapi-b
 
 // TODO: Update the object below with actual values
 const example = {
-  "query": Go最新的版本是多少,
   "limit": 10,
   "page": 1,
-  "timeoutMs": 60000,
+  "query": Go最新的版本是多少,
   "sort": relevance,
+  "timeoutMs": 60000,
 } satisfies PostSearchAggregate200ResponseMetadataRequestParams
 
 console.log(example)

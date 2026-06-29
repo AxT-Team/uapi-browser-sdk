@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`resolution` | string
 `items` | [Array&lt;GetImageBingDailyHistory200ResponseItemsInner&gt;](GetImageBingDailyHistory200ResponseItemsInner.md)
 `pagination` | [GetImageBingDailyHistory200ResponsePagination](GetImageBingDailyHistory200ResponsePagination.md)
+`resolution` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { GetImageBingDailyHistory200Response } from 'uapi-browser-sdk-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "resolution": 1080,
   "items": null,
   "pagination": null,
+  "resolution": 1080,
 } satisfies GetImageBingDailyHistory200Response
 
 console.log(example)

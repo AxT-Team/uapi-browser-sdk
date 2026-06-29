@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
+`cover` | string
 `extra` | { [key: string]: any; }
 `hotValue` | string
 `index` | number
 `title` | string
 `url` | string
-`cover` | string
 
 ## Example
 
@@ -20,12 +20,12 @@ import type { GetMiscHotboard200ResponseOneOfListInner } from 'uapi-browser-sdk-
 
 // TODO: Update the object below with actual values
 const example = {
+  "cover": https://p1.music.126.net/xxx/109951170483249998.jpg,
   "extra": null,
   "hotValue": 1234567,
   "index": 1,
   "title": 今天天气真好,
   "url": https://s.weibo.com/weibo?q=%23%E4%BB%8A%E5%A4%A9%E5%A4%A9%E6%B0%94%E7%9C%9F%E5%A5%BD%23,
-  "cover": https://p1.music.126.net/xxx/109951170483249998.jpg,
 } satisfies GetMiscHotboard200ResponseOneOfListInner
 
 console.log(example)

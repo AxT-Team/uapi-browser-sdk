@@ -6,34 +6,39 @@
 
 Name | Type
 ------------ | -------------
-`bvid` | string
 `aid` | number
-`videos` | number
-`tid` | number
-`tname` | string
+`bvid` | string
+`cid` | number
 `copyright` | number
-`pic` | string
-`title` | string
-`pubdate` | number
 `ctime` | number
 `desc` | string
 `descV2` | [Array&lt;GetSocialBilibiliVideoinfo200ResponseDescV2Inner&gt;](GetSocialBilibiliVideoinfo200ResponseDescV2Inner.md)
-`state` | number
-`duration` | number
-`rights` | [GetSocialBilibiliVideoinfo200ResponseRights](GetSocialBilibiliVideoinfo200ResponseRights.md)
-`owner` | [GetSocialBilibiliVideoinfo200ResponseOwner](GetSocialBilibiliVideoinfo200ResponseOwner.md)
-`stat` | [GetSocialBilibiliVideoinfo200ResponseStat](GetSocialBilibiliVideoinfo200ResponseStat.md)
-`dynamic` | string
-`cid` | number
 `dimension` | [GetSocialBilibiliVideoinfo200ResponseDimension](GetSocialBilibiliVideoinfo200ResponseDimension.md)
-`noCache` | boolean
-`pages` | [Array&lt;GetSocialBilibiliVideoinfo200ResponsePagesInner&gt;](GetSocialBilibiliVideoinfo200ResponsePagesInner.md)
-`subtitle` | [GetSocialBilibiliVideoinfo200ResponseSubtitle](GetSocialBilibiliVideoinfo200ResponseSubtitle.md)
-`staff` | [Array&lt;GetSocialBilibiliVideoinfo200ResponseStaffInner&gt;](GetSocialBilibiliVideoinfo200ResponseStaffInner.md)
-`ugcSeason` | [GetSocialBilibiliVideoinfo200ResponseUgcSeason](GetSocialBilibiliVideoinfo200ResponseUgcSeason.md)
+`duration` | number
+`dynamic` | string
+`honorReply` | [GetSocialBilibiliVideoinfo200ResponseHonorReply](GetSocialBilibiliVideoinfo200ResponseHonorReply.md)
 `isChargeableSeason` | boolean
 `isStory` | boolean
-`honorReply` | [GetSocialBilibiliVideoinfo200ResponseHonorReply](GetSocialBilibiliVideoinfo200ResponseHonorReply.md)
+`isUpowerExclusive` | boolean
+`isUpowerExclusiveWithQa` | boolean
+`isUpowerPlay` | boolean
+`isUpowerPreview` | boolean
+`noCache` | boolean
+`owner` | [GetSocialBilibiliVideoinfo200ResponseOwner](GetSocialBilibiliVideoinfo200ResponseOwner.md)
+`pages` | [Array&lt;GetSocialBilibiliVideoinfo200ResponsePagesInner&gt;](GetSocialBilibiliVideoinfo200ResponsePagesInner.md)
+`payType` | string
+`pic` | string
+`pubdate` | number
+`rights` | [GetSocialBilibiliVideoinfo200ResponseRights](GetSocialBilibiliVideoinfo200ResponseRights.md)
+`staff` | [Array&lt;GetSocialBilibiliVideoinfo200ResponseStaffInner&gt;](GetSocialBilibiliVideoinfo200ResponseStaffInner.md)
+`stat` | [GetSocialBilibiliVideoinfo200ResponseStat](GetSocialBilibiliVideoinfo200ResponseStat.md)
+`state` | number
+`subtitle` | [GetSocialBilibiliVideoinfo200ResponseSubtitle](GetSocialBilibiliVideoinfo200ResponseSubtitle.md)
+`tid` | number
+`title` | string
+`tname` | string
+`ugcSeason` | [GetSocialBilibiliVideoinfo200ResponseUgcSeason](GetSocialBilibiliVideoinfo200ResponseUgcSeason.md)
+`videos` | number
 
 ## Example
 
@@ -42,34 +47,39 @@ import type { GetSocialBilibiliVideoinfo200Response } from 'uapi-browser-sdk-bro
 
 // TODO: Update the object below with actual values
 const example = {
-  "bvid": BV17x411w79F,
   "aid": 75836761,
-  "videos": 1,
-  "tid": 31,
-  "tname": Vocaloid·UTAU,
+  "bvid": BV17x411w79F,
+  "cid": 130283995,
   "copyright": 2,
-  "pic": http://i2.hdslb.com/bfs/archive/f769f330138980456159345c6139c8e9b265c2f5.jpg,
-  "title": 【官方MV】Rick Astley - Never Gonna Give You Up,
-  "pubdate": 1573884313,
   "ctime": 1573884313,
   "desc": 你被骗了,
   "descV2": null,
-  "state": 0,
-  "duration": 213,
-  "rights": null,
-  "owner": null,
-  "stat": null,
-  "dynamic": ,
-  "cid": 130283995,
   "dimension": null,
-  "noCache": false,
-  "pages": null,
-  "subtitle": null,
-  "staff": null,
-  "ugcSeason": null,
+  "duration": 213,
+  "dynamic": ,
+  "honorReply": null,
   "isChargeableSeason": false,
   "isStory": false,
-  "honorReply": null,
+  "isUpowerExclusive": true,
+  "isUpowerExclusiveWithQa": false,
+  "isUpowerPlay": false,
+  "isUpowerPreview": false,
+  "noCache": false,
+  "owner": null,
+  "pages": null,
+  "payType": upower_exclusive,
+  "pic": http://i2.hdslb.com/bfs/archive/f769f330138980456159345c6139c8e9b265c2f5.jpg,
+  "pubdate": 1573884313,
+  "rights": null,
+  "staff": null,
+  "stat": null,
+  "state": 0,
+  "subtitle": null,
+  "tid": 31,
+  "title": 【官方MV】Rick Astley - Never Gonna Give You Up,
+  "tname": Vocaloid·UTAU,
+  "ugcSeason": null,
+  "videos": 1,
 } satisfies GetSocialBilibiliVideoinfo200Response
 
 console.log(example)

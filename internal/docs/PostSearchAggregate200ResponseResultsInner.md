@@ -6,14 +6,14 @@
 
 Name | Type
 ------------ | -------------
+`domain` | string
+`position` | number
+`publishTime` | Date
+`score` | number
+`snippet` | string
+`source` | string
 `title` | string
 `url` | string
-`snippet` | string
-`domain` | string
-`source` | string
-`position` | number
-`score` | number
-`publishTime` | Date
 
 ## Example
 
@@ -22,14 +22,14 @@ import type { PostSearchAggregate200ResponseResultsInner } from 'uapi-browser-sd
 
 // TODO: Update the object below with actual values
 const example = {
+  "domain": go.dev,
+  "position": 1,
+  "publishTime": 2026-02-10T00:00Z,
+  "score": 0.93,
+  "snippet": 2026年2月10日，Go 团队正式发布了 Go 1.26 版本。,
+  "source": uapi-searchv1,
   "title": Go 1.26 正式发布,
   "url": https://go.dev/blog/go1.26,
-  "snippet": 2026年2月10日，Go 团队正式发布了 Go 1.26 版本。,
-  "domain": go.dev,
-  "source": uapi-searchv1,
-  "position": 1,
-  "score": 0.93,
-  "publishTime": 2026-02-10T00:00Z,
 } satisfies PostSearchAggregate200ResponseResultsInner
 
 console.log(example)

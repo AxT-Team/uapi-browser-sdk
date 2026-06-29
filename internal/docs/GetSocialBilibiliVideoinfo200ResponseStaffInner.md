@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`mid` | number
-`title` | string
-`name` | string
 `face` | string
 `follower` | number
+`mid` | number
+`name` | string
+`title` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { GetSocialBilibiliVideoinfo200ResponseStaffInner } from 'uapi-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "mid": 111111,
-  "title": UP主,
-  "name": 某某,
   "face": http://i0.hdslb.com/bfs/face/....jpg,
   "follower": 100000,
+  "mid": 111111,
+  "name": 某某,
+  "title": UP主,
 } satisfies GetSocialBilibiliVideoinfo200ResponseStaffInner
 
 console.log(example)

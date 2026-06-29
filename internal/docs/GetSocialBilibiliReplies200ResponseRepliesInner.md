@@ -6,17 +6,17 @@
 
 Name | Type
 ------------ | -------------
-`rpid` | number
-`oid` | number
-`mid` | number
-`root` | number
-`parent` | number
+`content` | [GetSocialBilibiliReplies200ResponseRepliesInnerContent](GetSocialBilibiliReplies200ResponseRepliesInnerContent.md)
 `count` | number
 `ctime` | number
 `like` | number
 `member` | [GetSocialBilibiliReplies200ResponseRepliesInnerMember](GetSocialBilibiliReplies200ResponseRepliesInnerMember.md)
-`content` | [GetSocialBilibiliReplies200ResponseRepliesInnerContent](GetSocialBilibiliReplies200ResponseRepliesInnerContent.md)
+`mid` | number
+`oid` | number
+`parent` | number
 `replies` | Array&lt;object&gt;
+`root` | number
+`rpid` | number
 
 ## Example
 
@@ -25,17 +25,17 @@ import type { GetSocialBilibiliReplies200ResponseRepliesInner } from 'uapi-brows
 
 // TODO: Update the object below with actual values
 const example = {
-  "rpid": 4189337397,
-  "oid": 1706416465,
-  "mid": 12345678,
-  "root": 4189337300,
-  "parent": 4189337300,
+  "content": null,
   "count": 520,
   "ctime": 1579532400,
   "like": 1314,
   "member": null,
-  "content": null,
+  "mid": 12345678,
+  "oid": 1706416465,
+  "parent": 4189337300,
   "replies": null,
+  "root": 4189337300,
+  "rpid": 4189337397,
 } satisfies GetSocialBilibiliReplies200ResponseRepliesInner
 
 console.log(example)

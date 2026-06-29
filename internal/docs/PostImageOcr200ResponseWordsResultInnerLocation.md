@@ -7,10 +7,10 @@
 
 Name | Type
 ------------ | -------------
+`height` | number
 `left` | number
 `top` | number
 `width` | number
-`height` | number
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { PostImageOcr200ResponseWordsResultInnerLocation } from 'uapi-brows
 
 // TODO: Update the object below with actual values
 const example = {
+  "height": 32,
   "left": 56,
   "top": 128,
   "width": 240,
-  "height": 32,
 } satisfies PostImageOcr200ResponseWordsResultInnerLocation
 
 console.log(example)

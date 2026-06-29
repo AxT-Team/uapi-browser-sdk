@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`month` | string
 `contributionCount` | number
+`month` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetGithubUser200ResponseActivityTimelineInner } from 'uapi-browser
 
 // TODO: Update the object below with actual values
 const example = {
-  "month": 2026-04,
   "contributionCount": 4,
+  "month": 2026-04,
 } satisfies GetGithubUser200ResponseActivityTimelineInner
 
 console.log(example)

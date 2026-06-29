@@ -7,8 +7,8 @@
 
 Name | Type
 ------------ | -------------
-`path` | string
 `count` | number
+`path` | string
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { GetStatusUsage200ResponseAnyOf1 } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
-  "path": /api/v1/image/motou,
   "count": 22310,
+  "path": /api/v1/image/motou,
 } satisfies GetStatusUsage200ResponseAnyOf1
 
 console.log(example)

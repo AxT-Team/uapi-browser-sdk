@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
+`iv` | string
 `key` | string
 `mode` | string
 `padding` | string
-`iv` | string
+`text` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { PostTextAesDecryptAdvancedRequest } from 'uapi-browser-sdk-browser
 
 // TODO: Update the object below with actual values
 const example = {
-  "text": 68vWkaxJPg1vx0LWJONpEfYdvW3Wz7V5uXiYg0WWfGJHIZWBmVVghHg=,
+  "iv": cmFuZG9tSVZoZXJl,
   "key": my-super-secret-key,
   "mode": GCM,
   "padding": NONE,
-  "iv": cmFuZG9tSVZoZXJl,
+  "text": 68vWkaxJPg1vx0LWJONpEfYdvW3Wz7V5uXiYg0WWfGJHIZWBmVVghHg=,
 } satisfies PostTextAesDecryptAdvancedRequest
 
 console.log(example)

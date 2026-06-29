@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`bizId` | number
 `rawText` | string
 `type` | number
-`bizId` | number
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { GetSocialBilibiliVideoinfo200ResponseDescV2Inner } from 'uapi-brow
 
 // TODO: Update the object below with actual values
 const example = {
+  "bizId": 483307278,
   "rawText": 视频简介文本,
   "type": 1,
-  "bizId": 483307278,
 } satisfies GetSocialBilibiliVideoinfo200ResponseDescV2Inner
 
 console.log(example)

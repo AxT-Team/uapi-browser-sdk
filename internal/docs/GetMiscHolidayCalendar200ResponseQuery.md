@@ -8,9 +8,9 @@
 Name | Type
 ------------ | -------------
 `date` | string
+`excludePast` | boolean
 `holidayType` | string
 `includeNearby` | boolean
-`excludePast` | boolean
 `month` | string
 `nearbyLimit` | number
 `timezone` | string
@@ -24,9 +24,9 @@ import type { GetMiscHolidayCalendar200ResponseQuery } from 'uapi-browser-sdk-br
 // TODO: Update the object below with actual values
 const example = {
   "date": 2025-10-01,
+  "excludePast": true,
   "holidayType": legal,
   "includeNearby": true,
-  "excludePast": true,
   "month": ,
   "nearbyLimit": 7,
   "timezone": Asia/Shanghai,

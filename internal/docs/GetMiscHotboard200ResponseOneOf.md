@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
+`list` | [Array&lt;GetMiscHotboard200ResponseOneOfListInner&gt;](GetMiscHotboard200ResponseOneOfListInner.md)
+`snapshotTime` | number
 `type` | string
 `updateTime` | string
-`snapshotTime` | number
-`list` | [Array&lt;GetMiscHotboard200ResponseOneOfListInner&gt;](GetMiscHotboard200ResponseOneOfListInner.md)
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { GetMiscHotboard200ResponseOneOf } from 'uapi-browser-sdk-browser'
 
 // TODO: Update the object below with actual values
 const example = {
+  "list": null,
+  "snapshotTime": 1700000000000,
   "type": weibo,
   "updateTime": 2026-03-20 21:39:16,
-  "snapshotTime": 1700000000000,
-  "list": null,
 } satisfies GetMiscHotboard200ResponseOneOf
 
 console.log(example)

@@ -7,9 +7,9 @@
 
 Name | Type
 ------------ | -------------
-`width` | number
 `height` | number
 `rotate` | number
+`width` | number
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { GetSocialBilibiliVideoinfo200ResponseDimension } from 'uapi-browse
 
 // TODO: Update the object below with actual values
 const example = {
-  "width": 1920,
   "height": 1080,
   "rotate": 0,
+  "width": 1920,
 } satisfies GetSocialBilibiliVideoinfo200ResponseDimension
 
 console.log(example)
